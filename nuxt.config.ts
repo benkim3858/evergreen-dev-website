@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    'nuxt-icon'
   ],
 
   // Global CSS - Design System
@@ -20,7 +21,7 @@ export default defineNuxtConfig({
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' },
     baseURL: '/',
-    buildAssetsDir: 'assets',
+    buildAssetsDir: '_nuxt',
 
     // 전역 SEO 메타태그
     head: {
@@ -78,6 +79,9 @@ export default defineNuxtConfig({
       redirectOn: 'root',
       alwaysRedirect: true,
       fallbackLocale: 'en'
+    },
+    bundle: {
+      optimizeTranslationDirective: false
     }
   },
 

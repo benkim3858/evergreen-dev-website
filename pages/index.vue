@@ -1,6 +1,6 @@
 <template>
   <main class="main-container">
-    <InteractiveBackground />
+    <!-- Background is provided by SpaceBackground in default layout -->
     
     <!-- Hero Section -->
     <section id="home" class="section hero-section">
@@ -188,8 +188,6 @@
 </template>
 
 <script setup>
-import InteractiveBackground from '~/components/InteractiveBackground.vue';
-
 // SEO 메타태그 설정
 useSeoMeta({
   title: 'Ben Kim | Full Stack Developer - Portfolio',

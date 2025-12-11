@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
-    <SpaceBackground />
+    <ClientOnly>
+      <SpaceBackground />
+    </ClientOnly>
     <nav class="nav-container">
       <NuxtLink to="/" class="logo">
         <img 
@@ -39,11 +41,8 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-import { computed } from 'vue';
-import SpaceBackground from '~/components/SpaceBackground.vue';
-
-const { t, locale } = useI18n();
+// Nuxt auto-imports useI18n from @nuxtjs/i18n - no need to import from vue-i18n directly
+const { locale } = useI18n();
 const isMenuOpen = ref(false);
 
 const currentLocale = computed(() => locale.value);

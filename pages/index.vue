@@ -422,6 +422,31 @@ const handleWheel = (e) => {
     return;
   }
 
+  // Last Section Logic (Contact Section)
+  const isLastSection = currentSectionIndex.value === sectionIds.length - 1;
+  if (isLastSection) {
+    const contactSection = document.getElementById('contact');
+    if (contactSection && mainContainer.value) {
+      const mainScrollTop = mainContainer.value.scrollTop;
+      const sectionTop = contactSection.offsetTop;
+      
+      // Check if we are at the top of the contact section (with tolerance)
+      // Usually strict equality is fine, but tolerance helps with sub-pixel issues
+      const atTop = mainScrollTop <= sectionTop + 1; 
+
+      if (e.deltaY < 0 && atTop) {
+        // Scrolling UP at the top -> Go to previous section
+        // We let the standard logic below handle the snap-up
+      } else {
+        // Scrolling DOWN or Scrolling UP while NOT at top -> Allow native scroll
+        // IMPORTANT: checks for bottom boundary in standard logic would prevent scroll,
+        // so we return early here to allow native behavior.
+        // We only want to prevent default if we are specifically triggering a section transition.
+        return; 
+      }
+    }
+  }
+
   // 스크롤 가능한 내부 요소 찾기
   const scrollableElement = findScrollableParent(e.target);
 
@@ -455,8 +480,11 @@ const handleWheel = (e) => {
 
   // 임계값 도달 시에만 섹션 이동
   if (accumulatedDelta >= SCROLL_THRESHOLD) {
-    scrollToSection(currentSectionIndex.value + 1);
-    accumulatedDelta = 0;
+    // If at last section, we don't snap to next (there is no next)
+    if (currentSectionIndex.value < sectionIds.length - 1) {
+       scrollToSection(currentSectionIndex.value + 1);
+       accumulatedDelta = 0;
+    }
   } else if (accumulatedDelta <= -SCROLL_THRESHOLD) {
     scrollToSection(currentSectionIndex.value - 1);
     accumulatedDelta = 0;
@@ -1165,6 +1193,13 @@ onMounted(() => {
 }
 
 /* Contact Section Styles */
+.contact-section {
+  height: auto !important;
+  min-height: 100dvh;
+  overflow: visible !important;
+  justify-content: flex-start; /* Align content to top if needed, or keeping center is fine but auto height implies flow */
+}
+
 .contact-container {
   gap: 2rem;
 }

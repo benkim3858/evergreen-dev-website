@@ -27,6 +27,10 @@ jobs:
 
       - name: Generate static files
         run: npm run generate
+        env:
+          NUXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NUXT_PUBLIC_WEB3FORMS_KEY }}
+          NUXT_PUBLIC_CHANNEL_PLUGIN_KEY: ${{ secrets.NUXT_PUBLIC_CHANNEL_PLUGIN_KEY }}
+          NUXT_PUBLIC_CALENDLY_URL: ${{ secrets.NUXT_PUBLIC_CALENDLY_URL }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

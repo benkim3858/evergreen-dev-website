@@ -27,10 +27,10 @@ export const useProjects = () => {
             id: 'pozo',
             title: 'POZO',
             client: 'EVERGREEN DEV',
-            period: '2025.10. ~ 진행 중',
+            period: '2025.10. ~ 2025.12.',
             role: '모바일 프론트엔드, 백엔드',
             techStack: ['Flutter', 'Flutter Web', 'Nest.js', 'AWS'],
-            teamSize: '1명',
+            teamSize: '3명',
             description: '언택트 포장 주문의 혁신적인 솔루션',
             details: `POZO는 기존 배달 플랫폼의 복잡한 구조에서 벗어나 '포장 주문(Pick-up Only)' 기능에만 집중하여 사용자(소비자)와 매장(가맹점주) 모두에게 최적화된 서비스를 제공하는 전문 플랫폼입니다. 배달 수수료와 시간 지연 문제를 해결하고, 비대면 포장 주문의 효율성을 극대화하는 데 중점을 두고 개발되었습니다.`,
             features: [
@@ -85,7 +85,7 @@ export const useProjects = () => {
             period: '2025.07. ~ 2025.09.',
             role: '모바일 프론트엔드, 백엔드',
             techStack: ['React(Next.js)', 'React Native Webview', 'Nest.js', 'AWS'],
-            teamSize: '1명',
+            teamSize: '2명',
             description: '크리스천을 위한 루틴 관리 & 영적 성장 동반자 앱',
             details: `CROU는 크리스천 사용자를 핵심 타겟으로 하면서도 일반적인 생활 목표 달성까지 지원하는 하이브리드 루틴 관리 애플리케이션입니다. 사용자들은 영적 성장을 위한 기도, 성경 읽기 등의 신앙 루틴과 일상 목표를 효율적으로 관리하고, 매일 제공되는 성경 구절을 통해 영감을 얻으며 꾸준함을 유지할 수 있습니다.`,
             features: [
@@ -133,7 +133,7 @@ export const useProjects = () => {
             period: '2025.05. ~ 2025.07.',
             role: '모바일 프론트엔드, 백엔드',
             techStack: ['Flutter', 'Nest.js', 'AWS'],
-            teamSize: '1명',
+            teamSize: '3명',
             description: '음악 전문가를 위한 인스타그램형 소셜 네트워킹 플랫폼',
             details: `Chordly는 전문 음악인과 음악 산업 종사자를 위해 인스타그램의 직관적인 사용자 경험(UX)과 음악 전문 매칭 기능을 결합한 신개념 소셜 미디어 앱입니다. 합주 파트너, 전문 과외 강사, 유료 세션 연주자 매칭 등 음악 활동에 필수적인 네트워킹과 기회를 제공하여, 전문가들의 협업 효율성을 극대화합니다.`,
             features: [
@@ -183,7 +183,7 @@ export const useProjects = () => {
             period: '2025.03. ~ 2025.05.',
             role: '모바일 프론트엔드, 백엔드',
             techStack: ['Flutter', 'Nest.js', 'AWS'],
-            teamSize: '1명',
+            teamSize: '3명',
             description: '2025 수원 ITS 아태총회 공식 모바일 플랫폼',
             details: `2025 수원 ITS 아태총회(ITSAP 2025) 참가자를 위한 올인원(All-in-One) 모바일 플랫폼으로, 행사 참가 경험을 극대화하고, 효과적인 네트워킹 및 정보 접근성을 제공합니다. 참가자들은 이 앱을 통해 맞춤형 스케줄 관리, 실시간 정보 획득, 그리고 활발한 커뮤니케이션을 경험할 수 있습니다.`,
             features: [

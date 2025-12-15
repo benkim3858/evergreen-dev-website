@@ -140,28 +140,45 @@
     <!-- About Section -->
     <section id="about" class="section about-section">
       <div class="container">
-        <div class="about-content grid grid-1 grid-2-md">
-          <div class="about-text">
+        <div class="about-content">
+          <div class="about-header text-center">
             <h2 class="section-title">Why Evergreen?</h2>
-            <p>{{ aboutText }}</p>
-            <div class="skills-container">
-              <h3>Core Competencies</h3>
-              <div class="skills-grid grid grid-2-sm grid-3-md">
-                <div v-for="(skill, category) in skills" 
-                     :key="category" 
-                     class="skill-category">
-                  <h4>{{ category }}</h4>
-                  <ul>
-                    <li v-for="item in skill" :key="item">{{ item }}</li>
-                  </ul>
-                </div>
+            <p class="section-subtitle" style="white-space: pre-line;">{{ aboutText }}</p>
+          </div>
+          
+          <!-- Key Achievements -->
+          <div class="stats-grid">
+            <div v-for="stat in achievements" :key="stat.label" class="stat-card">
+              <div class="stat-icon">
+                <Icon :name="stat.icon" />
               </div>
+              <div class="stat-value">{{ stat.value }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
             </div>
           </div>
-          <div class="about-image">
-             <!-- Placeholder for company image or abstract graphic -->
-            <div class="placeholder-image">
-                <Icon name="mdi:forest" size="10rem" color="#64ffda" />
+
+          <!-- Client Testimonials -->
+          <div class="testimonials-section">
+            <h3 class="testimonials-title text-center">Client Stories</h3>
+            <div class="testimonials-grid">
+              <div v-for="(review, index) in testimonials" :key="index" class="testimonial-card">
+                <div class="quote-icon">
+                  <Icon name="mdi:format-quote-open" />
+                </div>
+                <p class="review-content">"{{ review.content }}"</p>
+                <div class="quote-icon-close">
+                  <Icon name="mdi:format-quote-close" />
+                </div>
+                <div class="review-author">
+                  <div class="author-info">
+                    <strong>{{ review.author }}</strong>
+                    <span>{{ review.role }}</span>
+                  </div>
+                  <div class="review-rating">
+                    <Icon v-for="n in review.rating" :key="n" name="mdi:star" class="star" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -254,17 +271,39 @@ const currentText = ref(texts.ko[0]);
 let currentIndex = 0;
 
 // Data
-const aboutText = ref(`변화하는 기술 환경 속에서도 변함없는 가치를 제공합니다. 저희 Evergreen Dev는 단순한 개발사가 아닌, 고객의 비즈니스 성장을 함께 고민하는 파트너입니다. 안정적인 시스템 구축과 효율적인 유지보수를 통해 귀사의 디지털 자산을 안전하게 지켜드립니다.`);
+const aboutText = ref(`클라이언트의 비즈니스 수익 창출을 최우선으로 생각합니다. \n 고객님의 비즈니스가 언제나 푸르게 번창하고 지속 성장할 수 있도록 \n 기획부터 개발, 배포까지 함께하는 든든한 IT 파트너입니다.`);
+const achievements = ref([
+  { label: 'Successful Projects', value: '40+', icon: 'mdi:trophy-award' },
+  { label: 'Client Satisfaction', value: '5.0/5.0', icon: 'mdi:star' },
+  { label: 'Avg. Cost Reduction', value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
+  { label: 'Service Uptime', value: '99.9%', icon: 'mdi:server-network' }
+]);
+const testimonials = ref([
+  {
+    content: "초기 스타트업이라 기획이 불확실했는데, 전문가님께서 비즈니스 모델까지 함께 고민해주셨습니다. 덕분에 3주 만에 MVP를 런칭하고 초기 투자를 유치할 수 있었습니다.",
+    author: "박OO 대표",
+    role: "Fintech Startup CEO",
+    rating: 5
+  },
+  {
+    content: "기존 외주 개발사들과는 다르게 코드 퀄리티가 상당히 높습니다. 인수인계 받은 내부 개발팀이 '유지보수하기 너무 편한 구조'라며 극찬했습니다.",
+    author: "김OO CTO",
+    role: "E-commerce Platform",
+    rating: 5
+  },
+  {
+    content: "Flutter 크로스플랫폼 성능에 대한 의구심이 있었는데, 네이티브 못지않은 퍼포먼스를 보여줬습니다. iOS와 Android 두 마리 토끼를 완벽하게 잡았습니다.",
+    author: "이OO 기획팀장",
+    role: "O2O Service",
+    rating: 5
+  }
+]);
+
 const contactText = ref(`새로운 프로젝트 논의나 기술 상담이 필요하시다면 언제든 연락주세요. 귀사의 비즈니스에 최적화된 솔루션을 제안해 드립니다.`);
 const formData = ref({
   name: '',
   email: '',
   message: ''
-});
-const skills = ref({
-  'Development': ['Vue.js / Nuxt', 'React / Next.js', 'React Native / Flutter', 'Node.js / Python'],
-  'Infrastructure': ['AWS / Azure', 'Docker / K8s', 'CI/CD Pipelines', 'Security'],
-  'Process': ['Agile / Scrum', 'Code Review', 'Documentation', 'Maintenance']
 });
 
 // Projects Data from Composable
@@ -646,9 +685,9 @@ onMounted(() => {
 }
 
 .btn-primary {
-  background: rgba(74, 243, 255, 0.1);
-  border: 1px solid #4af3ff;
-  color: #4af3ff;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid #94a3b8;
+  color: #94a3b8;
 }
 
 .btn-primary:hover {
@@ -657,9 +696,9 @@ onMounted(() => {
 }
 
 .btn-secondary {
-  background: rgba(148, 163, 184, 0.1);
-  border: 1px solid #94a3b8;
-  color: #94a3b8;
+  background: rgba(74, 243, 255, 0.1);
+  border: 1px solid #4af3ff;
+  color: #4af3ff;
 }
 
 .btn-secondary:hover {
@@ -919,5 +958,145 @@ onMounted(() => {
   border: 1px solid var(--accent-color);
   padding: 0.5rem 1rem;
   border-radius: 4px;
+}
+
+/* About Section Styles */
+.about-section {
+  padding-top: var(--space-xxl);
+}
+
+.about-header {
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+
+}
+
+/* Statistics Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xxl);
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  background: rgba(17, 34, 64, 0.4);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  background: rgba(17, 34, 64, 0.6);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: var(--space-sm);
+  opacity: 0.8;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color-light);
+  margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+/* Testimonials */
+.testimonials-title {
+  margin-bottom: var(--space-xl);
+  color: var(--text-color-light);
+  font-size: 2rem;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 992px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 12px;
+  position: relative;
+  border: 1px solid rgba(100, 255, 218, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-icon {
+  font-size: 2rem;
+  color: var(--accent-color);
+  opacity: 0.3;
+  margin-bottom: 1rem;
+}
+
+.quote-icon-close {
+  font-size: 2rem;
+  color: var(--accent-color);
+  opacity: 0.3;
+  align-self: flex-end;
+}
+
+.review-content {
+  font-style: italic;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.review-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-info strong {
+  color: var(--text-color-light);
+  font-weight: 600;
+}
+
+.author-info span {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.review-rating {
+  color: #ffc107;
+  font-size: 0.9rem;
+  display: flex;
 }
 </style>

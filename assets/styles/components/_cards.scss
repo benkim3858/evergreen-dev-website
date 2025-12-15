@@ -1,11 +1,195 @@
 // ===========================================
 // Design System - Card Components
 // ===========================================
-// Preserves card styles from main.css
 
 .card {
-  background: var(--bg-color-light);
-  border-radius: var(--border-radius-md);
-  padding: var(--space-md);
-  transition: var(--transition-normal);
+  background: rgba(17, 34, 64, 0.7); // Using variable if available, fallback to dark blue
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    border-color: var(--color-primary);
+  }
+}
+
+// Project Card Specifics
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .project-image-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: grayscale(20%);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(23, 42, 69, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(2px);
+
+      span {
+        color: var(--color-primary, #64ffda);
+        border: 1px solid var(--color-primary, #64ffda);
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-weight: 500;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.875rem;
+
+        &:hover {
+          background: rgba(100, 255, 218, 0.1);
+        }
+      }
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+        filter: grayscale(0%);
+      }
+
+      .project-overlay {
+        opacity: 1;
+
+        span {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .project-content {
+    padding: 1.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+
+      a {
+        text-decoration: none;
+        color: var(--color-text-primary, #e6f1ff);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--color-primary, #64ffda);
+        }
+      }
+    }
+
+    p {
+      color: var(--color-text-secondary, #8892b0);
+      margin-bottom: 1.25rem;
+      flex: 1;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+
+      span {
+        color: var(--color-primary, #64ffda);
+        font-family: monospace; // Or appropriate font
+        font-size: 0.8rem;
+        background: rgba(100, 255, 218, 0.05);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+      }
+    }
+
+    .project-links-row {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: auto;
+
+      .icon-link {
+        color: var(--color-text-secondary, #a8b2d1);
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: var(--color-primary, #64ffda);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+// Expertise Card Specifics
+.expertise-card {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .expertise-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary, #64ffda);
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: var(--color-text-primary, #e6f1ff);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  p {
+    color: var(--color-text-secondary, #8892b0);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .expertise-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: auto;
+
+    li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-text-secondary, #8892b0);
+      font-size: 0.9rem;
+
+      &::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--color-primary, #64ffda);
+      }
+    }
+  }
 }

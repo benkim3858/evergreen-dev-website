@@ -9,6 +9,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -20,6 +21,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -32,6 +34,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -44,14 +47,17 @@
     transform: translate(-50%, 0);
     opacity: 1;
   }
+
   50% {
     transform: translate(-50%, 12px);
     opacity: 0;
   }
+
   51% {
     transform: translate(-50%, -12px);
     opacity: 0;
   }
+
   100% {
     transform: translate(-50%, 0);
     opacity: 1;
@@ -69,4 +75,26 @@
 
 .slide-up {
   animation: slideUp 0.8s ease forwards;
+}
+
+// Page Transitions
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
 }

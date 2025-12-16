@@ -4,31 +4,31 @@
       <!-- Header Section -->
       <header class="project-header">
         <div class="nav-wrapper">
-            <NuxtLink to="/projects" class="back-pill">
+            <NuxtLink :to="localePath('/projects')" class="back-pill">
             <Icon name="mdi:arrow-left" size="20" />
-            <span>All Projects</span>
+            <span>{{ $t('projects.allProjects') }}</span>
             </NuxtLink>
         </div>
-        
+
         <span class="project-client">{{ project.client }}</span>
         <h1 class="project-title">{{ project.title }}</h1>
         <p class="project-subtitle">{{ project.description }}</p>
 
         <div class="project-meta-grid">
           <div class="meta-item">
-            <span class="label">Period</span>
+            <span class="label">{{ $t('projects.common.period') }}</span>
             <span class="value">{{ project.period }}</span>
           </div>
           <div class="meta-item">
-            <span class="label">Role</span>
+            <span class="label">{{ $t('projects.common.role') }}</span>
             <span class="value">{{ project.role }}</span>
           </div>
           <div class="meta-item">
-            <span class="label">Team Size</span>
+            <span class="label">{{ $t('projects.common.teamSize') }}</span>
             <span class="value">{{ project.teamSize }}</span>
           </div>
           <div class="meta-item">
-            <span class="label">Tech Stack</span>
+            <span class="label">{{ $t('projects.common.techStack') }}</span>
             <div class="tech-tags">
               <span v-for="tech in project.techStack" :key="tech">{{ tech }}</span>
             </div>
@@ -37,16 +37,16 @@
 
         <div class="project-actions">
            <a v-if="project.links.appStore" :href="project.links.appStore" target="_blank" class="btn btn-primary">
-            <Icon name="mdi:apple" /> App Store
+            <Icon name="mdi:apple" /> {{ $t('projects.common.appStore') }}
           </a>
            <a v-if="project.links.playStore" :href="project.links.playStore" target="_blank" class="btn btn-primary">
-            <Icon name="mdi:google-play" /> Play Store
+            <Icon name="mdi:google-play" /> {{ $t('projects.common.playStore') }}
           </a>
           <a v-if="project.links.web" :href="project.links.web" target="_blank" class="btn btn-primary">
-            <Icon name="mdi:web" /> Visit Website
+            <Icon name="mdi:web" /> {{ $t('projects.common.visitWebsite') }}
           </a>
           <a v-if="project.links.github" :href="project.links.github" target="_blank" class="btn btn-secondary">
-            <Icon name="mdi:github" /> View Code
+            <Icon name="mdi:github" /> {{ $t('projects.common.viewCode') }}
           </a>
         </div>
       </header>
@@ -54,12 +54,12 @@
       <!-- Main Content -->
       <div class="project-body">
         <section class="content-section">
-          <h2>Project Overview</h2>
+          <h2>{{ $t('projects.common.overview') }}</h2>
           <p class="long-description">{{ project.details }}</p>
         </section>
 
         <section class="content-section">
-          <h2>Key Features</h2>
+          <h2>{{ $t('projects.common.features') }}</h2>
           <div class="features-grid">
             <div v-for="(feature, idx) in project.features" :key="idx" class="feature-block">
               <h3>{{ feature.title }}</h3>
@@ -71,7 +71,7 @@
         </section>
 
         <section class="content-section" v-if="project.images && project.images.length > 0">
-          <h2>Project Gallery</h2>
+          <h2>{{ $t('projects.common.gallery') }}</h2>
           <div class="gallery-grid">
             <div v-for="(image, idx) in project.images.slice(1)" :key="idx" class="gallery-item">
               <img :src="image" :alt="`${project.title} screenshot ${idx + 1}`" loading="lazy">
@@ -80,27 +80,29 @@
         </section>
 
         <section class="contact-cta">
-            <h2>Interested in building something similar?</h2>
-            <p>Let's discuss how we can help your business grow.</p>
-            <NuxtLink to="/#contact" class="btn btn-primary">Contact Us</NuxtLink>
+            <h2>{{ $t('projects.cta.title') }}</h2>
+            <p>{{ $t('projects.cta.description') }}</p>
+            <NuxtLink :to="localePath('/contact')" class="btn btn-primary">{{ $t('projects.cta.button') }}</NuxtLink>
         </section>
       </div>
     </div>
     <div v-else class="container not-found">
-      <h1>Project Not Found</h1>
-      <NuxtLink to="/" class="btn btn-primary">Go Home</NuxtLink>
+      <h1>{{ $t('projects.notFound.title') }}</h1>
+      <NuxtLink :to="localePath('/')" class="btn btn-primary">{{ $t('projects.notFound.button') }}</NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup>
+const { t } = useI18n();
+const localePath = useLocalePath();
 const route = useRoute();
 const { getProjectById } = useProjects();
 const project = computed(() => getProjectById(route.params.id));
 
 useSeoMeta({
-  title: () => project.value ? `${project.value.title} - Success Case | Evergreen Dev` : 'Project Not Found',
-  description: () => project.value ? `${project.value.title} 프로젝트 개발 사례. Evergreen Dev는 ${project.value.techStack.join(', ')} 기술을 활용하여 성공적인 서비스를 구축했습니다.` : 'Evergreen Dev Project Case Study',
+  title: () => project.value ? `${project.value.title} - Success Case | Evergreen Dev` : t('projects.notFound.title'),
+  description: () => project.value ? `${project.value.title} project case study. Evergreen Dev built this successful service using ${project.value.techStack.join(', ')} technologies.` : 'Evergreen Dev Project Case Study',
 })
 </script>
 

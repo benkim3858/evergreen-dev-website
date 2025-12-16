@@ -5,10 +5,10 @@
     </ClientOnly>
     <nav class="nav-container">
       <div class="nav-logo">
-        <NuxtLink to="/" class="logo">
-          <img 
-            src="/logo.png?v=1" 
-            alt="Evergreen Dev Labs" 
+        <NuxtLink :to="localePath('/')" class="logo">
+          <img
+            src="/logo.png?v=1"
+            alt="Evergreen Dev Labs"
             class="logo-image"
           />
           <span class="logo-text" :class="{ 'hidden': !isLogoTextVisible }">EVERGREEN DEV</span>
@@ -17,10 +17,10 @@
 
       <!-- Desktop Navigation -->
       <div class="nav-links hide-sm" :class="{ 'active': isMenuOpen }">
-        <NuxtLink to="/">{{ $t('nav.home') }}</NuxtLink>
-        <NuxtLink to="/projects">{{ $t('nav.projects') }}</NuxtLink>
-        <NuxtLink to="/about">{{ $t('nav.about') }}</NuxtLink>
-        <NuxtLink to="/contact">{{ $t('nav.contact') }}</NuxtLink>
+        <NuxtLink :to="localePath('/')" :class="{ 'nav-active': isExactHome }">{{ $t('nav.home') }}</NuxtLink>
+        <NuxtLink :to="localePath('/projects')" :class="{ 'nav-active': isProjectsSection }">{{ $t('nav.projects') }}</NuxtLink>
+        <NuxtLink :to="localePath('/about')" :class="{ 'nav-active': isAboutSection }">{{ $t('nav.about') }}</NuxtLink>
+        <NuxtLink :to="localePath('/contact')" :class="{ 'nav-active': isContactSection }">{{ $t('nav.contact') }}</NuxtLink>
       </div>
 
       <div class="nav-right">
@@ -47,7 +47,8 @@
 
 <script setup lang="ts">
 // Nuxt auto-imports useI18n from @nuxtjs/i18n - no need to import from vue-i18n directly
-const { locale } = useI18n();
+const { locale, setLocale } = useI18n();
+const localePath = useLocalePath();
 const route = useRoute();
 const isMenuOpen = ref(false);
 const isScrolled = ref(false);
@@ -70,6 +71,27 @@ const isHome = computed(() => {
   return path === '/' || path === '/ko' || path === '/ko/';
 });
 
+// Navigation active states - check if current path matches or starts with section path
+const isExactHome = computed(() => {
+  const path = route.path;
+  return path === '/' || path === '/ko' || path === '/ko/';
+});
+
+const isProjectsSection = computed(() => {
+  const path = route.path;
+  return path.startsWith('/projects') || path.startsWith('/ko/projects');
+});
+
+const isAboutSection = computed(() => {
+  const path = route.path;
+  return path === '/about' || path === '/ko/about';
+});
+
+const isContactSection = computed(() => {
+  const path = route.path;
+  return path === '/contact' || path === '/ko/contact';
+});
+
 // Determine if logo text should be visible
 // Hidden only when on Home page AND at the very top
 const isLogoTextVisible = computed(() => {
@@ -81,8 +103,8 @@ const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-const switchLanguage = (newLocale: string) => {
-  locale.value = newLocale;
+const switchLanguage = async (newLocale: string) => {
+  await setLocale(newLocale as 'en' | 'ko');
 };
 
 const handleScroll = () => {
@@ -240,6 +262,15 @@ onUnmounted(() => {
 
 .nav-links a:hover {
   color: var(--accent-color);
+}
+
+/* Active link state - current page */
+.nav-links a.nav-active {
+  color: var(--accent-color);
+}
+
+.nav-links a.nav-active::after {
+  width: 100%;
 }
 
 .menu-btn {

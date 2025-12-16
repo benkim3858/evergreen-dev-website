@@ -1,9 +1,9 @@
 <template>
   <section class="section">
     <div class="container">
-      <h2 class="section-title text-center">프로젝트 문의</h2>
+      <h2 class="section-title text-center">{{ $t('contact.pageTitle') }}</h2>
       <p class="section-subtitle text-center">
-        새로운 프로젝트나 협업에 대해 이야기해 보세요
+        {{ $t('contact.subtitle') }}
       </p>
 
       <div class="contact-container">
@@ -12,27 +12,27 @@
           <div class="contact-card">
             <h3 class="card-title">
               <Icon name="mdi:email-outline" />
-              이메일 문의
+              {{ $t('contact.cards.email.title') }}
             </h3>
-            <p class="card-desc">일반적인 문의는 이메일로 보내주세요.</p>
+            <p class="card-desc">{{ $t('contact.cards.email.description') }}</p>
             <a :href="`mailto:${contacts.email}`" class="contact-link">
               {{ contacts.email }}
             </a>
             <span class="response-time">
               <Icon name="mdi:clock-outline" />
-              평균 응답 시간: 24시간 이내
+              {{ $t('contact.responseTime') }}
             </span>
           </div>
 
           <div class="contact-card">
             <h3 class="card-title">
               <Icon name="mdi:chat-outline" />
-              실시간 채팅
+              {{ $t('contact.cards.chat.title') }}
             </h3>
-            <p class="card-desc">채널톡으로 빠르게 상담받으세요.</p>
+            <p class="card-desc">{{ $t('contact.cards.chat.description') }}</p>
             <button @click="openChannelTalk" class="btn btn-chat">
               <Icon name="mdi:message-text" />
-              채팅 시작하기
+              {{ $t('contact.cards.chat.button') }}
             </button>
           </div>
 
@@ -43,7 +43,7 @@
           <div class="contact-card">
             <h3 class="card-title">
               <Icon name="mdi:link-variant" />
-              소셜 링크
+              {{ $t('contact.cards.social.title') }}
             </h3>
             <div class="social-links">
               <a
@@ -63,62 +63,62 @@
 
         <!-- Contact Form -->
         <div class="contact-form-wrapper">
-          <h3 class="form-title">프로젝트 문의하기</h3>
+          <h3 class="form-title">{{ $t('contact.form.title') }}</h3>
           <form class="contact-form" @submit.prevent="handleSubmit">
             <div class="form-row">
               <div class="form-group">
-                <label for="name">이름 *</label>
+                <label for="name">{{ $t('contact.form.name') }} *</label>
                 <input
                   type="text"
                   id="name"
                   v-model="formData.name"
-                  placeholder="홍길동"
+                  :placeholder="$t('contact.form.namePlaceholder')"
                   required
                 >
               </div>
               <div class="form-group">
-                <label for="email">이메일 *</label>
+                <label for="email">{{ $t('contact.form.email') }} *</label>
                 <input
                   type="email"
                   id="email"
                   v-model="formData.email"
-                  placeholder="example@company.com"
+                  :placeholder="$t('contact.form.emailPlaceholder')"
                   required
                 >
               </div>
             </div>
 
             <div class="form-group">
-              <label for="projectType">프로젝트 유형</label>
+              <label for="projectType">{{ $t('contact.form.projectType') }}</label>
               <select id="projectType" v-model="formData.projectType">
-                <option value="">선택해주세요</option>
-                <option value="web">웹 애플리케이션</option>
-                <option value="mobile">모바일 앱</option>
-                <option value="ecommerce">이커머스</option>
-                <option value="consulting">기술 컨설팅</option>
-                <option value="maintenance">유지보수</option>
-                <option value="other">기타</option>
+                <option value="">{{ $t('contact.form.projectTypePlaceholder') }}</option>
+                <option value="web">{{ $t('contact.form.projectTypes.web') }}</option>
+                <option value="mobile">{{ $t('contact.form.projectTypes.mobile') }}</option>
+                <option value="ecommerce">{{ $t('contact.form.projectTypes.ecommerce') }}</option>
+                <option value="consulting">{{ $t('contact.form.projectTypes.consulting') }}</option>
+                <option value="maintenance">{{ $t('contact.form.projectTypes.maintenance') }}</option>
+                <option value="other">{{ $t('contact.form.projectTypes.other') }}</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="budget">예상 예산</label>
+              <label for="budget">{{ $t('contact.form.budget') }}</label>
               <select id="budget" v-model="formData.budget">
-                <option value="">선택해주세요</option>
-                <option value="small">500만원 미만</option>
-                <option value="medium">500만원 ~ 2,000만원</option>
-                <option value="large">2,000만원 ~ 5,000만원</option>
-                <option value="enterprise">5,000만원 이상</option>
-                <option value="discuss">협의 필요</option>
+                <option value="">{{ $t('contact.form.budgetPlaceholder') }}</option>
+                <option value="small">{{ $t('contact.form.budgets.small') }}</option>
+                <option value="medium">{{ $t('contact.form.budgets.medium') }}</option>
+                <option value="large">{{ $t('contact.form.budgets.large') }}</option>
+                <option value="enterprise">{{ $t('contact.form.budgets.enterprise') }}</option>
+                <option value="discuss">{{ $t('contact.form.budgets.discuss') }}</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="message">프로젝트 설명 *</label>
+              <label for="message">{{ $t('contact.form.message') }} *</label>
               <textarea
                 id="message"
                 v-model="formData.message"
-                placeholder="프로젝트에 대해 자세히 알려주세요. 목표, 기능, 일정 등을 포함해주시면 더 정확한 상담이 가능합니다."
+                :placeholder="$t('contact.form.messagePlaceholder')"
                 rows="6"
                 required
               ></textarea>
@@ -131,7 +131,7 @@
             >
               <Icon v-if="isSubmitting" name="mdi:loading" class="spin" />
               <Icon v-else name="mdi:send" />
-              {{ isSubmitting ? '전송 중...' : '문의하기' }}
+              {{ isSubmitting ? $t('contact.form.submitting') : $t('contact.form.submit') }}
             </button>
 
             <Transition name="fade">
@@ -152,15 +152,16 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 const { contacts, socialLinks } = useContactInfo()
 const { isSubmitting, submitResult, submitForm, resetForm } = useContactForm()
 const { $channelTalk } = useNuxtApp()
 
 useSeoMeta({
-  title: 'Contact | Evergreen Dev - 프로젝트 문의',
-  description: '웹/앱 개발 프로젝트 문의, 기술 컨설팅, 협업 제안을 받습니다. 채널톡, 이메일, 화상 미팅으로 편하게 상담하세요.',
-  ogTitle: 'Contact | Evergreen Dev',
-  ogDescription: '프로젝트 문의 및 협업 제안',
+  title: () => t('seo.contact.title'),
+  description: () => t('seo.contact.description'),
+  ogTitle: () => t('seo.contact.title'),
+  ogDescription: () => t('seo.contact.description'),
   ogImage: '/logo.png',
   twitterCard: 'summary_large_image',
 })

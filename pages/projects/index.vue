@@ -1,20 +1,20 @@
 <template>
   <section class="section">
     <div class="container">
-      <h2 class="section-title text-center">Our Portfolio</h2>
+      <h2 class="section-title text-center">{{ $t('projects.portfolioTitle') }}</h2>
       <div class="grid grid-1 grid-2-sm grid-3-md">
         <article v-for="project in projects" :key="project.id" class="card project-card">
-          <NuxtLink :to="`/projects/${project.id}`" class="project-image-link">
+          <NuxtLink :to="localePath(`/projects/${project.id}`)" class="project-image-link">
             <div class="project-image">
               <img :src="project.images[0]" :alt="project.title">
               <div class="project-overlay">
-                <span>View Details</span>
+                <span>{{ $t('projects.viewDetails') }}</span>
               </div>
             </div>
           </NuxtLink>
           <div class="project-content">
             <h3>
-              <NuxtLink :to="`/projects/${project.id}`">{{ project.title }}</NuxtLink>
+              <NuxtLink :to="localePath(`/projects/${project.id}`)">{{ project.title }}</NuxtLink>
             </h3>
             <p>{{ project.description }}</p>
             <div class="project-tech">
@@ -42,12 +42,15 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
+const localePath = useLocalePath();
+
 // SEO 메타태그 설정
 useSeoMeta({
-  title: 'Projects - Evergreen Dev | Sustainable Tech Partner',
-  description: 'Evergreen Dev의 성공적인 프로젝트 포트폴리오를 확인해보세요. 웹/모바일 앱 개발부터 백엔드 시스템 구축까지, 귀사의 비즈니스를 위한 최적의 기술 솔루션을 제공합니다.',
-  ogTitle: 'Projects - Evergreen Dev | Sustainable Tech Partner',
-  ogDescription: 'Evergreen Dev의 성공적인 프로젝트 포트폴리오를 확인해보세요. 웹/모바일 앱 개발부터 백엔드 시스템 구축까지, 귀사의 비즈니스를 위한 최적의 기술 솔루션을 제공합니다.',
+  title: () => t('seo.projects.title'),
+  description: () => t('seo.projects.description'),
+  ogTitle: () => t('seo.projects.title'),
+  ogDescription: () => t('seo.projects.description'),
   ogImage: '/logo.png',
   twitterCard: 'summary_large_image',
 })

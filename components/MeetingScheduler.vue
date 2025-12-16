@@ -3,10 +3,10 @@
     <div class="scheduler-header">
       <h3 class="scheduler-title">
         <Icon name="mdi:calendar-clock" />
-        무료 상담 예약
+        {{ $t('contact.meeting.title') }}
       </h3>
       <p class="scheduler-desc">
-        30분 화상 미팅으로 프로젝트를 상담해 보세요.
+        {{ $t('contact.meeting.description') }}
       </p>
     </div>
 
@@ -16,7 +16,7 @@
       class="btn btn-meeting"
     >
       <Icon name="mdi:video-outline" />
-      상담 예약하기
+      {{ $t('contact.meeting.button') }}
     </button>
 
     <!-- Alternative: Inline Widget (uncomment if needed) -->

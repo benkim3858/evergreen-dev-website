@@ -4,7 +4,7 @@
       <!-- Hero & Stats Group -->
       <div class="hero-group">
         <div class="text-center mb-large">
-          <h1 class="page-title">About <span class="highlight">Evergreen Dev</span></h1>
+          <h1 class="page-title">{{ $t('about.pageTitle') }}</h1>
           <p class="page-subtitle">{{ aboutText }}</p>
         </div>
 
@@ -24,25 +24,25 @@
         <div class="philosophy-content">
           <div class="philosophy-card">
             <Icon name="mdi:handshake-outline" class="philosophy-icon" />
-            <h3>비즈니스 파트너</h3>
-            <p>단순한 코드 작성이 아닌, 고객의 비즈니스 모델을 이해하고 수익 창출을 위한 최적의 솔루션을 제안합니다.</p>
+            <h3>{{ $t('about.philosophy.partner.title') }}</h3>
+            <p>{{ $t('about.philosophy.partner.description') }}</p>
           </div>
           <div class="philosophy-card">
             <Icon name="mdi:speedometer" class="philosophy-icon" />
-            <h3>빠른 실행력</h3>
-            <p>비즈니스의 타이밍을 놓치지 않도록, 핵심 기능(MVP) 위주의 빠른 개발과 런칭을 지원합니다.</p>
+            <h3>{{ $t('about.philosophy.speed.title') }}</h3>
+            <p>{{ $t('about.philosophy.speed.description') }}</p>
           </div>
           <div class="philosophy-card">
             <Icon name="mdi:shield-check-outline" class="philosophy-icon" />
-            <h3>책임감 있는 유지보수</h3>
-            <p>개발이 끝이 아닙니다. 안정적인 서비스 운영을 위한 지속적인 모니터링과 기술 지원을 약속합니다.</p>
+            <h3>{{ $t('about.philosophy.maintenance.title') }}</h3>
+            <p>{{ $t('about.philosophy.maintenance.description') }}</p>
           </div>
         </div>
       </div>
 
       <!-- Testimonials Section -->
       <div class="content-section">
-        <h2 class="section-title text-center">Client Stories</h2>
+        <h2 class="section-title text-center">{{ $t('about.testimonials.title') }}</h2>
         <div class="testimonials-grid">
           <div v-for="(review, index) in testimonials" :key="index" class="testimonial-card">
             <div class="quote-icon">
@@ -69,47 +69,48 @@
 </template>
 
 <script setup>
+const { t, tm } = useI18n();
+
 // SEO 메타태그 설정 (검색 최적화)
 useSeoMeta({
-  title: 'Evergreen Dev | 웹/앱 개발 외주 전문 파트너 (Web & App Development Agency)',
-  description: '성공적인 비즈니스를 위한 최고의 IT 파트너, Evergreen Dev. 플러터(Flutter) 앱 개발, 웹사이트 제작, 서버 구축 등 맞춤형 외주 개발 서비스를 제공합니다. 40+ 프로젝트 성공 경험과 5.0 만점의 고객 만족도를 보유하고 있습니다. 지금 바로 문의하세요.',
-  keywords: '앱개발, 웹개발, 외주개발, 플러터, Flutter, SI, 스타트업 개발, IT 파트너, 홈페이지 제작, 앱 제작, 개발 외주, 프리랜서 개발자',
-  ogTitle: 'Evergreen Dev | 비즈니스 성장을 위한 IT 개발 파트너',
-  ogDescription: '40개 이상의 프로젝트 성공, 고객 만족도 5.0. 당신의 아이디어를 현실로 만들어드립니다.',
+  title: () => t('seo.about.title'),
+  description: () => t('seo.about.description'),
+  ogTitle: () => t('seo.about.title'),
+  ogDescription: () => t('seo.about.description'),
   ogImage: '/logo.png',
   ogType: 'website',
   twitterCard: 'summary_large_image',
 })
 
-const aboutText = ref(`클라이언트의 비즈니스 수익 창출을 최우선으로 생각합니다. \n 고객님의 비즈니스가 언제나 푸르게 번창하고 지속 성장할 수 있도록 \n 기획부터 개발, 배포까지 함께하는 든든한 IT 파트너입니다.`);
+const aboutText = computed(() => t('about.description'));
 
-const achievements = ref([
-  { label: 'Successful Projects', value: '40+', icon: 'mdi:trophy-award' },
-  { label: 'Client Satisfaction', value: '5.0/5.0', icon: 'mdi:star' },
-  { label: 'Avg. Cost Reduction', value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
-  { label: 'Service Uptime', value: '99.9%', icon: 'mdi:server-network' }
+const achievements = computed(() => [
+  { label: t('about.achievements.projects'), value: '40+', icon: 'mdi:trophy-award' },
+  { label: t('about.achievements.satisfaction'), value: '5.0/5.0', icon: 'mdi:star' },
+  { label: t('about.achievements.costReduction'), value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
+  { label: t('about.achievements.uptime'), value: '99.9%', icon: 'mdi:server-network' }
 ]);
 
-const testimonials = ref([
-  {
-    content: "초기 스타트업이라 기획이 불확실했는데, 전문가님께서 비즈니스 모델까지 함께 고민해주셨습니다. 덕분에 3주 만에 MVP를 런칭하고 초기 투자를 유치할 수 있었습니다.",
-    author: "박OO 대표",
-    role: "Fintech Startup CEO",
-    rating: 5
-  },
-  {
-    content: "기존 외주 개발사들과는 다르게 코드 퀄리티가 상당히 높습니다. 인수인계 받은 내부 개발팀이 '유지보수하기 너무 편한 구조'라며 극찬했습니다.",
-    author: "김OO CTO",
-    role: "E-commerce Platform",
-    rating: 5
-  },
-  {
-    content: "Flutter 크로스플랫폼 성능에 대한 의구심이 있었는데, 네이티브 못지않은 퍼포먼스를 보여줬습니다. iOS와 Android 두 마리 토끼를 완벽하게 잡았습니다.",
-    author: "이OO 기획팀장",
-    role: "O2O Service",
-    rating: 5
+const testimonials = computed(() => {
+  try {
+    const rawItems = tm('about.testimonials.items');
+    if (rawItems && typeof rawItems === 'object') {
+      // Use JSON.parse/stringify to break Vue reactivity and get plain values
+      const items = JSON.parse(JSON.stringify(rawItems));
+      if (Array.isArray(items)) {
+        return items.map((item) => ({
+          content: item.content || '',
+          author: item.author || '',
+          role: item.role || '',
+          rating: 5
+        }));
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to load testimonials', e);
   }
-]);
+  return [];
+});
 </script>
 
 <style scoped>

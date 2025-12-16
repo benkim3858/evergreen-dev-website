@@ -10,13 +10,13 @@
             <span class="highlight">EVERGREEN DEV</span>
           </h1>
           <p class="hero-slogan">
-            언제나 푸른 상록수처럼,<br>
-            클라이언트의 비즈니스를 지속 가능하게 만드는 기술 파트너
+            {{ $t('hero.slogan') }}<br>
+            {{ $t('hero.sloganSub') }}
           </p>
           <p class="typewriter">{{ currentText }}</p>
           <div class="cta-buttons">
-            <a href="#about" class="btn btn-primary">서비스 소개</a>
-            <a href="#contact" class="btn btn-secondary">프로젝트 문의</a>
+            <a href="#about" class="btn btn-primary">{{ $t('hero.cta.services') }}</a>
+            <a href="#contact" class="btn btn-secondary">{{ $t('hero.cta.contact') }}</a>
           </div>
         </div>
       </div>
@@ -24,27 +24,24 @@
         <div class="mouse">
           <div class="wheel"></div>
         </div>
-        <div class="scroll-text">Scroll Down</div>
+        <div class="scroll-text">{{ $t('hero.scroll') }}</div>
       </div>
     </section>
 
     <!-- Expertise Section -->
     <section id="expertise" class="section expertise-section">
       <div class="container">
-        <h2 class="section-title text-center">Our Services</h2>
-        <p class="section-subtitle text-center">웹, 모바일, 크로스플랫폼 개발을 통해 비즈니스의 새로운 가능성을 열어갑니다.</p>
+        <h2 class="section-title text-center">{{ $t('expertise.title') }}</h2>
+        <p class="section-subtitle text-center">{{ $t('expertise.subtitle') }}</p>
         <div class="expertise-grid">
           <div class="expertise-card">
             <div class="expertise-icon">
               <Icon name="mdi:web" />
             </div>
-            <h3>Web Development</h3>
-            <p>최신 프레임워크와 웹 표준을 준수하여 성능이 뛰어나고 반응형인 웹 애플리케이션을 구축합니다.</p>
+            <h3>{{ $t('expertise.cards.web.title') }}</h3>
+            <p>{{ $t('expertise.cards.web.description') }}</p>
             <ul class="expertise-list">
-              <li>Vue.js / Nuxt.js</li>
-              <li>React / Next.js</li>
-              <li>TypeScript</li>
-              <li>Responsive Design</li>
+              <li v-for="item in expertiseItems.web" :key="item">{{ item }}</li>
             </ul>
           </div>
 
@@ -52,13 +49,10 @@
             <div class="expertise-icon">
               <Icon name="mdi:cellphone" />
             </div>
-            <h3>Mobile App</h3>
-            <p>네이티브 성능에 준하는 크로스플랫폼 기술로 효율적인 모바일 앱 서비스를 제공합니다.</p>
+            <h3>{{ $t('expertise.cards.mobile.title') }}</h3>
+            <p>{{ $t('expertise.cards.mobile.description') }}</p>
             <ul class="expertise-list">
-              <li>React Native</li>
-              <li>Flutter</li>
-              <li>iOS / Swift</li>
-              <li>Android / Kotlin</li>
+              <li v-for="item in expertiseItems.mobile" :key="item">{{ item }}</li>
             </ul>
           </div>
 
@@ -66,13 +60,10 @@
             <div class="expertise-icon">
               <Icon name="mdi:database" />
             </div>
-            <h3>Backend System</h3>
-            <p>안정적이고 확장 가능한 서버 아키텍처를 설계하고 구축합니다.</p>
+            <h3>{{ $t('expertise.cards.backend.title') }}</h3>
+            <p>{{ $t('expertise.cards.backend.description') }}</p>
             <ul class="expertise-list">
-              <li>Node.js / Express</li>
-              <li>Python / Django</li>
-              <li>RESTful API / GraphQL</li>
-              <li>High Availability</li>
+              <li v-for="item in expertiseItems.backend" :key="item">{{ item }}</li>
             </ul>
           </div>
 
@@ -80,13 +71,10 @@
             <div class="expertise-icon">
               <Icon name="mdi:shield-check" />
             </div>
-            <h3>System Stability</h3>
-            <p>지속 가능한 개발 방식과 안정적인 유지보수로 귀사의 디지털 자산을 관리합니다.</p>
+            <h3>{{ $t('expertise.cards.stability.title') }}</h3>
+            <p>{{ $t('expertise.cards.stability.description') }}</p>
             <ul class="expertise-list">
-              <li>Security Audit</li>
-              <li>Performance Tuning</li>
-              <li>24/7 Monitoring</li>
-              <li>Legacy Migration</li>
+              <li v-for="item in expertiseItems.stability" :key="item">{{ item }}</li>
             </ul>
           </div>
         </div>
@@ -96,22 +84,22 @@
     <!-- Projects Section -->
     <section id="projects" class="section projects-section">
       <div class="container">
-        <h2 class="section-title text-center">Featured Works</h2>
+        <h2 class="section-title text-center">{{ $t('projects.title') }}</h2>
         <div class="grid grid-1 grid-2-sm grid-3-md">
-          <article v-for="project in projects" 
-                   :key="project.id" 
+          <article v-for="project in projects"
+                   :key="project.id"
                    class="card project-card">
-            <NuxtLink :to="`/projects/${project.id}`" class="project-image-link">
+            <NuxtLink :to="localePath(`/projects/${project.id}`)" class="project-image-link">
               <div class="project-image">
                 <img :src="project.images[0]" :alt="project.title">
                 <div class="project-overlay">
-                  <span>View Details</span>
+                  <span>{{ $t('projects.viewDetails') }}</span>
                 </div>
               </div>
             </NuxtLink>
             <div class="project-content">
               <h3>
-                <NuxtLink :to="`/projects/${project.id}`">{{ project.title }}</NuxtLink>
+                <NuxtLink :to="localePath(`/projects/${project.id}`)">{{ project.title }}</NuxtLink>
               </h3>
               <p>{{ project.description }}</p>
               <div class="project-tech">
@@ -126,7 +114,7 @@
                 </a>
                 <a v-if="project.links.web" :href="project.links.web" target="_blank" class="icon-link">
                   <Icon name="mdi:web" />
-                </a>  
+                </a>
                 <a v-if="project.links.github" :href="project.links.github" target="_blank" class="icon-link">
                   <Icon name="mdi:github" />
                 </a>
@@ -142,10 +130,10 @@
       <div class="container">
         <div class="about-content">
           <div class="about-header text-center">
-            <h2 class="section-title">Why Evergreen?</h2>
+            <h2 class="section-title">{{ $t('about.whyTitle') }}</h2>
             <p class="section-subtitle" style="white-space: pre-line;">{{ aboutText }}</p>
           </div>
-          
+
           <!-- Key Achievements -->
           <div class="stats-grid">
             <div v-for="stat in achievements" :key="stat.label" class="stat-card">
@@ -159,7 +147,7 @@
 
           <!-- Client Testimonials -->
           <div class="testimonials-section">
-            <h3 class="testimonials-title text-center">Client Stories</h3>
+            <h3 class="testimonials-title text-center">{{ $t('about.testimonials.title') }}</h3>
             <div class="testimonials-grid">
               <div v-for="(review, index) in testimonials" :key="index" class="testimonial-card">
                 <div class="quote-icon">
@@ -188,7 +176,7 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
       <div class="container">
-        <h2 class="section-title text-center">Get In Touch</h2>
+        <h2 class="section-title text-center">{{ $t('contact.title') }}</h2>
         <div class="contact-container grid grid-1 grid-2-md">
           <div class="contact-info">
             <p>{{ contactText }}</p>
@@ -198,7 +186,7 @@
               </a>
               <p><Icon name="mdi:map-marker" /> {{ contacts.location }}</p>
               <p class="response-time">
-                <Icon name="mdi:clock-outline" /> 24시간 이내 회신
+                <Icon name="mdi:clock-outline" /> {{ $t('contact.responseTime') }}
               </p>
             </div>
 
@@ -224,31 +212,31 @@
           </div>
           <form class="contact-form" @submit.prevent="handleSubmit">
             <div class="form-group">
-              <label for="name">Name / Company</label>
+              <label for="name">{{ $t('contact.form.nameCompany') }}</label>
               <input type="text" id="name" v-model="formData.name" required :disabled="isSubmitting">
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="email">{{ $t('contact.form.email') }}</label>
               <input type="email" id="email" v-model="formData.email" required :disabled="isSubmitting">
             </div>
             <div class="form-group">
-              <label for="projectType">Project Type</label>
+              <label for="projectType">{{ $t('contact.form.projectType') }}</label>
               <select id="projectType" v-model="formData.projectType" :disabled="isSubmitting">
-                <option value="">선택해주세요</option>
-                <option value="web">웹 개발</option>
-                <option value="mobile">모바일 앱</option>
-                <option value="fullstack">풀스택 서비스</option>
-                <option value="consulting">기술 컨설팅</option>
-                <option value="other">기타</option>
+                <option value="">{{ $t('contact.form.projectTypePlaceholder') }}</option>
+                <option value="web">{{ $t('contact.form.projectTypes.web') }}</option>
+                <option value="mobile">{{ $t('contact.form.projectTypes.mobile') }}</option>
+                <option value="fullstack">{{ $t('contact.form.projectTypes.fullstack') }}</option>
+                <option value="consulting">{{ $t('contact.form.projectTypes.consulting') }}</option>
+                <option value="other">{{ $t('contact.form.projectTypes.other') }}</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="message">Message</label>
+              <label for="message">{{ $t('contact.form.message') }}</label>
               <textarea id="message" v-model="formData.message" required :disabled="isSubmitting"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
-              <span v-if="isSubmitting">전송 중...</span>
-              <span v-else>프로젝트 상담 요청</span>
+              <span v-if="isSubmitting">{{ $t('contact.form.submitting') }}</span>
+              <span v-else>{{ $t('contact.form.submit') }}</span>
             </button>
 
             <!-- Submit Result Message -->
@@ -269,6 +257,9 @@
 </template>
 
 <script setup>
+const { t, locale } = useI18n();
+const localePath = useLocalePath();
+
 // 섹션 스크롤 관련 상태
 const sectionIds = ['home', 'expertise', 'projects', 'about', 'contact'];
 const currentSectionIndex = ref(0);
@@ -287,69 +278,94 @@ let scrollResetTimer = null;
 
 // SEO 메타태그 설정
 useSeoMeta({
-  title: 'Evergreen Dev | Sustainable Tech Partner',
-  description: 'Evergreen Dev - 언제나 푸른 상록수처럼 변함없는 가치를 제공하는 웹/모바일 개발 전문 파트너입니다. 지속 가능한 성장을 위한 최적의 IT 솔루션을 제안합니다.',
-  ogTitle: 'Evergreen Dev | Sustainable Tech Partner',
-  ogDescription: '언제나 푸른 상록수처럼, 귀사의 비즈니스를 지속 가능하게 만드는 최고의 기술 파트너.',
+  title: () => t('seo.home.title'),
+  description: () => t('seo.home.description'),
+  ogTitle: () => t('seo.home.title'),
+  ogDescription: () => t('seo.home.description'),
   ogImage: '/logo.png',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Evergreen Dev',
-  twitterDescription: 'Sustainable Tech Partner for your business.',
+  twitterTitle: () => t('seo.home.title'),
+  twitterDescription: () => t('seo.home.description'),
   twitterImage: '/logo.png',
 })
 
-const texts = {
-  en: [
-    'Sustainable Tech Partner',
-    'Web & Mobile Solutions',
-    'Cross-Platform Expert',
-    'System Maintenance'
-  ],
-  ko: [
-    '지속 가능한 기술 파트너',
-    '웹 & 모바일 솔루션',
-    '크로스 플랫폼 개발',
-    '시스템 유지보수 및 고도화'
-  ]
-};
-// Use Korean as default for now or stick to English for the typewriter if preferred. 
-// Given the prompt, let's mix or use English for "Tech" vibe but the slogan is Korean.
-// Let's use English for the typewriter to match the likely global/modern tech aesthetic, or ko if desired.
-// I will keep it pointing to texts.en for "Global" feel, or switch to ko. Let's switch to ko as the prompt text was significantly Korean.
-const currentText = ref(texts.ko[0]); 
+// Typewriter texts - reactive to locale changes
+const typewriterTexts = computed(() => [
+  t('hero.typewriter.tech_partner'),
+  t('hero.typewriter.web_mobile'),
+  t('hero.typewriter.cross_platform'),
+  t('hero.typewriter.maintenance')
+]);
+
+const currentText = ref('');
 let currentIndex = 0;
 
-// Data
-const aboutText = ref(`클라이언트의 비즈니스 수익 창출을 최우선으로 생각합니다. \n 고객님의 비즈니스가 언제나 푸르게 번창하고 지속 성장할 수 있도록 \n 기획부터 개발, 배포까지 함께하는 든든한 IT 파트너입니다.`);
-const achievements = ref([
-  { label: 'Successful Projects', value: '40+', icon: 'mdi:trophy-award' },
-  { label: 'Client Satisfaction', value: '5.0/5.0', icon: 'mdi:star' },
-  { label: 'Avg. Cost Reduction', value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
-  { label: 'Service Uptime', value: '99.9%', icon: 'mdi:server-network' }
+// Watch for locale changes to reset typewriter
+watch(locale, () => {
+  currentIndex = 0;
+  currentText.value = typewriterTexts.value[0];
+});
+
+// Data - reactive to locale
+const aboutText = computed(() => t('about.description'));
+const achievements = computed(() => [
+  { label: t('about.achievements.projects'), value: '40+', icon: 'mdi:trophy-award' },
+  { label: t('about.achievements.satisfaction'), value: '5.0/5.0', icon: 'mdi:star' },
+  { label: t('about.achievements.costReduction'), value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
+  { label: t('about.achievements.uptime'), value: '99.9%', icon: 'mdi:server-network' }
 ]);
-const testimonials = ref([
+// Testimonials - use t() with array index for proper string resolution
+const testimonials = computed(() => [
   {
-    content: "초기 스타트업이라 기획이 불확실했는데, 전문가님께서 비즈니스 모델까지 함께 고민해주셨습니다. 덕분에 3주 만에 MVP를 런칭하고 초기 투자를 유치할 수 있었습니다.",
-    author: "박OO 대표",
-    role: "Fintech Startup CEO",
+    content: t('about.testimonials.items[0].content'),
+    author: t('about.testimonials.items[0].author'),
+    role: t('about.testimonials.items[0].role'),
     rating: 5
   },
   {
-    content: "기존 외주 개발사들과는 다르게 코드 퀄리티가 상당히 높습니다. 인수인계 받은 내부 개발팀이 '유지보수하기 너무 편한 구조'라며 극찬했습니다.",
-    author: "김OO CTO",
-    role: "E-commerce Platform",
+    content: t('about.testimonials.items[1].content'),
+    author: t('about.testimonials.items[1].author'),
+    role: t('about.testimonials.items[1].role'),
     rating: 5
   },
   {
-    content: "Flutter 크로스플랫폼 성능에 대한 의구심이 있었는데, 네이티브 못지않은 퍼포먼스를 보여줬습니다. iOS와 Android 두 마리 토끼를 완벽하게 잡았습니다.",
-    author: "이OO 기획팀장",
-    role: "O2O Service",
+    content: t('about.testimonials.items[2].content'),
+    author: t('about.testimonials.items[2].author'),
+    role: t('about.testimonials.items[2].role'),
     rating: 5
   }
 ]);
 
-const contactText = ref(`새로운 프로젝트 논의나 기술 상담이 필요하시다면 언제든 연락주세요. 귀사의 비즈니스에 최적화된 솔루션을 제안해 드립니다.`);
+const contactText = computed(() => t('contact.description'));
+
+// Expertise card items - use t() with array index for proper string resolution
+const expertiseItems = computed(() => ({
+  web: [
+    t('expertise.cards.web.items[0]'),
+    t('expertise.cards.web.items[1]'),
+    t('expertise.cards.web.items[2]'),
+    t('expertise.cards.web.items[3]')
+  ],
+  mobile: [
+    t('expertise.cards.mobile.items[0]'),
+    t('expertise.cards.mobile.items[1]'),
+    t('expertise.cards.mobile.items[2]'),
+    t('expertise.cards.mobile.items[3]')
+  ],
+  backend: [
+    t('expertise.cards.backend.items[0]'),
+    t('expertise.cards.backend.items[1]'),
+    t('expertise.cards.backend.items[2]'),
+    t('expertise.cards.backend.items[3]')
+  ],
+  stability: [
+    t('expertise.cards.stability.items[0]'),
+    t('expertise.cards.stability.items[1]'),
+    t('expertise.cards.stability.items[2]'),
+    t('expertise.cards.stability.items[3]')
+  ]
+}));
 
 // Contact Form with Web3Forms
 const { isSubmitting, submitResult, submitForm, resetForm } = useContactForm();
@@ -587,10 +603,11 @@ onMounted(() => {
   // 키보드 이벤트 리스너 추가
   document.addEventListener('keydown', handleKeydown);
 
-  // Typing effect
+  // Typing effect - initialize and start interval
+  currentText.value = typewriterTexts.value[0];
   setInterval(() => {
-    currentIndex = (currentIndex + 1) % texts.en.length;
-    currentText.value = texts.en[currentIndex];
+    currentIndex = (currentIndex + 1) % typewriterTexts.value.length;
+    currentText.value = typewriterTexts.value[currentIndex];
   }, 3000);
 
   // 앵커 링크 클릭 시 섹션 인덱스 업데이트

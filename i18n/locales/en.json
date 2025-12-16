@@ -1,0 +1,339 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slogan": "Your Evergreen Technology Partner",
+    "sloganSub": "Building sustainable solutions that fuel lasting business growth",
+    "cta": {
+      "services": "Explore Services",
+      "contact": "Start a Conversation"
+    },
+    "scroll": "Scroll Down",
+    "typewriter": {
+      "tech_partner": "Sustainable Tech Partner",
+      "web_mobile": "Web & Mobile Solutions",
+      "cross_platform": "Cross-Platform Expert",
+      "maintenance": "System Maintenance"
+    }
+  },
+  "expertise": {
+    "title": "Our Services",
+    "subtitle": "Empowering your business with cutting-edge web, mobile, and cross-platform solutions.",
+    "cards": {
+      "web": {
+        "title": "Web Development",
+        "description": "We engineer high-performance, responsive web applications using cutting-edge frameworks and modern standards.",
+        "items": ["Vue.js / Nuxt.js", "React / Next.js", "TypeScript", "Responsive Design"]
+      },
+      "mobile": {
+        "title": "Mobile App",
+        "description": "We deliver cross-platform mobile apps with native-like performance and seamless user experiences.",
+        "items": ["React Native", "Flutter", "iOS / Swift", "Android / Kotlin"]
+      },
+      "backend": {
+        "title": "Backend System",
+        "description": "We architect robust, scalable server infrastructures designed for reliability and growth.",
+        "items": ["Node.js / Express", "Python / Django", "RESTful API / GraphQL", "High Availability"]
+      },
+      "stability": {
+        "title": "System Stability",
+        "description": "We ensure sustainable operations through proactive monitoring and expert maintenance services.",
+        "items": ["Security Audit", "Performance Tuning", "24/7 Monitoring", "Legacy Migration"]
+      }
+    }
+  },
+  "projects": {
+    "title": "Featured Works",
+    "portfolioTitle": "Our Portfolio",
+    "viewDetails": "View Details",
+    "allProjects": "All Projects",
+    "common": {
+      "period": "Period",
+      "role": "Role",
+      "teamSize": "Team Size",
+      "techStack": "Tech Stack",
+      "overview": "Project Overview",
+      "features": "Key Features",
+      "gallery": "Project Gallery",
+      "appStore": "App Store",
+      "playStore": "Play Store",
+      "visitWebsite": "Visit Website",
+      "viewCode": "View Code"
+    },
+    "cta": {
+      "title": "Interested in building something similar?",
+      "description": "Let's discuss how we can help your business grow.",
+      "button": "Contact Us"
+    },
+    "notFound": {
+      "title": "Project Not Found",
+      "button": "Go Home"
+    }
+  },
+  "projectData": {
+    "pozo": {
+      "description": "Revolutionary contactless pickup ordering solution",
+      "details": "POZO is a specialized platform that breaks away from the complex structure of existing delivery platforms by focusing exclusively on 'Pick-up Only' functionality, providing optimized services for both consumers and store owners. The platform was developed with a focus on eliminating delivery fees and time delays while maximizing the efficiency of contactless pickup orders.",
+      "role": "Mobile Frontend, Backend",
+      "features": {
+        "ordering": {
+          "title": "Intuitive Pickup Ordering System",
+          "items": [
+            "Store Discovery: Browse nearby pickup-enabled stores via map or list view",
+            "Quick Order & Payment: Instant ordering with estimated pickup time, no delivery address required"
+          ]
+        },
+        "operations": {
+          "title": "Operational Efficiency System",
+          "items": [
+            "Real-time Notifications: Instant order delivery to store managers with customer status updates",
+            "Store Manager App: Order status management (received, preparing, complete) and sales tracking"
+          ]
+        },
+        "business": {
+          "title": "Core Business Logic",
+          "items": [
+            "Payment & Settlement: PG integration with automated settlement logic",
+            "Refund System: Payment cancellation and refund processing workflow"
+          ]
+        }
+      }
+    },
+    "crou": {
+      "description": "Routine management & spiritual growth companion app for Christians",
+      "details": "CROU is a hybrid routine management application that supports both spiritual growth for Christian users and general life goal achievement. Users can efficiently manage faith routines like prayer and Bible reading alongside daily goals, staying inspired and consistent through daily Bible verses.",
+      "role": "Mobile Frontend, Backend",
+      "features": {
+        "routine": {
+          "title": "Personalized Routine Management",
+          "items": [
+            "Flexible Routine Creation: Manage daily goals like wake-up, exercise, and reading",
+            "Christian-Specific Routines: Recommended prayer, quiet time, and Bible reading plans"
+          ]
+        },
+        "motivation": {
+          "title": "Motivation System",
+          "items": [
+            "Routine Tracking: Performance scoring with weekly/monthly statistics",
+            "Scheduled Push Notifications: Reminders aligned with routine start times"
+          ]
+        },
+        "spiritual": {
+          "title": "Spiritual Growth Tools",
+          "items": [
+            "Daily Bible Verses: Fresh verses daily with bookmark and share features",
+            "Lock Screen Widget: View today's verse without opening the app"
+          ]
+        }
+      }
+    },
+    "chordly": {
+      "description": "Instagram-style social networking platform for music professionals",
+      "details": "Chordly is a next-generation social media app combining Instagram's intuitive user experience with specialized music matching features for professional musicians and music industry professionals. It provides essential networking and opportunities for music activities including ensemble partners, professional tutors, and paid session musician matching, maximizing collaboration efficiency.",
+      "role": "Mobile Frontend, Backend",
+      "features": {
+        "matching": {
+          "title": "Professional Matching System",
+          "items": [
+            "Ensemble/Lesson/Session Matching: Detailed filtering by genre, instrument, and skill level",
+            "Professional Profiles: Career-focused profiles with instruments and portfolio highlights"
+          ]
+        },
+        "social": {
+          "title": "Social Networking",
+          "items": [
+            "Instagram-style Feed: Share photos, videos, and audio clips",
+            "Direct Messages (DM): Real-time 1:1 communication and matching coordination"
+          ]
+        }
+      }
+    },
+    "suwon-its-2025": {
+      "description": "Official mobile platform for 2025 Suwon ITS Asia-Pacific Forum",
+      "details": "An all-in-one mobile platform for participants of the 2025 Suwon ITS Asia-Pacific Forum (ITSAP 2025), designed to maximize the event experience while providing effective networking and information accessibility. Participants can experience personalized schedule management, real-time information access, and active communication through this app.",
+      "role": "Mobile Frontend, Backend",
+      "features": {
+        "schedule": {
+          "title": "Event Information & Scheduling",
+          "items": [
+            "Program Guide: Detailed session info, speakers, and abstracts",
+            "Personal Schedule: Favorite sessions and personal agenda management"
+          ]
+        },
+        "communication": {
+          "title": "Communication & Notifications",
+          "items": [
+            "Participant Networking: 1:1 and group chat features",
+            "Real-time Push Notifications: Schedule reminders and urgent announcements"
+          ]
+        }
+      }
+    },
+    "koback": {
+      "description": "All-in-one coaching app for soccer school students, parents, and coaches",
+      "details": "The KOBACK app is a platform for effective communication and systematic learning management between students (players), parents, and coaches. It supports systematic soccer education by sharing real-time feedback and learning progress.",
+      "role": "Mobile Frontend, Backend",
+      "features": {
+        "learning": {
+          "title": "Learning & Progress Management",
+          "items": [
+            "Learning Journal: Coach feedback and video analysis",
+            "Progress Tracking: Individual skill development charts and reports"
+          ]
+        },
+        "users": {
+          "title": "User-Specific Features",
+          "items": [
+            "Students: Profile management, practice assignment review",
+            "Parents: Child's growth records, coach consultation, tuition payment",
+            "Coaches: Class and attendance management, feedback uploads"
+          ]
+        }
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "pageTitle": "About Evergreen Dev",
+    "description": "Your business success is our top priority.\nWe're more than developers — we're committed partners in your growth journey,\nfrom concept to launch and beyond.",
+    "whyTitle": "Why Evergreen?",
+    "philosophy": {
+      "partner": {
+        "title": "Business Partner",
+        "description": "Beyond just writing code, we understand your business model and propose optimal solutions for revenue generation."
+      },
+      "speed": {
+        "title": "Rapid Execution",
+        "description": "We support fast development and launch focused on core features (MVP) so you never miss your business timing."
+      },
+      "maintenance": {
+        "title": "Responsible Maintenance",
+        "description": "Development isn't the end. We promise continuous monitoring and technical support for stable service operations."
+      }
+    },
+    "achievements": {
+      "projects": "Successful Projects",
+      "satisfaction": "Client Satisfaction",
+      "costReduction": "Avg. Cost Reduction",
+      "uptime": "Service Uptime"
+    },
+    "testimonials": {
+      "title": "Client Stories",
+      "items": [
+        {
+          "content": "As an early-stage startup, our planning was uncertain, but the expert helped us think through our business model together. Thanks to this, we launched our MVP in just 3 weeks and secured initial investment.",
+          "author": "CEO",
+          "role": "Fintech Startup"
+        },
+        {
+          "content": "Unlike other outsourcing companies, the code quality is exceptionally high. Our internal development team that took over praised it as 'an extremely maintainable structure.'",
+          "author": "CTO",
+          "role": "E-commerce Platform"
+        },
+        {
+          "content": "We were skeptical about Flutter's cross-platform performance, but it delivered native-like performance. We perfectly caught both iOS and Android with one codebase.",
+          "author": "Project Manager",
+          "role": "O2O Service"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "pageTitle": "Project Inquiry",
+    "subtitle": "Let's discuss your new project or collaboration",
+    "description": "Ready to discuss a new project or need technical consultation? Reach out anytime. We'll propose solutions optimized for your business.",
+    "responseTime": "Response within 24 hours",
+    "cards": {
+      "email": {
+        "title": "Email Inquiry",
+        "description": "Send us an email for general inquiries."
+      },
+      "chat": {
+        "title": "Live Chat",
+        "description": "Get quick support via Channel Talk.",
+        "button": "Start Chat"
+      },
+      "social": {
+        "title": "Social Links"
+      }
+    },
+    "scheduler": {
+      "title": "Free Consultation",
+      "description": "Schedule a 30-minute video call to discuss your project.",
+      "button": "Book Consultation"
+    },
+    "meeting": {
+      "title": "Free Consultation",
+      "description": "Schedule a 30-minute video call to discuss your project.",
+      "button": "Book Consultation"
+    },
+    "form": {
+      "title": "Inquire About Your Project",
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "nameCompany": "Name / Company",
+      "email": "Email",
+      "emailPlaceholder": "example{'@'}company.com",
+      "projectType": "Project Type",
+      "projectTypePlaceholder": "Please select",
+      "projectTypes": {
+        "web": "Web Application",
+        "mobile": "Mobile App",
+        "fullstack": "Full-Stack Service",
+        "ecommerce": "E-commerce",
+        "consulting": "Technical Consulting",
+        "maintenance": "Maintenance",
+        "other": "Other"
+      },
+      "budget": "Estimated Budget",
+      "budgetPlaceholder": "Please select",
+      "budgets": {
+        "small": "Under $5,000",
+        "medium": "$5,000 - $20,000",
+        "large": "$20,000 - $50,000",
+        "enterprise": "Over $50,000",
+        "discuss": "Need Discussion"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project in detail. Including goals, features, and timeline will help us provide more accurate consultation.",
+      "submit": "Request Consultation",
+      "submitting": "Sending..."
+    },
+    "messages": {
+      "success": "Your inquiry has been sent successfully. We'll respond within 24 hours.",
+      "error": "Failed to send. Please contact us directly via email."
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "Evergreen Dev | Sustainable Tech Partner",
+      "description": "Evergreen Dev - Your trusted web and mobile development partner. Building sustainable solutions with Vue.js, React, Flutter, and cloud services for lasting business growth."
+    },
+    "about": {
+      "title": "About Evergreen Dev | Web & App Development Partner",
+      "description": "Meet Evergreen Dev - your trusted IT partner with 40+ successful projects and 5.0 client satisfaction. Flutter app development, website creation, and custom development services."
+    },
+    "projects": {
+      "title": "Projects - Evergreen Dev | Success Stories",
+      "description": "Explore Evergreen Dev's successful project portfolio. From web and mobile app development to backend system architecture, we deliver optimal technology solutions for your business."
+    },
+    "contact": {
+      "title": "Contact | Evergreen Dev - Project Inquiry",
+      "description": "Reach out for web/app development projects, technical consulting, or collaboration proposals. Get in touch via Channel Talk, email, or video call."
+    }
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "back": "Back",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "required": "Required"
+  }
+}

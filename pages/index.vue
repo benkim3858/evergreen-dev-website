@@ -15,8 +15,8 @@
           </p>
           <p class="typewriter">{{ currentText }}</p>
           <div class="cta-buttons">
-            <a href="#about" class="btn btn-primary">{{ $t('hero.cta.services') }}</a>
-            <a href="#contact" class="btn btn-secondary selected">{{ $t('hero.cta.contact') }}</a>
+            <a href="#expertise" class="btn btn-primary" @click.prevent="scrollTo('expertise')">{{ $t('hero.cta.services') }}</a>
+            <a href="#contact" class="btn btn-secondary selected" @click.prevent="scrollTo('contact')">{{ $t('hero.cta.contact') }}</a>
           </div>
         </div>
       </div>
@@ -179,19 +179,38 @@
         <h2 class="section-title text-center">{{ $t('contact.title') }}</h2>
         <div class="contact-container grid grid-1 grid-2-md">
           <div class="contact-info">
-            <p>{{ contactText }}</p>
+            <p style="white-space: pre-line;">{{ contactText }}</p>
             <div class="contact-details">
-              <a :href="`mailto:${contacts.email}`" class="contact-link">
-                <Icon name="mdi:email" /> {{ contacts.email }}
-              </a>
+              <div class="email-group">
+                <div class="email-row">
+                  <a :href="`mailto:${contacts.email}`" class="contact-link">
+                    <Icon name="mdi:email" /> {{ contacts.email }}
+                  </a>
+                  <button class="copy-btn" @click="copyEmail" :title="$t('contact.cards.email.copy') || 'Copy'">
+                    <Icon :name="emailCopied ? 'mdi:check' : 'mdi:content-copy'" />
+                  </button>
+                </div>
+                <p class="response-time">
+                  <Icon name="mdi:clock-outline" /> {{ $t('contact.responseTime') }}
+                </p>
+              </div>
+              
+            </div>
+
+            <div class="business-info">
+              <p><Icon name="mdi:domain" /> {{ $t('contact.business.name') }}</p>
+              <p><Icon name="mdi:card-account-details-outline" /> {{ $t('contact.business.registration') }}</p>
+              <p><Icon name="mdi:briefcase-outline" /> {{ $t('contact.business.industry') }}</p>
+              <p><Icon name="mdi:code-tags" /> {{ $t('contact.business.category') }}</p>
               <p><Icon name="mdi:map-marker" /> {{ contacts.location }}</p>
-              <p class="response-time">
-                <Icon name="mdi:clock-outline" /> {{ $t('contact.responseTime') }}
-              </p>
             </div>
 
             <!-- Social Links -->
             <div class="social-links">
+              <h3 class="card-title">
+              <Icon name="mdi:link-variant" />
+              {{ $t('contact.cards.social.title') }}
+            </h3>
               <a
                 v-for="link in socialLinks"
                 :key="link.name"
@@ -260,21 +279,8 @@
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
 
-// 섹션 스크롤 관련 상태
-const sectionIds = ['home', 'expertise', 'projects', 'about', 'contact'];
-const currentSectionIndex = ref(0);
-const isScrolling = ref(false);
-const mainContainer = ref(null);
-
 // 컨테이너 스크롤 상태를 레이아웃과 공유 (useState는 컴포넌트 간 전역 상태 공유)
 const containerScrollY = useState('containerScrollY', () => 0);
-
-// 스크롤 민감도 설정 (둔감 설정)
-const SCROLL_THRESHOLD = 350;      // 누적 임계값 (높을수록 덜 민감)
-const SCROLL_RESET_DELAY = 400;    // 스크롤 멈추면 누적값 리셋 (ms)
-const TOUCH_SWIPE_THRESHOLD = 200;  // 터치 스와이프 임계값 (px)
-let accumulatedDelta = 0;
-let scrollResetTimer = null;
 
 // SEO 메타태그 설정
 useSeoMeta({
@@ -394,178 +400,20 @@ const handleSubmit = async () => {
   }
 };
 
-// 섹션으로 스크롤하는 함수
-const scrollToSection = (index) => {
-  if (index < 0 || index >= sectionIds.length) return;
 
-  const targetSection = document.getElementById(sectionIds[index]);
-  if (targetSection && mainContainer.value) {
-    isScrolling.value = true;
-    currentSectionIndex.value = index;
-
-    mainContainer.value.scrollTo({
-      top: targetSection.offsetTop,
-      behavior: 'smooth'
-    });
-
-    // 스크롤 애니메이션 완료 후 잠금 해제
-    setTimeout(() => {
-      isScrolling.value = false;
-    }, 800);
-  }
+// 이메일 복사
+const emailCopied = ref(false);
+const copyEmail = async () => {
+  await navigator.clipboard.writeText(contacts.email);
+  emailCopied.value = true;
+  setTimeout(() => { emailCopied.value = false; }, 2000);
 };
 
-// 스크롤 가능한 부모 요소 찾기
-const findScrollableParent = (element) => {
-  while (element && element !== mainContainer.value) {
-    const style = window.getComputedStyle(element);
-    const overflowY = style.overflowY;
-    const isScrollable = overflowY === 'auto' || overflowY === 'scroll';
-    const hasScrollableContent = element.scrollHeight > element.clientHeight;
-
-    if (isScrollable && hasScrollableContent) {
-      return element;
-    }
-    element = element.parentElement;
-  }
-  return null;
-};
-
-// 휠 이벤트 핸들러
-const handleWheel = (e) => {
-  if (isScrolling.value) {
-    e.preventDefault();
-    return;
-  }
-
-  // Last Section Logic (Contact Section)
-  const isLastSection = currentSectionIndex.value === sectionIds.length - 1;
-  if (isLastSection) {
-    const contactSection = document.getElementById('contact');
-    if (contactSection && mainContainer.value) {
-      const mainScrollTop = mainContainer.value.scrollTop;
-      const sectionTop = contactSection.offsetTop;
-      
-      // Check if we are at the top of the contact section (with tolerance)
-      // Usually strict equality is fine, but tolerance helps with sub-pixel issues
-      const atTop = mainScrollTop <= sectionTop + 1; 
-
-      if (e.deltaY < 0 && atTop) {
-        // Scrolling UP at the top -> Go to previous section
-        // We let the standard logic below handle the snap-up
-      } else {
-        // Scrolling DOWN or Scrolling UP while NOT at top -> Allow native scroll
-        // IMPORTANT: checks for bottom boundary in standard logic would prevent scroll,
-        // so we return early here to allow native behavior.
-        // We only want to prevent default if we are specifically triggering a section transition.
-        return; 
-      }
-    }
-  }
-
-  // 스크롤 가능한 내부 요소 찾기
-  const scrollableElement = findScrollableParent(e.target);
-
-  if (scrollableElement) {
-    const { scrollTop, scrollHeight, clientHeight } = scrollableElement;
-    const isAtTop = scrollTop <= 1;
-    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
-
-    const scrollingDown = e.deltaY > 0;
-    const scrollingUp = e.deltaY < 0;
-
-    // 내부 스크롤이 아직 가능하면 허용 (기본 동작)
-    if ((scrollingDown && !isAtBottom) || (scrollingUp && !isAtTop)) {
-      // 내부 스크롤 시 누적값 리셋
-      accumulatedDelta = 0;
-      return; // 내부 스크롤 허용
-    }
-  }
-
-  // 내부 스크롤이 없거나 끝에 도달했으면 섹션 스크롤
-  e.preventDefault();
-
-  // 스크롤 누적
-  accumulatedDelta += e.deltaY;
-
-  // 리셋 타이머 재설정 (스크롤을 멈추면 누적값 초기화)
-  clearTimeout(scrollResetTimer);
-  scrollResetTimer = setTimeout(() => {
-    accumulatedDelta = 0;
-  }, SCROLL_RESET_DELAY);
-
-  // 임계값 도달 시에만 섹션 이동
-  if (accumulatedDelta >= SCROLL_THRESHOLD) {
-    // If at last section, we don't snap to next (there is no next)
-    if (currentSectionIndex.value < sectionIds.length - 1) {
-       scrollToSection(currentSectionIndex.value + 1);
-       accumulatedDelta = 0;
-    }
-  } else if (accumulatedDelta <= -SCROLL_THRESHOLD) {
-    scrollToSection(currentSectionIndex.value - 1);
-    accumulatedDelta = 0;
-  }
-};
-
-// 키보드 이벤트 핸들러
-const handleKeydown = (e) => {
-  if (isScrolling.value) return;
-
-  if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-    e.preventDefault();
-    scrollToSection(currentSectionIndex.value + 1);
-  } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-    e.preventDefault();
-    scrollToSection(currentSectionIndex.value - 1);
-  } else if (e.key === 'Home') {
-    e.preventDefault();
-    scrollToSection(0);
-  } else if (e.key === 'End') {
-    e.preventDefault();
-    scrollToSection(sectionIds.length - 1);
-  }
-};
-
-// 터치 이벤트 핸들러
-let touchStartY = 0;
-let touchStartElement = null;
-
-const handleTouchStart = (e) => {
-  touchStartY = e.touches[0].clientY;
-  touchStartElement = e.target;
-};
-
-const handleTouchEnd = (e) => {
-  if (isScrolling.value) return;
-
-  const touchEndY = e.changedTouches[0].clientY;
-  const diff = touchStartY - touchEndY;
-
-  // 최소 TOUCH_SWIPE_THRESHOLD 이상 스와이프해야 섹션 이동
-  if (Math.abs(diff) > TOUCH_SWIPE_THRESHOLD) {
-    // 스크롤 가능한 내부 요소 찾기
-    const scrollableElement = findScrollableParent(touchStartElement);
-
-    if (scrollableElement) {
-      const { scrollTop, scrollHeight, clientHeight } = scrollableElement;
-      const isAtTop = scrollTop <= 1;
-      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
-
-      const swipingDown = diff > 0; // 손가락을 위로 올림 = 아래로 스크롤
-      const swipingUp = diff < 0;   // 손가락을 아래로 내림 = 위로 스크롤
-
-      // 내부 스크롤이 아직 가능하면 섹션 스크롤 하지 않음
-      if ((swipingDown && !isAtBottom) || (swipingUp && !isAtTop)) {
-        return; // 내부 스크롤이 자연스럽게 처리됨
-      }
-    }
-
-    // 섹션 스크롤 실행
-    if (diff > 0) {
-      scrollToSection(currentSectionIndex.value + 1);
-    } else {
-      scrollToSection(currentSectionIndex.value - 1);
-    }
+// 섹션 스크롤 이동 (앵커 링크용)
+const scrollTo = (id) => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
   }
 };
 
@@ -577,31 +425,23 @@ const updateViewportHeight = () => {
 
 // 컨테이너 스크롤 이벤트 핸들러 (레이아웃 헤더용)
 const handleContainerScroll = () => {
-  if (mainContainer.value) {
-    containerScrollY.value = mainContainer.value.scrollTop;
+  const el = document.querySelector('.main-container');
+  if (el) {
+    containerScrollY.value = el.scrollTop;
   }
 };
 
-// Smooth scroll implementation
 onMounted(() => {
   // 뷰포트 높이 초기 설정 및 리사이즈 이벤트 등록
   updateViewportHeight();
   window.addEventListener('resize', updateViewportHeight);
   window.addEventListener('orientationchange', updateViewportHeight);
 
-  // main-container 참조 설정
-  mainContainer.value = document.querySelector('.main-container');
-
-  // 휠 이벤트 리스너 추가
-  if (mainContainer.value) {
-    mainContainer.value.addEventListener('wheel', handleWheel, { passive: false });
-    mainContainer.value.addEventListener('touchstart', handleTouchStart, { passive: true });
-    mainContainer.value.addEventListener('touchend', handleTouchEnd, { passive: true });
-    mainContainer.value.addEventListener('scroll', handleContainerScroll, { passive: true });
+  // 컨테이너 스크롤 리스너
+  const container = document.querySelector('.main-container');
+  if (container) {
+    container.addEventListener('scroll', handleContainerScroll, { passive: true });
   }
-
-  // 키보드 이벤트 리스너 추가
-  document.addEventListener('keydown', handleKeydown);
 
   // Typing effect - initialize and start interval
   currentText.value = typewriterTexts.value[0];
@@ -610,60 +450,40 @@ onMounted(() => {
     currentText.value = typewriterTexts.value[currentIndex];
   }, 3000);
 
-  // 앵커 링크 클릭 시 섹션 인덱스 업데이트
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const href = this.getAttribute('href');
-      const targetId = href.replace('#', '');
-      const targetIndex = sectionIds.indexOf(targetId);
-
-      if (targetIndex !== -1) {
-        scrollToSection(targetIndex);
+  // Intersection Observer for scroll animations
+  const observerRoot = document.querySelector('.main-container');
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
     });
-  });
-
-  // Intersection Observer for scroll animations
-  const sections = document.querySelectorAll('.section');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '0px'
-    }
-  );
+  }, { threshold: 0.1, root: observerRoot });
 
   sections.forEach(section => {
     observer.observe(section);
   });
 
-  // Scroll indicator 클릭 시 다음 섹션으로 이동
+  // Scroll indicator 클릭 시 expertise 섹션으로 이동
   const scrollIndicator = document.querySelector('.scroll-indicator');
   if (scrollIndicator) {
     scrollIndicator.addEventListener('click', () => {
-      scrollToSection(currentSectionIndex.value + 1);
+      const expertiseSection = document.getElementById('expertise');
+      if (expertiseSection) {
+        expertiseSection.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   }
+});
 
-  // Clean up
-  onUnmounted(() => {
-    if (mainContainer.value) {
-      mainContainer.value.removeEventListener('wheel', handleWheel);
-      mainContainer.value.removeEventListener('touchstart', handleTouchStart);
-      mainContainer.value.removeEventListener('touchend', handleTouchEnd);
-      mainContainer.value.removeEventListener('scroll', handleContainerScroll);
-    }
-    document.removeEventListener('keydown', handleKeydown);
-    window.removeEventListener('resize', updateViewportHeight);
-    window.removeEventListener('orientationchange', updateViewportHeight);
-  });
+onUnmounted(() => {
+  const container = document.querySelector('.main-container');
+  if (container) {
+    container.removeEventListener('scroll', handleContainerScroll);
+  }
+  window.removeEventListener('resize', updateViewportHeight);
+  window.removeEventListener('orientationchange', updateViewportHeight);
 });
 </script>
 
@@ -671,16 +491,13 @@ onMounted(() => {
 .main-container {
   position: relative;
   width: 100%;
-  /* 동적 뷰포트 높이: dvh > --vh 변수 > vh 순으로 폴백 */
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
   height: 100dvh;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  /* 스크롤바 숨김 */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scroll-snap-type: y proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .main-container::-webkit-scrollbar {
@@ -689,20 +506,14 @@ onMounted(() => {
 
 .section {
   position: relative;
-  /* 동적 뷰포트 높이: dvh > --vh 변수 > vh 순으로 폴백 */
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
-  height: 100dvh;
-  min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 100px var(--space-xl);
-  scroll-margin-top: 120px;
   box-sizing: border-box;
-  overflow: hidden; /* 콘텐츠가 넘치면 숨김 */
+  scroll-snap-align: start;
+  overflow: hidden;
 }
 
 /* Hero Section */
@@ -942,27 +753,8 @@ onMounted(() => {
   }
 }
 
-/* 콘텐츠가 많은 섹션을 위한 내부 스크롤 컨테이너 */
 .section > .container {
-  max-height: 90%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* 내부 스크롤바 스타일링 */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(100, 255, 218, 0.3) transparent;
-}
-
-.section > .container::-webkit-scrollbar {
-  width: 4px;
-}
-
-.section > .container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.section > .container::-webkit-scrollbar-thumb {
-  background: rgba(100, 255, 218, 0.3);
-  border-radius: 2px;
+  overflow: visible;
 }
 
 .expertise-section {
@@ -1286,10 +1078,10 @@ onMounted(() => {
 
 /* Contact Section Styles */
 .contact-section {
-  height: auto !important;
   min-height: 100dvh;
-  overflow: visible !important;
-  justify-content: flex-start; /* Align content to top if needed, or keeping center is fine but auto height implies flow */
+  overflow: visible;
+  justify-content: flex-start;
+  scroll-snap-align: start;
 }
 
 .contact-container {
@@ -1332,10 +1124,9 @@ onMounted(() => {
 }
 
 .contact-details {
-  margin: 2rem 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .contact-details p, 
@@ -1358,18 +1149,58 @@ onMounted(() => {
   color: var(--accent-color);
 }
 
+.email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
 .response-time {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.9rem;
   opacity: 0.8;
 }
 
 .social-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links .card-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 .social-link {
@@ -1514,6 +1345,29 @@ onMounted(() => {
   background: rgba(255, 107, 107, 0.1);
   border: 1px solid #ff6b6b;
   color: #ff6b6b;
+}
+
+.business-info {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.business-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-color);
+  font-size: 0.85rem;
+}
+
+.business-info p .iconify {
+  color: var(--accent-color);
+  font-size: 1rem;
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {

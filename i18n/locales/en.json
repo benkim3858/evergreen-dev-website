@@ -248,6 +248,13 @@
     "subtitle": "Let's discuss your new project or collaboration",
     "description": "Ready to discuss a new project or need technical consultation? Reach out anytime. We'll propose solutions optimized for your business.",
     "responseTime": "Response within 24 hours",
+    "location": "9F #29, 233 Suyeong-ro, Nam-gu, Busan, South Korea",
+    "business": {
+      "name": "Company: EVERGREEN DEV",
+      "registration": "Business Reg. No: 366-72-00644",
+      "industry": "Industry: Information & Communications",
+      "category": "Category: Computer Programming Services"
+    },
     "cards": {
       "email": {
         "title": "Email Inquiry",

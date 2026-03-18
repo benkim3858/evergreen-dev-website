@@ -39,23 +39,38 @@
 }
 
 .btn-primary {
-  background: var(--accent-color);
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   color: var(--bg-color);
   border: none;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.2);
+    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.3);
   }
 }
 
 .btn-secondary {
-  border: 1px solid var(--accent-color);
-  color: var(--accent-color);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #94a3b8;
   background: transparent;
 
   &:hover {
-    background: rgba(100, 255, 218, 0.1);
+    background: rgba(100, 255, 218, 0.08);
+    border-color: transparent;
+    color: #64ffda;
     transform: translateY(-2px);
+  }
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 }

@@ -147,10 +147,23 @@ useSeoMeta({
   
   &:hover {
     background: rgba(100, 255, 218, 0.1);
-    border-color: var(--color-primary, #64ffda);
+    border-color: transparent;
     color: var(--color-primary, #64ffda);
     transform: translateX(-4px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 }
 
@@ -249,7 +262,7 @@ useSeoMeta({
       left: 0;
       width: 40px;
       height: 2px;
-      background: var(--color-primary, #64ffda);
+      background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
     }
   }
 }
@@ -271,7 +284,9 @@ useSeoMeta({
   background: rgba(17, 34, 64, 0.4);
   padding: 2rem;
   border-radius: 8px;
-  border-top: 2px solid var(--color-primary, #64ffda);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa) 1;
+  border-image-slice: 1 0 0 0;
 
   h3 {
     margin-bottom: 1rem;

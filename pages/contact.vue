@@ -15,9 +15,14 @@
               {{ $t('contact.cards.email.title') }}
             </h3>
             <p class="card-desc">{{ $t('contact.cards.email.description') }}</p>
-            <a :href="`mailto:${contacts.email}`" class="contact-link">
-              {{ contacts.email }}
-            </a>
+            <div class="email-row">
+              <a :href="`mailto:${contacts.email}`" class="contact-link">
+                {{ contacts.email }}
+              </a>
+              <button class="copy-btn" @click="copyEmail" :title="$t('contact.cards.email.copy') || 'Copy'">
+                <Icon :name="emailCopied ? 'mdi:check' : 'mdi:content-copy'" />
+              </button>
+            </div>
             <span class="response-time">
               <Icon name="mdi:clock-outline" />
               {{ $t('contact.responseTime') }}
@@ -196,6 +201,14 @@ ${formData.value.message}`,
   }
 }
 
+const emailCopied = ref(false)
+
+const copyEmail = async () => {
+  await navigator.clipboard.writeText(contacts.email)
+  emailCopied.value = true
+  setTimeout(() => { emailCopied.value = false }, 2000)
+}
+
 const openChannelTalk = () => {
   if ($channelTalk?.isInitialized) {
     $channelTalk.show()
@@ -273,8 +286,22 @@ const openChannelTalk = () => {
 
 .contact-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(74, 243, 255, 0.3);
+  border-color: transparent;
   box-shadow: 0 10px 30px -10px rgba(74, 243, 255, 0.15);
+}
+
+.contact-card:hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .contact-card::after {
@@ -311,6 +338,32 @@ const openChannelTalk = () => {
   line-height: 1.5;
 }
 
+.email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
 .contact-link {
   display: inline-flex;
   align-items: center;
@@ -329,7 +382,7 @@ const openChannelTalk = () => {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent-color);
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   transition: width 0.3s ease;
 }
 
@@ -370,10 +423,27 @@ const openChannelTalk = () => {
   justify-content: center;
 }
 
+.btn-chat {
+  position: relative;
+}
+
 .btn-chat:hover {
   background: rgba(74, 243, 255, 0.2);
+  border-color: transparent;
   box-shadow: 0 0 20px rgba(74, 243, 255, 0.2);
-  border-color: var(--accent-color);
+}
+
+.btn-chat:hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .social-links {
@@ -395,12 +465,29 @@ const openChannelTalk = () => {
   transition: all 0.3s ease;
 }
 
+.social-link {
+  position: relative;
+}
+
 .social-link:hover {
   background: rgba(74, 243, 255, 0.1);
-  border-color: var(--accent-color);
+  border-color: transparent;
   color: var(--accent-color);
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-link:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .contact-form-wrapper {
@@ -427,9 +514,9 @@ const openChannelTalk = () => {
   display: block;
   width: 4px;
   height: 24px;
-  background: var(--accent-color);
+  background: linear-gradient(180deg, #64ffda, #4af3ff, #a78bfa);
   border-radius: 2px;
-  box-shadow: 0 0 10px var(--accent-color);
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
 }
 
 .contact-form {
@@ -512,7 +599,7 @@ const openChannelTalk = () => {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  background: var(--accent-color);
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   color: var(--bg-color);
   padding: 1.1rem 2.5rem;
   border: none;

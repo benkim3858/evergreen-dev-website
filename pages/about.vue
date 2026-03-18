@@ -150,7 +150,10 @@ const testimonials = computed(() => {
 }
 
 .highlight {
-  color: var(--accent-color);
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* Stats Styles */
@@ -169,10 +172,27 @@ const testimonials = computed(() => {
   transition: transform 0.3s ease;
 }
 
+.stat-card {
+  position: relative;
+}
+
 .stat-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-color);
+  border-color: transparent;
   background: rgba(17, 34, 64, 0.6);
+}
+
+.stat-card:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .stat-icon {
@@ -215,9 +235,26 @@ const testimonials = computed(() => {
   align-items: center;
 }
 
+.philosophy-card {
+  position: relative;
+}
+
 .philosophy-card:hover {
-  border-color: var(--accent-color);
+  border-color: transparent;
   transform: translateY(-5px);
+}
+
+.philosophy-card:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .philosophy-icon {

@@ -16,7 +16,7 @@
           <p class="typewriter">{{ currentText }}</p>
           <div class="cta-buttons">
             <a href="#about" class="btn btn-primary">{{ $t('hero.cta.services') }}</a>
-            <a href="#contact" class="btn btn-secondary">{{ $t('hero.cta.contact') }}</a>
+            <a href="#contact" class="btn btn-secondary selected">{{ $t('hero.cta.contact') }}</a>
           </div>
         </div>
       </div>
@@ -737,7 +737,10 @@ onMounted(() => {
 }
 
 .highlight {
-  color: #4af3ff;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   position: relative;
 }
 
@@ -793,26 +796,50 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.btn-primary {
-  background: rgba(148, 163, 184, 0.1);
-  border: 1px solid #94a3b8;
+.btn-primary,
+.btn-secondary {
+  background: rgba(148, 163, 184, 0.05);
+  border: 1px solid rgba(148, 163, 184, 0.3);
   color: #94a3b8;
 }
 
-.btn-primary:hover {
-  background: rgba(74, 243, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: rgba(74, 243, 255, 0.1);
-  border: 1px solid #4af3ff;
-  color: #4af3ff;
-}
-
+.btn-primary:hover,
 .btn-secondary:hover {
-  background: rgba(148, 163, 184, 0.2);
+  background: rgba(100, 255, 218, 0.08);
+  border-color: transparent;
+  color: #64ffda;
   transform: translateY(-2px);
+}
+
+.btn-primary:hover::after,
+.btn-secondary:hover::after,
+.btn-primary:active::after,
+.btn-secondary:active::after,
+.btn-secondary.selected::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  background: rgba(100, 255, 218, 0.15);
+  border-color: transparent;
+  color: #64ffda;
+  transform: translateY(0);
+}
+
+.btn-secondary.selected {
+  background: rgba(100, 255, 218, 0.08);
+  border-color: transparent;
+  color: #64ffda;
 }
 
 /* Animations */
@@ -965,9 +992,26 @@ onMounted(() => {
   backdrop-filter: blur(10px);
 }
 
+.expertise-card {
+  position: relative;
+}
+
 .expertise-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-color);
+  border-color: transparent;
+}
+
+.expertise-card:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .expertise-icon {
@@ -1064,9 +1108,23 @@ onMounted(() => {
 .project-overlay span {
   color: var(--accent-color);
   font-weight: 500;
-  border: 1px solid var(--accent-color);
+  border: 1px solid transparent;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+  position: relative;
+}
+
+.project-overlay span::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* About Section Styles */
@@ -1103,10 +1161,27 @@ onMounted(() => {
   transition: transform 0.3s ease;
 }
 
+.stat-card {
+  position: relative;
+}
+
 .stat-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-color);
+  border-color: transparent;
   background: rgba(17, 34, 64, 0.6);
+}
+
+.stat-card:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .stat-icon {
@@ -1234,9 +1309,26 @@ onMounted(() => {
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+.contact-info {
+  position: relative;
+}
+
 .contact-info:hover {
-  border-color: rgba(74, 243, 255, 0.3);
+  border-color: transparent;
   transform: translateY(-5px);
+}
+
+.contact-info:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .contact-details {
@@ -1294,12 +1386,29 @@ onMounted(() => {
   transition: all 0.3s ease;
 }
 
+.social-link {
+  position: relative;
+}
+
 .social-link:hover {
   background: rgba(74, 243, 255, 0.1);
-  border-color: var(--accent-color);
+  border-color: transparent;
   color: var(--accent-color);
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-link:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .contact-form {
@@ -1371,7 +1480,7 @@ onMounted(() => {
 
 .contact-form .btn-primary {
   margin-top: 1rem;
-  background: var(--accent-color);
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   color: var(--bg-color);
   border: none;
   font-weight: 700;
@@ -1380,9 +1489,9 @@ onMounted(() => {
 }
 
 .contact-form .btn-primary:hover {
-  background: var(--accent-color);
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(74, 243, 255, 0.4);
+  box-shadow: 0 0 30px rgba(100, 255, 218, 0.4);
 }
 
 .submit-result {

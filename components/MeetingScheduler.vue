@@ -102,11 +102,28 @@ const openCalendlyPopup = () => {
   /* max-width is removed to fill container or controlled by parent */
 }
 
+.btn-meeting {
+  position: relative;
+}
+
 .btn-meeting:hover {
   background: rgba(74, 243, 255, 0.2);
+  border-color: transparent;
   transform: translateY(-2px);
   box-shadow: 0 0 20px rgba(74, 243, 255, 0.3);
-  border-color: var(--accent-color);
+}
+
+.btn-meeting:hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .btn-meeting:active {

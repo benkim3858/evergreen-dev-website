@@ -195,7 +195,7 @@ onUnmounted(() => {
   font-weight: 600;
   letter-spacing: 2px;
   font-family: 'Space Mono', monospace;
-  background: linear-gradient(120deg, #64ffda, #64ffda);
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

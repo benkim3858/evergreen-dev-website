@@ -119,5 +119,9 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: true },
-  compatibilityDate: '2025-01-02'
+  compatibilityDate: '2025-01-02',
+
+  devServer: {
+    port: 5000
+  }
 })

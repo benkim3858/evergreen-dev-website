@@ -219,7 +219,7 @@
   "about": {
     "title": "소개",
     "pageTitle": "About Evergreen Dev",
-    "description": "클라이언트의 비즈니스 수익 창출을 최우선으로 생각합니다.\n고객님의 비즈니스가 언제나 푸르게 번창하고 지속 성장할 수 있도록\n기획부터 개발, 배포까지 함께하는 든든한 IT 파트너입니다.",
+    "description": "클라이언트의 비즈니스 수익 창출을 최우선으로 생각합니다. 고객님의 비즈니스가 언제나 푸르게 번창하고 지속 성장할 수 있도록 기획부터 개발, 배포까지 함께하는 든든한 IT 파트너입니다.",
     "whyTitle": "Why Evergreen?",
     "philosophy": {
       "partner": {
@@ -266,7 +266,7 @@
     "title": "Get In Touch",
     "pageTitle": "프로젝트 문의",
     "subtitle": "새로운 프로젝트나 협업에 대해 이야기해 보세요",
-    "description": "새로운 프로젝트 논의나 기술 상담이 필요하시다면 언제든 연락주세요. \n 귀사의 비즈니스에 최적화된 솔루션을 제안해 드립니다.",
+    "description": "새로운 프로젝트 논의나 기술 상담이 필요하시다면 언제든 연락주세요. 귀사의 비즈니스에 최적화된 솔루션을 제안해 드립니다.",
     "responseTime": "24시간 이내 회신",
     "location": "부산 남구 수영로 233 9층 29호",
     "business": {
@@ -278,7 +278,8 @@
     "cards": {
       "email": {
         "title": "이메일 문의",
-        "description": "모든 문의 및 상담 가능 합니다."
+        "description": "모든 문의 및 상담 가능 합니다.",
+        "copy": "복사"
       },
       "chat": {
         "title": "실시간 채팅",

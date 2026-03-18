@@ -13,6 +13,11 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  word-break: keep-all;       // Korean: break only at spaces, not between syllables
+  overflow-wrap: break-word;  // Still allow breaking very long words (URLs, etc.)
+}
+
 a {
   text-decoration: none;
   color: inherit;

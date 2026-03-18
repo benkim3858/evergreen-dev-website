@@ -199,7 +199,7 @@
   "about": {
     "title": "About",
     "pageTitle": "About Evergreen Dev",
-    "description": "Your business success is our top priority.\nWe're more than developers — we're committed partners in your growth journey,\nfrom concept to launch and beyond.",
+    "description": "Your business success is our top priority. We're more than developers — we're committed partners in your growth journey, from concept to launch and beyond.",
     "whyTitle": "Why Evergreen?",
     "philosophy": {
       "partner": {
@@ -258,7 +258,8 @@
     "cards": {
       "email": {
         "title": "Email Inquiry",
-        "description": "Send us an email for general inquiries."
+        "description": "Send us an email for general inquiries.",
+        "copy": "Copy"
       },
       "chat": {
         "title": "Live Chat",

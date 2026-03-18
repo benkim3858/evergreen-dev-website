@@ -35,6 +35,7 @@ export default defineNuxtPlugin(() => {
   boot({
     pluginKey: pluginKey,
     hideChannelButtonOnBoot: false,
+    hidePopup: true,
     language: 'ko',
     zIndex: 9999999,
     appearance: 'system'

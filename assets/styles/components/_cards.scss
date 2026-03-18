@@ -223,3 +223,24 @@
     }
   }
 }
+
+// Mobile adjustments for card content readability
+@media (max-width: 768px) {
+  .project-card .project-content {
+    padding: 1.25rem;
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  }
+
+  .expertise-card {
+    padding: 1.5rem;
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  }
+}

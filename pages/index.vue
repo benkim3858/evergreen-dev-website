@@ -131,7 +131,7 @@
         <div class="about-content">
           <div class="about-header text-center">
             <h2 class="section-title">{{ $t('about.whyTitle') }}</h2>
-            <p class="section-subtitle" style="white-space: pre-line;">{{ aboutText }}</p>
+            <p class="section-subtitle">{{ aboutText }}</p>
           </div>
 
           <!-- Key Achievements -->
@@ -179,7 +179,7 @@
         <h2 class="section-title text-center">{{ $t('contact.title') }}</h2>
         <div class="contact-container grid grid-1 grid-2-md">
           <div class="contact-info">
-            <p style="white-space: pre-line;">{{ contactText }}</p>
+            <p>{{ contactText }}</p>
             <div class="contact-details">
               <div class="email-group">
                 <div class="email-row">
@@ -496,6 +496,7 @@ onUnmounted(() => {
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
+  scroll-padding-top: calc(94px + 1rem);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -506,14 +507,33 @@ onUnmounted(() => {
 
 .section {
   position: relative;
-  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 100px var(--space-xl);
   box-sizing: border-box;
-  scroll-snap-align: start;
   overflow: hidden;
+  scroll-margin-top: 94px;
+}
+
+/* Only hero and contact get full-height snap behavior */
+.hero-section,
+.contact-section {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+}
+
+/* Section dividers for visual separation */
+.section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+  pointer-events: none;
 }
 
 /* Hero Section */
@@ -553,6 +573,16 @@ onUnmounted(() => {
   -webkit-background-clip: text;
   color: transparent;
   position: relative;
+}
+
+.hero-slogan {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #94a3b8;
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 0 auto var(--space-md);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 0.2s;
 }
 
 .typewriter {
@@ -727,8 +757,17 @@ onUnmounted(() => {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .main-container {
+    scroll-snap-type: none;
+  }
+
   .section {
-    padding: 0 var(--space-lg);
+    padding: 80px var(--space-lg) 3rem;
+    scroll-margin-top: 70px;
+  }
+
+  .hero-section {
+    padding-top: 100px;
   }
 
   .cta-buttons {
@@ -741,15 +780,74 @@ onUnmounted(() => {
     max-width: 250px;
     text-align: center;
   }
+
+  .hero-slogan {
+    max-width: 320px;
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    line-height: 1.9;
+  }
+
+  .section-subtitle {
+    max-width: 320px;
+    font-size: 0.9rem;
+  }
+
+  .about-header {
+    max-width: 100%;
+  }
+
+  .about-header .section-subtitle {
+    max-width: 340px;
+    font-size: 0.9rem;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+
+  .review-content {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
 }
 
 @media (max-width: 480px) {
   .section {
-    padding: 0 var(--space-md);
+    padding: 70px var(--space-md) 1.5rem;
   }
 
   .scroll-indicator {
     bottom: 1.5rem;
+  }
+
+  .hero-slogan {
+    max-width: 280px;
+  }
+}
+
+/* Landscape mode fix for short viewports */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding: 60px var(--space-lg) 2rem;
+  }
+
+  .animate-text {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+
+  .typewriter {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin: var(--space-sm) 0;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    margin-top: var(--space-md);
+  }
+
+  .scroll-indicator {
+    display: none;
   }
 }
 
@@ -758,11 +856,35 @@ onUnmounted(() => {
 }
 
 .expertise-section {
-  padding: var(--space-xxl) 0;
+  padding: 100px var(--space-xl) var(--space-xxl);
 }
 
 .projects-section {
-  padding-top: var(--space-xxl);
+  padding-top: 100px;
+}
+
+.about-section {
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .expertise-section,
+  .projects-section,
+  .about-section {
+    padding-top: 80px;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .expertise-section,
+  .projects-section,
+  .about-section {
+    padding-top: 70px;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
 }
 
 .expertise-grid {
@@ -919,15 +1041,23 @@ onUnmounted(() => {
   pointer-events: none;
 }
 
-/* About Section Styles */
-.about-section {
-  padding-top: var(--space-xxl);
+/* Section Subtitle */
+.section-subtitle {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
 }
+
+/* About Section Styles */
 
 .about-header {
   max-width: 800px;
   margin: 0 auto var(--space-xl);
+}
 
+.about-header .section-subtitle {
+  line-height: 1.9;
 }
 
 /* Statistics Grid */
@@ -1078,10 +1208,8 @@ onUnmounted(() => {
 
 /* Contact Section Styles */
 .contact-section {
-  min-height: 100dvh;
   overflow: visible;
   justify-content: flex-start;
-  scroll-snap-align: start;
 }
 
 .contact-container {

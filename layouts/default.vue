@@ -4,6 +4,7 @@
       <SpaceBackground />
     </ClientOnly>
     <nav class="nav-container">
+      <!-- Desktop: Logo (left) -->
       <div class="nav-logo">
         <NuxtLink :to="localePath('/')" class="logo">
           <img
@@ -15,14 +16,15 @@
         </NuxtLink>
       </div>
 
-      <!-- Desktop Navigation -->
-      <div class="nav-links hide-sm" :class="{ 'active': isMenuOpen }">
+      <!-- Navigation Links -->
+      <div class="nav-links">
         <NuxtLink :to="localePath('/')" :class="{ 'nav-active': isExactHome }">{{ $t('nav.home') }}</NuxtLink>
         <NuxtLink :to="localePath('/projects')" :class="{ 'nav-active': isProjectsSection }">{{ $t('nav.projects') }}</NuxtLink>
         <NuxtLink :to="localePath('/about')" :class="{ 'nav-active': isAboutSection }">{{ $t('nav.about') }}</NuxtLink>
         <NuxtLink :to="localePath('/contact')" :class="{ 'nav-active': isContactSection }">{{ $t('nav.contact') }}</NuxtLink>
       </div>
 
+      <!-- Desktop: Language switcher (right) -->
       <div class="nav-right">
         <div class="language-switcher">
           <button
@@ -30,48 +32,48 @@
             :key="loc.code"
             @click="switchLanguage(loc.code)"
             :class="['lang-btn', { active: currentLocale === loc.code }]"
+            :aria-label="`Switch to ${loc.name}`"
           >
             {{ loc.code.toUpperCase() }}
           </button>
         </div>
-        
-        <!-- Mobile Menu Button -->
-        <button class="menu-btn show-sm" @click="toggleMenu">
-          <Icon :name="isMenuOpen ? 'mdi:close' : 'mdi:menu'" />
-        </button>
       </div>
+
+      <!-- Mobile: Globe language toggle (inside nav, positioned by CSS) -->
+      <button
+        class="mobile-lang-toggle"
+        @click="toggleLanguage"
+        :aria-label="`Current language: ${currentLocale.toUpperCase()}. Tap to switch.`"
+      >
+        <Icon name="mdi:web" />
+        <span class="mobile-lang-code">{{ currentLocale.toUpperCase() }}</span>
+      </button>
     </nav>
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-// Nuxt auto-imports useI18n from @nuxtjs/i18n - no need to import from vue-i18n directly
 const { locale, setLocale } = useI18n();
 const localePath = useLocalePath();
 const route = useRoute();
-const isMenuOpen = ref(false);
 const isScrolled = ref(false);
 
-// index.vue의 컨테이너 스크롤 값을 useState로 공유받음
 const containerScrollY = useState('containerScrollY', () => 0);
 
 const currentLocale = computed(() => locale.value);
 const availableLocales = computed(() => {
-  // 하드코딩된 로케일 배열 사용
   return [
     { code: 'en', name: 'English' },
     { code: 'ko', name: 'Korean' }
   ];
 });
 
-// Check if we are on the home page
 const isHome = computed(() => {
   const path = route.path;
   return path === '/' || path === '/ko' || path === '/ko/';
 });
 
-// Navigation active states - check if current path matches or starts with section path
 const isExactHome = computed(() => {
   const path = route.path;
   return path === '/' || path === '/ko' || path === '/ko/';
@@ -92,41 +94,34 @@ const isContactSection = computed(() => {
   return path === '/contact' || path === '/ko/contact';
 });
 
-// Determine if logo text should be visible
-// Hidden only when on Home page AND at the very top
 const isLogoTextVisible = computed(() => {
   if (!isHome.value) return true;
   return isScrolled.value;
 });
 
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
-
+// Desktop: switch to specific locale
 const switchLanguage = async (newLocale: string) => {
   await setLocale(newLocale as 'en' | 'ko');
 };
 
+// Mobile: toggle between two languages
+const toggleLanguage = async () => {
+  const next = currentLocale.value === 'ko' ? 'en' : 'ko';
+  await setLocale(next as 'en' | 'ko');
+};
+
 const handleScroll = () => {
-  // window 스크롤 또는 컨테이너 스크롤 중 하나라도 50 이상이면 스크롤된 것으로 처리
   const windowScrolled = window.scrollY > 50;
   const containerScrolled = containerScrollY.value > 50;
   isScrolled.value = windowScrolled || containerScrolled;
 };
 
-// Close menu when route changes
-watch(() => useRoute().path, () => {
-  isMenuOpen.value = false;
-});
-
-// 컨테이너 스크롤 값 변경 감지
 watch(containerScrollY, () => {
   handleScroll();
 });
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
-  // Initial check
   handleScroll();
 });
 
@@ -137,6 +132,7 @@ onUnmounted(() => {
 
 <style scoped>
 .app-container {
+  --nav-height: 94px;
   min-height: 100vh;
   background-color: transparent;
 }
@@ -161,24 +157,23 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 }
 
-/* Optional: Add shadow when scrolled */
 .nav-container.scrolled {
   box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
 }
 
 .nav-logo {
-  justify-self: end; /* Align to the right of the left column (next to menu) */
+  justify-self: end;
   display: flex;
   align-items: center;
-  padding-right: 2rem; /* Gap between logo and menu */
-  min-width: 0; /* Prevent potential flex overflow issues */
+  padding-right: 2rem;
+  min-width: 0;
 }
 
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
-  gap: 0; /* Remove gap */
+  gap: 0;
 }
 
 .logo-image {
@@ -189,7 +184,7 @@ onUnmounted(() => {
 }
 
 .logo-text {
-  display: inline-block; /* Essential for transform to work */
+  display: inline-block;
   color: var(--text-color-light);
   font-size: 1.5rem;
   font-weight: 600;
@@ -200,27 +195,26 @@ onUnmounted(() => {
   -webkit-background-clip: text;
   color: transparent;
   text-shadow: 2px 2px 10px rgba(100, 255, 218, 0.2);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother bezier */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
-  max-width: 300px; /* Limit max width for transition calculation */
+  max-width: 300px;
   white-space: nowrap;
-  margin-left: 1rem; /* Add margin instead */
+  margin-left: 1rem;
 }
 
-/* Hide logo text state */
 .logo-text.hidden {
   opacity: 0;
   max-width: 0;
-  margin-left: 0; /* Remove margin when hidden */
+  margin-left: 0;
   overflow: hidden;
-  padding: 0; /* Ensure no padding remains */
+  padding: 0;
 }
 
 .logo:hover .logo-text {
   text-shadow: 2px 2px 15px rgba(100, 255, 218, 0.4);
 }
 
-
+/* Desktop: nav-links visible as flex row */
 .nav-links {
   justify-self: center;
   display: flex;
@@ -228,7 +222,7 @@ onUnmounted(() => {
 }
 
 .nav-right {
-  justify-self: end; /* Align to right edge */
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -244,7 +238,6 @@ onUnmounted(() => {
   position: relative;
 }
 
-/* Updated Hover Effect: Underline */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -264,7 +257,6 @@ onUnmounted(() => {
   color: var(--accent-color);
 }
 
-/* Active link state - current page */
 .nav-links a.nav-active {
   color: var(--accent-color);
 }
@@ -273,71 +265,13 @@ onUnmounted(() => {
   width: 100%;
 }
 
-.menu-btn {
-  background: none;
-  border: none;
-  color: var(--accent-color);
-  font-size: var(--font-size-lg);
-  cursor: pointer;
-  display: flex; /* Fix alignment */
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: calc(100% + 1rem);
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: rgba(11, 16, 33, 0.95);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: var(--space-md);
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-md);
-    transform: translateY(-10px);
-    opacity: 0;
-    pointer-events: none;
-    transition: var(--transition-normal);
-  }
-
-  .nav-links.active {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .nav-links.active {
-    transform: translateY(0);
-  }
-
-  .logo-image {
-    height: 45px;
-  }
-
-  .logo-text {
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo-text {
-    display: none;
-  }
-}
-
+/* Desktop language switcher */
 .language-switcher {
   display: flex;
   gap: 0.2rem;
   align-items: center;
-  margin-left: 0;
 }
 
-/* Modern Minimalist Language Buttons */
 .lang-btn {
   padding: 0.4rem 0.6rem;
   background: transparent;
@@ -354,9 +288,6 @@ onUnmounted(() => {
 .lang-btn:hover {
   opacity: 1;
   color: var(--accent-color);
-  transform: none;
-  background: transparent;
-  box-shadow: none;
 }
 
 .lang-btn.active {
@@ -367,23 +298,137 @@ onUnmounted(() => {
   border-radius: 20px;
 }
 
+/* Mobile globe language toggle — hidden on desktop */
+.mobile-lang-toggle {
+  display: none;
+}
+
+/* ================================================
+   Mobile styles (768px and below)
+   ================================================ */
 @media (max-width: 768px) {
-  .language-switcher {
-     /* Reset mobile styles if needed, but flex layout handles it mostly */
-     position: static;
-     padding: 0;
-     background: transparent;
+  .app-container {
+    --nav-height: 56px;
   }
 
-  .lang-btn {
+  /* Mobile nav: single row with all items visible */
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0.4rem 0.5rem;
+    width: 95%;
+    top: 0.5rem;
+    border-radius: 30px;
+  }
+
+  /* Mobile: compact logo (image only, no text) */
+  .nav-logo {
+    display: flex;
+    padding-right: 0;
+    flex-shrink: 0;
+  }
+
+  .logo-image {
+    height: 30px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  /* Mobile nav-links: always visible, horizontal row */
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    margin-left: 0;
+    padding: 0.5rem 0.6rem;
     font-size: 0.8rem;
-    padding: 0.3rem 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 20px;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-links a.nav-active {
+    color: var(--accent-color);
+    background: rgba(100, 255, 218, 0.1);
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-color);
+  }
+
+  /* Mobile globe toggle — visible */
+  .mobile-lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    opacity: 0.7;
+    cursor: pointer;
+    padding: 0.4rem 0.5rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .mobile-lang-toggle:hover,
+  .mobile-lang-toggle:active {
+    opacity: 1;
+    color: var(--accent-color);
+    background: rgba(100, 255, 218, 0.1);
+  }
+
+  .mobile-lang-code {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
 }
 
 @media (max-width: 380px) {
-  .language-switcher {
-    right: var(--space-lg);
+  .logo-image {
+    height: 24px;
+  }
+
+  .nav-links a {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.7rem;
+  }
+
+  .mobile-lang-toggle {
+    padding: 0.3rem 0.3rem;
+    min-width: 36px;
+    font-size: 0.85rem;
+  }
+
+  .mobile-lang-code {
+    font-size: 0.55rem;
   }
 }
-</style> 
+</style>

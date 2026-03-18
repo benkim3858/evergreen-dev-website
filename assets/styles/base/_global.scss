@@ -14,9 +14,57 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-color-light);
   margin-bottom: var(--space-md);
+  text-wrap: balance;
 }
 
 .section-title {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-xl);
+  text-wrap: balance;
+}
+
+.section-subtitle {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: clamp(1.75rem, 6vw, var(--font-size-xl));
+  }
+}
+
+// ===========================================
+// Channel.io Widget - Mobile UX Fix
+// ===========================================
+// Prevents the Channel.io chat widget from overlapping
+// the scroll indicator and CTA buttons on mobile screens.
+// The marketing banner/popup is suppressed via hidePopup: true
+// in plugins/channel-talk.client.ts. These CSS rules handle
+// the default launcher button positioning.
+
+@media (max-width: 768px) {
+  // Reposition the Channel.io launcher above the scroll indicator
+  // and CTA area so it does not cover interactive elements.
+  #ch-plugin-entry {
+    transform: scale(0.85);
+    transform-origin: bottom right;
+  }
+
+  // Hide the Channel.io marketing banner / popup overlay on mobile.
+  // This targets the notification popup that shows messages like
+  // "궁금한 건 채팅으로 문의하세요" and covers bottom content.
+  #ch-plugin-entry [class*="banner"],
+  #ch-plugin-entry [class*="popup"],
+  #ch-plugin-entry [class*="marketing"] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #ch-plugin-entry {
+    transform: scale(0.8);
+    transform-origin: bottom right;
+  }
 }

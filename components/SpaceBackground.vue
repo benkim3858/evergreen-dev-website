@@ -20,9 +20,20 @@ interface Star {
   color: string;
 }
 
-const STARS_COUNT = 800; // Optimized count
-const STAR_SPEED = 8;
-const TRAIL_LENGTH = 40;
+// 기준: 1440px 데스크탑에서 SPEED=8, COUNT=800, TRAIL=40
+// 화면 크기에 비례하여 스케일링 → 체감 속도/밀도 동일
+const BASE_WIDTH = 1440;
+const BASE_SPEED = 8;
+const BASE_COUNT = 800;
+const BASE_TRAIL = 40;
+
+const getStarSpeed = () => Math.max(1.5, BASE_SPEED * (w / BASE_WIDTH));
+const getStarsCount = () => Math.max(100, Math.round(BASE_COUNT * (w * h) / (BASE_WIDTH * 900)));
+const getTrailLength = () => Math.max(15, Math.round(BASE_TRAIL * (w / BASE_WIDTH)));
+
+let STARS_COUNT = 800;
+let STAR_SPEED = 8;
+let TRAIL_LENGTH = 40;
 const STAR_COLORS = [
   'rgba(255, 255, 255, 1)', 
   'rgba(255, 255, 255, 1)', 
@@ -70,6 +81,11 @@ const createStarSprite = (color: string) => {
 };
 
 const initStars = () => {
+  // 화면 크기에 따라 파라미터 재계산
+  STARS_COUNT = getStarsCount();
+  STAR_SPEED = getStarSpeed();
+  TRAIL_LENGTH = getTrailLength();
+
   // Generate sprites for each unique color
   STAR_COLORS.forEach(color => {
     if (!starSprites[color]) {
@@ -82,7 +98,7 @@ const initStars = () => {
     stars.push({
       x: Math.random() * w - w / 2,
       y: Math.random() * h - h / 2,
-      z: Math.random() * w, // Start distributed
+      z: Math.random() * w,
       color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)]
     });
   }

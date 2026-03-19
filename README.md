@@ -1,107 +1,80 @@
-# 🌿 Evergreen Dev Portfolio
-
-<div style="display: flex; justify-content: space-between; align-items: center">
- <img src="public/logo.png" alt="Evergreen Dev Logo" width="200"/>
- <div>
-   <a href="#english">English</a> | <a href="#korean">한국어</a>
- </div>
-</div>
-
 <p align="center">
- <a href="https://benkim3858.github.io">View Live Demo</a>
- ·
- <a href="https://github.com/benkim3858/benkim3858.github.io/issues">Report Bug</a>
- ·
- <a href="https://github.com/benkim3858/benkim3858.github.io/issues">Request Feature</a>
+  <img src="public/logo.png" alt="Evergreen Dev" width="120"/>
 </p>
 
-<div id="english">
+<h1 align="center">EVERGREEN DEV</h1>
 
-# English
+<p align="center">
+  <strong>Your Evergreen Technology Partner</strong><br/>
+  언제나 푸른 상록수처럼, 클라이언트의 비즈니스를 지속 가능하게 만드는 기술 파트너
+</p>
 
-## ✨ Features
+<p align="center">
+  <a href="https://evegdev.com">🌐 Website</a> &nbsp;·&nbsp;
+  <a href="mailto:ben@evegdev.com">📧 Contact</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/ben-kim-87a5a0219">💼 LinkedIn</a>
+</p>
 
-- 🌓 Interactive space background animation
-- 🌐 Multilingual support (English/Korean)
-- 📱 Fully responsive design
-- ⚡ Built with Nuxt 3 for optimal performance
-- 🎨 Clean and modern UI/UX
-- 🚀 Optimized for GitHub Pages
+<br/>
 
-## 🛠️ Built With
+## About
 
-- [Nuxt 3](https://nuxt.com/) - The Vue.js Framework
-- [Vue.js](https://vuejs.org/) - Progressive JavaScript Framework
-- [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types
-- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-- [GitHub Pages](https://pages.github.com/) - Hosting Platform
+에버그린데브는 웹, 모바일, 크로스플랫폼 개발을 통해 비즈니스의 새로운 가능성을 열어가는 IT 파트너입니다. 기획부터 개발, 배포, 유지보수까지 함께합니다.
 
-## 🌍 Internationalization
+<br/>
 
-This project supports multiple languages:
-- English (Default)
-- Korean
+## Services
 
-To add a new language:
-1. Add a new JSON file in `locales/`
-2. Add the language option in `nuxt.config.ts`
+| | Service | Description |
+|---|---------|-------------|
+| 🌐 | **Web Development** | Vue.js, React, Nuxt.js, Next.js 기반 고성능 웹 애플리케이션 |
+| 📱 | **Mobile App** | React Native, Flutter 기반 크로스플랫폼 모바일 앱 |
+| ⚙️ | **Backend System** | Node.js, Python, RESTful API, GraphQL 서버 아키텍처 |
+| 🛡️ | **System Stability** | 보안 감사, 성능 튜닝, 24/7 모니터링, 레거시 마이그레이션 |
 
-## 📝 License
+<br/>
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Featured Projects
 
-## 📧 Contact
+| Project | Description | Tech Stack |
+|---------|-------------|------------|
+| **POZO** | 언택트 포장 주문 플랫폼 | Flutter, Flutter Web, Nest.js, AWS |
+| **CROU** | 크리스천 루틴 관리 & 영적 성장 앱 | React (Next.js), React Native Webview, Nest.js, AWS |
+| **Chordly** | 음악 전문가 소셜 네트워킹 플랫폼 | Flutter, Nest.js, AWS |
+| **2025 Suwon ITS AP Forum** | ITS 아태총회 공식 모바일 플랫폼 | Flutter, Nest.js, AWS |
+| **KOBACK** | 축구교실 올인원 코칭 앱 | Flutter, Supabase |
 
-Ben Kim - benkim3858@gmail.com
+<br/>
 
-Project Link: [https://github.com/benkim3858/benkim3858.github.io](https://github.com/benkim3858/benkim3858.github.io)
+## Tech Stack
 
-## 🙏 Acknowledgments
+<p>
+  <img src="https://img.shields.io/badge/Nuxt_3-00DC82?style=flat-square&logo=nuxt.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vue.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/SCSS-CC6699?style=flat-square&logo=sass&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white"/>
+</p>
 
-- [Nuxt.js Documentation](https://nuxt.com/docs)
-- [Vue.js Documentation](https://vuejs.org/guide/introduction.html)
-- [GitHub Pages Documentation](https://docs.github.com/en/pages)
-</div>
+<br/>
+
+## Contact
+
+**에버그린데브 (EVERGREEN DEV)**
+
+| | |
+|---|---|
+| 🌐 Website | [evegdev.com](https://evegdev.com) |
+| 📧 Email | [ben@evegdev.com](mailto:ben@evegdev.com) |
+| 💼 LinkedIn | [Ben Kim](https://www.linkedin.com/in/ben-kim-87a5a0219) |
+| 📍 Location | 부산 남구 수영로 233 9층 29호 |
+
+<br/>
 
 ---
 
-<div id="korean">
-# 한국어
-
-## ✨ 주요 기능
-- 🌓 인터랙티브한 우주 배경 애니메이션
-- 🌐 다국어 지원 (영어/한국어)
-- 📱 완벽한 반응형 디자인
-- ⚡ Nuxt 3 기반의 최적화된 성능
-- 🎨 깔끔하고 현대적인 UI/UX
-- 🚀 GitHub Pages에 최적화
-
-## 🛠️ 사용 기술
-- [Nuxt 3](https://nuxt.com/) - Vue.js 프레임워크
-- [Vue.js](https://vuejs.org/) - 프로그레시브 자바스크립트 프레임워크
-- [TypeScript](https://www.typescriptlang.org/) - 타입 지원이 가능한 자바스크립트
-- [Tailwind CSS](https://tailwindcss.com/) - 유틸리티 우선 CSS 프레임워크
-- [GitHub Pages](https://pages.github.com/) - 호스팅 플랫폼
-
-## 🌍 다국어 지원
-이 프로젝트는 다음 언어들을 지원합니다:
-- 영어 (기본)
-- 한국어
-
-새로운 언어 추가 방법:
-1. `locales/` 디렉토리에 새로운 JSON 파일 추가
-2. `nuxt.config.ts`에 언어 옵션 추가
-
-## 📝 라이선스
-이 프로젝트는 MIT 라이선스를 따릅니다 - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
-
-## 📧 연락처
-Ben Kim - benkim3858@gmail.com
-
-프로젝트 링크: [https://github.com/benkim3858/benkim3858.github.io](https://github.com/benkim3858/benkim3858.github.io)
-
-## 🙏 감사의 말
-- [Nuxt.js 문서](https://nuxt.com/docs)
-- [Vue.js 문서](https://vuejs.org/guide/introduction.html)
-- [GitHub Pages 문서](https://docs.github.com/en/pages)
-</div>
+<p align="center">
+  <sub>© 2025 Evergreen Dev. All rights reserved.</sub>
+</p>

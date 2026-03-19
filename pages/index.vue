@@ -799,6 +799,7 @@ onUnmounted(() => {
   .about-header .section-subtitle {
     max-width: 340px;
     font-size: 0.9rem;
+    white-space: normal;
   }
 
   .testimonial-card {
@@ -1043,7 +1044,7 @@ onUnmounted(() => {
 
 /* Section Subtitle */
 .section-subtitle {
-  max-width: 480px;
+  max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.8;
@@ -1057,7 +1058,9 @@ onUnmounted(() => {
 }
 
 .about-header .section-subtitle {
+  max-width: 720px;
   line-height: 1.9;
+  white-space: pre-line;
 }
 
 /* Statistics Grid */

@@ -339,20 +339,20 @@
   },
   "seo": {
     "home": {
-      "title": "Evergreen Dev | Sustainable Tech Partner",
-      "description": "Evergreen Dev - 언제나 푸른 상록수처럼 변함없는 가치를 제공하는 웹/모바일 개발 전문 파트너입니다. 지속 가능한 성장을 위한 최적의 IT 솔루션을 제안합니다."
+      "title": "에버그린 데브 (Evergreen Dev) | 웹/앱 개발 전문 파트너",
+      "description": "에버그린 데브(Evergreen Dev) - 언제나 푸른 상록수처럼 변함없는 가치를 제공하는 웹/모바일 개발 전문 파트너입니다. 지속 가능한 성장을 위한 최적의 IT 솔루션을 제안합니다."
     },
     "about": {
-      "title": "Evergreen Dev | 웹/앱 개발 외주 전문 파트너",
-      "description": "성공적인 비즈니스를 위한 최고의 IT 파트너, Evergreen Dev. 플러터(Flutter) 앱 개발, 웹사이트 제작, 서버 구축 등 맞춤형 외주 개발 서비스를 제공합니다."
+      "title": "에버그린 데브 (Evergreen Dev) | 웹/앱 개발 외주 전문 파트너",
+      "description": "성공적인 비즈니스를 위한 최고의 IT 파트너, 에버그린 데브(Evergreen Dev). 플러터(Flutter) 앱 개발, 웹사이트 제작, 서버 구축 등 맞춤형 외주 개발 서비스를 제공합니다."
     },
     "projects": {
-      "title": "Projects - Evergreen Dev | Sustainable Tech Partner",
-      "description": "Evergreen Dev의 성공적인 프로젝트 포트폴리오를 확인해보세요. 웹/모바일 앱 개발부터 백엔드 시스템 구축까지, 귀사의 비즈니스를 위한 최적의 기술 솔루션을 제공합니다."
+      "title": "프로젝트 포트폴리오 | 에버그린 데브 (Evergreen Dev)",
+      "description": "에버그린 데브(Evergreen Dev)의 성공적인 프로젝트 포트폴리오를 확인해보세요. 웹/모바일 앱 개발부터 백엔드 시스템 구축까지, 귀사의 비즈니스를 위한 최적의 기술 솔루션을 제공합니다."
     },
     "contact": {
-      "title": "Contact | Evergreen Dev - 프로젝트 문의",
-      "description": "웹/앱 개발 프로젝트 문의, 기술 컨설팅, 협업 제안을 받습니다. 채널톡, 이메일, 화상 미팅으로 편하게 상담하세요."
+      "title": "문의하기 | 에버그린 데브 (Evergreen Dev) - 프로젝트 상담",
+      "description": "에버그린 데브(Evergreen Dev)에 웹/앱 개발 프로젝트 문의, 기술 컨설팅, 협업 제안을 받습니다. 채널톡, 이메일, 화상 미팅으로 편하게 상담하세요."
     }
   },
   "common": {

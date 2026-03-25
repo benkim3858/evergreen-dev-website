@@ -1,11 +1,11 @@
-# Robots.txt for Ben Kim Portfolio
-# https://benkim3858.github.io/
+# Robots.txt for Evergreen Dev
+# https://evegdev.com/
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://benkim3858.github.io/sitemap.xml
+Sitemap: https://evegdev.com/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1

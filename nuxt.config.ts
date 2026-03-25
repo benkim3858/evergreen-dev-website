@@ -39,27 +39,28 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
-      title: 'Ben Kim | Full Stack Developer',
+      title: 'Evergreen Dev | 에버그린 데브 - Web & App Development Partner',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Ben Kim - Full Stack Developer specializing in Web & Mobile Development. Vue.js, React, Node.js, and Cloud Services expert with 40+ projects.' },
-        { name: 'author', content: 'Ben Kim' },
+        { name: 'description', content: 'Evergreen Dev (에버그린 데브) - Web & Mobile Development Partner. Vue.js, React, Flutter, Node.js, and Cloud Services expert. 웹/앱 개발 전문 파트너.' },
+        { name: 'author', content: 'Evergreen Dev' },
         { name: 'robots', content: 'index, follow' },
 
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'Ben Kim Portfolio' },
-        { property: 'og:title', content: 'Ben Kim | Full Stack Developer' },
-        { property: 'og:description', content: 'Full Stack Developer specializing in Web & Mobile Development. Vue.js, React, Node.js, and Cloud Services expert.' },
+        { property: 'og:site_name', content: 'Evergreen Dev (에버그린 데브)' },
+        { property: 'og:title', content: 'Evergreen Dev | 에버그린 데브 - Web & App Development Partner' },
+        { property: 'og:description', content: 'Evergreen Dev (에버그린 데브) - Your trusted web and mobile development partner. 웹/앱 개발 전문 파트너.' },
         { property: 'og:image', content: '/logo.png' },
+        { property: 'og:url', content: 'https://evegdev.com/' },
         { property: 'og:locale', content: 'en_US' },
         { property: 'og:locale:alternate', content: 'ko_KR' },
 
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Ben Kim | Full Stack Developer' },
-        { name: 'twitter:description', content: 'Full Stack Developer specializing in Web & Mobile Development.' },
+        { name: 'twitter:title', content: 'Evergreen Dev | 에버그린 데브' },
+        { name: 'twitter:description', content: 'Evergreen Dev (에버그린 데브) - Web & Mobile Development Partner. 웹/앱 개발 전문 파트너.' },
         { name: 'twitter:image', content: '/logo.png' }
       ],
       link: [
@@ -81,7 +82,9 @@ export default defineNuxtConfig({
             "@type": "Organization",
             "url": "https://evegdev.com/",
             "logo": "https://evegdev.com/logo.png",
-            "name": "Ben Kim Portfolio",
+            "name": "Evergreen Dev",
+            "alternateName": "에버그린 데브",
+            "description": "웹/모바일 앱 개발 전문 파트너 - Web & Mobile Development Partner",
             "sameAs": [
               "https://github.com/benkim3858"
             ]

@@ -221,6 +221,10 @@
       "costReduction": "Avg. Cost Reduction",
       "uptime": "Service Uptime"
     },
+    "teamTeaser": {
+      "heading": "Expert Team, from Planning to Launch",
+      "cta": "Meet the Team"
+    },
     "testimonials": {
       "title": "Client Stories",
       "items": [
@@ -238,6 +242,42 @@
           "content": "We were skeptical about Flutter's cross-platform performance, but it delivered native-like performance. We perfectly caught both iOS and Android with one codebase.",
           "author": "Project Manager",
           "role": "O2O Service"
+        }
+      ]
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "A team of experts dedicated to your business success",
+      "members": [
+        {
+          "name": "Sena",
+          "role": "Planning / PM",
+          "bio": "Bridges business goals and technology, leading projects from strategy to launch.",
+          "skills": ["Product Strategy", "Agile", "UX Research"]
+        },
+        {
+          "name": "Betty",
+          "role": "Design",
+          "bio": "Crafts intuitive user experiences with a keen eye for aesthetics and usability.",
+          "skills": ["UI/UX", "Figma", "Motion Design"]
+        },
+        {
+          "name": "Ben",
+          "role": "Full-Stack Developer",
+          "bio": "Architects scalable systems and leads technical decisions across the full stack.",
+          "skills": ["Vue / React", "Node.js", "AWS"]
+        },
+        {
+          "name": "Jhin",
+          "role": "Full-Stack Developer",
+          "bio": "Builds cross-platform mobile apps and cloud-native backend services.",
+          "skills": ["Flutter", "Firebase", "Python"]
+        },
+        {
+          "name": "Kayn",
+          "role": "Full-Stack Developer",
+          "bio": "Delivers high-performance web applications with modern frameworks and DevOps.",
+          "skills": ["Next.js", "PostgreSQL", "Docker"]
         }
       ]
     }

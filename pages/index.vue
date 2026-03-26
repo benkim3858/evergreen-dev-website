@@ -145,6 +145,24 @@
             </div>
           </div>
 
+          <!-- Team Teaser -->
+          <div class="team-teaser">
+            <p class="team-teaser-heading">{{ $t('about.teamTeaser.heading') }}</p>
+            <div class="team-teaser-avatars">
+              <div v-for="member in teamTeaser" :key="member.name" class="teaser-member">
+                <div class="teaser-avatar">
+                  <Icon :name="member.icon" />
+                </div>
+                <span class="teaser-name">{{ member.name }}</span>
+                <span class="teaser-role">{{ member.role }}</span>
+              </div>
+            </div>
+            <NuxtLink :to="localePath('/about')" class="team-teaser-cta">
+              {{ $t('about.teamTeaser.cta') }}
+              <Icon name="mdi:arrow-right" />
+            </NuxtLink>
+          </div>
+
           <!-- Client Testimonials -->
           <div class="testimonials-section">
             <h3 class="testimonials-title text-center">{{ $t('about.testimonials.title') }}</h3>
@@ -342,6 +360,14 @@ const testimonials = computed(() => [
     rating: 5
   }
 ]);
+
+const teamTeaser = [
+  { name: 'Sena', role: 'PM', icon: 'mdi:lightbulb-outline' },
+  { name: 'Betty', role: 'Design', icon: 'mdi:palette-outline' },
+  { name: 'Ben', role: 'Dev', icon: 'mdi:code-braces' },
+  { name: 'Jhin', role: 'Dev', icon: 'mdi:code-braces' },
+  { name: 'Kayn', role: 'Dev', icon: 'mdi:code-braces' }
+];
 
 const contactText = computed(() => t('contact.description'));
 
@@ -1126,6 +1152,104 @@ onUnmounted(() => {
 .stat-label {
   color: var(--text-color);
   font-size: 0.9rem;
+}
+
+/* Team Teaser */
+.team-teaser {
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+}
+
+.team-teaser-heading {
+  color: var(--text-color-light);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xl);
+}
+
+.team-teaser-avatars {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.teaser-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.teaser-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(167, 139, 250, 0.1));
+  border: 1px solid rgba(100, 255, 218, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+  margin-bottom: 0.25rem;
+}
+
+.teaser-member:hover .teaser-avatar {
+  border-color: transparent;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(167, 139, 250, 0.2));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(100, 255, 218, 0.15);
+}
+
+.teaser-name {
+  color: var(--text-color-light);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.teaser-role {
+  font-size: 0.85rem;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.team-teaser-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-color);
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 24px;
+  transition: all 0.3s ease;
+}
+
+.team-teaser-cta:hover {
+  background: rgba(100, 255, 218, 0.08);
+  border-color: rgba(100, 255, 218, 0.4);
+}
+
+@media (max-width: 480px) {
+  .team-teaser-avatars {
+    gap: var(--space-lg);
+  }
+
+  .teaser-avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 1.6rem;
+  }
+
+  .teaser-name {
+    font-size: 0.9rem;
+  }
 }
 
 /* Testimonials */

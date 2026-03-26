@@ -241,6 +241,10 @@
       "costReduction": "Avg. Cost Reduction",
       "uptime": "Service Uptime"
     },
+    "teamTeaser": {
+      "heading": "기획부터 개발까지, 전문가 팀이 함께합니다",
+      "cta": "팀 자세히 보기"
+    },
     "testimonials": {
       "title": "Client Stories",
       "items": [
@@ -258,6 +262,42 @@
           "content": "Flutter 크로스플랫폼 성능에 대한 의구심이 있었는데, 네이티브 못지않은 퍼포먼스를 보여줬습니다. iOS와 Android 두 마리 토끼를 완벽하게 잡았습니다.",
           "author": "이OO 기획팀장",
           "role": "O2O Service"
+        }
+      ]
+    },
+    "team": {
+      "title": "팀 소개",
+      "subtitle": "고객의 비즈니스 성공을 위해 함께하는 전문가 팀",
+      "members": [
+        {
+          "name": "세나 (Sena)",
+          "role": "기획 / PM",
+          "bio": "비즈니스 목표와 기술을 연결하며, 전략 수립부터 런칭까지 프로젝트를 이끕니다.",
+          "skills": ["제품 전략", "애자일", "UX 리서치"]
+        },
+        {
+          "name": "베티 (Betty)",
+          "role": "디자인",
+          "bio": "심미성과 사용성을 겸비한 직관적인 사용자 경험을 설계합니다.",
+          "skills": ["UI/UX", "Figma", "모션 디자인"]
+        },
+        {
+          "name": "벤 (Ben)",
+          "role": "풀스택 개발자",
+          "bio": "확장 가능한 시스템을 설계하고, 풀스택 전반의 기술 결정을 리드합니다.",
+          "skills": ["Vue / React", "Node.js", "AWS"]
+        },
+        {
+          "name": "진 (Jhin)",
+          "role": "풀스택 개발자",
+          "bio": "크로스플랫폼 모바일 앱과 클라우드 네이티브 백엔드 서비스를 구축합니다.",
+          "skills": ["Flutter", "Firebase", "Python"]
+        },
+        {
+          "name": "케인 (Kayn)",
+          "role": "풀스택 개발자",
+          "bio": "모던 프레임워크와 DevOps로 고성능 웹 애플리케이션을 개발합니다.",
+          "skills": ["Next.js", "PostgreSQL", "Docker"]
         }
       ]
     }

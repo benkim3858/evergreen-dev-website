@@ -40,6 +40,25 @@
         </div>
       </div>
 
+      <!-- Team Section -->
+      <div class="content-section">
+        <h2 class="section-title text-center">{{ $t('about.team.title') }}</h2>
+        <p class="section-subtitle text-center">{{ $t('about.team.subtitle') }}</p>
+        <div class="team-grid">
+          <div v-for="(member, index) in teamMembers" :key="index" class="team-card">
+            <div class="team-avatar" :style="{ '--delay': index * 0.1 + 's' }">
+              <Icon :name="member.icon" class="avatar-icon" />
+            </div>
+            <h3 class="team-name">{{ member.name }}</h3>
+            <span class="team-role">{{ member.role }}</span>
+            <p class="team-bio">{{ member.bio }}</p>
+            <div class="team-skills">
+              <span v-for="skill in member.skills" :key="skill" class="skill-tag">{{ skill }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Testimonials Section -->
       <div class="content-section">
         <h2 class="section-title text-center">{{ $t('about.testimonials.title') }}</h2>
@@ -90,6 +109,32 @@ const achievements = computed(() => [
   { label: t('about.achievements.costReduction'), value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
   { label: t('about.achievements.uptime'), value: '99.9%', icon: 'mdi:server-network' }
 ]);
+
+const roleIcons = {
+  0: 'mdi:lightbulb-outline',
+  1: 'mdi:palette-outline',
+  2: 'mdi:code-braces',
+  3: 'mdi:code-braces',
+  4: 'mdi:code-braces'
+};
+
+const teamMembers = computed(() => {
+  try {
+    const rawMembers = tm('about.team.members');
+    if (rawMembers && Array.isArray(rawMembers)) {
+      return rawMembers.map((member, index) => ({
+        name: rt(member.name),
+        role: rt(member.role),
+        bio: rt(member.bio),
+        skills: member.skills ? member.skills.map(s => rt(s)) : [],
+        icon: roleIcons[index] || 'mdi:account'
+      }));
+    }
+  } catch (e) {
+    console.warn('Failed to load team members', e);
+  }
+  return [];
+});
 
 const testimonials = computed(() => {
   try {
@@ -353,5 +398,110 @@ const testimonials = computed(() => {
   color: #ffc107;
   font-size: 1rem;
   display: flex;
+}
+
+/* Team Section */
+.section-subtitle {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-lg);
+  opacity: 0.8;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  justify-items: center;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(100, 255, 218, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  border-color: transparent;
+}
+
+.team-card:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(167, 139, 250, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(100, 255, 218, 0.15);
+}
+
+.avatar-icon {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.team-name {
+  color: var(--text-color-light);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.team-role {
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.team-bio {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.team-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.skill-tag {
+  background: rgba(100, 255, 218, 0.08);
+  color: var(--accent-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(100, 255, 218, 0.1);
 }
 </style>

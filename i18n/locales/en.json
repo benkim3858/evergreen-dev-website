@@ -477,7 +477,8 @@
       "email": "Email Inquiry"
     },
     "loading": "Preparing your introduction...",
-    "notFound": "Company information could not be found.",
-    "fallbackMessage": "Showing the general introduction."
+    "notFound": {
+      "message": "Showing the general introduction."
+    }
   }
 }

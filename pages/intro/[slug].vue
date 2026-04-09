@@ -215,9 +215,9 @@ const { contacts } = useContactInfo()
 const slug = route.params.slug as string
 
 // ─── Supabase Fetch ─────────────────────────────
-const SUPABASE_URL = 'https://jjqobumitamcyvfgnacf.supabase.co'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpqcW9idW1pdGFtY3l2Zmdu' +
-  'YWNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4MDQ4MzUsImV4cCI6MjA1ODM4MDgzNX0.7sJKNwzZP6p5XLDRaSFb5xbRME3SQSAOOS2Lz30t6Sg'
+const config = useRuntimeConfig()
+const SUPABASE_URL = config.public.supabaseUrl as string || 'https://jjqobumitamcyvfgnacf.supabase.co'
+const SUPABASE_ANON_KEY = config.public.supabaseAnonKey as string
 
 interface IntroCompany {
   id: string

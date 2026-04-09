@@ -21,6 +21,7 @@
         <NuxtLink :to="localePath('/')" :class="{ 'nav-active': isExactHome }">{{ $t('nav.home') }}</NuxtLink>
         <NuxtLink :to="localePath('/projects')" :class="{ 'nav-active': isProjectsSection }">{{ $t('nav.projects') }}</NuxtLink>
         <NuxtLink :to="localePath('/about')" :class="{ 'nav-active': isAboutSection }">{{ $t('nav.about') }}</NuxtLink>
+        <NuxtLink :to="localePath('/intro')" :class="{ 'nav-active': isIntroSection }">{{ $t('nav.intro') }}</NuxtLink>
         <NuxtLink :to="localePath('/contact')" :class="{ 'nav-active': isContactSection }">{{ $t('nav.contact') }}</NuxtLink>
       </div>
 
@@ -87,6 +88,11 @@ const isProjectsSection = computed(() => {
 const isAboutSection = computed(() => {
   const path = route.path;
   return path === '/about' || path === '/ko/about';
+});
+
+const isIntroSection = computed(() => {
+  const path = route.path;
+  return path.startsWith('/intro') || path.startsWith('/ko/intro');
 });
 
 const isContactSection = computed(() => {

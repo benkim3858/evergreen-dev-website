@@ -11,7 +11,9 @@ export default defineNuxtConfig({
     public: {
       web3formsKey: process.env.NUXT_PUBLIC_WEB3FORMS_KEY || '',
       channelPluginKey: process.env.NUXT_PUBLIC_CHANNEL_PLUGIN_KEY || '',
-      calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL || ''
+      calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL || '',
+      supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL || 'https://jjqobumitamcyvfgnacf.supabase.co',
+      supabaseAnonKey: process.env.NUXT_PUBLIC_SUPABASE_ANON_KEY || ''
     }
   },
 

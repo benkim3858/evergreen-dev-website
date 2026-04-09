@@ -3,6 +3,7 @@
     "home": "Home",
     "projects": "Projects",
     "about": "About",
+    "intro": "Intro",
     "contact": "Contact"
   },
   "hero": {
@@ -383,5 +384,100 @@
     "loading": "Loading...",
     "error": "An error occurred",
     "required": "Required"
+  },
+  "intro": {
+    "nav": "Introduction",
+    "meta": {
+      "title": "Introduction | Evergreen Dev",
+      "description": "Discover how Evergreen Dev can be your trusted development partner."
+    },
+    "hero": {
+      "default": {
+        "title": "Focus on your business.\nWe handle the development.",
+        "subtitle": "Full-stack Development Partner for Web · Mobile · AI"
+      },
+      "cta": "Start a Consultation"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "We provide services tailored to your technical requirements.",
+      "matched": "Matched",
+      "web": {
+        "name": "Web Development",
+        "description": "High-performance responsive web applications built with modern frameworks",
+        "items": ["React / Next.js", "Vue / Nuxt.js", "TypeScript", "Responsive Design"]
+      },
+      "mobile": {
+        "name": "Mobile Development",
+        "description": "Mobile app development spanning cross-platform and native technologies",
+        "items": ["Flutter (Cross-platform)", "React Native", "Kotlin (Android)", "Swift (iOS)"]
+      },
+      "backend": {
+        "name": "Backend",
+        "description": "Reliable and scalable server architecture design and implementation",
+        "items": ["Node.js / NestJS", "Java / Spring Boot", "Python / Django", "REST API / GraphQL"]
+      },
+      "infra": {
+        "name": "Infrastructure / Cloud",
+        "description": "Cloud infrastructure setup and DevOps automation",
+        "items": ["AWS / GCP", "Docker / Kubernetes", "CI/CD Pipeline", "Monitoring / Logging"]
+      },
+      "ai": {
+        "name": "AI Solutions",
+        "description": "Business process innovation powered by AI technology",
+        "items": ["LLM Integration / RAG", "AI Automation Workflows", "Data Pipelines", "ML Model Serving"]
+      }
+    },
+    "projects": {
+      "title": "Related Projects",
+      "subtitle": "Real-world projects using tech stacks relevant to your business.",
+      "defaultSubtitle": "Our recently completed key projects.",
+      "viewMore": "View More Projects",
+      "viewDetail": "View Details"
+    },
+    "process": {
+      "title": "How We Work",
+      "subtitle": "A systematic process that drives your project to success.",
+      "steps": {
+        "consult": {
+          "title": "Consultation",
+          "duration": "1 week",
+          "description": "We assess your project requirements and propose optimal technical solutions."
+        },
+        "plan": {
+          "title": "Planning / Estimate",
+          "duration": "1-2 weeks",
+          "description": "We provide requirements analysis, WBS creation, and detailed estimates."
+        },
+        "develop": {
+          "title": "Development / QA",
+          "duration": "4-8 weeks",
+          "description": "We develop in agile sprints with weekly demo reviews."
+        },
+        "deliver": {
+          "title": "Handover",
+          "duration": "Ongoing",
+          "description": "We deliver code and documentation, with ongoing maintenance support."
+        }
+      }
+    },
+    "proposal": {
+      "title": "Our Proposal",
+      "defaultHeadline": "Get started with a proven development team",
+      "defaultPoints": [
+        "Completed numerous full-stack projects across web, mobile, and backend",
+        "End-to-end delivery from planning to deployment",
+        "Ongoing maintenance and enhancement support after launch"
+      ]
+    },
+    "cta": {
+      "title": "Let's Start Your Project",
+      "subtitle": "A quick 10-minute meeting to align on your project direction.",
+      "meeting": "Book a Meeting",
+      "email": "Email Inquiry"
+    },
+    "loading": "Preparing your introduction...",
+    "notFound": "Company information could not be found.",
+    "fallbackMessage": "Showing the general introduction."
   }
 }

@@ -221,19 +221,21 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 interface IntroCompany {
   id: string
-  slug: string
-  company_name: string
-  service_keyword: string
+  name: string
+  intro_slug: string
+  service_description: string | null
   lead_type: string
-  tech_stack: string[]
-  matched_services: string[]
-  proposal_headline: string
-  proposal_points: string[]
-  created_at: string
+  tech_stack: string[] | null
+  hiring_positions: string[] | null
+  ceo_name: string | null
+  website: string | null
+  ai_analysis: string | null
+  ai_recommended_approach: string | null
+  employee_count: number | null
 }
 
 const { data: companyData, pending } = await useFetch<IntroCompany[]>(
-  `${SUPABASE_URL}/rest/v1/intro_companies?slug=eq.${slug}&select=*`,
+  `${SUPABASE_URL}/rest/v1/companies?intro_slug=eq.${slug}&select=id,name,intro_slug,service_description,lead_type,tech_stack,hiring_positions,ceo_name,website,ai_analysis,ai_recommended_approach,employee_count`,
   {
     headers: {
       apikey: SUPABASE_ANON_KEY,
@@ -268,20 +270,45 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+// ─── Helpers ────────────────────────────────────
+function cleanCompanyName(name: string): string {
+  return name.replace(/\(주\)|주식회사|㈜/g, '').trim()
+}
+
+function extractServiceKeyword(desc: string | null): string {
+  if (!desc) return '서비스'
+  // Remove job posting noise
+  const cleaned = desc
+    .replace(/\[.*?\]/g, ' ')
+    .replace(/\(.*?경력.*?\)/g, '')
+    .replace(/\(.*?정규직.*?\)/g, '')
+    .replace(/서울\S+/g, '')
+    .replace(/경력\d+년[↑↓]?/g, '')
+    .replace(/초대졸[↑↓]?/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  // Take first meaningful phrase (up to 20 chars)
+  const words = cleaned.split(/[,.]/).filter(w => w.trim().length > 2)
+  return words[0]?.trim().slice(0, 30) || '서비스'
+}
+
 // ─── Personalized Hero ──────────────────────────
 const personalizedTitle = computed(() => {
   if (!company.value) return t('intro.hero.default.title')
-  return t('intro.hero.personalized.title', {
-    company: company.value.company_name,
-    service: company.value.service_keyword,
-  })
+  const name = cleanCompanyName(company.value.name)
+  const keyword = extractServiceKeyword(company.value.service_description)
+  return `${name}의 ${keyword},\n함께 성장하겠습니다.`
 })
 
 const personalizedSubtitle = computed(() => {
   if (!company.value) return t('intro.hero.default.subtitle')
-  return t('intro.hero.personalized.subtitle', {
-    company: company.value.company_name,
-  })
+  const matched = matchedServiceKeys.value
+  const serviceNames: Record<string, string> = {
+    web: '웹 개발', mobile: '앱 개발', backend: '백엔드',
+    infra: '인프라', ai: 'AI 솔루션'
+  }
+  const names = matched.map(k => serviceNames[k] || k).slice(0, 3)
+  return names.length > 0 ? names.join(' · ') + ' 파트너' : t('intro.hero.default.subtitle')
 })
 
 // ─── Service Matching ───────────────────────────
@@ -293,9 +320,23 @@ const services = [
   { key: 'ai', icon: 'mdi:robot-outline', items: [0, 1, 2] },
 ]
 
+const SERVICE_MATCH: Record<string, string[]> = {
+  web: ['React', 'Vue', 'Next.js', '프론트엔드', '웹개발', 'JavaScript', 'TypeScript', 'HTML', 'CSS'],
+  mobile: ['Flutter', 'React Native', 'React-Native', 'iOS', 'Android', '앱개발', 'Kotlin', 'Swift'],
+  backend: ['Java', 'Node.js', 'Python', 'Spring', 'Spring Boot', '백엔드', '서버개발', 'NestJS', 'Django', 'Express', 'REST API', 'GraphQL'],
+  infra: ['AWS', 'Docker', 'Kubernetes', 'DevOps', 'Linux', 'CI/CD', 'GCP', 'Azure'],
+  ai: ['AI', '인공지능', 'ML', '머신러닝', 'LLM', '데이터', 'PyTorch', 'TensorFlow'],
+}
+
 const matchedServiceKeys = computed(() => {
-  if (!company.value?.matched_services) return []
-  return company.value.matched_services
+  const techStack = company.value?.tech_stack
+  if (!techStack || techStack.length === 0) return []
+  const techLower = techStack.map(t => t.toLowerCase())
+  return Object.entries(SERVICE_MATCH)
+    .filter(([_, keywords]) =>
+      keywords.some(kw => techLower.some(t => t.includes(kw.toLowerCase()) || kw.toLowerCase().includes(t)))
+    )
+    .map(([key]) => key)
 })
 
 // ─── Project Matching ───────────────────────────
@@ -341,15 +382,31 @@ const defaultProposalPoints = computed(() => [
 ])
 
 const proposalHeadline = computed(() => {
-  if (!company.value?.proposal_headline) return t('intro.proposal.headline')
-  return company.value.proposal_headline
+  if (!company.value) return t('intro.proposal.defaultHeadline')
+  const isHiring = company.value.lead_type === 'hiring'
+  if (isHiring) return '검증된 개발팀과 바로 시작하세요'
+  const serviceNames: Record<string, string> = {
+    web: '웹 개발', mobile: '앱 개발', backend: '백엔드',
+    infra: '인프라', ai: 'AI 솔루션'
+  }
+  const firstMatch = matchedServiceKeys.value[0]
+  return firstMatch
+    ? `${serviceNames[firstMatch]} 프로젝트, 경험 있는 팀이 함께합니다`
+    : t('intro.proposal.defaultHeadline')
 })
 
 const proposalPoints = computed(() => {
-  if (!company.value?.proposal_points || company.value.proposal_points.length === 0) {
-    return defaultProposalPoints.value
+  if (!company.value) return defaultProposalPoints.value
+  const isHiring = company.value.lead_type === 'hiring'
+  const serviceNames: Record<string, string> = {
+    web: '웹', mobile: '앱', backend: '백엔드', infra: '인프라', ai: 'AI'
   }
-  return company.value.proposal_points
+  const techs = matchedServiceKeys.value.map(k => serviceNames[k] || k).join(', ')
+  return [
+    techs ? `${techs} 실전 프로젝트 다수 완료` : t('intro.proposal.defaultPoints[0]'),
+    isHiring ? '채용 리드타임 없이 빠른 투입 가능' : '기획부터 배포까지 원스톱으로 진행',
+    '개발 후 유지보수와 고도화를 지속 지원',
+  ]
 })
 </script>
 

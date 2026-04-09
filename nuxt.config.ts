@@ -109,14 +109,14 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: 'locales',
-    defaultLocale: 'en',
+    defaultLocale: 'ko',
     strategy: 'prefix_except_default',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'all',
       alwaysRedirect: false,
-      fallbackLocale: 'en'
+      fallbackLocale: 'ko'
     },
     bundle: {
       optimizeTranslationDirective: false

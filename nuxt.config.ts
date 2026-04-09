@@ -27,7 +27,21 @@ export default defineNuxtConfig({
 
   // Nitro 설정 - GitHub Pages용 정적 생성
   nitro: {
-    preset: 'github-pages'
+    preset: 'github-pages',
+  },
+
+  // SPA fallback — 동적 라우트(/intro/[slug])를 클라이언트에서 처리
+  hooks: {
+    'nitro:build:public-assets'(nitro) {
+      const fs = require('fs')
+      const path = require('path')
+      const publicDir = path.join(nitro.options.output.publicDir)
+      const indexHtml = path.join(publicDir, 'index.html')
+      const fallbackHtml = path.join(publicDir, '404.html')
+      if (fs.existsSync(indexHtml) && !fs.existsSync(fallbackHtml)) {
+        fs.copyFileSync(indexHtml, fallbackHtml)
+      }
+    }
   },
 
   app: {

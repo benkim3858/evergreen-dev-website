@@ -234,20 +234,36 @@ interface IntroCompany {
   employee_count: number | null
 }
 
-const { data: companyData, pending } = await useFetch<IntroCompany[]>(
-  `${SUPABASE_URL}/rest/v1/companies?intro_slug=eq.${slug}&select=id,name,intro_slug,service_description,lead_type,tech_stack,hiring_positions,ceo_name,website,ai_analysis,ai_recommended_approach,employee_count`,
-  {
-    headers: {
-      apikey: SUPABASE_ANON_KEY,
-      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-    },
-  }
-)
+const companyData = ref<IntroCompany | null>(null)
+const pending = ref(true)
+const fetchError = ref<string | null>(null)
 
-const company = computed(() => {
-  if (!companyData.value || companyData.value.length === 0) return null
-  return companyData.value[0]
+// 클라이언트에서만 fetch (SSG 404 fallback 대응)
+onMounted(async () => {
+  if (!SUPABASE_ANON_KEY) {
+    fetchError.value = 'Supabase key not configured'
+    pending.value = false
+    return
+  }
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/companies?intro_slug=eq.${slug}&select=id,name,intro_slug,service_description,lead_type,tech_stack,hiring_positions,ceo_name,website,ai_analysis,ai_recommended_approach,employee_count`
+    const res = await $fetch<IntroCompany[]>(url, {
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      },
+    })
+    if (res && res.length > 0) {
+      companyData.value = res[0]
+    }
+  } catch (e: any) {
+    fetchError.value = e?.message || 'fetch failed'
+  } finally {
+    pending.value = false
+  }
 })
+
+const company = computed(() => companyData.value)
 
 const isPersonalized = computed(() => !!company.value)
 

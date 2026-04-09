@@ -31,6 +31,8 @@ jobs:
           NUXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NUXT_PUBLIC_WEB3FORMS_KEY }}
           NUXT_PUBLIC_CHANNEL_PLUGIN_KEY: ${{ secrets.NUXT_PUBLIC_CHANNEL_PLUGIN_KEY }}
           NUXT_PUBLIC_CALENDLY_URL: ${{ secrets.NUXT_PUBLIC_CALENDLY_URL }}
+          NUXT_PUBLIC_SUPABASE_URL: https://jjqobumitamcyvfgnacf.supabase.co
+          NUXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NUXT_PUBLIC_SUPABASE_ANON_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

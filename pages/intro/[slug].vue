@@ -175,7 +175,12 @@
           </h2>
           <p class="section-desc">{{ companyContent.projectsDesc }}</p>
           <div class="projects-grid">
-            <article v-for="project in matchedProjects" :key="project.id" class="project-card">
+            <article
+              v-for="project in matchedProjects"
+              :key="project.id"
+              class="project-card clickable"
+              @click="openProjectModal(project)"
+            >
               <div class="project-thumbnail">
                 <img :src="project.images[0]" :alt="project.title" loading="lazy" />
               </div>
@@ -189,6 +194,9 @@
                 <div class="tech-tags">
                   <span v-for="tech in project.techStack" :key="tech" class="tech-tag">{{ tech }}</span>
                 </div>
+                <div class="card-hint">
+                  <Icon name="mdi:arrow-expand" /> 자세히 보기
+                </div>
               </div>
             </article>
           </div>
@@ -199,6 +207,88 @@
           </div>
         </div>
       </section>
+
+      <!-- Project Detail Modal -->
+      <Teleport to="body">
+        <Transition name="modal">
+          <div v-if="modalProject" class="modal-overlay" @click.self="closeProjectModal">
+            <div class="modal-container">
+              <button class="modal-close" @click="closeProjectModal">
+                <Icon name="mdi:close" />
+              </button>
+
+              <!-- Gallery -->
+              <div class="modal-gallery">
+                <div class="gallery-track" :style="{ transform: `translateX(-${galleryIndex * 100}%)` }">
+                  <div v-for="(img, idx) in modalProject.images" :key="idx" class="gallery-slide">
+                    <img :src="img" :alt="`${modalProject.title} ${idx + 1}`" loading="lazy" />
+                  </div>
+                </div>
+                <button v-if="modalProject.images.length > 1 && galleryIndex > 0" class="gallery-nav prev" @click.stop="galleryIndex--">
+                  <Icon name="mdi:chevron-left" />
+                </button>
+                <button v-if="modalProject.images.length > 1 && galleryIndex < modalProject.images.length - 1" class="gallery-nav next" @click.stop="galleryIndex++">
+                  <Icon name="mdi:chevron-right" />
+                </button>
+                <div v-if="modalProject.images.length > 1" class="gallery-dots">
+                  <span v-for="(_, idx) in modalProject.images" :key="idx" class="dot" :class="{ active: idx === galleryIndex }" @click.stop="galleryIndex = idx"></span>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="modal-content">
+                <h2 class="modal-title">{{ modalProject.title }}</h2>
+
+                <div class="modal-meta">
+                  <span><Icon name="mdi:calendar-range" /> {{ modalProject.period }}</span>
+                  <span><Icon name="mdi:account-group" /> {{ modalProject.teamSize }}</span>
+                  <span><Icon name="mdi:briefcase-outline" /> {{ modalProject.role }}</span>
+                </div>
+
+                <!-- Relevance badge -->
+                <div class="modal-relevance" v-if="companyContent.projectRelevance[modalProject.id]">
+                  <Icon name="mdi:link-variant" />
+                  <span>{{ companyContent.projectRelevance[modalProject.id] }}</span>
+                </div>
+
+                <p class="modal-desc">{{ modalProject.details }}</p>
+
+                <!-- Features -->
+                <div class="modal-features">
+                  <div v-for="feature in modalProject.features" :key="feature.title" class="feature-group">
+                    <h4>{{ feature.title }}</h4>
+                    <ul>
+                      <li v-for="item in feature.items" :key="item">{{ item }}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Tech -->
+                <div class="modal-tech">
+                  <span v-for="tech in modalProject.techStack" :key="tech" class="tech-tag">{{ tech }}</span>
+                </div>
+
+                <!-- Links -->
+                <div class="modal-links" v-if="modalProject.links">
+                  <a v-if="modalProject.links.web" :href="modalProject.links.web" target="_blank" rel="noopener noreferrer" class="modal-link">
+                    <Icon name="mdi:web" /> 웹사이트
+                  </a>
+                  <a v-if="modalProject.links.appStore" :href="modalProject.links.appStore" target="_blank" rel="noopener noreferrer" class="modal-link">
+                    <Icon name="mdi:apple" /> App Store
+                  </a>
+                  <a v-if="modalProject.links.playStore" :href="modalProject.links.playStore" target="_blank" rel="noopener noreferrer" class="modal-link">
+                    <Icon name="mdi:google-play" /> Play Store
+                  </a>
+                </div>
+
+                <NuxtLink :to="localePath(`/projects/${modalProject.id}`)" class="modal-detail-link" @click="closeProjectModal">
+                  프로젝트 전체 보기 <Icon name="mdi:arrow-right" />
+                </NuxtLink>
+              </div>
+            </div>
+          </div>
+        </Transition>
+      </Teleport>
 
       <!-- 5. 협업 제안 -->
       <section class="intro-section proposal-section">
@@ -506,6 +596,30 @@ const matchedProjects = computed(() => {
   scored.sort((a, b) => b.overlap - a.overlap)
   const matched = scored.filter((s) => s.overlap > 0).slice(0, 2)
   return matched.length > 0 ? matched.map((s) => s.project) : projects.value.slice(0, 2)
+})
+
+// ─── Project Modal ──────────────────────────────
+const modalProject = ref<any>(null)
+const galleryIndex = ref(0)
+
+function openProjectModal(project: any) {
+  modalProject.value = project
+  galleryIndex.value = 0
+  document.body.style.overflow = 'hidden'
+}
+
+function closeProjectModal() {
+  modalProject.value = null
+  document.body.style.overflow = ''
+}
+
+// ESC 키로 닫기
+onMounted(() => {
+  const handleEsc = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') closeProjectModal()
+  }
+  window.addEventListener('keydown', handleEsc)
+  onUnmounted(() => window.removeEventListener('keydown', handleEsc))
 })
 
 // ─── Process Steps ──────────────────────────────
@@ -835,6 +949,159 @@ const processSteps = [
   &:hover { gap: 0.8rem; }
 }
 
+// ─── Project Card Clickable ─────────────────────
+.project-card.clickable { cursor: pointer; }
+
+.card-hint {
+  display: flex; align-items: center; gap: 0.3rem;
+  color: #64ffda; font-size: 0.85rem; margin-top: 0.75rem;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.project-card.clickable:hover .card-hint { opacity: 1; }
+
+// ─── Modal ──────────────────────────────────────
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+}
+
+.modal-container {
+  background: #0f1f38; border: 1px solid rgba(100,255,218,0.15);
+  border-radius: 20px; max-width: 720px; width: 100%;
+  max-height: 90vh; overflow-y: auto; position: relative;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
+
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem; z-index: 10;
+  background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%; width: 2.5rem; height: 2.5rem;
+  display: flex; align-items: center; justify-content: center;
+  color: #e2e8f0; font-size: 1.2rem; cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover { background: rgba(100,255,218,0.15); color: #64ffda; }
+}
+
+// Gallery
+.modal-gallery {
+  position: relative; overflow: hidden; border-radius: 20px 20px 0 0;
+  background: rgba(10,25,47,0.8); height: 320px;
+}
+
+.gallery-track {
+  display: flex; height: 100%; transition: transform 0.4s ease;
+}
+
+.gallery-slide {
+  min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  img { max-width: 90%; max-height: 90%; object-fit: contain; }
+}
+
+.gallery-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%; width: 2.5rem; height: 2.5rem;
+  display: flex; align-items: center; justify-content: center;
+  color: #e2e8f0; font-size: 1.2rem; cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover { background: rgba(100,255,218,0.2); color: #64ffda; }
+  &.prev { left: 0.75rem; }
+  &.next { right: 0.75rem; }
+}
+
+.gallery-dots {
+  position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 0.5rem;
+}
+
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.3); cursor: pointer;
+  transition: all 0.2s ease;
+  &.active { background: #64ffda; transform: scale(1.3); }
+}
+
+// Content
+.modal-content { padding: 2rem; }
+
+.modal-title { font-size: 1.6rem; color: #e2e8f0; margin-bottom: 1rem; }
+
+.modal-meta {
+  display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1.25rem;
+  span {
+    display: flex; align-items: center; gap: 0.3rem;
+    color: #8892b0; font-size: 0.9rem;
+  }
+}
+
+.modal-relevance {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(100,255,218,0.06); border: 1px solid rgba(100,255,218,0.12);
+  border-radius: 8px; padding: 0.5rem 0.75rem; margin-bottom: 1.25rem;
+  font-size: 0.9rem; color: #64ffda;
+}
+
+.modal-desc { color: #94a3b8; font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+
+.modal-features {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem; margin-bottom: 1.5rem;
+}
+
+.feature-group {
+  h4 { color: #e2e8f0; font-size: 0.95rem; margin-bottom: 0.5rem; }
+  ul {
+    list-style: none; padding: 0; margin: 0;
+    li {
+      color: #8892b0; font-size: 0.9rem; line-height: 1.6;
+      padding-left: 1rem; position: relative;
+      &::before {
+        content: ''; position: absolute; left: 0; top: 0.6rem;
+        width: 5px; height: 5px; border-radius: 50%;
+        background: #64ffda; opacity: 0.6;
+      }
+    }
+  }
+}
+
+.modal-tech {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
+}
+
+.modal-links {
+  display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;
+}
+
+.modal-link {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  background: rgba(100,255,218,0.08); border: 1px solid rgba(100,255,218,0.15);
+  border-radius: 8px; padding: 0.5rem 1rem;
+  color: #64ffda; font-size: 0.9rem; text-decoration: none;
+  transition: all 0.2s ease;
+  &:hover { background: rgba(100,255,218,0.15); }
+}
+
+.modal-detail-link {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  color: #64ffda; font-size: 0.95rem; text-decoration: none;
+  transition: all 0.2s ease;
+  &:hover { gap: 0.6rem; }
+}
+
+// Modal transitions
+.modal-enter-active { transition: all 0.3s ease; }
+.modal-leave-active { transition: all 0.2s ease; }
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
+  .modal-container { transform: scale(0.95) translateY(20px); }
+}
+.modal-enter-to, .modal-leave-from {
+  opacity: 1;
+  .modal-container { transform: scale(1) translateY(0); }
+}
+
 // ─── Process ────────────────────────────────────
 .process-timeline { display: flex; gap: 2rem; position: relative;
   &::before { content: ''; position: absolute; top: 1.5rem; left: 0; right: 0; height: 2px;
@@ -901,6 +1168,10 @@ const processSteps = [
   .values-grid { grid-template-columns: 1fr; }
   .help-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
+  .modal-overlay { padding: 1rem; }
+  .modal-gallery { height: 240px; }
+  .modal-content { padding: 1.5rem; }
+  .modal-features { grid-template-columns: 1fr; }
   .process-timeline {
     flex-direction: column; gap: 1.5rem;
     &::before { width: 2px; height: 100%; top: 0; left: 1.5rem; right: auto; }

@@ -84,8 +84,10 @@
           </h2>
           <p class="section-desc">
             웹, 앱, 백엔드를 아우르는 풀스택 개발팀입니다.<br>
-            스타트업부터 중견기업까지 다양한 규모의 프로젝트를 수행해 왔습니다.
+            기획부터 디자인, 개발, 배포까지 한 팀에서 완결합니다.
           </p>
+
+          <!-- 실적 -->
           <div class="about-stats">
             <div class="about-stat">
               <div class="about-stat-value gradient-text">40+</div>
@@ -100,6 +102,49 @@
               <div class="about-stat-label">서비스 가동률</div>
             </div>
           </div>
+
+          <!-- 팀 구성 -->
+          <div class="about-team">
+            <h3 class="about-sub-heading">팀 구성</h3>
+            <div class="team-roles">
+              <div class="team-role">
+                <Icon name="mdi:clipboard-check-outline" class="team-role-icon" />
+                <span class="team-role-name">PM</span>
+                <span class="team-role-count">1명</span>
+              </div>
+              <div class="team-role">
+                <Icon name="mdi:palette-outline" class="team-role-icon" />
+                <span class="team-role-name">디자이너</span>
+                <span class="team-role-count">1명</span>
+              </div>
+              <div class="team-role">
+                <Icon name="mdi:code-braces" class="team-role-icon" />
+                <span class="team-role-name">개발자</span>
+                <span class="team-role-count">3명</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 이런 팀입니다 -->
+          <div class="about-values">
+            <h3 class="about-sub-heading">이런 팀입니다</h3>
+            <ul class="values-list">
+              <li>
+                <Icon name="mdi:check-circle-outline" class="value-icon" />
+                <span>IT 업계 평균 <strong>10년 이상 경력</strong>의 시니어 중심 팀</span>
+              </li>
+              <li>
+                <Icon name="mdi:check-circle-outline" class="value-icon" />
+                <span>스타트업부터 공공기관까지 <strong>다양한 산업과 규모</strong>의 프로젝트 경험</span>
+              </li>
+              <li>
+                <Icon name="mdi:check-circle-outline" class="value-icon" />
+                <span>개발 완료 후에도 <strong>유지보수와 고도화를 지속 지원</strong>하는 장기 파트너십 지향</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 기술 스택 -->
           <div class="about-tech">
             <span v-for="tech in ['React', 'Next.js', 'Vue', 'Flutter', 'Kotlin', 'Swift', 'Node.js', 'NestJS', 'Java', 'Spring Boot', 'Python', 'AWS']" :key="tech" class="about-tech-tag">{{ tech }}</span>
           </div>
@@ -604,6 +649,43 @@ const processSteps = [
 .about-stat-value { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .about-stat-label { color: #8892b0; font-size: 0.95rem; }
 
+.about-sub-heading {
+  font-size: 1.1rem; color: #64ffda; text-align: center;
+  margin-bottom: 1.5rem; font-weight: 600; letter-spacing: 1px;
+}
+
+.about-team { margin-bottom: 2.5rem; }
+
+.team-roles {
+  display: flex; justify-content: center; gap: 2rem;
+}
+
+.team-role {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 1.5rem 2.5rem; backdrop-filter: blur(10px);
+}
+
+.team-role-icon { font-size: 1.8rem; color: #64ffda; opacity: 0.9; }
+.team-role-name { color: #e2e8f0; font-size: 0.95rem; font-weight: 500; }
+.team-role-count { color: #8892b0; font-size: 0.85rem; }
+
+.about-values { margin-bottom: 2.5rem; }
+
+.values-list {
+  list-style: none; padding: 0; margin: 0;
+  max-width: 650px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 1rem;
+
+  li {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    color: #94a3b8; font-size: 1rem; line-height: 1.6;
+    strong { color: #e2e8f0; }
+  }
+}
+
+.value-icon { color: #64ffda; font-size: 1.3rem; flex-shrink: 0; margin-top: 0.15rem; }
+
 .about-tech {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
 }
@@ -749,6 +831,8 @@ const processSteps = [
   .hero-section { padding: 6rem 1.5rem 4rem; }
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
   .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .team-roles { gap: 1rem; }
+  .team-role { padding: 1.2rem 1.5rem; }
   .help-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .process-timeline {
@@ -767,6 +851,8 @@ const processSteps = [
   .hero-section { padding: 5rem 1rem 3rem; }
   .facts-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .about-stats { grid-template-columns: 1fr; gap: 1rem; }
+  .team-roles { flex-direction: column; align-items: center; gap: 0.75rem; }
+  .team-role { width: 100%; flex-direction: row; justify-content: center; padding: 1rem; }
   .btn-primary-intro, .btn-secondary-intro { width: 100%; justify-content: center; }
   .cta-buttons { flex-direction: column; align-items: center; }
 }

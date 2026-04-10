@@ -131,7 +131,7 @@
             <ul class="values-list">
               <li>
                 <Icon name="mdi:check-circle-outline" class="value-icon" />
-                <span>IT 업계 평균 <strong>10년 이상 경력</strong>의 시니어 중심 팀</span>
+                <span>기획, 디자인, 개발이 <strong>하나의 팀에서 빠르게 소통</strong>하며 진행</span>
               </li>
               <li>
                 <Icon name="mdi:check-circle-outline" class="value-icon" />

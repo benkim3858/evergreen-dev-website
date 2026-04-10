@@ -109,7 +109,7 @@
             <div class="team-grid">
               <div v-for="member in teamMembers" :key="member.name" class="team-card">
                 <div class="team-avatar">
-                  <span class="avatar-initial">{{ member.name.charAt(0) }}</span>
+                  <span class="avatar-initial">{{ member.initial }}</span>
                 </div>
                 <h4 class="team-name">{{ member.name }}</h4>
                 <span class="team-role-label">{{ member.role }}</span>
@@ -472,13 +472,7 @@ const companyContent = computed<CompanyContent>(() => {
 // ─── Team Members (about 페이지와 동일 데이터) ──
 const { t: _t, tm, rt } = useI18n()
 
-const roleIcons: Record<number, string> = {
-  0: 'mdi:lightbulb-outline',
-  1: 'mdi:palette-outline',
-  2: 'mdi:code-braces',
-  3: 'mdi:code-braces',
-  4: 'mdi:code-braces',
-}
+const memberInitials = ['S', 'B', 'B', 'J', 'K']
 
 const teamMembers = computed(() => {
   try {
@@ -489,7 +483,7 @@ const teamMembers = computed(() => {
         role: rt(member.role),
         bio: rt(member.bio),
         skills: member.skills ? member.skills.map((s: any) => rt(s)) : [],
-        icon: roleIcons[index] || 'mdi:account',
+        initial: memberInitials[index] || '?',
       }))
     }
   } catch {}

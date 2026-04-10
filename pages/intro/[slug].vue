@@ -103,24 +103,20 @@
             </div>
           </div>
 
-          <!-- 팀 구성 -->
+          <!-- 팀원 소개 -->
           <div class="about-team">
             <h3 class="about-sub-heading">팀 구성</h3>
-            <div class="team-roles">
-              <div class="team-role">
-                <Icon name="mdi:clipboard-check-outline" class="team-role-icon" />
-                <span class="team-role-name">PM</span>
-                <span class="team-role-count">1명</span>
-              </div>
-              <div class="team-role">
-                <Icon name="mdi:palette-outline" class="team-role-icon" />
-                <span class="team-role-name">디자이너</span>
-                <span class="team-role-count">1명</span>
-              </div>
-              <div class="team-role">
-                <Icon name="mdi:code-braces" class="team-role-icon" />
-                <span class="team-role-name">개발자</span>
-                <span class="team-role-count">3명</span>
+            <div class="team-grid">
+              <div v-for="member in teamMembers" :key="member.name" class="team-card">
+                <div class="team-avatar">
+                  <Icon :name="member.icon" class="avatar-icon" />
+                </div>
+                <h4 class="team-name">{{ member.name }}</h4>
+                <span class="team-role-label">{{ member.role }}</span>
+                <p class="team-bio">{{ member.bio }}</p>
+                <div class="team-skills">
+                  <span v-for="skill in member.skills" :key="skill" class="skill-tag">{{ skill }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -471,6 +467,33 @@ const companyContent = computed<CompanyContent>(() => {
   }
 })
 
+// ─── Team Members (about 페이지와 동일 데이터) ──
+const { t: _t, tm, rt } = useI18n()
+
+const roleIcons: Record<number, string> = {
+  0: 'mdi:lightbulb-outline',
+  1: 'mdi:palette-outline',
+  2: 'mdi:code-braces',
+  3: 'mdi:code-braces',
+  4: 'mdi:code-braces',
+}
+
+const teamMembers = computed(() => {
+  try {
+    const rawMembers = tm('about.team.members')
+    if (rawMembers && Array.isArray(rawMembers)) {
+      return rawMembers.map((member: any, index: number) => ({
+        name: rt(member.name),
+        role: rt(member.role),
+        bio: rt(member.bio),
+        skills: member.skills ? member.skills.map((s: any) => rt(s)) : [],
+        icon: roleIcons[index] || 'mdi:account',
+      }))
+    }
+  } catch {}
+  return []
+})
+
 // ─── Project Matching ───────────────────────────
 const matchedProjects = computed(() => {
   const techStack = company.value?.tech_stack
@@ -656,19 +679,55 @@ const processSteps = [
 
 .about-team { margin-bottom: 2.5rem; }
 
-.team-roles {
-  display: flex; justify-content: center; gap: 2rem;
+.team-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.2rem; justify-items: center;
 }
 
-.team-role {
-  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px; padding: 1.5rem 2.5rem; backdrop-filter: blur(10px);
+.team-card {
+  background: rgba(255,255,255,0.03); padding: 1.5rem 1.2rem;
+  border-radius: 12px; text-align: center;
+  border: 1px solid rgba(100,255,218,0.05); transition: all 0.3s ease;
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%; position: relative;
+  &:hover { transform: translateY(-5px); border-color: transparent; }
+  &:hover::after {
+    content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+    background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
 }
 
-.team-role-icon { font-size: 1.8rem; color: #64ffda; opacity: 0.9; }
-.team-role-name { color: #e2e8f0; font-size: 0.95rem; font-weight: 500; }
-.team-role-count { color: #8892b0; font-size: 0.85rem; }
+.team-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(100,255,218,0.1), rgba(167,139,250,0.1));
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; border: 1px solid rgba(100,255,218,0.15);
+}
+
+.avatar-icon { font-size: 1.6rem; color: #64ffda; }
+
+.team-name { color: #e2e8f0; font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+
+.team-role-label {
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text; -webkit-background-clip: text; color: transparent;
+  font-size: 0.85rem; font-weight: 500; margin-bottom: 0.6rem;
+}
+
+.team-bio {
+  color: #8892b0; font-size: 0.85rem; line-height: 1.5;
+  margin-bottom: 0.75rem; flex-grow: 1;
+}
+
+.team-skills { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
+
+.skill-tag {
+  background: rgba(100,255,218,0.08); color: #64ffda;
+  padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem;
+  border: 1px solid rgba(100,255,218,0.1);
+}
 
 .about-values { margin-bottom: 2.5rem; }
 
@@ -831,8 +890,7 @@ const processSteps = [
   .hero-section { padding: 6rem 1.5rem 4rem; }
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
   .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-  .team-roles { gap: 1rem; }
-  .team-role { padding: 1.2rem 1.5rem; }
+  .team-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
   .help-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .process-timeline {
@@ -851,8 +909,7 @@ const processSteps = [
   .hero-section { padding: 5rem 1rem 3rem; }
   .facts-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .about-stats { grid-template-columns: 1fr; gap: 1rem; }
-  .team-roles { flex-direction: column; align-items: center; gap: 0.75rem; }
-  .team-role { width: 100%; flex-direction: row; justify-content: center; padding: 1rem; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   .btn-primary-intro, .btn-secondary-intro { width: 100%; justify-content: center; }
   .cta-buttons { flex-direction: column; align-items: center; }
 }

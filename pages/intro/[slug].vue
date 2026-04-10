@@ -49,9 +49,9 @@
               <Icon name="mdi:calendar-clock" />
               10분 미팅 예약하기
             </a>
-            <button class="btn-secondary-intro" @click="handleEmailClick">
-              <Icon name="mdi:email-outline" />
-              {{ emailCopied ? '복사됨!' : '이메일 문의' }}
+            <button class="btn-secondary-intro" :class="{ copied: emailCopied }" @click="handleEmailClick">
+              <Icon :name="emailCopied ? 'mdi:check-circle' : 'mdi:email-outline'" />
+              {{ emailCopied ? `${contacts.email} 복사 완료` : '이메일 문의' }}
             </button>
           </div>
         </div>
@@ -520,6 +520,10 @@ const processSteps = [
 .btn-secondary-intro {
   background: transparent; color: #e2e8f0;
   border: 1px solid rgba(100,255,218,0.3); position: relative;
+  transition: all 0.3s ease;
+  &.copied {
+    border-color: #64ffda; color: #64ffda; background: rgba(100,255,218,0.08);
+  }
   &:hover { border-color: transparent; transform: translateY(-2px); }
   &:hover::after {
     content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;

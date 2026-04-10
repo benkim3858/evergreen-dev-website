@@ -179,9 +179,10 @@
             <a :href="contacts.calendlyUrl" target="_blank" rel="noopener noreferrer" class="btn-primary-intro">
               <Icon name="mdi:calendar-clock" /> 미팅 예약하기
             </a>
-            <a :href="`mailto:${contacts.email}`" class="btn-secondary-intro">
-              <Icon name="mdi:email-outline" /> 이메일 문의
-            </a>
+            <button class="btn-secondary-intro" :class="{ copied: emailCopied }" @click="handleEmailClick">
+              <Icon :name="emailCopied ? 'mdi:check-circle' : 'mdi:email-outline'" />
+              {{ emailCopied ? `${contacts.email} 복사 완료` : '이메일 문의' }}
+            </button>
           </div>
           <p class="cta-contact">{{ contacts.email }} · {{ contacts.phone || '' }}</p>
         </div>

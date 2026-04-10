@@ -252,15 +252,11 @@ const company = computed(() => companyData.value)
 const emailCopied = ref(false)
 
 async function handleEmailClick() {
-  const email = contacts.email
-  // 1. 클립보드에 복사
   try {
-    await navigator.clipboard.writeText(email)
+    await navigator.clipboard.writeText(contacts.email)
     emailCopied.value = true
     setTimeout(() => { emailCopied.value = false }, 2000)
   } catch {}
-  // 2. Gmail 웹으로 열기
-  window.open(`https://mail.google.com/mail/?view=cm&to=${email}`, '_blank')
 }
 
 // ─── SEO ────────────────────────────────────────

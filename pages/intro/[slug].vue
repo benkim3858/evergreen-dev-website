@@ -214,7 +214,7 @@
           <div v-if="modalProject" class="modal-overlay" @click.self="closeProjectModal">
             <div class="modal-container">
               <button class="modal-close" @click="closeProjectModal">
-                <Icon name="mdi:close" />
+                &#10005;
               </button>
 
               <!-- Gallery -->
@@ -225,10 +225,10 @@
                   </div>
                 </div>
                 <button v-if="modalProject.images.length > 1 && galleryIndex > 0" class="gallery-nav prev" @click.stop="galleryIndex--">
-                  <Icon name="mdi:chevron-left" />
+                  &#10094;
                 </button>
                 <button v-if="modalProject.images.length > 1 && galleryIndex < modalProject.images.length - 1" class="gallery-nav next" @click.stop="galleryIndex++">
-                  <Icon name="mdi:chevron-right" />
+                  &#10095;
                 </button>
                 <div v-if="modalProject.images.length > 1" class="gallery-dots">
                   <span v-for="(_, idx) in modalProject.images" :key="idx" class="dot" :class="{ active: idx === galleryIndex }" @click.stop="galleryIndex = idx"></span>
@@ -240,14 +240,14 @@
                 <h2 class="modal-title">{{ modalProject.title }}</h2>
 
                 <div class="modal-meta">
-                  <span><Icon name="mdi:calendar-range" /> {{ modalProject.period }}</span>
-                  <span><Icon name="mdi:account-group" /> {{ modalProject.teamSize }}</span>
-                  <span><Icon name="mdi:briefcase-outline" /> {{ modalProject.role }}</span>
+                  <span>&#128197; {{ modalProject.period }}</span>
+                  <span>&#128101; {{ modalProject.teamSize }}</span>
+                  <span>&#128188; {{ modalProject.role }}</span>
                 </div>
 
                 <!-- Relevance badge -->
                 <div class="modal-relevance" v-if="companyContent.projectRelevance[modalProject.id]">
-                  <Icon name="mdi:link-variant" />
+                  &#128279;
                   <span>{{ companyContent.projectRelevance[modalProject.id] }}</span>
                 </div>
 
@@ -271,18 +271,18 @@
                 <!-- Links -->
                 <div class="modal-links" v-if="modalProject.links">
                   <a v-if="modalProject.links.web" :href="modalProject.links.web" target="_blank" rel="noopener noreferrer" class="modal-link">
-                    <Icon name="mdi:web" /> 웹사이트
+                    &#127760; 웹사이트
                   </a>
                   <a v-if="modalProject.links.appStore" :href="modalProject.links.appStore" target="_blank" rel="noopener noreferrer" class="modal-link">
-                    <Icon name="mdi:apple" /> App Store
+                    &#63743; App Store
                   </a>
                   <a v-if="modalProject.links.playStore" :href="modalProject.links.playStore" target="_blank" rel="noopener noreferrer" class="modal-link">
-                    <Icon name="mdi:google-play" /> Play Store
+                    &#9654; Play Store
                   </a>
                 </div>
 
                 <NuxtLink :to="localePath(`/projects/${modalProject.id}`)" class="modal-detail-link" @click="closeProjectModal">
-                  프로젝트 전체 보기 <Icon name="mdi:arrow-right" />
+                  프로젝트 전체 보기 &#8594;
                 </NuxtLink>
               </div>
             </div>

@@ -76,7 +76,37 @@
         </div>
       </section>
 
-      <!-- 3. 저희가 도움이 될 수 있는 영역 -->
+      <!-- 3. Evergreen Dev 소개 -->
+      <section class="intro-section about-section">
+        <div class="intro-container">
+          <h2 class="section-heading">
+            <span class="gradient-text">Evergreen Dev</span>
+          </h2>
+          <p class="section-desc">
+            웹, 앱, 백엔드를 아우르는 풀스택 개발팀입니다.<br>
+            스타트업부터 중견기업까지 다양한 규모의 프로젝트를 수행해 왔습니다.
+          </p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="about-stat-value gradient-text">40+</div>
+              <div class="about-stat-label">완료 프로젝트</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-value gradient-text">5.0 / 5.0</div>
+              <div class="about-stat-label">클라이언트 만족도</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-value gradient-text">99.9%</div>
+              <div class="about-stat-label">서비스 가동률</div>
+            </div>
+          </div>
+          <div class="about-tech">
+            <span v-for="tech in ['React', 'Next.js', 'Vue', 'Flutter', 'Kotlin', 'Swift', 'Node.js', 'NestJS', 'Java', 'Spring Boot', 'Python', 'AWS']" :key="tech" class="about-tech-tag">{{ tech }}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 저희가 도움이 될 수 있는 영역 -->
       <section class="intro-section help-section">
         <div class="intro-container">
           <h2 class="section-heading">
@@ -559,6 +589,32 @@ const processSteps = [
   }
 }
 
+// ─── About Section ──────────────────────────────
+.about-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.about-stat {
+  text-align: center;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 2rem 1.5rem; backdrop-filter: blur(10px);
+}
+
+.about-stat-value { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.about-stat-label { color: #8892b0; font-size: 0.95rem; }
+
+.about-tech {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+}
+
+.about-tech-tag {
+  background: rgba(100,255,218,0.06); color: #64ffda;
+  padding: 0.4rem 1rem; border-radius: 24px; font-size: 0.9rem;
+  border: 1px solid rgba(100,255,218,0.1); transition: all 0.3s ease;
+  &:hover { background: rgba(100,255,218,0.12); transform: translateY(-2px); }
+}
+
 // ─── Help Areas ─────────────────────────────────
 .help-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
@@ -692,6 +748,7 @@ const processSteps = [
   .intro-section { padding: 4rem 1.5rem; }
   .hero-section { padding: 6rem 1.5rem 4rem; }
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .help-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .process-timeline {
@@ -709,6 +766,7 @@ const processSteps = [
   .intro-section { padding: 3rem 1rem; }
   .hero-section { padding: 5rem 1rem 3rem; }
   .facts-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .about-stats { grid-template-columns: 1fr; gap: 1rem; }
   .btn-primary-intro, .btn-secondary-intro { width: 100%; justify-content: center; }
   .cta-buttons { flex-direction: column; align-items: center; }
 }

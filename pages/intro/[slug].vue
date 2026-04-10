@@ -109,7 +109,7 @@
             <div class="team-grid">
               <div v-for="member in teamMembers" :key="member.name" class="team-card">
                 <div class="team-avatar">
-                  <Icon :name="member.icon" class="avatar-icon" />
+                  <span class="avatar-initial">{{ member.name.charAt(0) }}</span>
                 </div>
                 <h4 class="team-name">{{ member.name }}</h4>
                 <span class="team-role-label">{{ member.role }}</span>
@@ -123,21 +123,23 @@
 
           <!-- 이런 팀입니다 -->
           <div class="about-values">
-            <h3 class="about-sub-heading">이런 팀입니다</h3>
-            <ul class="values-list">
-              <li>
-                <Icon name="mdi:check-circle-outline" class="value-icon" />
-                <span>기획, 디자인, 개발이 <strong>하나의 팀에서 빠르게 소통</strong>하며 진행</span>
-              </li>
-              <li>
-                <Icon name="mdi:check-circle-outline" class="value-icon" />
-                <span>스타트업부터 공공기관까지 <strong>다양한 산업과 규모</strong>의 프로젝트 경험</span>
-              </li>
-              <li>
-                <Icon name="mdi:check-circle-outline" class="value-icon" />
-                <span>개발 완료 후에도 <strong>유지보수와 고도화를 지속 지원</strong>하는 장기 파트너십 지향</span>
-              </li>
-            </ul>
+            <div class="values-grid">
+              <div class="value-card">
+                <Icon name="mdi:lightning-bolt" class="value-card-icon" />
+                <h4>빠른 소통</h4>
+                <p>기획, 디자인, 개발이 하나의 팀에서 빠르게 소통하며 진행합니다.</p>
+              </div>
+              <div class="value-card">
+                <Icon name="mdi:domain" class="value-card-icon" />
+                <h4>다양한 경험</h4>
+                <p>스타트업부터 공공기관까지 다양한 산업과 규모의 프로젝트를 수행했습니다.</p>
+              </div>
+              <div class="value-card">
+                <Icon name="mdi:handshake-outline" class="value-card-icon" />
+                <h4>장기 파트너십</h4>
+                <p>개발 완료 후에도 유지보수와 고도화를 지속 지원합니다.</p>
+              </div>
+            </div>
           </div>
 
           <!-- 기술 스택 -->
@@ -706,7 +708,11 @@ const processSteps = [
   margin-bottom: 1rem; border: 1px solid rgba(100,255,218,0.15);
 }
 
-.avatar-icon { font-size: 1.6rem; color: #64ffda; }
+.avatar-initial {
+  font-size: 1.4rem; font-weight: 700;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text; -webkit-background-clip: text; color: transparent;
+}
 
 .team-name { color: #e2e8f0; font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
 
@@ -731,19 +737,26 @@ const processSteps = [
 
 .about-values { margin-bottom: 2.5rem; }
 
-.values-list {
-  list-style: none; padding: 0; margin: 0;
-  max-width: 650px; margin: 0 auto;
-  display: flex; flex-direction: column; gap: 1rem;
-
-  li {
-    display: flex; align-items: flex-start; gap: 0.6rem;
-    color: #94a3b8; font-size: 1rem; line-height: 1.6;
-    strong { color: #e2e8f0; }
-  }
+.values-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
 }
 
-.value-icon { color: #64ffda; font-size: 1.3rem; flex-shrink: 0; margin-top: 0.15rem; }
+.value-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 1.5rem; text-align: center;
+  backdrop-filter: blur(10px); transition: all 0.3s ease; position: relative;
+  &:hover { transform: translateY(-5px); border-color: transparent; }
+  &:hover::after {
+    content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+    background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  h4 { color: #e2e8f0; font-size: 1.05rem; margin-bottom: 0.5rem; }
+  p { color: #8892b0; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+}
+
+.value-card-icon { font-size: 2rem; color: #64ffda; margin-bottom: 0.75rem; opacity: 0.9; }
 
 .about-tech {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
@@ -891,6 +904,7 @@ const processSteps = [
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
   .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .team-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+  .values-grid { grid-template-columns: 1fr; }
   .help-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .process-timeline {

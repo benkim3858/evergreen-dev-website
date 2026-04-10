@@ -49,10 +49,10 @@
               <Icon name="mdi:calendar-clock" />
               10분 미팅 예약하기
             </a>
-            <a :href="`mailto:${contacts.email}`" class="btn-secondary-intro">
+            <button class="btn-secondary-intro" @click="handleEmailClick">
               <Icon name="mdi:email-outline" />
-              이메일 문의
-            </a>
+              {{ emailCopied ? '복사됨!' : '이메일 문의' }}
+            </button>
           </div>
         </div>
       </section>
@@ -247,6 +247,21 @@ onMounted(async () => {
 })
 
 const company = computed(() => companyData.value)
+
+// ─── Email Click Handler ────────────────────────
+const emailCopied = ref(false)
+
+async function handleEmailClick() {
+  const email = contacts.email
+  // 1. 클립보드에 복사
+  try {
+    await navigator.clipboard.writeText(email)
+    emailCopied.value = true
+    setTimeout(() => { emailCopied.value = false }, 2000)
+  } catch {}
+  // 2. Gmail 웹으로 열기
+  window.open(`https://mail.google.com/mail/?view=cm&to=${email}`, '_blank')
+}
 
 // ─── SEO ────────────────────────────────────────
 useSeoMeta({

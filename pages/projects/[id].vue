@@ -51,6 +51,12 @@
         </div>
       </header>
 
+      <!-- NDA Notice -->
+      <div v-if="project.client === 'Confidential'" class="nda-notice">
+        <Icon name="mdi:shield-lock-outline" size="20" />
+        <p>{{ $t('projects.ndaNotice') }}</p>
+      </div>
+
       <!-- Main Content -->
       <div class="project-body">
         <section class="content-section">
@@ -107,6 +113,30 @@ useSeoMeta({
 </script>
 
 <style scoped lang="scss">
+.nda-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(100, 255, 218, 0.05);
+  border: 1px solid rgba(100, 255, 218, 0.15);
+  border-radius: 8px;
+  margin-bottom: 3rem;
+
+  :deep(svg) {
+    color: var(--color-primary, #64ffda);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  p {
+    color: var(--color-text-secondary, #8892b0);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
 .project-detail-page {
   padding-top: 180px; // Increased top spacing significantly
   padding-bottom: 4rem;

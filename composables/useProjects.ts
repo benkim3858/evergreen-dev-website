@@ -59,6 +59,23 @@ const projectFeatureConfig: Record<string, { key: string; itemCount: number }[]>
     'koback': [
         { key: 'learning', itemCount: 2 },
         { key: 'users', itemCount: 3 }
+    ],
+    'ecommerce-platform': [
+        { key: 'commerce', itemCount: 2 },
+        { key: 'operations', itemCount: 2 },
+        { key: 'platform', itemCount: 2 }
+    ],
+    'loan-matching': [
+        { key: 'matching', itemCount: 2 },
+        { key: 'notification', itemCount: 2 }
+    ],
+    'e-signature': [
+        { key: 'contract', itemCount: 2 },
+        { key: 'workflow', itemCount: 2 }
+    ],
+    'edtech-lms': [
+        { key: 'streaming', itemCount: 2 },
+        { key: 'management', itemCount: 2 }
     ]
 };
 
@@ -197,6 +214,67 @@ const projectsStaticData: ProjectStaticData[] = [
             playStore: 'https://play.google.com/store/apps/details?id=com.koback.app',
             web: 'https://koback.co.kr/'
         }
+    },
+    {
+        id: 'ecommerce-platform',
+        title: 'E-Commerce Platform',
+        client: 'Confidential',
+        period: '2022.11. ~ 2023.07.',
+        techStack: ['Vue.js', 'Nuxt.js', 'React-Native', 'Node.js', 'MySQL', 'AWS'],
+        images: [
+            '/images/projects/ecommerce-platform/ecommerce-platform_logo.svg',
+            '/images/projects/ecommerce-platform/ecommerce-platform_1.svg',
+            '/images/projects/ecommerce-platform/ecommerce-platform_2.svg',
+            '/images/projects/ecommerce-platform/ecommerce-platform_3.svg',
+            '/images/projects/ecommerce-platform/ecommerce-platform_4.svg',
+            '/images/projects/ecommerce-platform/ecommerce-platform_5.svg'
+        ],
+        links: {}
+    },
+    {
+        id: 'loan-matching',
+        title: 'Loan Matching Platform',
+        client: 'Confidential',
+        period: '2024.01. ~ 2024.03.',
+        techStack: ['Vue.js', 'Nuxt.js', 'React-Native', 'Node.js', 'MySQL', 'AWS'],
+        images: [
+            '/images/projects/loan-matching/loan-matching_logo.svg',
+            '/images/projects/loan-matching/loan-matching_1.svg',
+            '/images/projects/loan-matching/loan-matching_2.svg',
+            '/images/projects/loan-matching/loan-matching_3.svg',
+            '/images/projects/loan-matching/loan-matching_4.svg'
+        ],
+        links: {}
+    },
+    {
+        id: 'e-signature',
+        title: 'E-Signature Service',
+        client: 'Confidential',
+        period: '2023.07. ~ 2023.09.',
+        techStack: ['Vue.js', 'Nuxt.js', 'Node.js', 'MySQL', 'AWS'],
+        images: [
+            '/images/projects/e-signature/e-signature_logo.svg',
+            '/images/projects/e-signature/e-signature_1.svg',
+            '/images/projects/e-signature/e-signature_2.svg',
+            '/images/projects/e-signature/e-signature_3.svg',
+            '/images/projects/e-signature/e-signature_4.svg'
+        ],
+        links: {}
+    },
+    {
+        id: 'edtech-lms',
+        title: 'EdTech LMS Platform',
+        client: 'Confidential',
+        period: '2022.08. ~ 2022.10.',
+        techStack: ['Vue.js', 'Nuxt.js', 'React-Native', 'Node.js', 'MySQL', 'AWS'],
+        images: [
+            '/images/projects/edtech-lms/edtech-lms_logo.svg',
+            '/images/projects/edtech-lms/edtech-lms_1.svg',
+            '/images/projects/edtech-lms/edtech-lms_2.svg',
+            '/images/projects/edtech-lms/edtech-lms_3.svg',
+            '/images/projects/edtech-lms/edtech-lms_4.svg'
+        ],
+        links: {}
     }
 ];
 
@@ -245,7 +323,12 @@ export const useProjects = () => {
                 description: getString(`projectData.${translationKey}.description`),
                 details: getString(`projectData.${translationKey}.details`),
                 role: getString(`projectData.${translationKey}.role`),
-                teamSize: staticData.id === 'koback' ? '1' : staticData.id === 'crou' ? '2' : '3',
+                teamSize: (() => {
+                    const sizeMap: Record<string, string> = {
+                        'koback': '1', 'crou': '2', 'e-signature': '1', 'loan-matching': '4'
+                    };
+                    return sizeMap[staticData.id] || '3';
+                })(),
                 features: getFeatures(translationKey)
             };
 

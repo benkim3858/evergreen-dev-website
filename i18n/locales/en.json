@@ -52,6 +52,7 @@
     "portfolioTitle": "Our Portfolio",
     "viewDetails": "View Details",
     "allProjects": "All Projects",
+    "ndaNotice": "Due to NDA (Non-Disclosure Agreement), the client name and actual service screenshots cannot be disclosed. This page focuses on key features and technology stack.",
     "common": {
       "period": "Period",
       "role": "Role",
@@ -77,121 +78,212 @@
   },
   "projectData": {
     "pozo": {
-      "description": "Revolutionary contactless pickup ordering solution",
-      "details": "POZO is a specialized platform that breaks away from the complex structure of existing delivery platforms by focusing exclusively on 'Pick-up Only' functionality, providing optimized services for both consumers and store owners. The platform was developed with a focus on eliminating delivery fees and time delays while maximizing the efficiency of contactless pickup orders.",
+      "description": "F&B O2O Ordering, Operations & Settlement Platform",
+      "details": "POZO is a three-sided F&B O2O platform comprising a consumer app, store management app, and back-office system. It integrates the entire order-to-settlement workflow including pickup ordering, PG payment processing, automated settlement, and refund handling into a single unified system. This project demonstrates end-to-end e-commerce/O2O domain capabilities, delivering both operational efficiency for merchants and seamless convenience for consumers.",
       "role": "Mobile Frontend, Backend",
       "features": {
         "ordering": {
-          "title": "Intuitive Pickup Ordering System",
+          "title": "Consumer Ordering System",
           "items": [
-            "Store Discovery: Browse nearby pickup-enabled stores via map or list view",
-            "Quick Order & Payment: Instant ordering with estimated pickup time, no delivery address required"
+            "Store Discovery: Location-based store search with map and list view options",
+            "Quick Order & Payment: Instant order processing with PG-integrated payment and estimated pickup time"
           ]
         },
         "operations": {
-          "title": "Operational Efficiency System",
+          "title": "Store Operations Management",
           "items": [
-            "Real-time Notifications: Instant order delivery to store managers with customer status updates",
-            "Store Manager App: Order status management (received, preparing, complete) and sales tracking"
+            "Real-time Order Management: Instant order routing to store managers with customer status notification",
+            "Store Manager App: Order status workflow (received/preparing/complete), sales dashboard, and operations overview"
           ]
         },
         "business": {
-          "title": "Core Business Logic",
+          "title": "Payment & Settlement Logic",
           "items": [
-            "Payment & Settlement: PG integration with automated settlement logic",
-            "Refund System: Payment cancellation and refund processing workflow"
+            "PG Integration & Auto-Settlement: End-to-end payment processing with per-store automated settlement logic",
+            "Refund Processing Workflow: Scenario-based cancellation and refund handling system"
           ]
         }
       }
     },
     "crou": {
-      "description": "Routine management & spiritual growth companion app for Christians",
-      "details": "CROU is a hybrid routine management application that supports both spiritual growth for Christian users and general life goal achievement. Users can efficiently manage faith routines like prayer and Bible reading alongside daily goals, staying inspired and consistent through daily Bible verses.",
+      "description": "Habit Formation & Goal Management Platform",
+      "details": "CROU is a SaaS platform that systematically supports habit formation and goal achievement through a customizable routine engine. Users design their own routines, track progress via performance scores and statistics, and stay consistent with scheduled push notifications. This project includes native widget development and demonstrates full-cycle mobile SaaS capabilities.",
       "role": "Mobile Frontend, Backend",
       "features": {
         "routine": {
-          "title": "Personalized Routine Management",
+          "title": "Customizable Routine Engine",
           "items": [
-            "Flexible Routine Creation: Manage daily goals like wake-up, exercise, and reading",
-            "Christian-Specific Routines: Recommended prayer, quiet time, and Bible reading plans"
+            "Routine Customization: Category-based goal setting with repeat cycles, time slots, and detailed conditions",
+            "Template-Based Recommendations: Routine package suggestions tailored to user interests"
           ]
         },
         "motivation": {
-          "title": "Motivation System",
+          "title": "Tracking & Motivation System",
           "items": [
-            "Routine Tracking: Performance scoring with weekly/monthly statistics",
-            "Scheduled Push Notifications: Reminders aligned with routine start times"
+            "Performance Scores & Statistics: Daily, weekly, and monthly achievement rate visualization and reports",
+            "Scheduled Push Notification System: Automated notification scheduling based on routine start times"
           ]
         },
         "spiritual": {
-          "title": "Spiritual Growth Tools",
+          "title": "Content & Widgets",
           "items": [
-            "Daily Bible Verses: Fresh verses daily with bookmark and share features",
-            "Lock Screen Widget: View today's verse without opening the app"
+            "Daily Content Delivery: Automated daily content distribution with bookmark and share features",
+            "Home Screen Widget: Native widget development for at-a-glance information without opening the app"
           ]
         }
       }
     },
     "chordly": {
-      "description": "Instagram-style social networking platform for music professionals",
-      "details": "Chordly is a next-generation social media app combining Instagram's intuitive user experience with specialized music matching features for professional musicians and music industry professionals. It provides essential networking and opportunities for music activities including ensemble partners, professional tutors, and paid session musician matching, maximizing collaboration efficiency.",
+      "description": "Expert Matching & Social Networking Platform",
+      "details": "Chordly is an expert matching social platform that combines multi-criteria matching algorithms, Instagram-style content feeds, and real-time direct messaging. The project covers the full spectrum of matching platform essentials: expert profile/portfolio systems, condition-based filtering and matching, feed-based content sharing, and 1:1 real-time messaging.",
       "role": "Mobile Frontend, Backend",
       "features": {
         "matching": {
-          "title": "Professional Matching System",
+          "title": "Multi-Criteria Matching System",
           "items": [
-            "Ensemble/Lesson/Session Matching: Detailed filtering by genre, instrument, and skill level",
-            "Professional Profiles: Career-focused profiles with instruments and portfolio highlights"
+            "Condition-Based Matching: Multi-criteria matching logic based on field, expertise, and proficiency level",
+            "Expert Profile & Portfolio: Profile system centered on career history, specialization, and work samples"
           ]
         },
         "social": {
-          "title": "Social Networking",
+          "title": "Social Networking & Real-Time Communication",
           "items": [
-            "Instagram-style Feed: Share photos, videos, and audio clips",
-            "Direct Messages (DM): Real-time 1:1 communication and matching coordination"
+            "Instagram-Style Content Feed: Photo, video, and media clip sharing with interaction features",
+            "Real-Time Direct Messaging: Chat-based 1:1 communication and post-match coordination"
           ]
         }
       }
     },
     "suwon-its-2025": {
-      "description": "Official mobile platform for 2025 Suwon ITS Asia-Pacific Forum",
-      "details": "An all-in-one mobile platform for participants of the 2025 Suwon ITS Asia-Pacific Forum (ITSAP 2025), designed to maximize the event experience while providing effective networking and information accessibility. Participants can experience personalized schedule management, real-time information access, and active communication through this app.",
+      "description": "All-in-One International Conference Management Platform",
+      "details": "An all-in-one mobile platform built for large-scale international event operations (2025 Suwon ITS Asia-Pacific Forum). The system integrates participant management for thousands of attendees, personalized scheduling, attendee networking, and real-time push notifications. This B2B/B2G project demonstrates the capability to deliver event platforms at scale.",
       "role": "Mobile Frontend, Backend",
       "features": {
         "schedule": {
-          "title": "Event Information & Scheduling",
+          "title": "Event Operations & Custom Scheduling",
           "items": [
-            "Program Guide: Detailed session info, speakers, and abstracts",
-            "Personal Schedule: Favorite sessions and personal agenda management"
+            "Program Guide: Large-scale event content management with session, speaker, and abstract details",
+            "Attendee Custom Schedule: Session bookmarking, personal agenda builder, and reminder integration"
           ]
         },
         "communication": {
-          "title": "Communication & Notifications",
+          "title": "Attendee Networking & Real-Time Notifications",
           "items": [
-            "Participant Networking: 1:1 and group chat features",
-            "Real-time Push Notifications: Schedule reminders and urgent announcements"
+            "Attendee Networking: On-site communication support via 1:1 and group chat",
+            "Real-Time Push System: Multi-purpose notification handling for schedule changes, urgent announcements, and reminders"
           ]
         }
       }
     },
     "koback": {
-      "description": "All-in-one coaching app for soccer school students, parents, and coaches",
-      "details": "The KOBACK app is a platform for effective communication and systematic learning management between students (players), parents, and coaches. It supports systematic soccer education by sharing real-time feedback and learning progress.",
+      "description": "Multi-Role EdTech Learning Management Platform",
+      "details": "KOBACK is an EdTech learning management platform designed for three distinct user roles: students, parents, and coaches. The project integrates role-specific UX, learning journals with progress tracking dashboards, real-time communication features, and a payment system, covering the core elements of a multi-role platform end to end.",
       "role": "Mobile Frontend, Backend",
       "features": {
         "learning": {
-          "title": "Learning & Progress Management",
+          "title": "Learning Progress Dashboard",
           "items": [
-            "Learning Journal: Coach feedback and video analysis",
-            "Progress Tracking: Individual skill development charts and reports"
+            "Learning Journal: Structured learning record system with coach feedback and video analysis",
+            "Progress Tracking: Auto-generated individual development charts and reports"
           ]
         },
         "users": {
-          "title": "User-Specific Features",
+          "title": "Three-Role Custom UX",
           "items": [
-            "Students: Profile management, practice assignment review",
-            "Parents: Child's growth records, coach consultation, tuition payment",
-            "Coaches: Class and attendance management, feedback uploads"
+            "Students: Profile management, assignment review, and learning status overview",
+            "Parents: Child growth record access, coach consultation, and tuition payment integration",
+            "Coaches: Class and attendance management, feedback uploads, and per-student progress tracking"
+          ]
+        }
+      }
+    },
+    "ecommerce-platform": {
+      "description": "Large-scale membership-based e-commerce platform renewal",
+      "details": "Full renewal of a food e-commerce platform with a large member base, building a three-sided platform for vendors, consumers, and administrators. Implemented PG payment gateway integration, automated settlement system, electronic tax invoice issuance, ERP integration, and inventory management. Built automation logic using MySQL Scheduler for auto-cancellation and event notifications.",
+      "role": "Web Frontend, Mobile, Backend",
+      "features": {
+        "commerce": {
+          "title": "Core Commerce System",
+          "items": [
+            "PG payment integration with multiple payment methods and automated settlement",
+            "Electronic tax invoice auto-issuance and refund processing workflow"
+          ]
+        },
+        "operations": {
+          "title": "Operational Automation",
+          "items": [
+            "Product and inventory ERP integration, Excel API-based bulk data management",
+            "MySQL Scheduler-based automation: auto-cancellation, event notifications"
+          ]
+        },
+        "platform": {
+          "title": "Three-Sided Platform",
+          "items": [
+            "Vendor management: product listing, order management, sales analytics",
+            "Admin back-office: member management, coupons, full operations control"
+          ]
+        }
+      }
+    },
+    "loan-matching": {
+      "description": "Customer-lender matching fintech brokerage platform",
+      "details": "A fintech brokerage service that matches customers with optimal loan products by comparing conditions from multiple lenders. Developed loan limit and interest rate comparison services, along with application history tracking and progress notification systems.",
+      "role": "Web Frontend, Mobile, Backend",
+      "features": {
+        "matching": {
+          "title": "Loan Matching System",
+          "items": [
+            "Customer loan criteria registration with automatic multi-lender comparison",
+            "Comparison service for loan limits, interest rates, and repayment terms"
+          ]
+        },
+        "notification": {
+          "title": "Application Management & Notifications",
+          "items": [
+            "Real-time loan application tracking and progress notifications",
+            "Auto-alerts for lender condition changes with re-comparison"
+          ]
+        }
+      }
+    },
+    "e-signature": {
+      "description": "Contract management and e-signature B2B SaaS",
+      "details": "A B2B web service for contract creation, upload, and electronic signatures between parties. Developed document upload and e-signature APIs, administrator contract brokerage service, and step-by-step progress notification system for contract participants.",
+      "role": "Web Frontend, Backend",
+      "features": {
+        "contract": {
+          "title": "E-Contract System",
+          "items": [
+            "Document upload and e-signature API with multi-party signing workflow",
+            "Admin contract brokerage and contract status dashboard"
+          ]
+        },
+        "workflow": {
+          "title": "Workflow Automation",
+          "items": [
+            "Stage-based auto-notifications (signature request, completion, expiry)",
+            "Contract history management and audit logging"
+          ]
+        }
+      }
+    },
+    "edtech-lms": {
+      "description": "Online lecture and live streaming education platform",
+      "details": "An education platform providing online lecture upload/management and live streaming services. Built real-time broadcasting system using OBS integration and AWS live streaming API, along with course material management. Supports both web and mobile applications.",
+      "role": "Web Frontend, Mobile, Backend",
+      "features": {
+        "streaming": {
+          "title": "Live Streaming",
+          "items": [
+            "OBS integration with AWS live streaming API for real-time broadcasting",
+            "Viewer real-time participation and lecture recording/VOD conversion"
+          ]
+        },
+        "management": {
+          "title": "Course Management System",
+          "items": [
+            "Admin lecture upload and course material management (video, documents)",
+            "Student learning history tracking and completion management"
           ]
         }
       }

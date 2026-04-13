@@ -1,0 +1,16 @@
+# Robots.txt for Evergreen Dev
+# https://evegdev.com/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://evegdev.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Block access to admin or private areas (if any)
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /assets/builds/

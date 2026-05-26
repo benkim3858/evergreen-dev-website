@@ -28,22 +28,42 @@
       "web": {
         "title": "Web Development",
         "description": "We engineer high-performance, responsive web applications using cutting-edge frameworks and modern standards.",
-        "items": ["Vue.js / Nuxt.js", "React / Next.js", "TypeScript", "Responsive Design"]
+        "items": [
+          "Vue.js / Nuxt.js",
+          "React / Next.js",
+          "TypeScript",
+          "Responsive Design"
+        ]
       },
       "mobile": {
         "title": "Mobile App",
         "description": "We deliver cross-platform mobile apps with native-like performance and seamless user experiences.",
-        "items": ["React Native", "Flutter", "iOS / Swift", "Android / Kotlin"]
+        "items": [
+          "React Native",
+          "Flutter",
+          "iOS / Swift",
+          "Android / Kotlin"
+        ]
       },
       "backend": {
         "title": "Backend System",
         "description": "We architect robust, scalable server infrastructures designed for reliability and growth.",
-        "items": ["Node.js / Express", "Python / Django", "RESTful API / GraphQL", "High Availability"]
+        "items": [
+          "Node.js / Express",
+          "Python / Django",
+          "RESTful API / GraphQL",
+          "High Availability"
+        ]
       },
       "stability": {
         "title": "System Stability",
         "description": "We ensure sustainable operations through proactive monitoring and expert maintenance services.",
-        "items": ["Security Audit", "Performance Tuning", "24/7 Monitoring", "Legacy Migration"]
+        "items": [
+          "Security Audit",
+          "Performance Tuning",
+          "24/7 Monitoring",
+          "Legacy Migration"
+        ]
       }
     }
   },
@@ -77,6 +97,34 @@
     }
   },
   "projectData": {
+    "uri-china": {
+      "description": "Chinese Learning + 1-on-1 Video Lessons + AI Pronunciation & Conversation Platform",
+      "details": "Uri China is a mobile learning platform that matches Chinese language learners with native instructors for 1-on-1 video lessons, combining iFlyTek AI pronunciation assessment with OpenAI ChatGPT-powered conversation practice. Built with Flutter for the app, NestJS for the backend, and Vue for the admin dashboard, with Toss Payments integration.",
+      "role": "Full-stack: Mobile App (Flutter), Backend (NestJS), Admin (Vue)",
+      "features": {
+        "learning": {
+          "title": "Chinese Learning System",
+          "items": [
+            "Structured level-based content with progress tracking system",
+            "Instant learning feedback via visualized AI pronunciation assessment"
+          ]
+        },
+        "video_call": {
+          "title": "1-on-1 Video Lessons",
+          "items": [
+            "Reliable real-time video calls integrated via Agora SDK",
+            "Automated scheduling and Toss Payments billing with native instructors"
+          ]
+        },
+        "ai_conversation": {
+          "title": "AI Conversation Practice",
+          "items": [
+            "Natural Chinese conversation simulation powered by OpenAI ChatGPT",
+            "Real-time pronunciation accuracy feedback via iFlyTek API"
+          ]
+        }
+      }
+    },
     "pozo": {
       "description": "F&B O2O Ordering, Operations & Settlement Platform",
       "details": "POZO is a three-sided F&B O2O platform comprising a consumer app, store management app, and back-office system. It integrates the entire order-to-settlement workflow including pickup ordering, PG payment processing, automated settlement, and refund handling into a single unified system. This project demonstrates end-to-end e-commerce/O2O domain capabilities, delivering both operational efficiency for merchants and seamless convenience for consumers.",
@@ -346,31 +394,51 @@
           "name": "Sena",
           "role": "Planning / PM",
           "bio": "Bridges business goals and technology, leading projects from strategy to launch.",
-          "skills": ["Product Strategy", "Agile", "UX Research"]
+          "skills": [
+            "Product Strategy",
+            "Agile",
+            "UX Research"
+          ]
         },
         {
           "name": "Betty",
           "role": "Design",
           "bio": "Crafts intuitive user experiences with a keen eye for aesthetics and usability.",
-          "skills": ["UI/UX", "Figma", "Motion Design"]
+          "skills": [
+            "UI/UX",
+            "Figma",
+            "Motion Design"
+          ]
         },
         {
           "name": "Ben",
           "role": "Full-Stack Developer",
           "bio": "Architects scalable systems and leads technical decisions across the full stack.",
-          "skills": ["Vue / React", "Node.js", "AWS"]
+          "skills": [
+            "Vue / React",
+            "Node.js",
+            "AWS"
+          ]
         },
         {
           "name": "Jhin",
           "role": "Full-Stack Developer",
           "bio": "Builds cross-platform mobile apps and cloud-native backend services.",
-          "skills": ["Flutter", "Firebase", "Python"]
+          "skills": [
+            "Flutter",
+            "Firebase",
+            "Python"
+          ]
         },
         {
           "name": "Kayn",
           "role": "Full-Stack Developer",
           "bio": "Delivers high-performance web applications with modern frameworks and DevOps.",
-          "skills": ["Next.js", "PostgreSQL", "Docker"]
+          "skills": [
+            "Next.js",
+            "PostgreSQL",
+            "Docker"
+          ]
         }
       ]
     }
@@ -497,27 +565,52 @@
       "web": {
         "name": "Web Development",
         "description": "High-performance responsive web applications built with modern frameworks",
-        "items": ["React / Next.js", "Vue / Nuxt.js", "TypeScript", "Responsive Design"]
+        "items": [
+          "React / Next.js",
+          "Vue / Nuxt.js",
+          "TypeScript",
+          "Responsive Design"
+        ]
       },
       "mobile": {
         "name": "Mobile Development",
         "description": "Mobile app development spanning cross-platform and native technologies",
-        "items": ["Flutter (Cross-platform)", "React Native", "Kotlin (Android)", "Swift (iOS)"]
+        "items": [
+          "Flutter (Cross-platform)",
+          "React Native",
+          "Kotlin (Android)",
+          "Swift (iOS)"
+        ]
       },
       "backend": {
         "name": "Backend",
         "description": "Reliable and scalable server architecture design and implementation",
-        "items": ["Node.js / NestJS", "Java / Spring Boot", "Python / Django", "REST API / GraphQL"]
+        "items": [
+          "Node.js / NestJS",
+          "Java / Spring Boot",
+          "Python / Django",
+          "REST API / GraphQL"
+        ]
       },
       "infra": {
         "name": "Infrastructure / Cloud",
         "description": "Cloud infrastructure setup and DevOps automation",
-        "items": ["AWS / GCP", "Docker / Kubernetes", "CI/CD Pipeline", "Monitoring / Logging"]
+        "items": [
+          "AWS / GCP",
+          "Docker / Kubernetes",
+          "CI/CD Pipeline",
+          "Monitoring / Logging"
+        ]
       },
       "ai": {
         "name": "AI Solutions",
         "description": "Business process innovation powered by AI technology",
-        "items": ["LLM Integration / RAG", "AI Automation Workflows", "Data Pipelines", "ML Model Serving"]
+        "items": [
+          "LLM Integration / RAG",
+          "AI Automation Workflows",
+          "Data Pipelines",
+          "ML Model Serving"
+        ]
       }
     },
     "projects": {

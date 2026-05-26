@@ -97,6 +97,34 @@
     }
   },
   "projectData": {
+    "uri-china": {
+      "description": "중국어 학습 + 1:1 화상 수업 + AI 발음평가·대화 통합 플랫폼",
+      "details": "우리차이나는 중국어 학습자와 원어민 강사를 매칭하여 1:1 화상 수업을 제공하고, iFlyTek AI 발음평가 + OpenAI ChatGPT 기반 AI 대화 연습을 통합한 모바일 학습 플랫폼입니다. Flutter 기반 앱과 NestJS 서버, Vue 관리자 페이지로 구성되며 토스 페이먼츠로 결제 처리합니다.",
+      "role": "모바일 앱(Flutter), 백엔드(NestJS), 관리자(Vue) 풀스택 개발",
+      "features": {
+        "learning": {
+          "title": "중국어 학습 시스템",
+          "items": [
+            "체계적인 레벨별 학습 콘텐츠와 진도 관리 시스템 구축",
+            "AI 발음평가 결과 시각화로 학습 효과 즉시 측정 가능"
+          ]
+        },
+        "video_call": {
+          "title": "1:1 화상 수업",
+          "items": [
+            "Agora SDK 기반 안정적인 실시간 영상 통화 통합",
+            "원어민 강사와 일정 매칭 및 토스 페이먼츠 결제 자동화"
+          ]
+        },
+        "ai_conversation": {
+          "title": "AI 대화 연습",
+          "items": [
+            "OpenAI ChatGPT 기반 자연스러운 중국어 대화 시뮬레이션",
+            "iFlyTek API로 발음 정확도 실시간 피드백 제공"
+          ]
+        }
+      }
+    },
     "pozo": {
       "description": "F&B 포장 주문/운영/정산 통합 플랫폼",
       "details": "POZO는 소비자 앱, 매장 관리 앱, 백오피스로 구성된 3면 F&B O2O 플랫폼입니다. 포장 주문 접수부터 PG 결제 연동, 자동 정산, 환불 처리까지 주문-결제-운영 전 과정을 하나의 시스템으로 통합 구현했습니다. 매장 운영 효율화와 소비자 편의성을 동시에 달성한 이커머스/O2O 도메인 프로젝트입니다.",
@@ -366,31 +394,51 @@
           "name": "세나 (Sena)",
           "role": "기획 / PM",
           "bio": "비즈니스 목표와 기술을 연결하며, 전략 수립부터 런칭까지 프로젝트를 이끕니다.",
-          "skills": ["제품 전략", "애자일", "UX 리서치"]
+          "skills": [
+            "제품 전략",
+            "애자일",
+            "UX 리서치"
+          ]
         },
         {
           "name": "베티 (Betty)",
           "role": "디자인",
           "bio": "심미성과 사용성을 겸비한 직관적인 사용자 경험을 설계합니다.",
-          "skills": ["UI/UX", "Figma", "모션 디자인"]
+          "skills": [
+            "UI/UX",
+            "Figma",
+            "모션 디자인"
+          ]
         },
         {
           "name": "벤 (Ben)",
           "role": "풀스택 개발자",
           "bio": "확장 가능한 시스템을 설계하고, 풀스택 전반의 기술 결정을 리드합니다.",
-          "skills": ["Vue / React", "Node.js", "AWS"]
+          "skills": [
+            "Vue / React",
+            "Node.js",
+            "AWS"
+          ]
         },
         {
           "name": "진 (Jhin)",
           "role": "풀스택 개발자",
           "bio": "크로스플랫폼 모바일 앱과 클라우드 네이티브 백엔드 서비스를 구축합니다.",
-          "skills": ["Flutter", "Firebase", "Python"]
+          "skills": [
+            "Flutter",
+            "Firebase",
+            "Python"
+          ]
         },
         {
           "name": "케인 (Kayn)",
           "role": "풀스택 개발자",
           "bio": "모던 프레임워크와 DevOps로 고성능 웹 애플리케이션을 개발합니다.",
-          "skills": ["Next.js", "PostgreSQL", "Docker"]
+          "skills": [
+            "Next.js",
+            "PostgreSQL",
+            "Docker"
+          ]
         }
       ]
     }
@@ -517,27 +565,52 @@
       "web": {
         "name": "웹 개발",
         "description": "최신 프레임워크 기반 고성능 반응형 웹 애플리케이션",
-        "items": ["React / Next.js", "Vue / Nuxt.js", "TypeScript", "Responsive Design"]
+        "items": [
+          "React / Next.js",
+          "Vue / Nuxt.js",
+          "TypeScript",
+          "Responsive Design"
+        ]
       },
       "mobile": {
         "name": "앱 개발",
         "description": "크로스플랫폼과 네이티브를 아우르는 모바일 앱 개발",
-        "items": ["Flutter (크로스플랫폼)", "React Native", "Kotlin (Android)", "Swift (iOS)"]
+        "items": [
+          "Flutter (크로스플랫폼)",
+          "React Native",
+          "Kotlin (Android)",
+          "Swift (iOS)"
+        ]
       },
       "backend": {
         "name": "백엔드",
         "description": "안정적이고 확장 가능한 서버 아키텍처 설계 및 구축",
-        "items": ["Node.js / NestJS", "Java / Spring Boot", "Python / Django", "REST API / GraphQL"]
+        "items": [
+          "Node.js / NestJS",
+          "Java / Spring Boot",
+          "Python / Django",
+          "REST API / GraphQL"
+        ]
       },
       "infra": {
         "name": "인프라/클라우드",
         "description": "클라우드 인프라 구축과 DevOps 자동화",
-        "items": ["AWS / GCP", "Docker / Kubernetes", "CI/CD Pipeline", "모니터링 / 로깅"]
+        "items": [
+          "AWS / GCP",
+          "Docker / Kubernetes",
+          "CI/CD Pipeline",
+          "모니터링 / 로깅"
+        ]
       },
       "ai": {
         "name": "AI 솔루션",
         "description": "AI 기술을 활용한 비즈니스 프로세스 혁신",
-        "items": ["LLM 연동 / RAG", "AI 자동화 워크플로우", "데이터 파이프라인", "ML 모델 서빙"]
+        "items": [
+          "LLM 연동 / RAG",
+          "AI 자동화 워크플로우",
+          "데이터 파이프라인",
+          "ML 모델 서빙"
+        ]
       }
     },
     "projects": {

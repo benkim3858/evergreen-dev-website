@@ -38,6 +38,11 @@ interface ProjectStaticData {
 
 // Define feature keys and item counts for each project to use t() with specific paths
 const projectFeatureConfig: Record<string, { key: string; itemCount: number }[]> = {
+    'uri-china': [
+        { key: 'learning', itemCount: 2 },
+        { key: 'video_call', itemCount: 2 },
+        { key: 'ai_conversation', itemCount: 2 }
+    ],
     'pozo': [
         { key: 'ordering', itemCount: 2 },
         { key: 'operations', itemCount: 2 },
@@ -81,6 +86,25 @@ const projectFeatureConfig: Record<string, { key: string; itemCount: number }[]>
 
 // Static data that doesn't need translation
 const projectsStaticData: ProjectStaticData[] = [
+    {
+        id: 'uri-china',
+        title: '우리차이나',
+        client: 'EVERGREEN DEV',
+        period: '2026.01. ~ 2026.03.',
+        techStack: ['Flutter', 'Nest.js', 'MySQL', 'AWS', 'Agora SDK', 'OpenAI API'],
+        images: [
+            '/images/projects/uri-china/uri-china_logo.png',
+            '/images/projects/uri-china/uri-china_1.jpg',
+            '/images/projects/uri-china/uri-china_2.jpg',
+            '/images/projects/uri-china/uri-china_3.jpg',
+            '/images/projects/uri-china/uri-china_4.jpg',
+            '/images/projects/uri-china/uri-china_5.jpg',
+            '/images/projects/uri-china/uri-china_6.jpg',
+            '/images/projects/uri-china/uri-china_7.jpg',
+            '/images/projects/uri-china/uri-china_8.jpg'
+        ],
+        links: {}
+    },
     {
         id: 'pozo',
         title: 'POZO',
@@ -325,7 +349,8 @@ export const useProjects = () => {
                 role: getString(`projectData.${translationKey}.role`),
                 teamSize: (() => {
                     const sizeMap: Record<string, string> = {
-                        'koback': '1', 'crou': '2', 'e-signature': '1', 'loan-matching': '4'
+                        'koback': '1', 'crou': '2', 'e-signature': '1', 'loan-matching': '4',
+                        'uri-china': '3'
                     };
                     return sizeMap[staticData.id] || '3';
                 })(),

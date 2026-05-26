@@ -354,15 +354,16 @@ useSeoMeta({
 }
 
 .gallery-grid {
-  column-count: 1;
-  column-gap: 1.5rem;
-  
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
   @media (min-width: 640px) {
-    column-count: 2;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (min-width: 1024px) {
-    column-count: 3;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -372,8 +373,6 @@ useSeoMeta({
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease;
   background: rgba(255,255,255,0.05);
-  break-inside: avoid;
-  margin-bottom: 1.5rem;
 
   &:hover {
     transform: translateY(-5px);

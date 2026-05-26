@@ -79,7 +79,7 @@
         <section class="content-section" v-if="project.images && project.images.length > 0">
           <h2>{{ $t('projects.common.gallery') }}</h2>
           <div class="gallery-grid">
-            <div v-for="(image, idx) in project.images.slice(1)" :key="idx" class="gallery-item">
+            <div v-for="(image, idx) in sortedGalleryImages" :key="image" class="gallery-item">
               <img :src="image" :alt="`${project.title} screenshot ${idx + 1}`" loading="lazy">
             </div>
           </div>
@@ -105,6 +105,15 @@ const localePath = useLocalePath();
 const route = useRoute();
 const { getProjectById } = useProjects();
 const project = computed(() => getProjectById(route.params.id));
+
+// 갤러리 이미지를 파일명 자연 순서로 정렬 (1·2·...·9·10·11 — string sort 회피)
+// images[0]은 logo이므로 slice(1)로 제외
+const sortedGalleryImages = computed(() => {
+  if (!project.value?.images) return [];
+  return [...project.value.images.slice(1)].sort((a, b) =>
+    a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
+  );
+});
 
 useSeoMeta({
   title: () => project.value ? `${project.value.title} - Success Case | Evergreen Dev` : t('projects.notFound.title'),

@@ -103,7 +103,11 @@ const projectsStaticData: ProjectStaticData[] = [
             '/images/projects/uri-china/uri-china_7.jpg',
             '/images/projects/uri-china/uri-china_8.jpg'
         ],
-        links: {}
+        links: {
+            appStore: 'https://apps.apple.com/kr/app/우리차이나/id6759438054',
+            playStore: 'https://play.google.com/store/apps/details?id=com.sangsangane.urichina',
+            web: 'https://www.urichina.com/'
+        }
     },
     {
         id: 'pozo',

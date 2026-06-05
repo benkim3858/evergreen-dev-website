@@ -3,7 +3,7 @@
     <ClientOnly>
       <SpaceBackground />
     </ClientOnly>
-    <nav class="nav-container">
+    <nav class="nav-container" :class="{ scrolled: isScrolled }">
       <!-- Desktop: Logo (left) -->
       <div class="nav-logo">
         <NuxtLink :to="localePath('/')" class="logo">

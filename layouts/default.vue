@@ -157,9 +157,30 @@ onUnmounted(() => {
   backdrop-filter: blur(12px);
   z-index: 1000;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+}
+
+/* Gradient border — ::before + CSS mask (CLAUDE.md MUST: border-radius 요소 그라데이션 테두리 기법) */
+.nav-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-container:hover::before {
+  opacity: 0.85;
 }
 
 .nav-container.scrolled {

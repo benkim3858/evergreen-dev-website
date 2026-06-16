@@ -1,4 +1,34 @@
 {
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "The questions we hear most often from teams considering outsourced development.",
+    "items": [
+      {
+        "q": "What kind of development does Evergreen Dev do?",
+        "a": "Evergreen Dev provides full-stack outsourced development across web applications, mobile apps (iOS and Android), and backend servers. We cover the entire process, from planning and design through development, deployment, and maintenance."
+      },
+      {
+        "q": "Which tech stack do you use?",
+        "a": "We build web applications with React, Next.js, Vue, and Nuxt; mobile apps with Flutter and React Native for cross-platform, or Kotlin and Swift for native. Backends are built on Node.js, Java, and Python."
+      },
+      {
+        "q": "How long does development take?",
+        "a": "Timelines depend on project scope. A typical web or app project takes 2-3 weeks for consultation and planning, and 4-8 weeks for development and QA. We provide an exact schedule and milestones after analyzing requirements."
+      },
+      {
+        "q": "Do you provide maintenance after launch?",
+        "a": "Yes. After launch we hand over the code and documentation and continue to support feature enhancements and maintenance. Long-term partnership engagements are available."
+      },
+      {
+        "q": "How does the collaboration process work?",
+        "a": "We work in four stages: consultation, planning and estimation, agile sprint development with weekly demo reviews, and handover. Progress is shared transparently through regular reviews."
+      },
+      {
+        "q": "How can I request a consultation or quote?",
+        "a": "You can reach us through the website contact form, email (ben{'@'}evegdev.com), Channel Talk live chat, or by booking a video meeting. Share your requirements and we will provide a tailored quote."
+      }
+    ]
+  },
   "nav": {
     "home": "Home",
     "projects": "Projects",

@@ -191,6 +191,30 @@
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq-section">
+      <div class="container">
+        <h2 class="section-title text-center">{{ $t('faq.title') }}</h2>
+        <p class="section-subtitle text-center">{{ $t('faq.subtitle') }}</p>
+        <div class="faq-list">
+          <details
+            v-for="(item, i) in faqItems"
+            :key="i"
+            class="faq-item"
+            :open="i === 0"
+          >
+            <summary class="faq-question">
+              <span>{{ item.q }}</span>
+              <Icon name="mdi:chevron-down" class="faq-chevron" />
+            </summary>
+            <div class="faq-answer">
+              <p>{{ item.a }}</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
       <div class="container">
@@ -294,8 +318,34 @@
 </template>
 
 <script setup>
-const { t, locale } = useI18n();
+const { t, locale, tm, rt } = useI18n();
 const localePath = useLocalePath();
+
+// FAQ 데이터 (i18n 배열). DOM에 항상 렌더 + FAQPage JSON-LD로 AI 검색/리치결과 대응.
+const faqItems = computed(() => {
+  const items = tm('faq.items');
+  return Array.isArray(items)
+    ? items.map((item) => ({ q: rt(item.q), a: rt(item.a) }))
+    : [];
+});
+
+useHead(() => ({
+  script: [
+    {
+      type: 'application/ld+json',
+      key: 'faq-jsonld',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.value.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
+      }),
+    },
+  ],
+}));
 
 // 컨테이너 스크롤 상태를 레이아웃과 공유 (useState는 컴포넌트 간 전역 상태 공유)
 const containerScrollY = useState('containerScrollY', () => 0);
@@ -1640,5 +1690,55 @@ onUnmounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+/* FAQ Section */
+.faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.faq-item {
+  background: var(--bg-color-light, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border-radius: var(--border-radius-md, 8px);
+  overflow: hidden;
+  transition: var(--transition-normal, all 0.3s ease);
+}
+.faq-item[open] {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-color-light, #ccd6f6);
+  list-style: none;
+}
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+.faq-chevron {
+  flex-shrink: 0;
+  font-size: 1.3rem;
+  color: var(--accent-color, #64ffda);
+  transition: transform 0.3s ease;
+}
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  color: var(--text-color, #8892b0);
+  line-height: 1.7;
+}
+.faq-answer p {
+  margin: 0;
 }
 </style>

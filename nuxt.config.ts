@@ -28,6 +28,14 @@ export default defineNuxtConfig({
   // Nitro 설정 - GitHub Pages용 정적 생성
   nitro: {
     preset: 'github-pages',
+    prerender: {
+      // ko 라우트는 nav 링크에서 자동 크롤되지만, 영어(/en) 라우트는
+      // 기본 로케일(ko) DOM에 링크가 없어 크롤되지 않는다.
+      // 영어 진입점을 시드로 주면 crawlLinks가 /en 내부 링크를 따라
+      // /en/about·/en/contact·/en/projects/* 까지 정적 생성한다.
+      crawlLinks: true,
+      routes: ['/en', '/en/about', '/en/contact', '/en/projects'],
+    },
   },
 
   // SPA fallback — 동적 라우트(/intro/[slug])를 클라이언트에서 처리
@@ -52,9 +60,8 @@ export default defineNuxtConfig({
 
     // 전역 SEO 메타태그
     head: {
-      htmlAttrs: {
-        lang: 'en'
-      },
+      // <html lang>/dir, hreflang, canonical, og:url, og:locale은
+      // layouts/default.vue의 useLocaleHead()가 라우트·로케일별로 동적 생성한다.
       title: 'Evergreen Dev | 에버그린 데브 - Web & App Development Partner',
       meta: [
         { charset: 'utf-8' },
@@ -69,9 +76,7 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Evergreen Dev | 에버그린 데브 - Web & App Development Partner' },
         { property: 'og:description', content: 'Evergreen Dev (에버그린 데브) - Your trusted web and mobile development partner. 웹/앱 개발 전문 파트너.' },
         { property: 'og:image', content: '/logo.png' },
-        { property: 'og:url', content: 'https://evegdev.com/' },
-        { property: 'og:locale', content: 'en_US' },
-        { property: 'og:locale:alternate', content: 'ko_KR' },
+        // og:url, og:locale, og:locale:alternate → useLocaleHead()가 라우트별 동적 생성
 
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
@@ -84,7 +89,7 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/logo.png' },
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/logo.png' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/logo.png' },
-        { rel: 'canonical', href: 'https://evegdev.com/' },
+        // canonical → useLocaleHead()가 라우트별 동적 생성
         // Fonts - Pretendard (Variable)
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css', crossorigin: 'anonymous' },
         // Fonts - Google (Space Mono for Logo, Fira Code for Monospace)
@@ -95,14 +100,30 @@ export default defineNuxtConfig({
           type: 'application/ld+json',
           innerHTML: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Organization",
+            "@type": ["Organization", "ProfessionalService"],
+            "@id": "https://evegdev.com/#organization",
             "url": "https://evegdev.com/",
             "logo": "https://evegdev.com/logo.png",
+            "image": "https://evegdev.com/logo.png",
             "name": "Evergreen Dev",
             "alternateName": "에버그린 데브",
             "description": "웹/모바일 앱 개발 전문 파트너 - Web & Mobile Development Partner",
+            "email": "ben@evegdev.com",
+            "areaServed": { "@type": "Country", "name": "South Korea" },
+            "serviceType": [
+              "Web Development",
+              "Mobile App Development",
+              "Backend Development",
+              "Software Outsourcing"
+            ],
+            "knowsAbout": [
+              "Vue.js", "React", "Next.js", "Nuxt.js",
+              "Flutter", "React Native", "Kotlin", "Swift",
+              "Node.js", "Java", "Python", "Cloud Services"
+            ],
             "sameAs": [
-              "https://github.com/benkim3858"
+              "https://github.com/evegdev",
+              "https://www.linkedin.com/in/ben-kim-87a5a0219"
             ]
           })
         }
@@ -114,13 +135,17 @@ export default defineNuxtConfig({
     locales: [
       {
         code: 'en',
+        language: 'en-US',
         file: 'en.json'
       },
       {
         code: 'ko',
+        language: 'ko-KR',
         file: 'ko.json'
       }
     ],
+    // hreflang/canonical/og:url을 완전한 절대 URL로 생성하기 위한 사이트 origin
+    baseUrl: 'https://evegdev.com',
     lazy: true,
     langDir: 'locales',
     defaultLocale: 'ko',
@@ -128,7 +153,10 @@ export default defineNuxtConfig({
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'all',
+      // 'all'은 /en 같은 명시 경로까지 기본 로케일로 리다이렉트시켜
+      // 영어 페이지가 prerender되지 못하게 한다. 'root'는 루트(/)에서만
+      // 브라우저 언어를 감지하며 SEO 권장값이다.
+      redirectOn: 'root',
       alwaysRedirect: false,
       fallbackLocale: 'ko'
     },

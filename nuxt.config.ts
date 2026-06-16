@@ -3,8 +3,16 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/i18n',
     'nuxt-icon',
-    'nuxt-calendly'
+    'nuxt-calendly',
+    '@nuxtjs/sitemap'
   ],
+
+  // 사이트 기준 URL — @nuxtjs/sitemap이 절대 URL·hreflang 생성에 사용.
+  // nuxt-i18n을 자동 감지해 로케일별 URL과 alternate를 함께 생성한다.
+  site: {
+    url: 'https://evegdev.com',
+    name: 'Evergreen Dev'
+  },
 
   // Runtime Config - 환경 변수
   runtimeConfig: {

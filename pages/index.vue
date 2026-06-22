@@ -28,6 +28,41 @@
       </div>
     </section>
 
+    <!-- Story Section -->
+    <section id="story" class="section story-section">
+      <div class="container story-inner">
+        <p class="story-eyebrow">{{ $t('story.eyebrow') }}</p>
+
+        <h2 class="story-lead">
+          {{ $t('story.lead1') }}<br>
+          <span class="story-dim">{{ $t('story.lead2') }}</span>
+        </h2>
+
+        <p class="story-block">
+          {{ $t('story.block1a') }}<br>
+          {{ $t('story.block1b') }}
+        </p>
+        <p class="story-block is-dim">
+          {{ $t('story.block2a') }}<br>
+          {{ $t('story.block2b') }}
+        </p>
+
+        <blockquote class="story-quote">
+          <p class="story-quote-main">{{ $t('story.quoteMain') }}</p>
+          <p class="story-quote-sub">{{ $t('story.quoteSub') }}</p>
+        </blockquote>
+
+        <p class="story-turn">
+          {{ $t('story.turnPre') }}<span class="highlight">{{ $t('story.turnEmph') }}</span>{{ $t('story.turnPost') }}
+        </p>
+
+        <p class="story-closing">
+          {{ $t('story.closing1') }}<br>
+          {{ $t('story.closing2') }}
+        </p>
+      </div>
+    </section>
+
     <!-- Expertise Section -->
     <section id="expertise" class="section expertise-section">
       <div class="container">
@@ -1740,5 +1775,155 @@ onUnmounted(() => {
 }
 .faq-answer p {
   margin: 0;
+}
+
+/* ===========================================
+   Story Section — 다크/그라데이션 톤 매니페스토 내러티브
+   =========================================== */
+.story-section {
+  display: flex;
+  align-items: center;
+}
+.story-inner {
+  max-width: 880px;
+}
+.story-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: var(--space-xl);
+}
+.story-lead {
+  font-size: clamp(1.8rem, 4.2vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.34;
+  letter-spacing: -0.02em;
+  color: var(--text-color-light);
+  margin-bottom: var(--space-xxl);
+}
+.story-lead .story-dim {
+  color: #56688c;
+}
+.story-block {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-color-light);
+  max-width: 44ch;
+  margin-bottom: var(--space-lg);
+}
+.story-block.is-dim {
+  color: #7585a3;
+  font-weight: 400;
+}
+.story-quote {
+  margin: var(--space-xxl) 0;
+  padding: var(--space-lg) var(--space-xl);
+  background: rgba(10, 25, 47, 0.6);
+  border: 1px solid rgba(100, 255, 218, 0.14);
+  border-left: 3px solid #64ffda;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+.story-quote-main {
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: var(--space-sm);
+}
+.story-quote-sub {
+  font-size: clamp(0.95rem, 1.7vw, 1.12rem);
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+}
+.story-turn {
+  font-size: clamp(1.4rem, 2.9vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #56688c;
+  margin-bottom: var(--space-xl);
+  max-width: 44ch;
+}
+.story-turn .highlight {
+  font-weight: 700;
+}
+.story-closing {
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--text-color-light);
+  max-width: 42ch;
+}
+
+/* 스크롤 리빌 — 섹션이 .visible(IntersectionObserver) 받을 때 staggered */
+.story-section .story-eyebrow,
+.story-section .story-lead,
+.story-section .story-block,
+.story-section .story-quote,
+.story-section .story-turn,
+.story-section .story-closing {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-section.visible .story-eyebrow {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.05s;
+}
+.story-section.visible .story-lead {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.15s;
+}
+.story-section.visible .story-block {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s;
+}
+.story-section.visible .story-block.is-dim {
+  transition-delay: 0.42s;
+}
+.story-section.visible .story-quote {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.56s;
+}
+.story-section.visible .story-turn {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.68s;
+}
+.story-section.visible .story-closing {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-section .story-eyebrow,
+  .story-section .story-lead,
+  .story-section .story-block,
+  .story-section .story-quote,
+  .story-section .story-turn,
+  .story-section .story-closing {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 </style>

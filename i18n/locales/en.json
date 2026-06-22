@@ -51,6 +51,22 @@
       "maintenance": "System Maintenance"
     }
   },
+  "story": {
+    "eyebrow": "WHY EVERGREEN",
+    "lead1": "Many companies want to build great products,",
+    "lead2": "but don't know where to begin.",
+    "block1a": "Too many teams are left with polished decks and half-built prototypes,",
+    "block1b": "never reaching an actual launch.",
+    "block2a": "Slowing development, mounting technical debt.",
+    "block2b": "There's no longer room for the unfinished or the delayed.",
+    "quoteMain": "Building it right — that's the answer.",
+    "quoteSub": "Good software isn't a cost. It's an asset that drives business growth.",
+    "turnPre": "And Evergreen proves that answer with ",
+    "turnEmph": "shipped results",
+    "turnPost": ".",
+    "closing1": "We don't simply take on outsourcing.",
+    "closing2": "We become the technology partner for your next decade of growth."
+  },
   "expertise": {
     "title": "Our Services",
     "subtitle": "Empowering your business with cutting-edge web, mobile, and cross-platform solutions.",

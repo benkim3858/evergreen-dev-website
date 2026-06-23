@@ -31,32 +31,34 @@
     <!-- Story Section -->
     <section id="story" class="section story-section">
       <div class="container story-inner">
-        <p class="story-eyebrow">{{ $t('story.eyebrow') }}</p>
+        <p class="story-eyebrow story-reveal">{{ $t('story.eyebrow') }}</p>
 
-        <h2 class="story-lead">
+        <h2 class="story-lead story-reveal">
           {{ $t('story.lead1') }}<br>
           <span class="story-dim">{{ $t('story.lead2') }}</span>
         </h2>
 
-        <p class="story-block">
+        <p class="story-block story-reveal">
           {{ $t('story.block1a') }}<br>
           {{ $t('story.block1b') }}
         </p>
-        <p class="story-block is-dim">
+        <p class="story-block is-dim story-reveal">
           {{ $t('story.block2a') }}<br>
           {{ $t('story.block2b') }}
         </p>
 
-        <blockquote class="story-quote">
-          <p class="story-quote-main">{{ $t('story.quoteMain') }}</p>
-          <p class="story-quote-sub">{{ $t('story.quoteSub') }}</p>
-        </blockquote>
+        <figure class="story-pullquote story-reveal">
+          <p class="story-pullquote-main">{{ $t('story.quoteMain') }}</p>
+          <figcaption class="story-pullquote-sub">{{ $t('story.quoteSub') }}</figcaption>
+        </figure>
 
-        <p class="story-turn">
+        <p class="story-turn story-reveal">
           {{ $t('story.turnPre') }}<span class="highlight">{{ $t('story.turnEmph') }}</span>{{ $t('story.turnPost') }}
         </p>
 
-        <p class="story-closing">
+        <p class="story-proof story-reveal">{{ $t('story.proof') }}</p>
+
+        <p class="story-closing story-reveal">
           {{ $t('story.closing1') }}<br>
           {{ $t('story.closing2') }}
         </p>
@@ -575,6 +577,19 @@ onMounted(() => {
   sections.forEach(section => {
     observer.observe(section);
   });
+
+  // Story 섹션 — 요소별 스크롤 리빌 (#work 패턴: 진입 시 in, 완전히 벗어나면 리셋 → 재진입 리플레이)
+  const storyEls = document.querySelectorAll('.story-reveal');
+  const storyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+      } else if (entry.intersectionRatio === 0) {
+        entry.target.classList.remove('is-in');
+      }
+    });
+  }, { threshold: [0, 0.15], root: observerRoot, rootMargin: '0px 0px -8% 0px' });
+  storyEls.forEach(el => storyObserver.observe(el));
 
   // Scroll indicator 클릭 시 expertise 섹션으로 이동
   const scrollIndicator = document.querySelector('.scroll-indicator');
@@ -1821,30 +1836,39 @@ onUnmounted(() => {
   color: #7585a3;
   font-weight: 400;
 }
-.story-quote {
-  margin: var(--space-xxl) 0;
-  padding: var(--space-lg) var(--space-xl);
-  background: rgba(10, 25, 47, 0.6);
-  border: 1px solid rgba(100, 255, 218, 0.14);
-  border-left: 3px solid #64ffda;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
+/* Editorial pull-quote — 카드(배경/보더/blur) 제거, 타이포로 승부.
+   유일한 장식: 좌측 얇은 그라데이션 헤어라인 (signature). */
+.story-pullquote {
+  position: relative;
+  margin: calc(var(--space-xxl) * 1.4) 0;
+  padding-left: clamp(1.25rem, 3vw, 2.25rem);
 }
-.story-quote-main {
-  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+.story-pullquote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.18em;
+  bottom: 0.18em;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #64ffda, #4af3ff, #a78bfa);
+}
+.story-pullquote-main {
+  font-size: clamp(1.9rem, 4.6vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
   background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
-.story-quote-sub {
-  font-size: clamp(0.95rem, 1.7vw, 1.12rem);
-  line-height: 1.6;
+.story-pullquote-sub {
+  font-size: clamp(1rem, 1.9vw, 1.2rem);
+  line-height: 1.65;
   color: var(--text-color);
+  max-width: 42ch;
   margin: 0;
 }
 .story-turn {
@@ -1858,6 +1882,13 @@ onUnmounted(() => {
 .story-turn .highlight {
   font-weight: 700;
 }
+.story-proof {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.65;
+  color: var(--text-color);
+  max-width: 46ch;
+  margin-bottom: var(--space-xl);
+}
 .story-closing {
   font-size: clamp(1.3rem, 2.6vw, 1.9rem);
   font-weight: 700;
@@ -1867,60 +1898,23 @@ onUnmounted(() => {
   max-width: 42ch;
 }
 
-/* 스크롤 리빌 — 섹션이 .visible(IntersectionObserver) 받을 때 staggered */
-.story-section .story-eyebrow,
-.story-section .story-lead,
-.story-section .story-block,
-.story-section .story-quote,
-.story-section .story-turn,
-.story-section .story-closing {
+/* 스크롤 리빌 — 각 요소가 뷰포트 진입 시 개별 트리거(#work 패턴).
+   완전히 벗어나면 리셋 → 재진입마다 리플레이. 스크롤하며 한 문장씩 등장. */
+.story-reveal {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(30px);
   transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
-.story-section.visible .story-eyebrow {
+.story-reveal.is-in {
   opacity: 1;
   transform: none;
-  transition-delay: 0.05s;
-}
-.story-section.visible .story-lead {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.15s;
-}
-.story-section.visible .story-block {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.3s;
-}
-.story-section.visible .story-block.is-dim {
-  transition-delay: 0.42s;
-}
-.story-section.visible .story-quote {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.56s;
-}
-.story-section.visible .story-turn {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.68s;
-}
-.story-section.visible .story-closing {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.8s;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .story-section .story-eyebrow,
-  .story-section .story-lead,
-  .story-section .story-block,
-  .story-section .story-quote,
-  .story-section .story-turn,
-  .story-section .story-closing {
+  .story-reveal {
     opacity: 1;
     transform: none;
     transition: none;

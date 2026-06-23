@@ -392,29 +392,11 @@
     "title": "About",
     "pageTitle": "About Evergreen Dev",
     "description": "Your business success is our top priority. We're more than developers — we're committed partners in your growth journey, from concept to launch and beyond.",
-    "processIntro": "Instead of vague promises, we prove it through how we work.",
-    "process": {
-      "plan": {
-        "title": "Plan",
-        "desc": "We define your business goals together first."
-      },
-      "design": {
-        "title": "Design",
-        "desc": "We map user flows and architecture before code."
-      },
-      "build": {
-        "title": "Build",
-        "desc": "AI-native development — fast and solid."
-      },
-      "grow": {
-        "title": "Launch & Grow",
-        "desc": "We don't stop at launch; we grow with you."
-      }
-    },
     "proof": {
       "label": "Projects Launched"
     },
     "whyTitle": "Why Evergreen?",
+    "teamTitle": "Our Team",
     "philosophy": {
       "partner": {
         "title": "Business Partner",

@@ -434,7 +434,7 @@ const typewriterTexts = computed(() => [
   t('hero.typewriter.ai'),
   t('hero.typewriter.web'),
   t('hero.typewriter.backend'),
-  t('hero.typewriter.saas')
+  t('hero.typewriter.aiAgent')
 ]);
 
 const currentText = ref('');

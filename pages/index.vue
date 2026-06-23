@@ -6,8 +6,13 @@
     <section id="home" class="section hero-section">
       <div class="hero-content">
         <div class="text-content">
+          <p class="hero-status">
+            <span class="hero-status-dot" aria-hidden></span>
+            {{ $t('hero.status') }}
+          </p>
           <h1 class="animate-text">
-            <span class="highlight">EVERGREEN DEV</span>
+            {{ $t('hero.headline1') }}<br>
+            <span class="highlight">{{ $t('hero.headline2') }}</span>
           </h1>
           <p class="hero-slogan">
             {{ $t('hero.slogan') }}<br>
@@ -403,10 +408,10 @@ useSeoMeta({
 
 // Typewriter texts - reactive to locale changes
 const typewriterTexts = computed(() => [
-  t('hero.typewriter.tech_partner'),
-  t('hero.typewriter.web_mobile'),
-  t('hero.typewriter.cross_platform'),
-  t('hero.typewriter.maintenance')
+  t('hero.typewriter.ai'),
+  t('hero.typewriter.web'),
+  t('hero.typewriter.backend'),
+  t('hero.typewriter.saas')
 ]);
 
 const currentText = ref('');
@@ -680,14 +685,40 @@ onUnmounted(() => {
   position: relative;
 }
 
+/* 히어로 상태라인 (가용성 신호 — open for new projects) */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #8ea2c0;
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+.hero-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #64ffda;
+  box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.5);
+  animation: heroPulse 2.4s ease-out infinite;
+}
+@keyframes heroPulse {
+  0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(100, 255, 218, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
+}
+
 .animate-text {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-bottom: var(--space-md);
-  line-height: 1.2;
-  background: linear-gradient(to right, #64ffda, #4af3ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  color: var(--text-color-light);
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease forwards;
@@ -1918,6 +1949,9 @@ onUnmounted(() => {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .hero-status-dot {
+    animation: none;
   }
 }
 </style>

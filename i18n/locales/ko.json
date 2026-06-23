@@ -37,18 +37,21 @@
     "contact": "연락처"
   },
   "hero": {
-    "slogan": "언제나 푸른 상록수처럼",
-    "sloganSub": "클라이언트의 비즈니스를 지속 가능하게 만드는 기술 파트너",
+    "status": "OPEN FOR NEW PROJECTS",
+    "headline1": "처음부터 끝까지,",
+    "headline2": "당신의 개발 파트너",
+    "slogan": "한 번 만들고 떠나는 외주가 아닙니다.",
+    "sloganSub": "기획·개발·배포·운영까지 함께하며, 비즈니스가 자랄 때까지 곁을 지키는 기술 파트너입니다.",
     "cta": {
       "services": "서비스 소개",
-      "contact": "프로젝트 문의"
+      "contact": "파트너 상담 시작"
     },
     "scroll": "스크롤",
     "typewriter": {
-      "tech_partner": "지속 가능한 기술 파트너",
-      "web_mobile": "웹 & 모바일 솔루션",
-      "cross_platform": "크로스 플랫폼 개발",
-      "maintenance": "시스템 유지보수 및 고도화"
+      "ai": "AI · AX 자동화",
+      "web": "웹 · 모바일 앱",
+      "backend": "백엔드 · API",
+      "saas": "SaaS · 대시보드"
     }
   },
   "story": {

@@ -37,18 +37,21 @@
     "contact": "Contact"
   },
   "hero": {
-    "slogan": "Your Evergreen Technology Partner",
-    "sloganSub": "Building sustainable solutions that fuel lasting business growth",
+    "status": "OPEN FOR NEW PROJECTS",
+    "headline1": "From first line to last,",
+    "headline2": "your development partner",
+    "slogan": "Not the build-it-and-leave kind of agency.",
+    "sloganSub": "We stay through planning, development, deployment, and operations — a technology partner that sticks around as your business grows.",
     "cta": {
       "services": "Explore Services",
-      "contact": "Start a Conversation"
+      "contact": "Talk to a Partner"
     },
     "scroll": "Scroll Down",
     "typewriter": {
-      "tech_partner": "Sustainable Tech Partner",
-      "web_mobile": "Web & Mobile Solutions",
-      "cross_platform": "Cross-Platform Expert",
-      "maintenance": "System Maintenance"
+      "ai": "AI · AX Automation",
+      "web": "Web · Mobile Apps",
+      "backend": "Backend · API",
+      "saas": "SaaS · Dashboards"
     }
   },
   "story": {

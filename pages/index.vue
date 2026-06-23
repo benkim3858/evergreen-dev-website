@@ -69,9 +69,9 @@
     <!-- Expertise Section -->
     <section id="expertise" class="section expertise-section">
       <div class="container">
-        <h2 class="section-title text-center">{{ $t('expertise.title') }}</h2>
+        <h2 class="section-title text-center story-reveal">{{ $t('expertise.title') }}</h2>
         <div class="expertise-grid">
-          <div class="expertise-card featured-card">
+          <div class="expertise-card featured-card story-reveal">
             <span class="featured-badge">CORE</span>
             <div class="featured-body">
               <div class="featured-lead">
@@ -87,7 +87,7 @@
             </div>
           </div>
 
-          <div class="expertise-card featured-card">
+          <div class="expertise-card featured-card story-reveal">
             <div class="featured-body">
               <div class="featured-lead">
                 <div class="expertise-icon">
@@ -102,7 +102,7 @@
             </div>
           </div>
 
-          <div class="expertise-card featured-card">
+          <div class="expertise-card featured-card story-reveal">
             <div class="featured-body">
               <div class="featured-lead">
                 <div class="expertise-icon">

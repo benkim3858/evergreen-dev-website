@@ -200,8 +200,8 @@
               <img src="/founder.png" :alt="$t('about.founder.name')" loading="lazy" width="394" height="551" />
             </div>
             <div class="founder-info">
-              <h3 class="founder-name">{{ $t('about.founder.name') }}</h3>
               <p class="founder-role">{{ $t('about.founder.role') }}</p>
+              <h3 class="founder-name">{{ $t('about.founder.name') }}</h3>
               <p class="founder-bio">{{ $t('about.founder.bio') }}</p>
             </div>
           </div>
@@ -1460,51 +1460,39 @@ onUnmounted(() => {
   white-space: pre-line;
 }
 
-/* Founder 소개 카드 — 대표 강조, 흑백→컬러 hover */
+/* Founder 소개 — 세로 레이아웃(레퍼런스): 큰 사진 위 + 캡션 아래, 흑백→컬러 hover */
 .founder-card {
   display: flex;
-  align-items: center;
-  gap: var(--space-xxl);
-  max-width: 680px;
+  flex-direction: column;
+  max-width: 360px;
   margin: 0 auto var(--space-xxl);
-  padding: var(--space-xl);
-  border-radius: 16px;
-  background:
-    radial-gradient(120% 140% at 0% 0%, rgba(100, 255, 218, 0.08), transparent 55%),
-    rgba(10, 25, 47, 0.6);
-  border: 1px solid rgba(100, 255, 218, 0.18);
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-.founder-card:hover {
-  border-color: rgba(100, 255, 218, 0.35);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(100, 255, 218, 0.1);
+  text-decoration: none;
 }
 /* 큰 인물 사진 (세로 라운드 사각) — 신뢰감, 그라데이션 보더 + 글로우 */
 .founder-photo {
-  flex-shrink: 0;
-  width: 200px;
-  height: 264px;
-  border-radius: 18px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
   padding: 2px;
   background: linear-gradient(150deg, #64ffda, #4af3ff, #a78bfa);
-  box-shadow: 0 14px 36px rgba(2, 12, 27, 0.45);
+  box-shadow: 0 18px 44px rgba(2, 12, 27, 0.5);
+  margin-bottom: var(--space-lg);
+  overflow: hidden;
 }
 .founder-photo img {
   width: 100%;
   height: 100%;
   display: block;
-  border-radius: 16px;
+  border-radius: 18px;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 15%;
   /* 흑백 시 얼굴이 너무 밝게 뜨는 것 보정: 대비↑ 밝기↓ */
   filter: grayscale(100%) contrast(1.18) brightness(0.82);
-  transition: filter 0.5s ease, transform 0.5s ease;
+  transition: filter 0.5s ease;
 }
 @media (hover: hover) {
   .founder-card:hover .founder-photo img {
     filter: grayscale(0%) contrast(1) brightness(1);
-    transform: scale(1.03);
   }
 }
 @media (hover: none) {
@@ -1513,41 +1501,35 @@ onUnmounted(() => {
 }
 .founder-info {
   text-align: left;
+  padding: 0 0.25rem;
 }
-.founder-name {
-  font-size: 1.5rem;
-  color: var(--text-color-light);
-  margin: 0 0 0.2rem;
-}
+/* eyebrow — 직함(레퍼런스 CEO / VISIONARY 톤) */
 .founder-role {
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  margin: 0 0 0.5rem;
+}
+.founder-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-color-light);
   margin: 0 0 var(--space-sm);
 }
 .founder-bio {
   font-size: 0.98rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--text-color);
   margin: 0;
-  max-width: 36ch;
 }
 @media (prefers-reduced-motion: reduce) {
   .founder-photo img { transition: none; }
-}
-@media (max-width: 768px) {
-  .founder-card {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-md);
-    padding: var(--space-lg);
-  }
-  .founder-info { text-align: center; }
-  .founder-bio { max-width: none; }
 }
 
 /* 신뢰 지표 (40+ 프로젝트 출시 — 팀 섹션 마무리) */

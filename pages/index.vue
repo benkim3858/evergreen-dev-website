@@ -88,48 +88,34 @@
             </div>
           </div>
 
-          <div class="expertise-card">
-            <div class="expertise-icon">
-              <Icon name="mdi:web" />
+          <div class="expertise-card featured-card">
+            <div class="featured-body">
+              <div class="featured-lead">
+                <div class="expertise-icon">
+                  <Icon name="mdi:monitor-cellphone" />
+                </div>
+                <h3>{{ $t('expertise.cards.webMobile.title') }}</h3>
+                <p>{{ $t('expertise.cards.webMobile.description') }}</p>
+              </div>
+              <ul class="expertise-list featured-list">
+                <li v-for="item in expertiseItems.webMobile" :key="item">{{ item }}</li>
+              </ul>
             </div>
-            <h3>{{ $t('expertise.cards.web.title') }}</h3>
-            <p>{{ $t('expertise.cards.web.description') }}</p>
-            <ul class="expertise-list">
-              <li v-for="item in expertiseItems.web" :key="item">{{ item }}</li>
-            </ul>
           </div>
 
-          <div class="expertise-card">
-            <div class="expertise-icon">
-              <Icon name="mdi:cellphone" />
+          <div class="expertise-card featured-card">
+            <div class="featured-body">
+              <div class="featured-lead">
+                <div class="expertise-icon">
+                  <Icon name="mdi:server-network" />
+                </div>
+                <h3>{{ $t('expertise.cards.backendOps.title') }}</h3>
+                <p>{{ $t('expertise.cards.backendOps.description') }}</p>
+              </div>
+              <ul class="expertise-list featured-list">
+                <li v-for="item in expertiseItems.backendOps" :key="item">{{ item }}</li>
+              </ul>
             </div>
-            <h3>{{ $t('expertise.cards.mobile.title') }}</h3>
-            <p>{{ $t('expertise.cards.mobile.description') }}</p>
-            <ul class="expertise-list">
-              <li v-for="item in expertiseItems.mobile" :key="item">{{ item }}</li>
-            </ul>
-          </div>
-
-          <div class="expertise-card">
-            <div class="expertise-icon">
-              <Icon name="mdi:database" />
-            </div>
-            <h3>{{ $t('expertise.cards.backend.title') }}</h3>
-            <p>{{ $t('expertise.cards.backend.description') }}</p>
-            <ul class="expertise-list">
-              <li v-for="item in expertiseItems.backend" :key="item">{{ item }}</li>
-            </ul>
-          </div>
-
-          <div class="expertise-card">
-            <div class="expertise-icon">
-              <Icon name="mdi:shield-check" />
-            </div>
-            <h3>{{ $t('expertise.cards.stability.title') }}</h3>
-            <p>{{ $t('expertise.cards.stability.description') }}</p>
-            <ul class="expertise-list">
-              <li v-for="item in expertiseItems.stability" :key="item">{{ item }}</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -477,35 +463,31 @@ const contactText = computed(() => t('contact.description'));
 
 // Expertise card items - use t() with array index for proper string resolution
 const expertiseItems = computed(() => ({
-  web: [
-    t('expertise.cards.web.items[0]'),
-    t('expertise.cards.web.items[1]'),
-    t('expertise.cards.web.items[2]'),
-    t('expertise.cards.web.items[3]')
-  ],
   ai: [
     t('expertise.cards.ai.items[0]'),
     t('expertise.cards.ai.items[1]'),
     t('expertise.cards.ai.items[2]'),
     t('expertise.cards.ai.items[3]')
   ],
-  mobile: [
-    t('expertise.cards.mobile.items[0]'),
-    t('expertise.cards.mobile.items[1]'),
-    t('expertise.cards.mobile.items[2]'),
-    t('expertise.cards.mobile.items[3]')
+  webMobile: [
+    t('expertise.cards.webMobile.items[0]'),
+    t('expertise.cards.webMobile.items[1]'),
+    t('expertise.cards.webMobile.items[2]'),
+    t('expertise.cards.webMobile.items[3]'),
+    t('expertise.cards.webMobile.items[4]'),
+    t('expertise.cards.webMobile.items[5]'),
+    t('expertise.cards.webMobile.items[6]'),
+    t('expertise.cards.webMobile.items[7]')
   ],
-  backend: [
-    t('expertise.cards.backend.items[0]'),
-    t('expertise.cards.backend.items[1]'),
-    t('expertise.cards.backend.items[2]'),
-    t('expertise.cards.backend.items[3]')
-  ],
-  stability: [
-    t('expertise.cards.stability.items[0]'),
-    t('expertise.cards.stability.items[1]'),
-    t('expertise.cards.stability.items[2]'),
-    t('expertise.cards.stability.items[3]')
+  backendOps: [
+    t('expertise.cards.backendOps.items[0]'),
+    t('expertise.cards.backendOps.items[1]'),
+    t('expertise.cards.backendOps.items[2]'),
+    t('expertise.cards.backendOps.items[3]'),
+    t('expertise.cards.backendOps.items[4]'),
+    t('expertise.cards.backendOps.items[5]'),
+    t('expertise.cards.backendOps.items[6]'),
+    t('expertise.cards.backendOps.items[7]')
   ]
 }));
 

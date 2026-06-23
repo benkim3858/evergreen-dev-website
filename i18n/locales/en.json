@@ -74,16 +74,6 @@
     "title": "Our Services",
     "subtitle": "Empowering your business with cutting-edge web, mobile, and cross-platform solutions.",
     "cards": {
-      "web": {
-        "title": "Web Development",
-        "description": "We engineer high-performance, responsive web applications using cutting-edge frameworks and modern standards.",
-        "items": [
-          "Vue.js / Nuxt.js",
-          "React / Next.js",
-          "TypeScript",
-          "Responsive Design"
-        ]
-      },
       "ai": {
         "title": "AI · AX Solutions",
         "description": "We embed the latest LLMs and AI agents into your product and automate repetitive work to transform how your business runs.",
@@ -94,30 +84,28 @@
           "AI Chatbots · Assistants"
         ]
       },
-      "mobile": {
-        "title": "Mobile App",
-        "description": "We deliver cross-platform mobile apps with native-like performance and seamless user experiences.",
+      "webMobile": {
+        "title": "Web · Mobile Development",
+        "description": "We build high-performance web apps with modern frameworks and near-native mobile apps with cross-platform technology.",
         "items": [
+          "Vue.js / Nuxt.js",
+          "React / Next.js",
+          "TypeScript",
+          "Responsive Design",
           "React Native",
           "Flutter",
           "iOS / Swift",
           "Android / Kotlin"
         ]
       },
-      "backend": {
-        "title": "Backend System",
-        "description": "We architect robust, scalable server infrastructures designed for reliability and growth.",
+      "backendOps": {
+        "title": "Backend · Operations",
+        "description": "We design and build stable, scalable server architecture, and safeguard your digital assets with continuous monitoring and maintenance.",
         "items": [
           "Node.js / Express",
           "Python / Django",
           "RESTful API / GraphQL",
-          "High Availability"
-        ]
-      },
-      "stability": {
-        "title": "System Stability",
-        "description": "We ensure sustainable operations through proactive monitoring and expert maintenance services.",
-        "items": [
+          "High Availability",
           "Security Audit",
           "Performance Tuning",
           "24/7 Monitoring",

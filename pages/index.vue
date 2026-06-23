@@ -6,10 +6,6 @@
     <section id="home" class="section hero-section">
       <div class="hero-content">
         <div class="text-content">
-          <p class="hero-status">
-            <span class="hero-status-dot" aria-hidden></span>
-            {{ $t('hero.status') }}
-          </p>
           <h1 class="animate-text">
             {{ $t('hero.headline1') }}<br>
             <span class="highlight">{{ $t('hero.headline2') }}</span>
@@ -683,33 +679,6 @@ onUnmounted(() => {
 
 .text-content {
   position: relative;
-}
-
-/* 히어로 상태라인 (가용성 신호 — open for new projects) */
-.hero-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: clamp(0.7rem, 1.4vw, 0.8rem);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: #8ea2c0;
-  margin-bottom: var(--space-lg);
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-}
-.hero-status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #64ffda;
-  box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.5);
-  animation: heroPulse 2.4s ease-out infinite;
-}
-@keyframes heroPulse {
-  0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.5); }
-  70% { box-shadow: 0 0 0 8px rgba(100, 255, 218, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
 }
 
 .animate-text {
@@ -1949,9 +1918,6 @@ onUnmounted(() => {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-  .hero-status-dot {
-    animation: none;
   }
 }
 </style>

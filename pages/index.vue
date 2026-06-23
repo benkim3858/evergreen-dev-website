@@ -1486,18 +1486,21 @@ onUnmounted(() => {
   border-radius: 18px;
   object-fit: cover;
   object-position: center 15%;
-  /* 흑백 시 얼굴이 너무 밝게 뜨는 것 보정: 대비↑ 밝기↓ */
-  filter: grayscale(100%) contrast(1.18) brightness(0.82);
+  /* 홈 스페이스 블루/teal 톤에 맞춘 cool 흑백(노란기 제거):
+     grayscale → 대비↑·밝기↓ → sepia+hue-rotate로 차가운 청색 색조 */
+  filter: grayscale(100%) contrast(1.12) brightness(0.84) sepia(38%) hue-rotate(178deg) saturate(1.45);
   transition: filter 0.5s ease;
 }
 @media (hover: hover) {
   .founder-card:hover .founder-photo img {
-    filter: grayscale(0%) contrast(1) brightness(1);
+    filter: grayscale(0%) contrast(1) brightness(1) sepia(0%) hue-rotate(0deg) saturate(1);
   }
 }
 @media (hover: none) {
   /* 터치기기는 hover 불가 → 기본 컬러로 표시 */
-  .founder-photo img { filter: grayscale(0%) contrast(1) brightness(1); }
+  .founder-photo img {
+    filter: grayscale(0%) contrast(1) brightness(1) sepia(0%) hue-rotate(0deg) saturate(1);
+  }
 }
 .founder-info {
   text-align: left;

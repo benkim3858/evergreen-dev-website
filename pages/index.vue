@@ -125,7 +125,7 @@
       <div class="container">
         <h2 class="section-title text-center">{{ $t('projects.title') }}</h2>
         <div class="grid grid-1 grid-2-sm grid-3-md">
-          <article v-for="project in projects"
+          <article v-for="project in homeProjects"
                    :key="project.id"
                    class="card project-card">
             <NuxtLink :to="localePath(`/projects/${project.id}`)" class="project-image-link">
@@ -160,6 +160,24 @@
               </div>
             </div>
           </article>
+
+          <!-- Demo 시연 홈페이지 CTA 카드 -->
+          <a
+            href="https://portfolio.evegdev.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card project-card demo-cta-card"
+          >
+            <div class="demo-cta-icon">
+              <Icon name="mdi:rocket-launch-outline" />
+            </div>
+            <h3 class="demo-cta-title">{{ $t('projects.demoCta.title') }}</h3>
+            <p class="demo-cta-desc">{{ $t('projects.demoCta.desc') }}</p>
+            <span class="demo-cta-link">
+              {{ $t('projects.demoCta.cta') }}
+              <Icon name="mdi:arrow-top-right" />
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -509,6 +527,10 @@ const formData = ref({
 
 // Projects Data from Composable
 const { projects } = useProjects();
+
+// 홈 Featured Works 표시용 — 일부 프로젝트는 홈에서 숨김(/projects 페이지엔 전체 노출)
+const HOME_HIDDEN_PROJECTS = ['ecommerce-platform', 'loan-matching', 'e-signature', 'edtech-lms'];
+const homeProjects = computed(() => projects.value.filter(p => !HOME_HIDDEN_PROJECTS.includes(p.id)));
 
 // Form submission handler
 const handleSubmit = async () => {
@@ -1318,6 +1340,70 @@ onUnmounted(() => {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.8;
+}
+
+/* Demo 시연 CTA 카드 — Featured Works 마지막 셀 (포트폴리오 데모 홈으로 이동) */
+.demo-cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-xs);
+  padding: var(--space-xl);
+  min-height: 100%;
+  text-decoration: none;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(130% 130% at 50% 0%, rgba(100, 255, 218, 0.1), transparent 60%),
+    rgba(10, 25, 47, 0.6);
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.demo-cta-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(100, 255, 218, 0.45);
+  box-shadow: 0 18px 44px rgba(100, 255, 218, 0.14);
+}
+.demo-cta-icon {
+  font-size: 2.6rem;
+  line-height: 1;
+  color: #64ffda;
+  margin-bottom: var(--space-xs);
+  filter: drop-shadow(0 0 14px rgba(100, 255, 218, 0.3));
+  transition: transform 0.3s ease;
+}
+.demo-cta-card:hover .demo-cta-icon {
+  transform: translateY(-3px) scale(1.06);
+}
+.demo-cta-title {
+  font-size: 1.4rem;
+  color: var(--text-color-light);
+  margin: 0;
+}
+.demo-cta-desc {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 24ch;
+}
+.demo-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: var(--space-md);
+  font-weight: 700;
+  padding: 0.7em 1.5em;
+  border-radius: 8px;
+  color: #06121f;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  transition: transform 0.3s ease;
+}
+.demo-cta-card:hover .demo-cta-link {
+  transform: translateX(3px);
 }
 
 /* About Section Styles */

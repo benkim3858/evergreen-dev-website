@@ -140,6 +140,11 @@
     "notFound": {
       "title": "Project Not Found",
       "button": "Go Home"
+    },
+    "demoCta": {
+      "title": "Portfolio Demos",
+      "desc": "Explore our interactive demo showcase.",
+      "cta": "View Demos"
     }
   },
   "projectData": {

@@ -781,8 +781,7 @@ onUnmounted(() => {
 .btn-primary:hover::after,
 .btn-secondary:hover::after,
 .btn-primary:active::after,
-.btn-secondary:active::after,
-.btn-secondary.selected::after {
+.btn-secondary:active::after {
   content: '';
   position: absolute;
   inset: -1px;
@@ -803,10 +802,23 @@ onUnmounted(() => {
   transform: translateY(0);
 }
 
+/* 그라데이션 테두리 — double-background(padding-box 본체 + border-box 그라데이션).
+   .btn overflow:hidden과 무관하게 항상 표시. */
 .btn-secondary.selected {
-  background: rgba(100, 255, 218, 0.08);
-  border-color: transparent;
+  background:
+    linear-gradient(rgba(100, 255, 218, 0.08), rgba(100, 255, 218, 0.08)) padding-box,
+    linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa) border-box;
+  border: 1.5px solid transparent;
   color: #64ffda;
+}
+.btn-secondary.selected:hover {
+  background:
+    linear-gradient(rgba(100, 255, 218, 0.14), rgba(100, 255, 218, 0.14)) padding-box,
+    linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa) border-box;
+  border: 1.5px solid transparent;
+}
+.btn-secondary.selected:hover::after {
+  content: none;
 }
 
 /* Animations */

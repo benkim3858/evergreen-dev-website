@@ -160,25 +160,29 @@
               </div>
             </div>
           </article>
+        </div>
 
-          <!-- Demo 시연 홈페이지 CTA 카드 -->
-          <a
-            href="https://portfolio.evegdev.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card project-card demo-cta-card"
-          >
+        <!-- Demo 시연 홈페이지 CTA — full-width (Our Services featured 톤 + 회전 그라데이션 테두리) -->
+        <a
+          href="https://portfolio.evegdev.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="demo-cta-card"
+        >
+          <div class="demo-cta-lead">
             <div class="demo-cta-icon">
               <Icon name="mdi:rocket-launch-outline" />
             </div>
-            <h3 class="demo-cta-title">{{ $t('projects.demoCta.title') }}</h3>
-            <p class="demo-cta-desc">{{ $t('projects.demoCta.desc') }}</p>
-            <span class="demo-cta-link">
-              {{ $t('projects.demoCta.cta') }}
-              <Icon name="mdi:arrow-top-right" />
-            </span>
-          </a>
-        </div>
+            <div class="demo-cta-text">
+              <h3 class="demo-cta-title">{{ $t('projects.demoCta.title') }}</h3>
+              <p class="demo-cta-desc">{{ $t('projects.demoCta.desc') }}</p>
+            </div>
+          </div>
+          <span class="demo-cta-link">
+            {{ $t('projects.demoCta.cta') }}
+            <Icon name="mdi:arrow-top-right" />
+          </span>
+        </a>
       </div>
     </section>
 
@@ -1342,61 +1346,90 @@ onUnmounted(() => {
   line-height: 1.8;
 }
 
-/* Demo 시연 CTA 카드 — Featured Works 마지막 셀 (포트폴리오 데모 홈으로 이동) */
+/* Demo 시연 CTA — full-width 배너 (Our Services featured 톤 + 회전 그라데이션 테두리) */
 .demo-cta-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: var(--space-xs);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-lg) var(--space-xl);
+  max-width: 1400px;
+  margin: var(--space-xl) auto 0;
   padding: var(--space-xl);
-  min-height: 100%;
   text-decoration: none;
   border-radius: 12px;
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(130% 130% at 50% 0%, rgba(100, 255, 218, 0.1), transparent 60%),
-    rgba(10, 25, 47, 0.6);
-  border: 1px solid rgba(100, 255, 218, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    radial-gradient(120% 160% at 0% 0%, rgba(100, 255, 218, 0.09), transparent 52%),
+    radial-gradient(120% 160% at 100% 100%, rgba(167, 139, 250, 0.08), transparent 50%),
+    rgba(10, 25, 47, 0.72);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .demo-cta-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(100, 255, 218, 0.45);
-  box-shadow: 0 18px 44px rgba(100, 255, 218, 0.14);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px rgba(100, 255, 218, 0.12);
+}
+/* 회전 그라데이션 테두리 — '파트너 상담 시작' 버튼과 동일 인터랙션 */
+.demo-cta-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--border-angle),
+    #64ffda, #4af3ff, #a78bfa, #4af3ff, #64ffda
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderAngleRotate 5s linear infinite;
+  pointer-events: none;
+}
+.demo-cta-lead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  min-width: 0;
 }
 .demo-cta-icon {
-  font-size: 2.6rem;
-  line-height: 1;
-  color: #64ffda;
-  margin-bottom: var(--space-xs);
-  filter: drop-shadow(0 0 14px rgba(100, 255, 218, 0.3));
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.1rem;
+  border-radius: 14px;
+  color: #9af5e4;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.16), rgba(167, 139, 250, 0.16));
+  border: 1px solid rgba(100, 255, 218, 0.3);
   transition: transform 0.3s ease;
 }
 .demo-cta-card:hover .demo-cta-icon {
   transform: translateY(-3px) scale(1.06);
 }
 .demo-cta-title {
-  font-size: 1.4rem;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
   color: var(--text-color-light);
-  margin: 0;
+  margin: 0 0 var(--space-xs);
 }
 .demo-cta-desc {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-color);
   line-height: 1.6;
   margin: 0;
-  max-width: 24ch;
+  max-width: 52ch;
 }
 .demo-cta-link {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-top: var(--space-md);
   font-weight: 700;
-  padding: 0.7em 1.5em;
+  white-space: nowrap;
+  padding: 0.8em 1.7em;
   border-radius: 8px;
   color: #06121f;
   background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
@@ -1404,6 +1437,17 @@ onUnmounted(() => {
 }
 .demo-cta-card:hover .demo-cta-link {
   transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .demo-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .demo-cta-link {
+    align-self: stretch;
+    justify-content: center;
+  }
 }
 
 /* About Section Styles */
@@ -2163,7 +2207,8 @@ onUnmounted(() => {
     transition: none;
   }
   .btn-secondary.selected::after,
-  .btn-secondary.selected:hover::after {
+  .btn-secondary.selected:hover::after,
+  .demo-cta-card::after {
     animation: none;
     background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   }

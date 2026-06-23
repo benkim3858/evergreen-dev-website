@@ -1470,6 +1470,7 @@ onUnmounted(() => {
 }
 /* 큰 인물 사진 (세로 라운드 사각) — 신뢰감, 그라데이션 보더 + 글로우 */
 .founder-photo {
+  position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
   border-radius: 20px;
@@ -1486,21 +1487,31 @@ onUnmounted(() => {
   border-radius: 18px;
   object-fit: cover;
   object-position: center 15%;
-  /* 홈 스페이스 블루/teal 톤에 맞춘 cool 흑백(노란기 제거):
-     grayscale → 대비↑·밝기↓ → sepia+hue-rotate로 차가운 청색 색조 */
-  filter: grayscale(100%) contrast(1.12) brightness(0.84) sepia(38%) hue-rotate(178deg) saturate(1.45);
+  /* 흑백 + 명암 보정 (색조는 ::after 듀오톤 overlay가 담당 — hue-rotate 미사용) */
+  filter: grayscale(100%) contrast(1.1) brightness(0.88);
   transition: filter 0.5s ease;
 }
+/* 홈 스페이스 블루 톤 cool 듀오톤 — mix-blend overlay.
+   hue-rotate 전환 시 보라색을 거치던 문제 제거(grayscale+opacity만 보간). */
+.founder-photo::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #1c4f78, #0d2c49);
+  mix-blend-mode: color;
+  opacity: 0.55;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
 @media (hover: hover) {
-  .founder-card:hover .founder-photo img {
-    filter: grayscale(0%) contrast(1) brightness(1) sepia(0%) hue-rotate(0deg) saturate(1);
-  }
+  .founder-card:hover .founder-photo img { filter: grayscale(0%) contrast(1) brightness(1); }
+  .founder-card:hover .founder-photo::after { opacity: 0; }
 }
 @media (hover: none) {
   /* 터치기기는 hover 불가 → 기본 컬러로 표시 */
-  .founder-photo img {
-    filter: grayscale(0%) contrast(1) brightness(1) sepia(0%) hue-rotate(0deg) saturate(1);
-  }
+  .founder-photo img { filter: grayscale(0%) contrast(1) brightness(1); }
+  .founder-photo::after { opacity: 0; }
 }
 .founder-info {
   text-align: left;

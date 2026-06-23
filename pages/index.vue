@@ -205,31 +205,6 @@
               <Icon name="mdi:arrow-right" />
             </NuxtLink>
           </div>
-
-          <!-- Client Testimonials -->
-          <div class="testimonials-section">
-            <h3 class="testimonials-title text-center">{{ $t('about.testimonials.title') }}</h3>
-            <div class="testimonials-grid">
-              <div v-for="(review, index) in testimonials" :key="index" class="testimonial-card">
-                <div class="quote-icon">
-                  <Icon name="mdi:format-quote-open" />
-                </div>
-                <p class="review-content">"{{ review.content }}"</p>
-                <div class="quote-icon-close">
-                  <Icon name="mdi:format-quote-close" />
-                </div>
-                <div class="review-author">
-                  <div class="author-info">
-                    <strong>{{ review.author }}</strong>
-                    <span>{{ review.role }}</span>
-                  </div>
-                  <div class="review-rating">
-                    <Icon v-for="n in review.rating" :key="n" name="mdi:star" class="star" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -254,6 +229,33 @@
               <p>{{ item.a }}</p>
             </div>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section — CTA 직전 social proof (결정 순간 배치) -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+        <h2 class="section-title text-center">{{ $t('about.testimonials.title') }}</h2>
+        <div class="testimonials-grid">
+          <div v-for="(review, index) in testimonials" :key="index" class="testimonial-card">
+            <div class="quote-icon">
+              <Icon name="mdi:format-quote-open" />
+            </div>
+            <p class="review-content">"{{ review.content }}"</p>
+            <div class="quote-icon-close">
+              <Icon name="mdi:format-quote-close" />
+            </div>
+            <div class="review-author">
+              <div class="author-info">
+                <strong>{{ review.author }}</strong>
+                <span>{{ review.role }}</span>
+              </div>
+              <div class="review-rating">
+                <Icon v-for="n in review.rating" :key="n" name="mdi:star" class="star" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1514,12 +1516,6 @@ onUnmounted(() => {
 }
 
 /* Testimonials */
-.testimonials-title {
-  margin-bottom: var(--space-xl);
-  color: var(--text-color-light);
-  font-size: 2rem;
-}
-
 .testimonials-grid {
   display: grid;
   grid-template-columns: 1fr;

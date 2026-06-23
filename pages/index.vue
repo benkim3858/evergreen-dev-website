@@ -812,6 +812,13 @@ onUnmounted(() => {
 .btn-secondary.selected:hover {
   background: rgba(100, 255, 218, 0.14);
 }
+/* 회전하는 그라데이션 테두리 — conic-gradient를 --border-angle 회전시켜
+   빛이 테두리를 따라 도는 효과. @property로 angle 보간. */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 120deg;
+  inherits: false;
+}
 .btn-secondary.selected::after,
 .btn-secondary.selected:hover::after {
   content: '';
@@ -819,11 +826,18 @@ onUnmounted(() => {
   inset: 0;
   border-radius: inherit;
   padding: 1.5px;
-  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background: conic-gradient(
+    from var(--border-angle),
+    #64ffda, #4af3ff, #a78bfa, #4af3ff, #64ffda
+  );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  animation: borderAngleRotate 5s linear infinite;
   pointer-events: none;
+}
+@keyframes borderAngleRotate {
+  to { --border-angle: 480deg; }
 }
 
 /* Animations */
@@ -1935,6 +1949,11 @@ onUnmounted(() => {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .btn-secondary.selected::after,
+  .btn-secondary.selected:hover::after {
+    animation: none;
+    background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
   }
 }
 </style>

@@ -491,13 +491,45 @@ const openChannelTalk = () => {
 }
 
 .contact-form-wrapper {
+  position: relative;
   background: rgba(11, 16, 33, 0.8);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid transparent;
   border-radius: 24px;
   padding: 2.5rem;
   box-shadow: 0 20px 40px -10px rgba(2, 12, 27, 0.5);
   animation: slideInRight 0.8s ease backwards 0.2s;
+}
+/* 카드 전체 회전 그라데이션 테두리 — 홈 '파트너 상담 시작' 버튼과 동일 인터랙션 */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 120deg;
+  inherits: false;
+}
+@keyframes borderAngleRotate {
+  to { --border-angle: 480deg; }
+}
+.contact-form-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--border-angle),
+    #64ffda, #4af3ff, #a78bfa, #4af3ff, #64ffda
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderAngleRotate 5s linear infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-form-wrapper::after {
+    animation: none;
+    background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  }
 }
 
 .form-title {

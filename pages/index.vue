@@ -72,6 +72,22 @@
         <h2 class="section-title text-center">{{ $t('expertise.title') }}</h2>
         <p class="section-subtitle text-center">{{ $t('expertise.subtitle') }}</p>
         <div class="expertise-grid">
+          <div class="expertise-card featured-card">
+            <span class="featured-badge">CORE</span>
+            <div class="featured-body">
+              <div class="featured-lead">
+                <div class="expertise-icon">
+                  <Icon name="mdi:robot-outline" />
+                </div>
+                <h3>{{ $t('expertise.cards.ai.title') }}</h3>
+                <p>{{ $t('expertise.cards.ai.description') }}</p>
+              </div>
+              <ul class="expertise-list featured-list">
+                <li v-for="item in expertiseItems.ai" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
           <div class="expertise-card">
             <div class="expertise-icon">
               <Icon name="mdi:web" />
@@ -466,6 +482,12 @@ const expertiseItems = computed(() => ({
     t('expertise.cards.web.items[1]'),
     t('expertise.cards.web.items[2]'),
     t('expertise.cards.web.items[3]')
+  ],
+  ai: [
+    t('expertise.cards.ai.items[0]'),
+    t('expertise.cards.ai.items[1]'),
+    t('expertise.cards.ai.items[2]'),
+    t('expertise.cards.ai.items[3]')
   ],
   mobile: [
     t('expertise.cards.mobile.items[0]'),
@@ -1056,16 +1078,29 @@ onUnmounted(() => {
 }
 
 .expertise-card {
+  position: relative;
   background: rgba(10, 25, 47, 0.7);
   border-radius: 12px;
   padding: var(--space-lg);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   border: 1px solid rgba(100, 255, 218, 0.1);
   backdrop-filter: blur(10px);
 }
 
-.expertise-card {
-  position: relative;
+/* 상단 그라데이션 액센트 — hover 시 좌→우로 확장 (미묘한 시그니처) */
+.expertise-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-lg);
+  width: 0;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: linear-gradient(90deg, #64ffda, #4af3ff, #a78bfa);
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.expertise-card:hover::before {
+  width: 56px;
 }
 
 .expertise-card:hover {
@@ -1087,9 +1122,23 @@ onUnmounted(() => {
 }
 
 .expertise-icon {
-  font-size: 2.5rem;
-  color: var(--accent-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  font-size: 1.7rem;
+  border-radius: 12px;
+  color: #64ffda;
+  background: rgba(100, 255, 218, 0.07);
+  border: 1px solid rgba(100, 255, 218, 0.18);
   margin-bottom: var(--space-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.expertise-card:hover .expertise-icon {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(100, 255, 218, 0.22);
+  border-color: rgba(100, 255, 218, 0.4);
 }
 
 .expertise-card h3 {
@@ -1122,6 +1171,69 @@ onUnmounted(() => {
   color: var(--accent-color);
 }
 
+/* Featured 카드 (AI · AX) — full-width, 가로 레이아웃, 그라데이션 강조 */
+.featured-card {
+  grid-column: 1 / -1;
+  padding: var(--space-xl);
+  background:
+    radial-gradient(130% 150% at 0% 0%, rgba(100, 255, 218, 0.08), transparent 52%),
+    radial-gradient(120% 160% at 100% 100%, rgba(167, 139, 250, 0.07), transparent 50%),
+    rgba(10, 25, 47, 0.72);
+  border-color: rgba(100, 255, 218, 0.26);
+}
+.featured-card:hover {
+  transform: none;
+}
+.featured-card:hover::before {
+  width: 0;
+}
+.featured-badge {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 0.34em 0.9em;
+  border-radius: 999px;
+  color: #06121f;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+}
+.featured-body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xxl);
+}
+.featured-lead {
+  flex: 1 1 52%;
+  min-width: 0;
+}
+.featured-card .expertise-icon {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.1rem;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.16), rgba(167, 139, 250, 0.16));
+  border-color: rgba(100, 255, 218, 0.3);
+  color: #9af5e4;
+}
+.featured-card h3 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+.featured-card p {
+  margin-bottom: 0;
+  max-width: 42ch;
+}
+.featured-list {
+  flex: 1 1 48%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm) var(--space-lg);
+  align-content: center;
+}
+.featured-list li {
+  font-size: 1.02rem;
+}
+
 @media (min-width: 1200px) {
   .expertise-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1136,6 +1248,20 @@ onUnmounted(() => {
 
   .expertise-card {
     padding: var(--space-md);
+  }
+
+  .featured-card {
+    padding: var(--space-lg);
+  }
+  .featured-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+  .featured-list {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: var(--space-xs) var(--space-lg);
   }
 }
 

@@ -84,6 +84,16 @@
           "Responsive Design"
         ]
       },
+      "ai": {
+        "title": "AI · AX 솔루션",
+        "description": "최신 LLM과 AI 에이전트를 제품에 통합하고, 반복 업무를 자동화하여 비즈니스 운영 방식을 혁신합니다.",
+        "items": [
+          "LLM 통합 (Claude · GPT)",
+          "RAG · AI 에이전트",
+          "업무 자동화 (AX)",
+          "AI 챗봇 · 어시스턴트"
+        ]
+      },
       "mobile": {
         "title": "Mobile App",
         "description": "네이티브 성능에 준하는 크로스플랫폼 기술로 효율적인 모바일 앱 서비스를 제공합니다.",

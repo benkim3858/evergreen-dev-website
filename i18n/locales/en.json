@@ -84,6 +84,16 @@
           "Responsive Design"
         ]
       },
+      "ai": {
+        "title": "AI · AX Solutions",
+        "description": "We embed the latest LLMs and AI agents into your product and automate repetitive work to transform how your business runs.",
+        "items": [
+          "LLM Integration (Claude · GPT)",
+          "RAG · AI Agents",
+          "Workflow Automation (AX)",
+          "AI Chatbots · Assistants"
+        ]
+      },
       "mobile": {
         "title": "Mobile App",
         "description": "We deliver cross-platform mobile apps with native-like performance and seamless user experiences.",

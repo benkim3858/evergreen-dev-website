@@ -409,6 +409,11 @@
     },
     "whyTitle": "Why Evergreen?",
     "teamTitle": "Our Team",
+    "founder": {
+      "name": "Ben Kim",
+      "role": "Founder · Full-Stack Developer",
+      "bio": "From planning to development and operations — building it through to the end, together with the team."
+    },
     "philosophy": {
       "partner": {
         "title": "Business Partner",

@@ -194,6 +194,18 @@
             <h2 class="section-title">{{ $t('about.teamTitle') }}</h2>
           </div>
 
+          <!-- Founder 소개 (대표) — 흑백→컬러 hover -->
+          <div class="founder-card story-reveal">
+            <div class="founder-photo">
+              <img src="/founder.png" :alt="$t('about.founder.name')" loading="lazy" width="394" height="551" />
+            </div>
+            <div class="founder-info">
+              <h3 class="founder-name">{{ $t('about.founder.name') }}</h3>
+              <p class="founder-role">{{ $t('about.founder.role') }}</p>
+              <p class="founder-bio">{{ $t('about.founder.bio') }}</p>
+            </div>
+          </div>
+
           <!-- Team Teaser -->
           <div class="team-teaser">
             <p class="team-teaser-heading">{{ $t('about.teamTeaser.heading') }}</p>
@@ -1446,6 +1458,94 @@ onUnmounted(() => {
   max-width: 720px;
   line-height: 1.9;
   white-space: pre-line;
+}
+
+/* Founder 소개 카드 — 대표 강조, 흑백→컬러 hover */
+.founder-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  max-width: 600px;
+  margin: 0 auto var(--space-xxl);
+  padding: var(--space-lg) var(--space-xl);
+  border-radius: 16px;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(100, 255, 218, 0.08), transparent 55%),
+    rgba(10, 25, 47, 0.6);
+  border: 1px solid rgba(100, 255, 218, 0.18);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.founder-card:hover {
+  border-color: rgba(100, 255, 218, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(100, 255, 218, 0.1);
+}
+/* 그라데이션 링 사진 */
+.founder-photo {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #64ffda, #4af3ff, #a78bfa);
+}
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: grayscale(100%);
+  transition: filter 0.45s ease, transform 0.45s ease;
+}
+@media (hover: hover) {
+  .founder-card:hover .founder-photo img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+}
+@media (hover: none) {
+  /* 터치기기는 hover 불가 → 기본 컬러로 표시 */
+  .founder-photo img { filter: grayscale(0%); }
+}
+.founder-info {
+  text-align: left;
+}
+.founder-name {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+  margin: 0 0 0.2rem;
+}
+.founder-role {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0 0 var(--space-sm);
+}
+.founder-bio {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+  max-width: 36ch;
+}
+@media (prefers-reduced-motion: reduce) {
+  .founder-photo img { transition: none; }
+}
+@media (max-width: 768px) {
+  .founder-card {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+  }
+  .founder-info { text-align: center; }
+  .founder-bio { max-width: none; }
 }
 
 /* 신뢰 지표 (40+ 프로젝트 출시 — 팀 섹션 마무리) */

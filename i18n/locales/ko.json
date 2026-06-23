@@ -409,6 +409,11 @@
     },
     "whyTitle": "Why Evergreen?",
     "teamTitle": "Our Team",
+    "founder": {
+      "name": "Ben Kim",
+      "role": "대표 · 풀스택 개발자",
+      "bio": "기획부터 개발, 운영까지 — 팀과 함께 끝까지 책임지는 개발 파트너입니다."
+    },
     "philosophy": {
       "partner": {
         "title": "비즈니스 파트너",

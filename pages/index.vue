@@ -1464,10 +1464,10 @@ onUnmounted(() => {
 .founder-card {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
-  max-width: 600px;
+  gap: var(--space-xxl);
+  max-width: 680px;
   margin: 0 auto var(--space-xxl);
-  padding: var(--space-lg) var(--space-xl);
+  padding: var(--space-xl);
   border-radius: 16px;
   background:
     radial-gradient(120% 140% at 0% 0%, rgba(100, 255, 218, 0.08), transparent 55%),
@@ -1480,34 +1480,36 @@ onUnmounted(() => {
   transform: translateY(-3px);
   box-shadow: 0 16px 40px rgba(100, 255, 218, 0.1);
 }
-/* 그라데이션 링 사진 */
+/* 큰 인물 사진 (세로 라운드 사각) — 신뢰감, 그라데이션 보더 + 글로우 */
 .founder-photo {
   flex-shrink: 0;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  padding: 3px;
-  background: linear-gradient(135deg, #64ffda, #4af3ff, #a78bfa);
+  width: 200px;
+  height: 264px;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(150deg, #64ffda, #4af3ff, #a78bfa);
+  box-shadow: 0 14px 36px rgba(2, 12, 27, 0.45);
 }
 .founder-photo img {
   width: 100%;
   height: 100%;
   display: block;
-  border-radius: 50%;
+  border-radius: 16px;
   object-fit: cover;
-  object-position: center 20%;
-  filter: grayscale(100%);
-  transition: filter 0.45s ease, transform 0.45s ease;
+  object-position: center 18%;
+  /* 흑백 시 얼굴이 너무 밝게 뜨는 것 보정: 대비↑ 밝기↓ */
+  filter: grayscale(100%) contrast(1.18) brightness(0.82);
+  transition: filter 0.5s ease, transform 0.5s ease;
 }
 @media (hover: hover) {
   .founder-card:hover .founder-photo img {
-    filter: grayscale(0%);
-    transform: scale(1.05);
+    filter: grayscale(0%) contrast(1) brightness(1);
+    transform: scale(1.03);
   }
 }
 @media (hover: none) {
   /* 터치기기는 hover 불가 → 기본 컬러로 표시 */
-  .founder-photo img { filter: grayscale(0%); }
+  .founder-photo img { filter: grayscale(0%) contrast(1) brightness(1); }
 }
 .founder-info {
   text-align: left;

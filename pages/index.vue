@@ -1878,15 +1878,39 @@ onUnmounted(() => {
 }
 
 .contact-form {
+  position: relative;
   background: rgba(11, 16, 33, 0.6);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid transparent;
   border-radius: 24px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   height: 100%;
+}
+/* 카드 전체 회전 그라데이션 테두리 — '파트너 상담 시작' 버튼과 동일 인터랙션 */
+.contact-form::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--border-angle),
+    #64ffda, #4af3ff, #a78bfa, #4af3ff, #64ffda
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderAngleRotate 5s linear infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-form::after {
+    animation: none;
+    background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  }
 }
 
 .form-group {

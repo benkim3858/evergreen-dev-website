@@ -431,7 +431,7 @@ useSeoMeta({
       : t('intro.meta.title')
   ),
   description: () => t('intro.meta.description'),
-  ogImage: '/logo.png',
+  ogImage: 'https://evegdev.com/logo.png',
   ogType: 'website',
 })
 

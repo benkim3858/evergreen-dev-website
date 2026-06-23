@@ -167,7 +167,7 @@ useSeoMeta({
   description: () => t('seo.contact.description'),
   ogTitle: () => t('seo.contact.title'),
   ogDescription: () => t('seo.contact.description'),
-  ogImage: '/logo.png',
+  ogImage: 'https://evegdev.com/logo.png',
   twitterCard: 'summary_large_image',
 })
 

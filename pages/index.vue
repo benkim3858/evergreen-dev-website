@@ -421,7 +421,7 @@ useSeoMeta({
   description: () => t('seo.home.description'),
   ogTitle: () => t('seo.home.title'),
   ogDescription: () => t('seo.home.description'),
-  ogImage: '/logo.png',
+  ogImage: 'https://evegdev.com/logo.png',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: () => t('seo.home.title'),

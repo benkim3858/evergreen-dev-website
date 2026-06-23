@@ -73,7 +73,7 @@ useSeoMeta({
   description: () => t('seo.projects.description'),
   ogTitle: () => t('seo.projects.title'),
   ogDescription: () => t('seo.projects.description'),
-  ogImage: '/logo.png',
+  ogImage: 'https://evegdev.com/logo.png',
   twitterCard: 'summary_large_image',
 })
 

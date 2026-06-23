@@ -168,7 +168,7 @@ useSeoMeta({
   description: () => t('intro.meta.description'),
   ogTitle: () => t('intro.meta.title'),
   ogDescription: () => t('intro.meta.description'),
-  ogImage: '/logo.png',
+  ogImage: 'https://evegdev.com/logo.png',
   ogType: 'website',
   twitterCard: 'summary_large_image',
 })

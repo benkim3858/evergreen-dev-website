@@ -74,7 +74,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Evergreen Dev (에버그린 데브) - Web & Mobile Development Partner. Vue.js, React, Flutter, Node.js, and Cloud Services expert. 웹/앱 개발 전문 파트너.' },
+        { name: 'description', content: 'Evergreen Dev (에버그린 데브) - AI-native development partner. Web, Mobile App, AI/LLM solutions. AI·웹·모바일 개발 전문 파트너.' },
         { name: 'author', content: 'Evergreen Dev' },
         { name: 'robots', content: 'index, follow' },
 
@@ -82,15 +82,15 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Evergreen Dev (에버그린 데브)' },
         { property: 'og:title', content: 'Evergreen Dev | 에버그린 데브 - Web & App Development Partner' },
-        { property: 'og:description', content: 'Evergreen Dev (에버그린 데브) - Your trusted web and mobile development partner. 웹/앱 개발 전문 파트너.' },
-        { property: 'og:image', content: '/logo.png' },
+        { property: 'og:description', content: 'Evergreen Dev — AI-native partner from planning to launch and beyond. AI·웹·앱 개발 파트너.' },
+        { property: 'og:image', content: 'https://evegdev.com/logo.png' },
         // og:url, og:locale, og:locale:alternate → useLocaleHead()가 라우트별 동적 생성
 
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Evergreen Dev | 에버그린 데브' },
-        { name: 'twitter:description', content: 'Evergreen Dev (에버그린 데브) - Web & Mobile Development Partner. 웹/앱 개발 전문 파트너.' },
-        { name: 'twitter:image', content: '/logo.png' }
+        { name: 'twitter:description', content: 'Evergreen Dev — AI-native development partner. AI·웹·앱 개발 파트너.' },
+        { name: 'twitter:image', content: 'https://evegdev.com/logo.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },
@@ -115,22 +115,32 @@ export default defineNuxtConfig({
             "image": "https://evegdev.com/logo.png",
             "name": "Evergreen Dev",
             "alternateName": "에버그린 데브",
-            "description": "웹/모바일 앱 개발 전문 파트너 - Web & Mobile Development Partner",
+            "description": "AI 네이티브 개발 파트너 — 기획부터 출시, 그 이후 성장까지 함께합니다. 웹·모바일 앱·AI 솔루션을 한 팀에서 제공합니다.",
             "email": "ben@evegdev.com",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "민락수변로17번길 35, 6층",
+              "addressLocality": "수영구",
+              "addressRegion": "부산",
+              "addressCountry": "KR"
+            },
             "areaServed": { "@type": "Country", "name": "South Korea" },
             "serviceType": [
+              "AI & LLM Solutions",
+              "AI Agent Development",
               "Web Development",
               "Mobile App Development",
               "Backend Development",
               "Software Outsourcing"
             ],
             "knowsAbout": [
+              "AI", "LLM", "Claude", "GPT", "RAG", "AI Agents", "Workflow Automation",
               "Vue.js", "React", "Next.js", "Nuxt.js",
               "Flutter", "React Native", "Kotlin", "Swift",
               "Node.js", "Java", "Python", "Cloud Services"
             ],
             "sameAs": [
-              "https://github.com/evegdev",
+              "https://github.com/benkim3858",
               "https://www.linkedin.com/in/ben-kim-87a5a0219"
             ]
           })

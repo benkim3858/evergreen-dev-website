@@ -426,7 +426,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: () => t('seo.home.title'),
   twitterDescription: () => t('seo.home.description'),
-  twitterImage: '/logo.png',
+  twitterImage: 'https://evegdev.com/logo.png',
 })
 
 // Typewriter texts - reactive to locale changes

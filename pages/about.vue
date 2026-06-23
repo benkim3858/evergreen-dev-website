@@ -7,16 +7,6 @@
           <h1 class="page-title">{{ $t('about.pageTitle') }}</h1>
           <p class="page-subtitle">{{ aboutText }}</p>
         </div>
-
-        <div class="stats-grid">
-          <div v-for="stat in achievements" :key="stat.label" class="stat-card">
-            <div class="stat-icon">
-              <Icon :name="stat.icon" />
-            </div>
-            <div class="stat-value">{{ stat.value }}</div>
-            <div class="stat-label">{{ stat.label }}</div>
-          </div>
-        </div>
       </div>
 
       <!-- Philosophy Section -->
@@ -44,6 +34,19 @@
       <div class="content-section">
         <h2 class="section-title text-center">{{ $t('about.team.title') }}</h2>
         <p class="section-subtitle text-center">{{ $t('about.team.subtitle') }}</p>
+
+        <!-- Founder (대표) — 홈 정합, 흑백→컬러 hover -->
+        <div class="founder-card">
+          <div class="founder-photo">
+            <img src="/founder.png" :alt="$t('about.founder.name')" loading="lazy" width="394" height="551" />
+          </div>
+          <div class="founder-info">
+            <p class="founder-role">{{ $t('about.founder.role') }}</p>
+            <h3 class="founder-name">{{ $t('about.founder.name') }}</h3>
+            <p class="founder-bio">{{ $t('about.founder.bio') }}</p>
+          </div>
+        </div>
+
         <div class="team-grid">
           <div v-for="(member, index) in teamMembers" :key="index" class="team-card">
             <div class="team-avatar" :style="{ '--delay': index * 0.1 + 's' }">
@@ -103,13 +106,6 @@ useSeoMeta({
 
 const aboutText = computed(() => t('about.description'));
 
-const achievements = computed(() => [
-  { label: t('about.achievements.projects'), value: '40+', icon: 'mdi:trophy-award' },
-  { label: t('about.achievements.satisfaction'), value: '5.0/5.0', icon: 'mdi:star' },
-  { label: t('about.achievements.costReduction'), value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
-  { label: t('about.achievements.uptime'), value: '99.9%', icon: 'mdi:server-network' }
-]);
-
 const roleIcons = {
   0: 'mdi:lightbulb-outline',
   1: 'mdi:palette-outline',
@@ -128,7 +124,7 @@ const teamMembers = computed(() => {
         bio: rt(member.bio),
         skills: member.skills ? member.skills.map(s => rt(s)) : [],
         icon: roleIcons[index] || 'mdi:account'
-      }));
+      })).filter(m => !m.name.includes('Ben') && !m.name.includes('벤')); // 벤은 Founder 카드로 분리
     }
   } catch (e) {
     console.warn('Failed to load team members', e);
@@ -201,63 +197,83 @@ const testimonials = computed(() => {
   color: transparent;
 }
 
-/* Stats Styles */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--space-md);
+/* Founder 카드 — 홈 Our Team 정합: 큰 사진(cool blue 듀오톤) 위 + 캡션 아래, 흑백→컬러 hover */
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 360px;
+  margin: 0 auto var(--space-xl);
 }
-
-.stat-card {
-  background: rgba(17, 34, 64, 0.4);
-  padding: var(--space-md);
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid rgba(100, 255, 218, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.stat-card {
+.founder-photo {
   position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(150deg, #64ffda, #4af3ff, #a78bfa);
+  box-shadow: 0 18px 44px rgba(2, 12, 27, 0.5);
+  margin-bottom: var(--space-lg);
+  overflow: hidden;
 }
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  border-color: transparent;
-  background: rgba(17, 34, 64, 0.6);
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center 15%;
+  filter: grayscale(100%) contrast(1.1) brightness(0.88);
+  transition: filter 0.5s ease;
 }
-
-.stat-card:hover::after {
+.founder-photo::after {
   content: '';
   position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  inset: 2px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #1c4f78, #0d2c49);
+  mix-blend-mode: color;
+  opacity: 0.55;
+  transition: opacity 0.5s ease;
   pointer-events: none;
 }
-
-.stat-icon {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: var(--space-sm);
-  opacity: 0.8;
+@media (hover: hover) {
+  .founder-card:hover .founder-photo img { filter: grayscale(0%) contrast(1) brightness(1); }
+  .founder-card:hover .founder-photo::after { opacity: 0; }
 }
-
-.stat-value {
-  font-size: 2rem;
+@media (hover: none) {
+  .founder-photo img { filter: grayscale(0%) contrast(1) brightness(1); }
+  .founder-photo::after { opacity: 0; }
+}
+.founder-info {
+  text-align: left;
+  padding: 0 0.25rem;
+}
+.founder-role {
+  font-size: 0.74rem;
   font-weight: 700;
-  color: var(--text-color-light);
-  margin-bottom: 0;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0 0 0.5rem;
 }
-
-.stat-label {
+.founder-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-color-light);
+  margin: 0 0 var(--space-sm);
+}
+.founder-bio {
+  font-size: 0.98rem;
+  line-height: 1.65;
   color: var(--text-color);
-  font-size: 0.9rem;
-  margin-top: 5px;
+  margin: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .founder-photo img { transition: none; }
 }
 
 /* Philosophy Section */

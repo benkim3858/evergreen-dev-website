@@ -404,9 +404,6 @@
     "title": "소개",
     "pageTitle": "About Evergreen Dev",
     "description": "클라이언트의 비즈니스 수익 창출을 최우선으로 생각합니다.\n고객님의 비즈니스가 언제나 푸르게 번창하고 지속 성장할 수 있도록\n기획부터 개발, 배포까지 함께하는 든든한 IT 파트너입니다.",
-    "proof": {
-      "label": "프로젝트 출시"
-    },
     "whyTitle": "Why Evergreen?",
     "teamTitle": "Our Team",
     "founder": {
@@ -427,12 +424,6 @@
         "title": "책임감 있는 유지보수",
         "description": "개발이 끝이 아닙니다. 안정적인 서비스 운영을 위한 지속적인 모니터링과 기술 지원을 약속합니다."
       }
-    },
-    "achievements": {
-      "projects": "Successful Projects",
-      "satisfaction": "Client Satisfaction",
-      "costReduction": "Avg. Cost Reduction",
-      "uptime": "Service Uptime"
     },
     "teamTeaser": {
       "heading": "기획부터 개발까지, 전문가 팀이 함께합니다",
@@ -500,16 +491,6 @@
             "Flutter",
             "Firebase",
             "Python"
-          ]
-        },
-        {
-          "name": "케인 (Kayn)",
-          "role": "풀스택 개발자",
-          "bio": "모던 프레임워크와 DevOps로 고성능 웹 애플리케이션을 개발합니다.",
-          "skills": [
-            "Next.js",
-            "PostgreSQL",
-            "Docker"
           ]
         }
       ]

@@ -404,9 +404,6 @@
     "title": "About",
     "pageTitle": "About Evergreen Dev",
     "description": "Your business success is our top priority. We're more than developers — we're committed partners in your growth journey, from concept to launch and beyond.",
-    "proof": {
-      "label": "Projects Launched"
-    },
     "whyTitle": "Why Evergreen?",
     "teamTitle": "Our Team",
     "founder": {
@@ -427,12 +424,6 @@
         "title": "Responsible Maintenance",
         "description": "Development isn't the end. We promise continuous monitoring and technical support for stable service operations."
       }
-    },
-    "achievements": {
-      "projects": "Successful Projects",
-      "satisfaction": "Client Satisfaction",
-      "costReduction": "Avg. Cost Reduction",
-      "uptime": "Service Uptime"
     },
     "teamTeaser": {
       "heading": "Expert Team, from Planning to Launch",
@@ -500,16 +491,6 @@
             "Flutter",
             "Firebase",
             "Python"
-          ]
-        },
-        {
-          "name": "Kayn",
-          "role": "Full-Stack Developer",
-          "bio": "Delivers high-performance web applications with modern frameworks and DevOps.",
-          "skills": [
-            "Next.js",
-            "PostgreSQL",
-            "Docker"
           ]
         }
       ]

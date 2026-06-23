@@ -223,12 +223,6 @@
               <Icon name="mdi:arrow-right" />
             </NuxtLink>
           </div>
-
-          <!-- 신뢰 지표 (40+ 프로젝트 출시) -->
-          <div class="process-proof">
-            <span class="proof-value">40+</span>
-            <span class="proof-label">{{ projectsProofLabel }}</span>
-          </div>
         </div>
       </div>
     </section>
@@ -453,7 +447,6 @@ watch(locale, () => {
 });
 
 // Data - reactive to locale
-const projectsProofLabel = computed(() => t('about.proof.label'));
 // Testimonials - use t() with array index for proper string resolution
 const testimonials = computed(() => [
   {
@@ -1546,28 +1539,6 @@ onUnmounted(() => {
   .founder-photo img { transition: none; }
 }
 
-/* 신뢰 지표 (40+ 프로젝트 출시 — 팀 섹션 마무리) */
-.process-proof {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: var(--space-xl);
-}
-.proof-value {
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-.proof-label {
-  font-size: 0.98rem;
-  color: var(--text-color);
-  letter-spacing: 0.03em;
-}
 
 /* Team Teaser */
 .team-teaser {

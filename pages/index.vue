@@ -70,7 +70,6 @@
     <section id="expertise" class="section expertise-section">
       <div class="container">
         <h2 class="section-title text-center">{{ $t('expertise.title') }}</h2>
-        <p class="section-subtitle text-center">{{ $t('expertise.subtitle') }}</p>
         <div class="expertise-grid">
           <div class="expertise-card featured-card">
             <span class="featured-badge">CORE</span>

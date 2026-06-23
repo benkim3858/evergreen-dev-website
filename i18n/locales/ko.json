@@ -72,7 +72,6 @@
   },
   "expertise": {
     "title": "Our Services",
-    "subtitle": "웹, 모바일, 크로스플랫폼 개발을 통해 비즈니스의 새로운 가능성을 열어갑니다.",
     "cards": {
       "ai": {
         "title": "AI · AX 솔루션",

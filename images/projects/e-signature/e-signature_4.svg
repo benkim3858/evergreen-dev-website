@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a192f"/>
+  <!-- Watermark -->
+  <text x="24" y="36" fill="rgba(100,255,218,0.15)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">Confidential</text>
+  <!-- Top bar -->
+  <rect x="0" y="0" width="960" height="56" fill="#112240"/>
+  <text x="40" y="35" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">E-Sign</text>
+  <text x="130" y="35" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="14">계약 상세</text>
+  <text x="860" y="35" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="13">admin@company.kr</text>
+  <!-- Left: Contract info card -->
+  <rect x="40" y="80" width="360" height="400" rx="10" fill="#233554"/>
+  <!-- Contract title -->
+  <text x="68" y="118" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700">업무위탁계약서_2026</text>
+  <line x1="68" y1="132" x2="372" y2="132" stroke="#112240" stroke-width="1"/>
+  <!-- Contract details -->
+  <text x="68" y="162" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">계약 ID</text>
+  <text x="200" y="162" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">ESIGN-2026-0042</text>
+  <text x="68" y="192" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">생성일</text>
+  <text x="200" y="192" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">2026-04-10 14:30</text>
+  <text x="68" y="222" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">만료일</text>
+  <text x="200" y="222" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">2026-05-10 23:59</text>
+  <text x="68" y="252" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">서명자 수</text>
+  <text x="200" y="252" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">2명</text>
+  <text x="68" y="282" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">생성자</text>
+  <text x="200" y="282" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">김대표 (kim@company.kr)</text>
+  <text x="68" y="312" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">문서</text>
+  <text x="200" y="312" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-decoration="underline">업무위탁계약서.pdf (3p)</text>
+  <!-- Progress bar -->
+  <text x="68" y="350" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">진행률</text>
+  <rect x="68" y="360" width="304" height="8" rx="4" fill="#112240"/>
+  <rect x="68" y="360" width="152" height="8" rx="4" fill="#64ffda"/>
+  <text x="372" y="372" text-anchor="end" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">50%</text>
+  <!-- Status badge -->
+  <rect x="68" y="392" width="80" height="28" rx="14" fill="rgba(100,180,255,0.15)"/>
+  <text x="108" y="411" text-anchor="middle" fill="#64b5ff" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">진행중</text>
+  <!-- Download button -->
+  <rect x="68" y="436" width="130" height="32" rx="6" fill="none" stroke="#8892b0" stroke-width="1.5"/>
+  <text x="133" y="457" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">원본 다운로드</text>
+
+  <!-- Right: Timeline -->
+  <rect x="440" y="80" width="480" height="400" rx="10" fill="#233554"/>
+  <text x="472" y="118" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">진행 상태</text>
+  <!-- Timeline line -->
+  <line x1="504" y1="148" x2="504" y2="380" stroke="#112240" stroke-width="2"/>
+  <!-- Step 1: Contract created - completed -->
+  <circle cx="504" cy="160" r="12" fill="#64ffda"/>
+  <!-- Checkmark -->
+  <polyline points="498,160 502,164 510,156" fill="none" stroke="#0a192f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="530" y="156" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600">계약 생성</text>
+  <text x="530" y="174" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2026-04-10 14:30 | 김대표</text>
+  <text x="530" y="190" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="11">문서 업로드 및 서명자 설정 완료</text>
+  <!-- Step 2: Signer A signed - completed -->
+  <circle cx="504" cy="230" r="12" fill="#64ffda"/>
+  <polyline points="498,230 502,234 510,226" fill="none" stroke="#0a192f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="530" y="226" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600">서명자 A 서명 완료</text>
+  <text x="530" y="244" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">2026-04-11 09:15 | 김대표 (갑)</text>
+  <text x="530" y="260" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="11">전자서명 완료, 인증서 검증됨</text>
+  <!-- Step 3: Signer B waiting - in progress -->
+  <circle cx="504" cy="300" r="12" fill="#0a192f" stroke="#64b5ff" stroke-width="2.5"/>
+  <circle cx="504" cy="300" r="4" fill="#64b5ff"/>
+  <text x="530" y="296" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600">서명자 B 서명 대기</text>
+  <text x="530" y="314" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">이개발 (을) | 이메일 발송됨</text>
+  <text x="530" y="330" fill="#e2b93d" font-family="system-ui, -apple-system, sans-serif" font-size="11">2026-04-12 알림 발송, 응답 대기중</text>
+  <!-- Step 4: Contract finalize - not yet -->
+  <circle cx="504" cy="370" r="12" fill="#0a192f" stroke="#8892b0" stroke-width="1.5" opacity="0.5"/>
+  <text x="530" y="366" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="14" opacity="0.5">계약 확정</text>
+  <text x="530" y="384" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11" opacity="0.4">모든 서명자 서명 완료 시 자동 확정</text>
+
+  <!-- Bottom: Action button -->
+  <rect x="600" y="420" width="160" height="40" rx="6" fill="#64ffda"/>
+  <text x="680" y="446" text-anchor="middle" fill="#0a192f" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">알림 재발송</text>
+  <rect x="770" y="420" width="130" height="40" rx="6" fill="none" stroke="#8892b0" stroke-width="1.5"/>
+  <text x="835" y="446" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="14">계약 취소</text>
+</svg>

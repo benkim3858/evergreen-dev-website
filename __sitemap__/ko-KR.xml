@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/__sitemap__/style.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://evegdev.com/</loc>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://evegdev.com/en" />
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://evegdev.com/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://evegdev.com/" />
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/founder.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/about</loc>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://evegdev.com/en/about" />
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://evegdev.com/about" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://evegdev.com/about" />
+        <image:image>
+            <image:loc>https://evegdev.com/founder.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/contact</loc>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://evegdev.com/en/contact" />
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://evegdev.com/contact" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://evegdev.com/contact" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/intro</loc>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://evegdev.com/en/intro" />
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://evegdev.com/intro" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://evegdev.com/intro" />
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_logo.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects</loc>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://evegdev.com/en/projects" />
+        <xhtml:link rel="alternate" hreflang="ko-KR" href="https://evegdev.com/projects" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://evegdev.com/projects" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_logo.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/ecommerce-platform/ecommerce-platform_logo.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/loan-matching/loan-matching_logo.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/e-signature/e-signature_logo.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/edtech-lms/edtech-lms_logo.svg</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/chordly</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/chordly" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/chordly" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/chordly" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_1.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_2.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_3.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_4.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_5.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_6.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_7.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_8.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_9.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_10.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_11.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_12.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_13.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_14.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_15.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/chordly/chordly_16.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/crou</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/crou" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/crou" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/crou" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_1.jpeg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_2.jpeg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_3.jpeg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_4.jpeg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_5.jpeg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/crou/crou_logo_body.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/e-signature</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/e-signature" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/e-signature" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/e-signature" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/e-signature/e-signature_1.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/e-signature/e-signature_2.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/e-signature/e-signature_3.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/e-signature/e-signature_4.svg</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/ecommerce-platform</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/ecommerce-platform" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/ecommerce-platform" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/ecommerce-platform" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/ecommerce-platform/ecommerce-platform_1.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/ecommerce-platform/ecommerce-platform_2.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/ecommerce-platform/ecommerce-platform_3.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/ecommerce-platform/ecommerce-platform_4.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/ecommerce-platform/ecommerce-platform_5.svg</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/edtech-lms</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/edtech-lms" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/edtech-lms" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/edtech-lms" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/edtech-lms/edtech-lms_1.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/edtech-lms/edtech-lms_2.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/edtech-lms/edtech-lms_3.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/edtech-lms/edtech-lms_4.svg</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/koback</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/koback" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/koback" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/koback" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_1.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_2.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_3.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_4.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_5.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_7.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_8.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_9.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_10.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_11.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/koback/koback_12.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/loan-matching</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/loan-matching" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/loan-matching" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/loan-matching" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/loan-matching/loan-matching_1.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/loan-matching/loan-matching_2.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/loan-matching/loan-matching_3.svg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/loan-matching/loan-matching_4.svg</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/pozo</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/pozo" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/pozo" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/pozo" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_1.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_2.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_3.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_4.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_5.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_6.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_7.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_8.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_9.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_10.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_11.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_12.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/pozo/pozo_13.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/suwon-its-2025</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/suwon-its-2025" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/suwon-its-2025" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/suwon-its-2025" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_1.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_2.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_3.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_4.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_5.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_6.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_7.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_8.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_9.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_10.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_11.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_12.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_13.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/suwon-its-2025/suwon-its-2025_14.png</image:loc>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://evegdev.com/projects/uri-china</loc>
+        <xhtml:link rel="alternate" href="https://evegdev.com/en/projects/uri-china" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/uri-china" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://evegdev.com/projects/uri-china" hreflang="ko-KR" />
+        <image:image>
+            <image:loc>https://evegdev.com/logo.png?v=1</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_2.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_3.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_4.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_5.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_6.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_7.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://evegdev.com/images/projects/uri-china/uri-china_8.jpg</image:loc>
+        </image:image>
+    </url>
+</urlset>
+<!-- XML Sitemap generated by @nuxtjs/sitemap v8.2.1 at 2026-06-23T07:47:25.371Z -->

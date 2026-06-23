@@ -1,0 +1,1 @@
+import{aP as s,aQ as u,aR as r,aS as o,a5 as c,aT as i}from"./BIFTOV_5.js";function n(t){const e=t||r();return e?.ssrContext?.head||e?.runWithContext(()=>{if(o())return c(i)})}function d(t,e={}){const a=n(e.nuxt);if(a)return u(t,{head:a,...e})}function f(t,e={}){const a=n(e.nuxt);if(a)return s(t,{head:a,...e})}export{f as a,d as u};

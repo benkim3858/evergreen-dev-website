@@ -1,0 +1,16 @@
+# Robots.txt for Evergreen Dev
+# https://evegdev.com/
+
+User-agent: *
+Allow: /
+
+# Sitemap location (다국어 sitemap index — @nuxtjs/sitemap 자동 생성)
+Sitemap: https://evegdev.com/sitemap_index.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Block access to admin or private areas (if any)
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /assets/builds/

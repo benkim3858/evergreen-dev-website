@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a192f"/>
+  <!-- Watermark -->
+  <text x="30" y="30" fill="rgba(100,255,218,0.15)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">Confidential</text>
+
+  <!-- Left Sidebar -->
+  <rect x="0" y="0" width="200" height="540" fill="#112240"/>
+  <text x="24" y="34" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">EduStream</text>
+  <text x="130" y="34" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">Admin</text>
+
+  <!-- Sidebar menu items -->
+  <rect x="0" y="52" width="200" height="40" fill="transparent"/>
+  <rect x="12" y="58" width="176" height="28" rx="6" fill="#233554"/>
+  <text x="44" y="77" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">대시보드</text>
+  <rect x="20" y="65" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+
+  <rect x="12" y="96" width="176" height="28" rx="6" fill="#64ffda" opacity="0.15"/>
+  <rect x="4" y="96" width="3" height="28" rx="1" fill="#64ffda"/>
+  <text x="44" y="115" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">강의 관리</text>
+  <rect x="20" y="103" width="14" height="14" rx="2" fill="none" stroke="#64ffda" stroke-width="1.2"/>
+
+  <rect x="12" y="134" width="176" height="28" rx="6" fill="transparent"/>
+  <text x="44" y="153" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">수강생 관리</text>
+  <rect x="20" y="141" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+
+  <rect x="12" y="172" width="176" height="28" rx="6" fill="transparent"/>
+  <text x="44" y="191" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">통계</text>
+  <rect x="20" y="179" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+
+  <rect x="12" y="210" width="176" height="28" rx="6" fill="transparent"/>
+  <text x="44" y="229" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">설정</text>
+  <rect x="20" y="217" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+
+  <!-- Main Content Area -->
+  <rect x="200" y="0" width="760" height="44" fill="#112240"/>
+  <text x="224" y="28" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">새 강의 업로드</text>
+
+  <!-- Form Area -->
+  <!-- Title input -->
+  <text x="224" y="76" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">강의 제목</text>
+  <rect x="224" y="84" width="500" height="36" rx="6" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <text x="238" y="107" fill="#4a5568" font-family="system-ui, -apple-system, sans-serif" font-size="12">강의 제목을 입력하세요</text>
+
+  <!-- Category select -->
+  <text x="224" y="142" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">카테고리</text>
+  <rect x="224" y="150" width="240" height="36" rx="6" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <text x="238" y="173" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">프로그래밍</text>
+  <polygon points="444,165 452,165 448,173" fill="#8892b0"/>
+
+  <!-- Video upload area -->
+  <text x="224" y="210" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">영상 업로드</text>
+  <rect x="224" y="218" width="500" height="100" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Upload icon -->
+  <line x1="474" y1="248" x2="474" y2="268" stroke="#64ffda" stroke-width="2" stroke-linecap="round"/>
+  <polyline points="464,256 474,248 484,256" fill="none" stroke="#64ffda" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="474" y="286" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">여기에 영상 파일을 드래그하거나 클릭하여 업로드</text>
+  <text x="474" y="304" text-anchor="middle" fill="#4a5568" font-family="system-ui, -apple-system, sans-serif" font-size="10">MP4, MOV, AVI (최대 2GB)</text>
+
+  <!-- Progress bar -->
+  <text x="224" y="340" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">lecture_python_advanced.mp4</text>
+  <text x="684" y="340" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="11">60%</text>
+  <rect x="224" y="348" width="500" height="6" rx="3" fill="#233554"/>
+  <rect x="224" y="348" width="300" height="6" rx="3" fill="#64ffda"/>
+
+  <!-- Lecture materials -->
+  <text x="224" y="382" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">강의 자료 첨부</text>
+  <rect x="224" y="390" width="120" height="32" rx="6" fill="#233554"/>
+  <text x="284" y="411" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">+ PDF 첨부</text>
+  <rect x="354" y="390" width="120" height="32" rx="6" fill="#233554"/>
+  <text x="414" y="411" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">+ PPT 첨부</text>
+  <!-- Attached file -->
+  <rect x="484" y="390" width="180" height="32" rx="6" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <text x="500" y="411" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="11">chapter01.pdf</text>
+  <text x="646" y="411" fill="#e63946" font-family="system-ui, -apple-system, sans-serif" font-size="11">x</text>
+
+  <!-- Live streaming toggle -->
+  <text x="224" y="452" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">라이브 스트리밍 설정</text>
+  <!-- Toggle ON -->
+  <rect x="370" y="440" width="40" height="20" rx="10" fill="#64ffda"/>
+  <circle cx="400" cy="450" r="8" fill="#fff"/>
+
+  <!-- OBS Key -->
+  <rect x="224" y="468" width="500" height="46" rx="6" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <text x="238" y="486" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">OBS 스트림 키</text>
+  <text x="238" y="504" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500">rtmp://stream.edustream.kr/live/sk-a8f3...</text>
+  <rect x="640" y="480" width="70" height="24" rx="4" fill="#233554"/>
+  <text x="675" y="496" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">복사</text>
+
+  <!-- Submit button -->
+  <rect x="770" y="76" width="140" height="38" rx="6" fill="#64ffda"/>
+  <text x="840" y="100" text-anchor="middle" fill="#0a192f" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">강의 등록</text>
+</svg>

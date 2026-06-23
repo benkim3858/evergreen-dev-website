@@ -12,7 +12,7 @@
             alt="Evergreen Dev Labs"
             class="logo-image"
           />
-          <span class="logo-text" :class="{ 'hidden': !isLogoTextVisible }">EVERGREEN DEV</span>
+          <span class="logo-text">EVERGREEN DEV</span>
         </NuxtLink>
       </div>
 
@@ -81,11 +81,6 @@ const availableLocales = computed(() => {
   ];
 });
 
-const isHome = computed(() => {
-  const path = route.path;
-  return path === '/' || path === '/ko' || path === '/ko/';
-});
-
 const isExactHome = computed(() => {
   const path = route.path;
   return path === '/' || path === '/ko' || path === '/ko/';
@@ -109,11 +104,6 @@ const isIntroSection = computed(() => {
 const isContactSection = computed(() => {
   const path = route.path;
   return path === '/contact' || path === '/ko/contact';
-});
-
-const isLogoTextVisible = computed(() => {
-  if (!isHome.value) return true;
-  return isScrolled.value;
 });
 
 // Desktop: switch to specific locale
@@ -238,14 +228,6 @@ onUnmounted(() => {
   max-width: 300px;
   white-space: nowrap;
   margin-left: 1rem;
-}
-
-.logo-text.hidden {
-  opacity: 0;
-  max-width: 0;
-  margin-left: 0;
-  overflow: hidden;
-  padding: 0;
 }
 
 .logo:hover .logo-text {

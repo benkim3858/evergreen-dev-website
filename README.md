@@ -34,17 +34,19 @@
 
 <br/>
 
-## Featured Projects
+## Featured Work
 
-| Project | Description | Tech Stack |
-|---------|-------------|------------|
-| **POZO** | 언택트 포장 주문 플랫폼 | Flutter, Flutter Web, Nest.js, AWS |
-| **CROU** | 크리스천 루틴 관리 & 영적 성장 앱 | React (Next.js), React Native Webview, Nest.js, AWS |
-| **Chordly** | 음악 전문가 소셜 네트워킹 플랫폼 | Flutter, Nest.js, AWS |
-| **2025 Suwon ITS AP Forum** | ITS 아태총회 공식 모바일 플랫폼 | Flutter, Nest.js, AWS |
-| **KOBACK** | 축구교실 올인원 코칭 앱 | Flutter, Supabase |
+실제 의뢰로 개발·출시한 클라이언트 프로젝트입니다. 계약·NDA에 따라 도메인과 기술 스택 중심으로 소개합니다.
 
-> 실제 의뢰로 개발한 클라이언트 프로젝트 데모는 **[portfolio.evegdev.com](https://portfolio.evegdev.com)** 에서 직접 체험할 수 있습니다.
+| Domain | What we built | Tech Stack |
+|--------|---------------|------------|
+| **F&B** | 언택트 포장 주문 플랫폼 | Flutter · Flutter Web · Nest.js · AWS |
+| **Lifestyle** | 루틴 관리 & 커뮤니티 앱 | Next.js · React Native · Nest.js · AWS |
+| **Social** | 전문가 소셜 네트워킹 플랫폼 | Flutter · Nest.js · AWS |
+| **Conference** | 국제 컨퍼런스 공식 모바일 플랫폼 | Flutter · Nest.js · AWS |
+| **Sports · Edu** | 유소년 코칭 올인원 앱 | Flutter · Supabase |
+
+> 인터랙티브 데모는 **[portfolio.evegdev.com](https://portfolio.evegdev.com)** 에서 직접 체험할 수 있습니다.
 
 <br/>
 
@@ -59,6 +61,7 @@
   <img src="https://img.shields.io/badge/SCSS-CC6699?style=flat-square&logo=sass&logoColor=white"/>
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>
   <img src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white"/>
   <img src="https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white"/>
 </p>
 

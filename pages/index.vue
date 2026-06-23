@@ -230,12 +230,14 @@
           <details
             v-for="(item, i) in faqItems"
             :key="i"
-            class="faq-item"
+            class="faq-item story-reveal"
             :open="i === 0"
           >
             <summary class="faq-question">
               <span>{{ item.q }}</span>
-              <Icon name="mdi:chevron-down" class="faq-chevron" />
+              <span class="faq-chevron-wrap">
+                <Icon name="mdi:chevron-down" class="faq-chevron" />
+              </span>
             </summary>
             <div class="faq-answer">
               <p>{{ item.a }}</p>
@@ -1959,14 +1961,38 @@ onUnmounted(() => {
   gap: 1rem;
 }
 .faq-item {
-  background: var(--bg-color-light, rgba(255, 255, 255, 0.05));
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
-  border-radius: var(--border-radius-md, 8px);
+  position: relative;
+  background: rgba(10, 25, 47, 0.5);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  border-radius: 12px;
   overflow: hidden;
-  transition: var(--transition-normal, all 0.3s ease);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  /* 2026 모던: height auto 보간 허용 (미지원 브라우저는 즉시 펼침) */
+  interpolate-size: allow-keywords;
+}
+.faq-item:hover {
+  border-color: rgba(100, 255, 218, 0.28);
+  background: rgba(10, 25, 47, 0.7);
 }
 .faq-item[open] {
-  border-color: rgba(100, 255, 218, 0.3);
+  border-color: rgba(100, 255, 218, 0.32);
+  background: rgba(10, 25, 47, 0.72);
+}
+/* open 시 좌측 그라데이션 액센트 바 (signature, story pullquote와 일관) */
+.faq-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #64ffda, #4af3ff, #a78bfa);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-item[open]::before {
+  transform: scaleY(1);
 }
 .faq-question {
   display: flex;
@@ -1979,15 +2005,36 @@ onUnmounted(() => {
   font-size: 1.05rem;
   color: var(--text-color-light, #ccd6f6);
   list-style: none;
+  transition: color 0.3s ease;
 }
 .faq-question::-webkit-details-marker {
   display: none;
 }
-.faq-chevron {
+.faq-item:hover .faq-question,
+.faq-item[open] .faq-question {
+  color: #d8e4ff;
+}
+/* chevron 원형 칩 */
+.faq-chevron-wrap {
   flex-shrink: 0;
-  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(100, 255, 218, 0.08);
+  border: 1px solid rgba(100, 255, 218, 0.18);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.faq-item[open] .faq-chevron-wrap {
+  background: rgba(100, 255, 218, 0.14);
+  border-color: rgba(100, 255, 218, 0.4);
+}
+.faq-chevron {
+  font-size: 1.25rem;
   color: var(--accent-color, #64ffda);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .faq-item[open] .faq-chevron {
   transform: rotate(180deg);
@@ -1999,6 +2046,30 @@ onUnmounted(() => {
 }
 .faq-answer p {
   margin: 0;
+}
+/* 부드러운 펼침 — ::details-content 높이 보간 (Chrome/Edge 2026, 미지원은 즉시) */
+.faq-item::details-content {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    content-visibility 0.4s allow-discrete;
+  content-visibility: hidden;
+}
+.faq-item[open]::details-content {
+  height: auto;
+  opacity: 1;
+  content-visibility: visible;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-item::details-content {
+    transition: none;
+  }
+  .faq-item::before {
+    transition: none;
+  }
 }
 
 /* ===========================================

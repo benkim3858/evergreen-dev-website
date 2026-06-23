@@ -387,6 +387,28 @@
     "title": "소개",
     "pageTitle": "About Evergreen Dev",
     "description": "클라이언트의 비즈니스 수익 창출을 최우선으로 생각합니다.\n고객님의 비즈니스가 언제나 푸르게 번창하고 지속 성장할 수 있도록\n기획부터 개발, 배포까지 함께하는 든든한 IT 파트너입니다.",
+    "processIntro": "막연한 약속 대신, 에버그린이 일하는 방식으로 증명합니다.",
+    "process": {
+      "plan": {
+        "title": "기획",
+        "desc": "비즈니스 목표부터 함께 정의합니다."
+      },
+      "design": {
+        "title": "설계",
+        "desc": "사용자 흐름과 구조를 먼저 그립니다."
+      },
+      "build": {
+        "title": "개발",
+        "desc": "AI 네이티브로 빠르고 견고하게 만듭니다."
+      },
+      "grow": {
+        "title": "출시 · 성장",
+        "desc": "출시로 끝내지 않고 성장까지 함께합니다."
+      }
+    },
+    "proof": {
+      "label": "프로젝트 출시"
+    },
     "whyTitle": "Why Evergreen?",
     "philosophy": {
       "partner": {

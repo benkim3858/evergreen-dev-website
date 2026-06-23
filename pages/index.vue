@@ -173,15 +173,19 @@
             <p class="section-subtitle">{{ aboutText }}</p>
           </div>
 
-          <!-- Key Achievements -->
-          <div class="stats-grid">
-            <div v-for="stat in achievements" :key="stat.label" class="stat-card">
-              <div class="stat-icon">
-                <Icon :name="stat.icon" />
-              </div>
-              <div class="stat-value">{{ stat.value }}</div>
-              <div class="stat-label">{{ stat.label }}</div>
+          <!-- How We Work — 프로세스 4단계 (스토리의 '왜'에 대한 '어떻게') -->
+          <div class="process-steps">
+            <div v-for="step in processSteps" :key="step.num" class="process-step">
+              <span class="process-num">{{ step.num }}</span>
+              <h3 class="process-title">{{ step.title }}</h3>
+              <p class="process-desc">{{ step.desc }}</p>
             </div>
+          </div>
+
+          <!-- 신뢰 지표 -->
+          <div class="process-proof">
+            <span class="proof-value">40+</span>
+            <span class="proof-label">{{ projectsProofLabel }}</span>
           </div>
 
           <!-- Team Teaser -->
@@ -421,13 +425,14 @@ watch(locale, () => {
 });
 
 // Data - reactive to locale
-const aboutText = computed(() => t('about.description'));
-const achievements = computed(() => [
-  { label: t('about.achievements.projects'), value: '40+', icon: 'mdi:trophy-award' },
-  { label: t('about.achievements.satisfaction'), value: '5.0/5.0', icon: 'mdi:star' },
-  { label: t('about.achievements.costReduction'), value: '40%', icon: 'mdi:chart-timeline-variant-shimmer' },
-  { label: t('about.achievements.uptime'), value: '99.9%', icon: 'mdi:server-network' }
+const aboutText = computed(() => t('about.processIntro'));
+const processSteps = computed(() => [
+  { num: '01', title: t('about.process.plan.title'), desc: t('about.process.plan.desc') },
+  { num: '02', title: t('about.process.design.title'), desc: t('about.process.design.desc') },
+  { num: '03', title: t('about.process.build.title'), desc: t('about.process.build.desc') },
+  { num: '04', title: t('about.process.grow.title'), desc: t('about.process.grow.desc') }
 ]);
+const projectsProofLabel = computed(() => t('about.proof.label'));
 // Testimonials - use t() with array index for proper string resolution
 const testimonials = computed(() => [
   {
@@ -454,8 +459,7 @@ const teamTeaser = [
   { name: 'Sena', role: 'PM', icon: 'mdi:lightbulb-outline' },
   { name: 'Betty', role: 'Design', icon: 'mdi:palette-outline' },
   { name: 'Ben', role: 'Dev', icon: 'mdi:code-braces' },
-  { name: 'Jhin', role: 'Dev', icon: 'mdi:code-braces' },
-  { name: 'Kayn', role: 'Dev', icon: 'mdi:code-braces' }
+  { name: 'Jhin', role: 'Dev', icon: 'mdi:code-braces' }
 ];
 
 const contactText = computed(() => t('contact.description'));
@@ -1327,69 +1331,88 @@ onUnmounted(() => {
   white-space: pre-line;
 }
 
-/* Statistics Grid */
-.stats-grid {
+/* How We Work — 프로세스 4단계 (number + 연결선으로 흐름 표현) */
+.process-steps {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-  margin-bottom: var(--space-xxl);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  max-width: 1080px;
+  margin: var(--space-xl) auto 0;
 }
-
-@media (min-width: 768px) {
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.stat-card {
-  background: rgba(17, 34, 64, 0.4);
-  padding: var(--space-lg);
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid rgba(100, 255, 218, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.stat-card {
+.process-step {
   position: relative;
 }
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  border-color: transparent;
-  background: rgba(17, 34, 64, 0.6);
-}
-
-.stat-card:hover::after {
+/* 스텝 사이 연결선 — sequence 흐름(좌→우) */
+.process-step:not(:last-child)::after {
   content: '';
   position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
+  top: 0.95rem;
+  right: calc(var(--space-xl) * -0.5);
+  width: var(--space-xl);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(100, 255, 218, 0.45), rgba(167, 139, 250, 0.12));
+}
+.process-num {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
   background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.stat-icon {
-  font-size: 2.5rem;
-  color: var(--accent-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   margin-bottom: var(--space-sm);
-  opacity: 0.8;
 }
-
-.stat-value {
-  font-size: 2rem;
-  font-weight: 700;
+.process-title {
+  font-size: 1.2rem;
   color: var(--text-color-light);
   margin-bottom: var(--space-xs);
 }
-
-.stat-label {
+.process-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--text-color);
-  font-size: 0.9rem;
+  max-width: 24ch;
+}
+
+/* 신뢰 지표 — 프로세스의 결과 */
+.process-proof {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: var(--space-xxl);
+  margin-bottom: var(--space-xxl);
+}
+.proof-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.proof-label {
+  font-size: 0.98rem;
+  color: var(--text-color);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .process-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+  .process-step:not(:last-child)::after {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Team Teaser */

@@ -6,7 +6,7 @@
         <article v-for="project in projects" :key="project.id" class="card project-card">
           <NuxtLink :to="localePath(`/projects/${project.id}`)" class="project-image-link">
             <div class="project-image">
-              <img :src="project.images[0]" :alt="`${project.title} — 에버그린 데브 ${project.techStack?.[0] ?? ''} 개발 사례`">
+              <img :src="project.images[0]" :alt="$t('alt.projectCase', { title: project.title, tech: project.techStack?.[0] ?? '' })">
               <div class="project-overlay">
                 <span>{{ $t('projects.viewDetails') }}</span>
               </div>

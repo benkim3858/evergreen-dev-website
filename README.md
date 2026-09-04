@@ -79,7 +79,7 @@
 | 🚀 Live Demos | [portfolio.evegdev.com](https://portfolio.evegdev.com) |
 | 📧 Email | [ben@evegdev.com](mailto:ben@evegdev.com) |
 | 💼 LinkedIn | [Ben Kim](https://www.linkedin.com/in/ben-kim-87a5a0219) |
-| 📍 Location | 부산 수영구 민락수변로17번길 35 6층 |
+| 📍 Location | 부산 수영구 수영로 383번길 66 2층 208호 |
 
 <br/>
 

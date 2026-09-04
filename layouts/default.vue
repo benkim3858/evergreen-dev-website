@@ -57,6 +57,7 @@
 <script setup lang="ts">
 const { locale, setLocale } = useI18n();
 const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 const route = useRoute();
 const isScrolled = ref(false);
 
@@ -113,13 +114,25 @@ const isContactSection = computed(() => {
 });
 
 // Desktop: switch to specific locale
+// 한국어 전용 페이지(인사이트)처럼 대상 로케일에 대응 라우트가 없는 경우,
+// setLocale 만 부르면 URL 은 그대로인데 UI 언어만 바뀌어 링크가 깨진다.
+// 대응 경로가 없으면 해당 로케일 홈으로 보낸다.
 const switchLanguage = async (newLocale: string) => {
-  await setLocale(newLocale as 'en' | 'ko');
+  const target = switchLocalePath(newLocale as 'en' | 'ko');
+  if (target) {
+    await setLocale(newLocale as 'en' | 'ko');
+  } else {
+    await navigateTo(localePath('/', newLocale as 'en' | 'ko'));
+  }
 };
 
 // Mobile: toggle between two languages
 const toggleLanguage = async () => {
   const next = currentLocale.value === 'ko' ? 'en' : 'ko';
+  if (!switchLocalePath(next)) {
+    await navigateTo(localePath('/', next));
+    return;
+  }
   await setLocale(next as 'en' | 'ko');
 };
 

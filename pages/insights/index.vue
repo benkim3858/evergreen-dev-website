@@ -1,11 +1,11 @@
 <template>
   <section class="section">
     <div class="container">
-      <h2 class="section-title text-center">{{ $t('insights.pageTitle') }}</h2>
+      <h1 class="section-title text-center">{{ $t('insights.pageTitle') }}</h1>
       <p class="section-subtitle text-center">{{ $t('insights.subtitle') }}</p>
 
       <div class="insight-list">
-        <article v-for="post in insights" :key="post.slug" class="card insight-card">
+        <article v-for="post in insights ?? []" :key="post.slug" class="card insight-card">
           <NuxtLink :to="localePath(`/insights/${post.slug}`)" class="insight-link">
             <div class="insight-meta">
               <span class="insight-category">{{ post.category }}</span>
@@ -30,7 +30,7 @@ defineI18nRoute({ locales: ['ko'] });
 
 const { t } = useI18n();
 const localePath = useLocalePath();
-const { insights } = useInsights();
+const { data: insights } = await useAsyncData('insight-list', () => loadInsightList());
 
 const title = t('seo.insights.title');
 const description = t('seo.insights.description');
@@ -55,7 +55,7 @@ useHead(() => ({
         '@context': 'https://schema.org',
         '@type': 'ItemList',
         name: title,
-        itemListElement: insights.map((post, index) => ({
+        itemListElement: (insights.value ?? []).map((post, index) => ({
           '@type': 'ListItem',
           position: index + 1,
           url: `https://evegdev.com/insights/${post.slug}`,

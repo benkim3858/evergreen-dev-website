@@ -731,5 +731,9 @@
     "lastUpdated": "Last updated",
     "backToList": "Back to list",
     "ctaContact": "Start a project"
+  },
+  "alt": {
+    "projectCase": "{title} — Evergreen Dev {tech} project case",
+    "founder": "{name} — Founder of Evergreen Dev, web and app development"
   }
 }

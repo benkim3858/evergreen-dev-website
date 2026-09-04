@@ -731,5 +731,9 @@
     "lastUpdated": "최종 수정",
     "backToList": "목록으로",
     "ctaContact": "프로젝트 문의하기"
+  },
+  "alt": {
+    "projectCase": "{title} — 에버그린 데브 {tech} 개발 사례",
+    "founder": "{name} — 에버그린 데브 대표, 웹·앱 개발"
   }
 }

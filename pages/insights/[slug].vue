@@ -36,25 +36,24 @@ defineI18nRoute({ locales: ['ko'] });
 const route = useRoute();
 const { t } = useI18n();
 const localePath = useLocalePath();
-const { getInsight } = useInsights();
+const slug = String(route.params.slug);
+const { data: post } = await useAsyncData(`insight-${slug}`, () => loadInsight(slug));
 
-const post = getInsight(route.params.slug);
-
-if (!post) {
+if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Insight not found', fatal: true });
 }
 
-const canonical = `https://evegdev.com/insights/${post.slug}`;
+const canonical = `https://evegdev.com/insights/${post.value.slug}`;
 
 useSeoMeta({
-  title: `${post.title} - 에버그린 데브`,
-  description: post.description,
-  ogTitle: post.title,
-  ogDescription: post.description,
+  title: `${post.value.title} - 에버그린 데브`,
+  description: post.value.description,
+  ogTitle: post.value.title,
+  ogDescription: post.value.description,
   ogImage: 'https://evegdev.com/logo.png',
   ogType: 'article',
-  articlePublishedTime: post.date,
-  articleModifiedTime: post.updated,
+  articlePublishedTime: post.value.date,
+  articleModifiedTime: post.value.updated,
   twitterCard: 'summary_large_image',
 });
 
@@ -70,13 +69,14 @@ useHead(() => ({
           {
             '@type': 'Article',
             '@id': `${canonical}#article`,
-            headline: post.title,
-            description: post.description,
-            datePublished: post.date,
-            dateModified: post.updated,
+            headline: post.value.title,
+            description: post.value.description,
+            image: 'https://evegdev.com/logo.png',
+            datePublished: post.value.date,
+            dateModified: post.value.updated,
             inLanguage: 'ko-KR',
-            keywords: post.tags.join(', '),
-            articleSection: post.category,
+            keywords: post.value.tags.join(', '),
+            articleSection: post.value.category,
             author: { '@id': 'https://evegdev.com/#ben-kim' },
             publisher: { '@id': 'https://evegdev.com/#organization' },
             mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
@@ -87,7 +87,7 @@ useHead(() => ({
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: '홈', item: 'https://evegdev.com/' },
               { '@type': 'ListItem', position: 2, name: t('insights.pageTitle'), item: 'https://evegdev.com/insights' },
-              { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
+              { '@type': 'ListItem', position: 3, name: post.value.title, item: canonical },
             ],
           },
         ],

@@ -10,7 +10,10 @@ const insightRoutes = (() => {
     return readdirSync(resolve(__dirname, 'content/insights'))
       .filter((f) => f.endsWith('.md'))
       .map((f) => `/insights/${f.replace(/\.md$/, '')}`)
-  } catch {
+  } catch (e) {
+    // 디렉토리를 못 읽으면 프리렌더 목록이 조용히 비고, crawlLinks 가 그것을 가려
+    // 알아채기 어렵다. 최소한 빌드 로그에는 남긴다.
+    console.warn('[nuxt.config] content/insights 를 읽지 못했다 — 인사이트 프리렌더 경로가 비었다:', e)
     return []
   }
 })()

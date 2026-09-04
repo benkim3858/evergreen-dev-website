@@ -19,6 +19,7 @@
     "@types/three": "^0.171.0",
     "@vueuse/motion": "^2.2.6",
     "gsap": "^3.12.5",
+    "markdown-it": "^15.0.1",
     "nuxt": "^3.15.0",
     "nuxt-calendly": "^0.1.21",
     "nuxt-icon": "^1.0.0-beta.7",

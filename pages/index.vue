@@ -130,7 +130,7 @@
                    class="card project-card">
             <NuxtLink :to="localePath(`/projects/${project.id}`)" class="project-image-link">
               <div class="project-image">
-                <img :src="project.images[0]" :alt="project.title">
+                <img :src="project.images[0]" :alt="`${project.title} — 에버그린 데브 ${project.techStack?.[0] ?? ''} 개발 사례`">
                 <div class="project-overlay">
                   <span>{{ $t('projects.viewDetails') }}</span>
                 </div>
@@ -197,7 +197,7 @@
           <!-- Founder 소개 (대표) — 흑백→컬러 hover -->
           <div class="founder-card story-reveal">
             <div class="founder-photo">
-              <img src="/founder.png" :alt="$t('about.founder.name')" loading="lazy" width="394" height="551" />
+              <img src="/founder.png" :alt="`${$t('about.founder.name')} — 에버그린 데브 대표, 웹·앱 개발`" loading="lazy" width="394" height="551" />
             </div>
             <div class="founder-info">
               <p class="founder-role">{{ $t('about.founder.role') }}</p>

@@ -20,6 +20,7 @@
       <div class="nav-links">
         <NuxtLink :to="localePath('/')" :class="{ 'nav-active': isExactHome }">{{ $t('nav.home') }}</NuxtLink>
         <NuxtLink :to="localePath('/projects')" :class="{ 'nav-active': isProjectsSection }">{{ $t('nav.projects') }}</NuxtLink>
+        <NuxtLink v-if="locale === 'ko'" :to="localePath('/insights')" :class="{ 'nav-active': isInsightsSection }">{{ $t('nav.insights') }}</NuxtLink>
         <NuxtLink :to="localePath('/about')" :class="{ 'nav-active': isAboutSection }">{{ $t('nav.about') }}</NuxtLink>
         <NuxtLink :to="localePath('/contact')" :class="{ 'nav-active': isContactSection }">{{ $t('nav.contact') }}</NuxtLink>
       </div>
@@ -89,6 +90,11 @@ const isExactHome = computed(() => {
 const isProjectsSection = computed(() => {
   const path = route.path;
   return path.startsWith('/projects') || path.startsWith('/ko/projects');
+});
+
+const isInsightsSection = computed(() => {
+  const path = route.path;
+  return path.startsWith('/insights') || path.startsWith('/ko/insights');
 });
 
 const isAboutSection = computed(() => {

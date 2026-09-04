@@ -1,4 +1,20 @@
+import { readdirSync } from 'node:fs'
+import { resolve } from 'node:path'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// content/insights/*.md 를 읽어 프리렌더 대상 경로를 만든다.
+// 글을 추가하면 자동으로 정적 생성 대상에 포함된다.
+const insightRoutes = (() => {
+  try {
+    return readdirSync(resolve(__dirname, 'content/insights'))
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => `/insights/${f.replace(/\.md$/, '')}`)
+  } catch {
+    return []
+  }
+})()
+
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/i18n',
@@ -42,7 +58,7 @@ export default defineNuxtConfig({
       // 영어 진입점을 시드로 주면 crawlLinks가 /en 내부 링크를 따라
       // /en/about·/en/contact·/en/projects/* 까지 정적 생성한다.
       crawlLinks: true,
-      routes: ['/en', '/en/about', '/en/contact', '/en/projects'],
+      routes: ['/en', '/en/about', '/en/contact', '/en/projects', '/insights', ...insightRoutes],
     },
   },
 
@@ -108,40 +124,98 @@ export default defineNuxtConfig({
           type: 'application/ld+json',
           innerHTML: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": ["Organization", "ProfessionalService"],
-            "@id": "https://evegdev.com/#organization",
-            "url": "https://evegdev.com/",
-            "logo": "https://evegdev.com/logo.png",
-            "image": "https://evegdev.com/logo.png",
-            "name": "Evergreen Dev",
-            "alternateName": "에버그린 데브",
-            "description": "AI 네이티브 개발 파트너 — 기획부터 출시, 그 이후 성장까지 함께합니다. 웹·모바일 앱·AI 솔루션을 한 팀에서 제공합니다.",
-            "email": "ben@evegdev.com",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "민락수변로17번길 35, 6층",
-              "addressLocality": "수영구",
-              "addressRegion": "부산",
-              "addressCountry": "KR"
-            },
-            "areaServed": { "@type": "Country", "name": "South Korea" },
-            "serviceType": [
-              "AI & LLM Solutions",
-              "AI Agent Development",
-              "Web Development",
-              "Mobile App Development",
-              "Backend Development",
-              "Software Outsourcing"
-            ],
-            "knowsAbout": [
-              "AI", "LLM", "Claude", "GPT", "RAG", "AI Agents", "Workflow Automation",
-              "Vue.js", "React", "Next.js", "Nuxt.js",
-              "Flutter", "React Native", "Kotlin", "Swift",
-              "Node.js", "Java", "Python", "Cloud Services"
-            ],
-            "sameAs": [
-              "https://github.com/benkim3858",
-              "https://www.linkedin.com/in/ben-kim-87a5a0219"
+            "@graph": [
+              {
+                "@type": ["Organization", "ProfessionalService"],
+                "@id": "https://evegdev.com/#organization",
+                "url": "https://evegdev.com/",
+                "logo": {
+                  "@type": "ImageObject",
+                  "@id": "https://evegdev.com/#logo",
+                  "url": "https://evegdev.com/logo.png",
+                  "contentUrl": "https://evegdev.com/logo.png",
+                  "caption": "Evergreen Dev"
+                },
+                "image": { "@id": "https://evegdev.com/#logo" },
+                "name": "Evergreen Dev",
+                "alternateName": ["에버그린 데브", "에버그린데브", "Evergreen Dev Labs"],
+                "legalName": "에버그린데브",
+                "taxID": "366-72-00644",
+                "description": "AI 네이티브 개발 파트너 — 기획부터 출시, 그 이후 성장까지 함께합니다. 웹·모바일 앱·AI 솔루션을 한 팀에서 제공합니다.",
+                "email": "ben@evegdev.com",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "수영로 383번길 66, 2층 208호",
+                  "addressLocality": "수영구",
+                  "addressRegion": "부산",
+                  "addressCountry": "KR"
+                },
+                "areaServed": { "@type": "Country", "name": "South Korea" },
+                "founder": { "@id": "https://evegdev.com/#ben-kim" },
+                "knowsLanguage": ["ko", "en"],
+                "serviceType": [
+                  "AI & LLM Solutions",
+                  "AI Agent Development",
+                  "Web Development",
+                  "Mobile App Development",
+                  "Hybrid WebView App Development",
+                  "Backend Development",
+                  "Software Outsourcing"
+                ],
+                "knowsAbout": [
+                  "AI", "LLM", "Claude", "GPT", "RAG", "AI Agents", "Workflow Automation",
+                  "Vue.js", "React", "Next.js", "Nuxt.js",
+                  "Flutter", "React Native", "Kotlin", "Swift",
+                  "Node.js", "NestJS", "Java", "Spring", "eGovFrame", "Python",
+                  "Supabase", "PostgreSQL", "AWS", "Vercel",
+                  "Open Market API Integration", "WebView Hybrid App", "Cloud Services"
+                ],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "개발 서비스",
+                  "itemListElement": [
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "웹 서비스 개발", "description": "Next.js·Nuxt·React·Vue 기반 웹 서비스와 관리자 시스템을 구축합니다.", "serviceType": "Web Development" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "모바일 앱 개발", "description": "Flutter·React Native 크로스플랫폼과 iOS·Android 네이티브 앱을 개발합니다.", "serviceType": "Mobile App Development" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "웹뷰 하이브리드 앱 개발", "description": "웹과 React Native 셸을 결합해 하나의 코드베이스로 앱과 웹을 함께 운영하는 구조를 만듭니다.", "serviceType": "Hybrid App Development" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI·AX 솔루션", "description": "LLM 통합, RAG 검색, AI 에이전트, 업무 자동화를 제품과 사내 운영에 적용합니다.", "serviceType": "AI Solutions" } },
+                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "백엔드·시스템 구축", "description": "Node.js·NestJS·Java Spring·Python 기반 API 설계와 인프라 운영을 맡습니다.", "serviceType": "Backend Development" } }
+                  ]
+                },
+                "sameAs": [
+                  "https://github.com/benkim3858",
+                  "https://www.linkedin.com/in/ben-kim-87a5a0219"
+                ]
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://evegdev.com/#website",
+                "url": "https://evegdev.com/",
+                "name": "Evergreen Dev",
+                "alternateName": "에버그린 데브",
+                "description": "웹·모바일 앱·AI 솔루션을 기획부터 운영까지 한 팀에서 맡는 개발 회사",
+                "publisher": { "@id": "https://evegdev.com/#organization" },
+                "inLanguage": ["ko-KR", "en-US"]
+              },
+              {
+                "@type": "Person",
+                "@id": "https://evegdev.com/#ben-kim",
+                "name": "Ben Kim",
+                "alternateName": "김벤",
+                "jobTitle": "대표 / 풀스택 개발자",
+                "worksFor": { "@id": "https://evegdev.com/#organization" },
+                "email": "ben@evegdev.com",
+                "image": "https://evegdev.com/founder.png",
+                "knowsAbout": [
+                  "Flutter", "React Native", "Next.js", "Nuxt.js",
+                  "Java Spring", "eGovFrame", "Node.js", "Python",
+                  "LLM Application Development", "AI Agents",
+                  "Blockchain Data Indexing", "Open Market API Integration"
+                ],
+                "sameAs": [
+                  "https://www.linkedin.com/in/ben-kim-87a5a0219",
+                  "https://github.com/benkim3858"
+                ]
+              }
             ]
           })
         }

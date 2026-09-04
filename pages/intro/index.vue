@@ -63,7 +63,7 @@
             class="project-card"
           >
             <div class="project-thumbnail">
-              <img :src="project.images[0]" :alt="project.title" loading="lazy" />
+              <img :src="project.images[0]" :alt="`${project.title} — 에버그린 데브 ${project.techStack?.[0] ?? ''} 개발 사례`" loading="lazy" />
             </div>
             <div class="project-body">
               <h3>{{ project.title }}</h3>

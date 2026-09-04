@@ -38,7 +38,7 @@
         <!-- Founder (대표) — 홈 정합, 흑백→컬러 hover -->
         <div class="founder-card">
           <div class="founder-photo">
-            <img src="/founder.png" :alt="$t('about.founder.name')" loading="lazy" width="394" height="551" />
+            <img src="/founder.png" :alt="`${$t('about.founder.name')} — 에버그린 데브 대표, 웹·앱 개발`" loading="lazy" width="394" height="551" />
           </div>
           <div class="founder-info">
             <p class="founder-role">{{ $t('about.founder.role') }}</p>

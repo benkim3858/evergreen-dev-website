@@ -46,7 +46,8 @@
     "projects": "Projects",
     "about": "About",
     "intro": "Intro",
-    "contact": "Contact"
+    "contact": "Contact",
+    "insights": "Insights"
   },
   "hero": {
     "headline1": "From first line to last,",
@@ -502,7 +503,7 @@
     "subtitle": "Let's discuss your new project or collaboration",
     "description": "Ready to discuss a new project or need technical consultation? Reach out anytime. We'll propose solutions optimized for your business.",
     "responseTime": "Response within 24 hours",
-    "location": "6F, 35 Millaksubyeon-ro 17beon-gil, Suyeong-gu, Busan, South Korea",
+    "location": "208, 2F, 66 Suyeong-ro 383beon-gil, Suyeong-gu, Busan, South Korea",
     "business": {
       "name": "Company: EVERGREEN DEV",
       "registration": "Business Reg. No: 366-72-00644",
@@ -573,20 +574,24 @@
   },
   "seo": {
     "home": {
-      "title": "Evergreen Dev | AI · Web · Mobile Development Partner",
+      "title": "Evergreen Dev {'|'} AI · Web · Mobile Development Partner",
       "description": "Evergreen Dev — an AI-native development partner, from planning to launch and beyond. Web, mobile apps, and AI solutions delivered by one team."
     },
     "about": {
-      "title": "About Evergreen Dev | Web & App Development Partner",
+      "title": "About Evergreen Dev {'|'} Web & App Development Partner",
       "description": "Meet Evergreen Dev - your trusted IT partner with 40+ successful projects and 5.0 client satisfaction. Flutter app development, website creation, and custom development services."
     },
     "projects": {
-      "title": "Projects - Evergreen Dev | Success Stories",
+      "title": "Projects - Evergreen Dev {'|'} Success Stories",
       "description": "Explore Evergreen Dev's successful project portfolio. From web and mobile app development to backend system architecture, we deliver optimal technology solutions for your business."
     },
     "contact": {
-      "title": "Contact | Evergreen Dev - Project Inquiry",
+      "title": "Contact {'|'} Evergreen Dev - Project Inquiry",
       "description": "Reach out for web/app development projects, technical consulting, or collaboration proposals. Get in touch via Channel Talk, email, or video call."
+    },
+    "insights": {
+      "title": "Insights {'|'} Evergreen Dev",
+      "description": "Practical notes on app and web development: quoting, native-to-React-Native migration, and app store submission requirements."
     }
   },
   "common": {
@@ -601,7 +606,7 @@
   "intro": {
     "nav": "Introduction",
     "meta": {
-      "title": "Introduction | Evergreen Dev",
+      "title": "Introduction {'|'} Evergreen Dev",
       "description": "Discover how Evergreen Dev can be your trusted development partner."
     },
     "hero": {
@@ -718,5 +723,13 @@
     "notFound": {
       "message": "Showing the general introduction."
     }
+  },
+  "insights": {
+    "pageTitle": "Insights",
+    "subtitle": "Notes on problems we actually ran into, and how we decided.",
+    "minutes": " min",
+    "lastUpdated": "Last updated",
+    "backToList": "Back to list",
+    "ctaContact": "Start a project"
   }
 }

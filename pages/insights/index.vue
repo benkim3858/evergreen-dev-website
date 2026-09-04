@@ -12,7 +12,7 @@
               <time :datetime="post.date">{{ post.date }}</time>
               <span class="insight-reading">{{ post.readingTime }}{{ $t('insights.minutes') }}</span>
             </div>
-            <h3 class="insight-title">{{ post.title }}</h3>
+            <h2 class="insight-title">{{ post.title }}</h2>
             <p class="insight-desc">{{ post.description }}</p>
             <div class="insight-tags">
               <span v-for="tag in post.tags" :key="tag">#{{ tag }}</span>

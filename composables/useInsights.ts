@@ -48,6 +48,8 @@ function parseFrontmatter(raw: string): { meta: Record<string, any>; body: strin
 
     for (const line of match[1].split(/\r?\n/)) {
         if (!line.trim()) continue;
+        // YAML 주석 — 합법 문법이라 통과시킨다 (막으면 나중에 주석 한 줄에 배포가 멈춘다)
+        if (line.trimStart().startsWith('#')) continue;
 
         // "- item" / "  - item" 둘 다 받는다 (들여쓰기 없는 쪽이 정석 YAML)
         const listItem = line.match(/^\s*-\s+(.*)$/);
@@ -109,14 +111,21 @@ function estimateReadingTime(body: string): number {
     return Math.max(1, Math.round(body.replace(/\s/g, '').length / 500));
 }
 
+/** 값이 없거나 문자열이 아니면 기본값으로 떨어뜨린다.
+ *  "description:" 처럼 값을 비워 두면 파서가 [] 를 만드는데, 그대로 두면
+ *  JSON-LD 에 "dateModified": [] 같은 값이 발행된다. */
+function asString(v: unknown, fallback: string): string {
+    return typeof v === 'string' && v.trim() ? v : fallback;
+}
+
 function toMeta(slug: string, meta: Record<string, any>, body: string): InsightMeta {
     return {
         slug,
         title: meta.title,
         description: meta.description,
         date: meta.date,
-        updated: meta.updated ?? meta.date,
-        category: meta.category ?? '',
+        updated: asString(meta.updated, meta.date),
+        category: asString(meta.category, ''),
         tags: Array.isArray(meta.tags) ? meta.tags : [],
         readingTime: Number(meta.readingTime) || estimateReadingTime(body),
     };

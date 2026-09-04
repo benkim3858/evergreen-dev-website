@@ -1,0 +1,133 @@
+# Evergreen Dev Website - Claude Code AI 가이드
+
+> **이 문서는 Claude Code AI가 프로젝트 컨텍스트를 이해하고 올바른 개발 결정을 내릴 수 있도록 작성되었습니다.**
+
+---
+
+## 🔴 CRITICAL RULES (반드시 먼저 읽을 것)
+
+### ❌ NEVER
+- `nuxt generate` 전에 환경변수(WEB3FORMS_KEY, CHANNEL_PLUGIN_KEY, CALENDLY_URL) 누락 금지
+- `gh-pages` 브랜치 직접 수정 금지 — GitHub Actions가 자동 배포
+- i18n 키 추가 시 `en.json`과 `ko.json` 양쪽 모두 추가 필수 — 한쪽만 추가 금지
+- `public/` 디렉토리에 대용량 파일(10MB+) 커밋 금지 — GitHub Pages 용량 제한
+- CSS 변수(`--accent-color`, `--bg-color` 등) 직접 하드코딩 금지 — `_variables.scss` 토큰 사용
+
+### ✅ MUST
+- 그라데이션 테마: `linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa)` 통일 사용
+- `border-radius`가 있는 요소의 그라데이션 테두리는 `::before`/`::after` + CSS mask 기법 사용
+- 새 페이지/컴포넌트 추가 시 `<ClientOnly>` 래핑 필요 여부 확인 (Three.js, Canvas 등 브라우저 API)
+- 스타일 수정 시 `scoped` 스타일과 글로벌 SCSS(`assets/styles/`) 우선순위 충돌 확인
+
+---
+
+## 📋 프로젝트 개요
+
+### 제품 정보
+- **제품명**: Evergreen Dev Website
+- **설명**: 에버그린데브 기업 비즈니스 웹사이트 — 서비스 소개, 프로젝트 포트폴리오, 고객 문의
+- **대상 사용자**: 잠재 클라이언트, 비즈니스 파트너
+- **도메인**: evegdev.com
+
+### 기술 스택
+
+| 구성 요소 | 기술 | 위치 |
+|-----------|------|------|
+| Framework | Nuxt 3.15+ / Vue 3 | `/` |
+| Styling | SCSS + Tailwind CSS + CSS Variables | `assets/styles/` |
+| 3D/Animation | Three.js, GSAP, @vueuse/motion | `components/`, `composables/` |
+| i18n | @nuxtjs/i18n (EN/KO) | `locales/` |
+| Icons | nuxt-icon (Iconify) | — |
+| Chat | Channel.io SDK | `plugins/` |
+| Booking | nuxt-calendly | — |
+| Contact Form | Web3Forms API | `composables/useContactForm.ts` |
+| Deploy | GitHub Pages + GitHub Actions | `.github/workflows/` |
+| SSG | Nitro preset: github-pages | `nuxt.config.ts` |
+
+---
+
+## 🏗️ 시스템 아키텍처
+
+@.claude/rules/architecture.md
+
+---
+
+## 💻 개발 가이드라인
+
+@.claude/rules/dev-guidelines.md
+
+---
+
+## 💻 구현 패턴
+
+@.claude/rules/implementation-patterns.md
+
+---
+
+## 🔌 외부 API 연동
+
+@.claude/rules/external-apis.md
+
+---
+
+## ✅ 개발 체크리스트
+
+@.claude/rules/checklist.md
+
+---
+
+## ☁️ 인프라 구성
+
+@.claude/rules/infrastructure.md
+
+---
+
+## ⚠️ 주의사항
+
+- 빌드/서버 테스트 후 프로세스 반드시 종료 (로컬 포트 5000 충돌 방지)
+- `npm run generate` 실패 시 `.output/` 삭제 후 재시도
+- `SpaceBackground.vue`는 Canvas 기반 — `<ClientOnly>` 래핑 필수
+- `useContactInfo.ts`에서 이메일/링크드인 등 연락처 정보 중앙 관리 — 개별 파일에서 하드코딩 금지
+- i18n 번역 키 누락 시 빌드는 성공하지만 런타임에 키 이름이 그대로 노출됨
+
+---
+
+## 📚 참고 문서
+
+외부 문서:
+- **Nuxt 3 공식 문서**: https://nuxt.com/docs
+- **Channel.io SDK**: https://developers.channel.io/
+- **Web3Forms API**: https://web3forms.com/
+- **Calendly 연동**: https://www.npmjs.com/package/nuxt-calendly
+
+---
+
+## 🛠️ Skills
+
+커스텀 스킬은 `.claude/skills/`에 정의되어 있습니다. (`disable-model-invocation: true` = 명시적 호출 필요)
+
+| Skill | Purpose | Trigger |
+|-------|---------|---------|
+| `verify-implementation` | 모든 verify 스킬 순차 실행 → 통합 검증 보고서 생성 | 구현 완료 후 검증 시 |
+| `manage-skills` | 세션 변경사항 분석, 검증 스킬 생성/업데이트 | 세션 종료 전 스킬 정리 시 |
+| `update-handoff` | 현재 세션 작업 내용 분석 → session-handoff.md 업데이트 | `/clear` 전 작업 인계 시 |
+
+---
+
+## 🗜️ Compaction 지침
+
+컨텍스트 압축 시 반드시 보존할 항목:
+- Critical Rules 전체
+- 주의사항 전체
+- 현재 작업 중인 모듈명과 수정된 파일 목록
+- 미완료 TODO 항목
+- 그라데이션 테마 색상 값 (`#64ffda`, `#4af3ff`, `#a78bfa`)
+- i18n 양쪽 언어 동기화 규칙
+- 연락처 정보 중앙 관리 위치 (`useContactInfo.ts`)
+- GitHub Pages 배포 플로우 (main push → Actions → gh-pages)
+
+---
+
+## 🔄 이전 작업 현황
+
+@.claude/session-handoff.md

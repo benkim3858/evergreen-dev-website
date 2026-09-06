@@ -179,12 +179,32 @@ const formData = ref({
   budget: ''
 })
 
+// 유입 경로 한 줄 — plugins/referral.client.ts 가 첫 진입 때 남긴 값을 읽는다.
+// 기록이 없으면 빈 문자열이라 메일 본문 형태가 그대로 유지된다.
+const referralLine = (): string => {
+  try {
+    const raw = sessionStorage.getItem('eveg_referral')
+    if (!raw) return ''
+
+    const saved = JSON.parse(raw) as { ref?: string; from?: string; landing?: string }
+    const parts = [
+      saved.ref ? `경로 ${saved.ref}` : '',
+      saved.from ? `유입 ${saved.from}` : '',
+      saved.landing ? `첫 페이지 ${saved.landing}` : ''
+    ].filter(Boolean)
+
+    return parts.length ? `\n[유입 경로: ${parts.join(' / ')}]` : ''
+  } catch {
+    return ''
+  }
+}
+
 const handleSubmit = async () => {
   const result = await submitForm({
     name: formData.value.name,
     email: formData.value.email,
     message: `[프로젝트 유형: ${formData.value.projectType || '미선택'}]
-[예상 예산: ${formData.value.budget || '미선택'}]
+[예상 예산: ${formData.value.budget || '미선택'}]${referralLine()}
 
 ${formData.value.message}`,
     projectType: formData.value.projectType

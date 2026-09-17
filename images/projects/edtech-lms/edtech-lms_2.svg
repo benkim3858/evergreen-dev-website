@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a192f"/>
+  <!-- Watermark -->
+  <text x="30" y="30" fill="rgba(100,255,218,0.15)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">Confidential</text>
+  <!-- Top bar -->
+  <rect x="0" y="0" width="960" height="44" fill="#112240"/>
+  <text x="30" y="28" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700">EduStream LMS</text>
+  <rect x="750" y="12" width="60" height="20" rx="4" fill="#233554"/>
+  <text x="780" y="26" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">My Page</text>
+  <circle cx="900" cy="22" r="12" fill="#233554"/>
+  <text x="900" y="26" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">K</text>
+
+  <!-- Search bar -->
+  <rect x="240" y="64" width="480" height="38" rx="19" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <text x="270" y="88" fill="#4a5568" font-family="system-ui, -apple-system, sans-serif" font-size="13">강의를 검색하세요...</text>
+  <circle cx="690" cy="83" r="10" fill="none" stroke="#8892b0" stroke-width="1.5"/>
+  <line x1="697" y1="90" x2="703" y2="96" stroke="#8892b0" stroke-width="1.5"/>
+
+  <!-- Category filters -->
+  <rect x="240" y="116" width="56" height="28" rx="14" fill="#64ffda"/>
+  <text x="268" y="134" text-anchor="middle" fill="#0a192f" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">전체</text>
+  <rect x="306" y="116" width="80" height="28" rx="14" fill="#233554"/>
+  <text x="346" y="134" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">프로그래밍</text>
+  <rect x="396" y="116" width="60" height="28" rx="14" fill="#233554"/>
+  <text x="426" y="134" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">디자인</text>
+  <rect x="466" y="116" width="60" height="28" rx="14" fill="#233554"/>
+  <text x="496" y="134" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">마케팅</text>
+  <rect x="536" y="116" width="50" height="28" rx="14" fill="#233554"/>
+  <text x="561" y="134" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">비즈니스</text>
+
+  <!-- Course Grid - Row 1 -->
+  <!-- Card 1 -->
+  <rect x="60" y="164" width="260" height="160" rx="8" fill="#112240"/>
+  <rect x="60" y="164" width="260" height="80" rx="8" fill="#233554"/>
+  <rect x="60" y="230" width="260" height="0" fill="#233554"/>
+  <!-- LIVE badge -->
+  <rect x="70" y="174" width="40" height="18" rx="9" fill="#e63946"/>
+  <text x="90" y="187" text-anchor="middle" fill="#fff" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700">LIVE</text>
+  <!-- Thumbnail icon -->
+  <polygon points="180,194 180,218 200,206" fill="rgba(100,255,218,0.3)"/>
+  <text x="70" y="262" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">Python 데이터 분석 마스터</text>
+  <text x="70" y="280" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">김민수 강사</text>
+  <text x="70" y="298" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">수강생 2,341명</text>
+  <text x="200" y="298" fill="#f5a623" font-family="system-ui, -apple-system, sans-serif" font-size="10">&#9733;&#9733;&#9733;&#9733;&#9734; 4.8</text>
+
+  <!-- Card 2 -->
+  <rect x="350" y="164" width="260" height="160" rx="8" fill="#112240"/>
+  <rect x="350" y="164" width="260" height="80" rx="8" fill="#233554"/>
+  <polygon points="470,194 470,218 490,206" fill="rgba(100,255,218,0.3)"/>
+  <text x="360" y="262" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">React 완벽 가이드 2026</text>
+  <text x="360" y="280" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">이지현 강사</text>
+  <text x="360" y="298" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">수강생 1,892명</text>
+  <text x="490" y="298" fill="#f5a623" font-family="system-ui, -apple-system, sans-serif" font-size="10">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9</text>
+
+  <!-- Card 3 -->
+  <rect x="640" y="164" width="260" height="160" rx="8" fill="#112240"/>
+  <rect x="640" y="164" width="260" height="80" rx="8" fill="#233554"/>
+  <rect x="650" y="174" width="40" height="18" rx="9" fill="#e63946"/>
+  <text x="670" y="187" text-anchor="middle" fill="#fff" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700">LIVE</text>
+  <polygon points="760,194 760,218 780,206" fill="rgba(100,255,218,0.3)"/>
+  <text x="650" y="262" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">UX/UI 디자인 실무</text>
+  <text x="650" y="280" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">박서윤 강사</text>
+  <text x="650" y="298" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">수강생 987명</text>
+  <text x="780" y="298" fill="#f5a623" font-family="system-ui, -apple-system, sans-serif" font-size="10">&#9733;&#9733;&#9733;&#9733;&#9734; 4.6</text>
+
+  <!-- Course Grid - Row 2 -->
+  <!-- Card 4 -->
+  <rect x="60" y="348" width="260" height="160" rx="8" fill="#112240"/>
+  <rect x="60" y="348" width="260" height="80" rx="8" fill="#233554"/>
+  <polygon points="180,378 180,402 200,390" fill="rgba(100,255,218,0.3)"/>
+  <text x="70" y="446" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">디지털 마케팅 전략</text>
+  <text x="70" y="464" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">정하윤 강사</text>
+  <text x="70" y="482" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">수강생 1,456명</text>
+  <text x="200" y="482" fill="#f5a623" font-family="system-ui, -apple-system, sans-serif" font-size="10">&#9733;&#9733;&#9733;&#9733;&#9734; 4.5</text>
+
+  <!-- Card 5 -->
+  <rect x="350" y="348" width="260" height="160" rx="8" fill="#112240"/>
+  <rect x="350" y="348" width="260" height="80" rx="8" fill="#233554"/>
+  <polygon points="470,378 470,402 490,390" fill="rgba(100,255,218,0.3)"/>
+  <text x="360" y="446" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">AWS 클라우드 아키텍처</text>
+  <text x="360" y="464" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">최준혁 강사</text>
+  <text x="360" y="482" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">수강생 756명</text>
+  <text x="490" y="482" fill="#f5a623" font-family="system-ui, -apple-system, sans-serif" font-size="10">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9</text>
+
+  <!-- Card 6 -->
+  <rect x="640" y="348" width="260" height="160" rx="8" fill="#112240"/>
+  <rect x="640" y="348" width="260" height="80" rx="8" fill="#233554"/>
+  <polygon points="760,378 760,402 780,390" fill="rgba(100,255,218,0.3)"/>
+  <text x="650" y="446" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">Figma 프로토타이핑</text>
+  <text x="650" y="464" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">한소희 강사</text>
+  <text x="650" y="482" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">수강생 1,123명</text>
+  <text x="780" y="482" fill="#f5a623" font-family="system-ui, -apple-system, sans-serif" font-size="10">&#9733;&#9733;&#9733;&#9733;&#9734; 4.7</text>
+</svg>

@@ -148,7 +148,7 @@ export default defineNuxtConfig({
                 "email": "ben@evegdev.com",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "수영로 383번길 66, 2층 208호",
+                  "streetAddress": "수영로 383번길 66, 2층 202호",
                   "addressLocality": "수영구",
                   "addressRegion": "부산",
                   "addressCountry": "KR"

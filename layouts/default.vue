@@ -230,7 +230,7 @@ onUnmounted(() => {
 }
 
 .logo-image {
-  height: 60px;
+  height: 44px;
   width: auto;
   object-fit: contain;
   transition: transform 0.5s ease;

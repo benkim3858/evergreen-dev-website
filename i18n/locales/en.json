@@ -457,21 +457,21 @@
         {
           "name": "Jason",
           "role": "Sales / Marketing",
-          "bio": "Listens first to what clients need and handles communication from the first consultation to project kickoff.",
+          "bio": "Clarifies features, budget, and timeline in the first consultation, then connects you directly with the developers.",
           "skills": [
-            "Sales",
+            "Project Consulting",
             "Content Marketing",
-            "Client Consulting"
+            "Blog & Social"
           ]
         },
         {
           "name": "Sena",
           "role": "PM / Design",
-          "bio": "Bridges business goals and technology, leading projects from planning and design to launch.",
+          "bio": "Turns requirements into screen flows and UI design, then manages scope and schedule through launch.",
           "skills": [
-            "Product Strategy",
+            "Service Planning",
             "UI/UX Design",
-            "UX Research"
+            "Scope & Schedule"
           ]
         },
         {

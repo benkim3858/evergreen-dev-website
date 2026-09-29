@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a192f"/>
+  <!-- Watermark -->
+  <text x="24" y="36" fill="rgba(100,255,218,0.15)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700">Confidential</text>
+  <!-- Top bar -->
+  <rect x="0" y="0" width="960" height="56" fill="#112240"/>
+  <text x="40" y="35" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700">E-Sign</text>
+  <text x="420" y="35" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="14" text-anchor="middle">업무위탁계약서_2026.pdf</text>
+  <text x="860" y="35" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="13">admin@company.kr</text>
+  <!-- Left: Document preview area -->
+  <rect x="40" y="72" width="600" height="420" rx="8" fill="#112240"/>
+  <!-- Document content lines -->
+  <g fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11" opacity="0.7">
+    <text x="70" y="106">제1조 (목적)</text>
+    <rect x="70" y="114" width="420" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="126" width="380" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="138" width="440" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="150" width="300" height="6" rx="2" fill="#233554"/>
+    <text x="70" y="178">제2조 (계약 기간)</text>
+    <rect x="70" y="186" width="460" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="198" width="400" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="210" width="350" height="6" rx="2" fill="#233554"/>
+    <text x="70" y="240">제3조 (대금 및 지급)</text>
+    <rect x="70" y="248" width="430" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="260" width="410" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="272" width="380" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="284" width="450" height="6" rx="2" fill="#233554"/>
+    <text x="70" y="314">제4조 (비밀유지)</text>
+    <rect x="70" y="322" width="420" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="334" width="390" height="6" rx="2" fill="#233554"/>
+    <rect x="70" y="346" width="440" height="6" rx="2" fill="#233554"/>
+  </g>
+  <!-- Signature position 1 (dashed rectangle) -->
+  <rect x="340" y="370" width="160" height="60" rx="4" fill="none" stroke="#64ffda" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="420" y="396" text-anchor="middle" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="12" opacity="0.8">갑 서명</text>
+  <text x="420" y="414" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="10">클릭하여 서명</text>
+  <!-- Signature position 2 -->
+  <rect x="340" y="440" width="160" height="40" rx="4" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/>
+  <text x="420" y="465" text-anchor="middle" fill="#a78bfa" font-family="system-ui, -apple-system, sans-serif" font-size="12" opacity="0.6">을 서명</text>
+  <!-- Page indicator -->
+  <text x="340" y="500" text-anchor="middle" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">1 / 3 페이지</text>
+  <!-- Right panel: signers -->
+  <rect x="660" y="72" width="260" height="420" rx="8" fill="#233554"/>
+  <text x="690" y="104" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600">서명자 목록</text>
+  <!-- Signer 1 -->
+  <rect x="680" y="120" width="220" height="70" rx="6" fill="#112240"/>
+  <circle cx="706" cy="148" r="16" fill="#1a2d4a" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="706" y="153" text-anchor="middle" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">A</text>
+  <text x="732" y="141" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13">김대표 (갑)</text>
+  <text x="732" y="158" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">kim@company.kr</text>
+  <!-- Status: waiting -->
+  <rect x="732" y="164" width="52" height="18" rx="9" fill="rgba(100,255,218,0.15)"/>
+  <text x="758" y="177" text-anchor="middle" fill="#64ffda" font-family="system-ui, -apple-system, sans-serif" font-size="10">대기중</text>
+  <!-- Signer 2 -->
+  <rect x="680" y="200" width="220" height="70" rx="6" fill="#112240"/>
+  <circle cx="706" cy="228" r="16" fill="#1a2d4a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="706" y="233" text-anchor="middle" fill="#a78bfa" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">B</text>
+  <text x="732" y="221" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="13">이개발 (을)</text>
+  <text x="732" y="238" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="11">lee@dev.kr</text>
+  <!-- Status: pending -->
+  <rect x="732" y="244" width="52" height="18" rx="9" fill="rgba(167,139,250,0.15)"/>
+  <text x="758" y="257" text-anchor="middle" fill="#a78bfa" font-family="system-ui, -apple-system, sans-serif" font-size="10">미발송</text>
+  <!-- Separator -->
+  <line x1="680" y1="300" x2="900" y2="300" stroke="#112240" stroke-width="1"/>
+  <!-- Sign settings -->
+  <text x="690" y="325" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">서명 방식</text>
+  <rect x="680" y="335" width="220" height="32" rx="4" fill="#112240"/>
+  <text x="696" y="356" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">전자서명 (드로잉)</text>
+  <text x="690" y="388" fill="#8892b0" font-family="system-ui, -apple-system, sans-serif" font-size="12">만료일</text>
+  <rect x="680" y="398" width="220" height="32" rx="4" fill="#112240"/>
+  <text x="696" y="419" fill="#ccd6f6" font-family="system-ui, -apple-system, sans-serif" font-size="12">2026-04-30</text>
+  <!-- Sign button -->
+  <rect x="680" y="448" width="220" height="40" rx="6" fill="#64ffda"/>
+  <text x="790" y="474" text-anchor="middle" fill="#0a192f" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700">서명하기</text>
+</svg>

@@ -1,0 +1,79 @@
+# Robots.txt for Evergreen Dev
+# https://evegdev.com/
+
+# ─────────────────────────────────────────────
+# AI 검색 인용 봇 (허용 필수)
+# 이들을 차단하면 ChatGPT·Claude·Perplexity 답변에서 배제된다.
+# 출처: OpenAI/Anthropic/Perplexity 공식 크롤러 문서 (2026-09 확인)
+# ─────────────────────────────────────────────
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ─────────────────────────────────────────────
+# 모델 학습 봇 (허용 — 브랜드가 모델 기억에 남는 편이 유리)
+# ─────────────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# ─────────────────────────────────────────────
+# 전통 검색 엔진
+# ─────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+# ─────────────────────────────────────────────
+# 기본 정책
+#
+# 위의 개별 그룹에는 Disallow 를 두지 않았다. robots 규격상 크롤러는 자신에게
+# 가장 구체적인 그룹 하나만 따르므로, 명시된 봇들은 아래 /_nuxt/ 차단을 받지 않는다.
+# 의도한 것이다 — 렌더링 검사를 위해 JS·CSS 를 읽는 편이 유리하고,
+# 정적 사이트라 숨길 자산도 없다.
+# ─────────────────────────────────────────────
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /assets/builds/
+
+Crawl-delay: 1
+
+Sitemap: https://evegdev.com/sitemap_index.xml

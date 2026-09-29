@@ -455,23 +455,23 @@
       "subtitle": "A team of experts dedicated to your business success",
       "members": [
         {
-          "name": "Sena",
-          "role": "Planning / PM",
-          "bio": "Bridges business goals and technology, leading projects from strategy to launch.",
+          "name": "Jason",
+          "role": "Sales / Marketing",
+          "bio": "Listens first to what clients need and handles communication from the first consultation to project kickoff.",
           "skills": [
-            "Product Strategy",
-            "Agile",
-            "UX Research"
+            "Sales",
+            "Content Marketing",
+            "Client Consulting"
           ]
         },
         {
-          "name": "Betty",
-          "role": "Design",
-          "bio": "Crafts intuitive user experiences with a keen eye for aesthetics and usability.",
+          "name": "Sena",
+          "role": "PM / Design",
+          "bio": "Bridges business goals and technology, leading projects from planning and design to launch.",
           "skills": [
-            "UI/UX",
-            "Figma",
-            "Motion Design"
+            "Product Strategy",
+            "UI/UX Design",
+            "UX Research"
           ]
         },
         {

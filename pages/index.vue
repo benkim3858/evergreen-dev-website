@@ -470,8 +470,8 @@ const testimonials = computed(() => [
 ]);
 
 const teamTeaser = [
-  { name: 'Sena', role: 'PM', icon: 'mdi:lightbulb-outline' },
-  { name: 'Betty', role: 'Design', icon: 'mdi:palette-outline' },
+  { name: 'Jason', role: 'Sales · Marketing', icon: 'mdi:bullhorn-outline' },
+  { name: 'Sena', role: 'PM · Design', icon: 'mdi:lightbulb-outline' },
   { name: 'Ben', role: 'Dev', icon: 'mdi:code-braces' },
   { name: 'Jhin', role: 'Dev', icon: 'mdi:code-braces' }
 ];

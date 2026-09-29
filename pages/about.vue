@@ -107,8 +107,8 @@ useSeoMeta({
 const aboutText = computed(() => t('about.description'));
 
 const roleIcons = {
-  0: 'mdi:lightbulb-outline',
-  1: 'mdi:palette-outline',
+  0: 'mdi:bullhorn-outline',
+  1: 'mdi:lightbulb-outline',
   2: 'mdi:code-braces',
   3: 'mdi:code-braces',
   4: 'mdi:code-braces'

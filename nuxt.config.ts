@@ -113,9 +113,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/logo.png' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/logo.png' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/logo.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         // canonical → useLocaleHead()가 라우트별 동적 생성
         // Fonts - Pretendard (Variable)
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css', crossorigin: 'anonymous' },

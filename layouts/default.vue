@@ -7,12 +7,14 @@
       <!-- Desktop: Logo (left) -->
       <div class="nav-logo">
         <NuxtLink :to="localePath('/')" class="logo">
-          <img
-            src="/logo.png?v=1"
-            alt="Evergreen Dev Labs"
-            class="logo-image"
-          />
-          <span class="logo-text">EVERGREEN DEV</span>
+          <picture>
+            <source media="(max-width: 768px)" srcset="/logo-mark.png" />
+            <img
+              src="/logo-nav.png"
+              alt="Evergreen Dev Labs"
+              class="logo-image"
+            />
+          </picture>
         </NuxtLink>
       </div>
 
@@ -223,34 +225,15 @@ onUnmounted(() => {
   gap: 0;
 }
 
+.logo picture {
+  display: flex;
+}
+
 .logo-image {
   height: 60px;
   width: auto;
   object-fit: contain;
   transition: transform 0.5s ease;
-}
-
-.logo-text {
-  display: inline-block;
-  color: var(--text-color-light);
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  font-family: 'Space Mono', monospace;
-  background: linear-gradient(120deg, #64ffda, #4af3ff, #a78bfa);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 2px 2px 10px rgba(100, 255, 218, 0.2);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
-  max-width: 300px;
-  white-space: nowrap;
-  margin-left: 1rem;
-}
-
-.logo:hover .logo-text {
-  text-shadow: 2px 2px 15px rgba(100, 255, 218, 0.4);
 }
 
 /* Desktop: nav-links visible as flex row */
@@ -362,7 +345,7 @@ onUnmounted(() => {
     border-radius: 30px;
   }
 
-  /* Mobile: compact logo (image only, no text) */
+  /* Mobile: compact logo (symbol only via <picture>) */
   .nav-logo {
     display: flex;
     padding-right: 0;
@@ -371,10 +354,6 @@ onUnmounted(() => {
 
   .logo-image {
     height: 30px;
-  }
-
-  .logo-text {
-    display: none;
   }
 
   .nav-right {

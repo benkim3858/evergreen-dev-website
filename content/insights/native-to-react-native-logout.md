@@ -10,6 +10,37 @@ tags:
   - Keychain
   - 네이티브 앱 전환
 readingTime: 9
+question: 네이티브 앱을 React Native로 바꾸면 왜 기존 사용자가 로그아웃되나요?
+answer: >-
+  새 React Native 코드가 네이티브 앱이 iOS Keychain이나 Android SharedPreferences에 저장해 둔 로그인 토큰을 같은 속성·키 이름으로 찾지 못하기 때문이며, 새 앱이 첫 실행 때 옛 저장소를 읽어 새 저장소로 옮기는 5단계의 1회성 토큰 이관을 넣으면 막을 수 있습니다.
+sources:
+  - name: kSecAttrService (Apple Developer Documentation)
+    url: https://developer.apple.com/documentation/security/ksecattrservice
+  - name: react-native-keychain iOS 구현 — service 기본값은 앱 번들 ID (GitHub)
+    url: https://github.com/oblador/react-native-keychain/blob/master/ios/RNKeychainManager/RNKeychainManager.mm
+  - name: EncryptedSharedPreferences (Android Developers)
+    url: https://developer.android.com/reference/androidx/security/crypto/EncryptedSharedPreferences
+  - name: WKHTTPCookieStore (Apple Developer Documentation)
+    url: https://developer.apple.com/documentation/webkit/wkhttpcookiestore
+faq:
+  - q: 개발 중 테스트에서는 왜 이 문제가 발견되지 않나요?
+    a: >-
+      새로 설치한 사용자에게는 문제가 없고, 테스트 기기에도 대부분 새 빌드를 새로 깔아 쓰기 때문입니다. 스토어에 업데이트를 올린 뒤 기존 사용자가 앱을 업데이트할 때에야 드러납니다.
+  - q: iOS에서는 왜 옛 토큰을 찾지 못하나요?
+    a: >-
+      Keychain 항목은 kSecAttrService, kSecAttrAccount, kSecAttrAccessGroup 같은 속성을 저장한 쪽과 읽는 쪽이 똑같이 맞춰야 값을 꺼낼 수 있습니다. react-native-keychain은 service 기본값을 앱의 번들 ID로 정하는데, 네이티브 앱이 쓰던 service 문자열과 일치한다는 보장이 없습니다.
+  - q: 로그아웃을 막으려면 무엇을 해야 하나요?
+    a: >-
+      새 앱이 첫 실행 때 네이티브 모듈로 옛 저장소를 직접 읽고, 서버에서 토큰을 검증한 뒤 새 저장소에 쓰고, 이관 완료 표시를 남깁니다. 웹뷰를 함께 쓰는 앱이라면 웹뷰 쿠키도 이관한 토큰으로 다시 설정해야 합니다.
+  - q: 이관이 제대로 되는지는 어떻게 확인하나요?
+    a: >-
+      스토어에 올라가 있는 현재 버전 앱을 설치해 로그인한 뒤, 그 위에 새 빌드를 덮어써서 로그인 상태와 웹뷰 안쪽 로그인 상태가 유지되는지 확인합니다. 지우고 새로 깔면 재현되지 않습니다. iOS는 TestFlight, Android는 내부 테스트 트랙으로 이 절차를 밟을 수 있고, 소셜 로그인 방식별로 각각 확인해야 합니다.
+  - q: 토큰 이관 작업에는 시간이 얼마나 드나요?
+    a: >-
+      옛 저장 구조 파악 1~2일, iOS·Android 네이티브 모듈 작성 2~3일, 이관 로직과 서버 검증 연결 1~2일, 웹뷰 쿠키 이관 1~2일, 덮어쓰기 시나리오 테스트 2~3일 정도입니다.
+  - q: 기존 앱 소스가 없으면 어떻게 하나요?
+    a: >-
+      저장 구조를 알 수 없으면 이관 계획이 성립하지 않습니다. 이때는 전 사용자에게 재로그인을 요청하는 것을 전제로, 업데이트 화면에서 미리 알리고 재로그인 절차를 짧게 만드는 편이 이탈이 적습니다.
 ---
 
 운영 중인 네이티브 앱을 React Native로 다시 만드는 프로젝트에서 가장 늦게 발견되는 문제가 있습니다. 개발과 테스트를 모두 마치고 스토어에 업데이트를 올린 뒤에야 드러납니다. **기존 사용자가 앱을 업데이트하면 로그인이 풀립니다.**

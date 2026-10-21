@@ -11,6 +11,32 @@ tags:
   - 타깃 API
   - Xcode 26
 readingTime: 7
+question: 2026년에 앱 업데이트가 스토어 업로드 단계에서 막히는 이유는 무엇인가요?
+answer: >-
+  2026년 4월 28일부터 App Store는 Xcode 26 이상에서 iOS 26 SDK로 빌드한 앱만 받고, 2026년 8월 31일부터 Google Play는 Android 16(API 레벨 36)을 타깃으로 한 신규 앱과 업데이트만 받기 때문입니다.
+sources:
+  - name: Meet Google Play's target API level requirement (Android Developers)
+    url: https://developer.android.com/google/play/requirements/target-sdk
+  - name: Target API level requirements for Google Play apps (Play Console 도움말)
+    url: https://support.google.com/googleplay/android-developer/answer/11926878
+  - name: App Store Connect minimum SDK requirements update (Expo)
+    url: https://expo.dev/blog/app-store-connect-minimum-sdk-26
+faq:
+  - q: iOS 26 SDK로 빌드하면 예전 iOS 버전 기기는 지원하지 못하나요?
+    a: >-
+      아닙니다. SDK 버전은 무엇으로 만드느냐의 문제이고, 어떤 OS 버전의 기기를 지원할지는 Deployment Target으로 따로 정합니다. Deployment Target을 iOS 15로 두면 iOS 15 기기에서도 그대로 동작합니다.
+  - q: Google Play 타깃 API를 36으로 올리지 않으면 앱이 내려가나요?
+    a: >-
+      이미 올라가 있는 앱이 즉시 내려가지는 않지만, 타깃 API가 낮으면 새 사용자에게 노출되지 않습니다. 기존 설치 사용자는 계속 쓸 수 있어도 신규 유입이 막힙니다. 기한을 맞추기 어려운 사정이 있으면 Play Console에서 2026년 11월 1일까지 연장을 신청할 수 있습니다.
+  - q: Wear OS나 Android TV 앱도 API 36을 타깃으로 해야 하나요?
+    a: >-
+      아닙니다. Wear OS와 Android Automotive OS는 API 35 이상, Android TV와 Android XR은 API 34 이상이 기준입니다.
+  - q: Flutter, React Native, Expo로 만든 앱도 같은 요건을 받나요?
+    a: >-
+      네. 결국 Xcode로 빌드하므로 같은 규칙을 받습니다. 프레임워크 버전이 최신에 가까우면 Xcode 업데이트 후 재빌드로 대부분 해결되지만, 버전이 1~2년 뒤처졌거나 Expo SDK 53 이하라면 프레임워크·SDK 업그레이드가 먼저 필요합니다.
+  - q: targetSdkVersion 숫자만 36으로 바꾸면 되나요?
+    a: >-
+      아닙니다. 타깃을 올리면 그 버전의 동작 변경이 앱에 적용됩니다. 사진·동영상 접근 권한, 포그라운드 서비스 유형 명시, 정확한 알람 권한, 엣지 투 엣지 화면이 자주 문제가 되는 지점입니다.
 ---
 
 한동안 업데이트를 하지 않던 앱에 수정 사항이 생겨 빌드를 올렸는데 업로드 단계에서 막히는 일이 올해 들어 늘었습니다. 2026년에 두 스토어가 모두 제출 요건을 올렸기 때문입니다.
@@ -110,11 +136,3 @@ Flutter, React Native, Expo로 만든 앱도 결국 Xcode로 빌드하므로 같
 빌드가 깨지는 지점은 앱마다 다릅니다. 프레임워크 버전, 사용 중인 플러그인, 네이티브 코드 유무에 따라 반나절이면 끝나기도 하고 몇 주가 걸리기도 합니다.
 
 저희 회사는 이런 스토어 요건 대응과 프레임워크 업그레이드 작업을 맡고 있습니다. 지금 앱이 어떤 상태인지 알려주시면 얼마나 걸릴 일인지부터 확인해 드리겠습니다. [문의 페이지](/contact)로 남겨 주시면 됩니다.
-
----
-
-**참고 자료**
-
-- [Meet Google Play's target API level requirement (Android Developers)](https://developer.android.com/google/play/requirements/target-sdk)
-- [Target API level requirements for Google Play apps (Play Console 도움말)](https://support.google.com/googleplay/android-developer/answer/11926878)
-- [App Store Connect minimum SDK requirements update (Expo)](https://expo.dev/blog/app-store-connect-minimum-sdk-26)

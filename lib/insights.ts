@@ -211,6 +211,134 @@ export function toJsonLd(data: unknown): string {
 }
 
 // ─────────────────────────────────────────────
+// 본문 표
+// ─────────────────────────────────────────────
+
+/** annotateTables 가 쓰는 markdown-it Token 의 일부 (markdown-it 을 import 하지 않으려고 직접 적는다) */
+export interface MarkdownToken {
+    type: string;
+    content: string;
+    children: MarkdownToken[] | null;
+    attrSet(name: string, value: string): void;
+    attrJoin(name: string, value: string): void;
+}
+
+/** 이 열 수 이상인 표는 본문 폭이 좁으면 행 단위로 쌓는다 (2열 표는 줄바꿈만으로 폭에 맞는다).
+ *  쌓는 기준 폭은 pages/insights/[slug].vue 의 @container 조건이다 */
+const STACK_MIN_COLUMNS = 3;
+
+/**
+ * 한 줄로 고정할 「짧은 열」 기준 (단위 em, 한글 1자 = 1em, 그 밖의 글자 = 0.55em 으로 어림한다).
+ * 공수·기간·금액처럼 짧은 값이 「1,500만 ~ 4,000만 / 원」처럼 쪼개지는 것을 막는다.
+ * 고정한 열 너비의 합(칸 여백 포함)이 예산을 넘으면 나머지 열이 너무 좁아지므로 짧은 열부터 예산만큼만 고정한다.
+ * 예산은 표가 표 모양으로 보이는 가장 좁은 본문 폭을 기준으로 잡았다
+ * (쌓이는 표는 본문 740px 이상 ≈ 50em, 2열 표는 모바일 본문 약 280px ≈ 20em)
+ */
+const NOWRAP_MAX_EM = 11;
+const NOWRAP_CELL_PADDING_EM = 2.2;
+const NOWRAP_BUDGET_STACKED_EM = 38;
+const NOWRAP_BUDGET_NARROW_EM = 11;
+
+function inlineText(token: MarkdownToken | undefined): string {
+    return (token?.children ?? [])
+        .filter((c) => c.type === 'text' || c.type === 'code_inline')
+        .map((c) => c.content)
+        .join('')
+        .trim();
+}
+
+function displayWidthEm(text: string): number {
+    let width = 0;
+    for (const ch of text) width += /[\u1100-\u11ff\u3000-\u303f\u3130-\u318f\uac00-\ud7af\u4e00-\u9fff\uff00-\uffef]/.test(ch) ? 1 : 0.55;
+    return width;
+}
+
+/**
+ * markdown-it 표 토큰에 반응형 표시용 속성을 붙인다 (렌더 전에 토큰을 고친다).
+ *
+ * - table 에 class="insight-table", 열이 많으면 "insight-table--stack" 을 더한다.
+ *   본문 폭이 좁으면 --stack 표는 행마다 「첫 칸 = 제목, 나머지 = 열 이름: 값」으로 쌓인다
+ * - 본문 칸(td)에 data-label="열 이름" 을 단다. 쌓인 화면에서 CSS 가 이 값을 이름표로 보여 준다
+ * - 짧은 열의 칸(th·td)에 class="insight-nowrap" 을 단다 (위 NOWRAP_* 설명)
+ * - role 속성을 단다. CSS 로 display 를 바꾸면 일부 브라우저가 표 의미를 잃어
+ *   스크린 리더가 행·열을 읽지 못하는데, role 이 그 의미를 되살린다
+ */
+export function annotateTables(tokens: MarkdownToken[]): void {
+    for (let start = 0; start < tokens.length; start++) {
+        if (tokens[start].type !== 'table_open') continue;
+        let end = start;
+        while (end < tokens.length && tokens[end].type !== 'table_close') end++;
+        annotateTable(tokens, start, end);
+        start = end;
+    }
+}
+
+function annotateTable(tokens: MarkdownToken[], start: number, end: number): void {
+    const headers: string[] = [];
+    const cells: { token: MarkdownToken; column: number; text: string }[] = [];
+    let inHead = false;
+    let column = 0;
+
+    for (let i = start + 1; i < end; i++) {
+        const token = tokens[i];
+        switch (token.type) {
+            case 'thead_open':
+                inHead = true;
+                token.attrSet('role', 'rowgroup');
+                break;
+            case 'thead_close':
+                inHead = false;
+                break;
+            case 'tbody_open':
+                token.attrSet('role', 'rowgroup');
+                break;
+            case 'tr_open':
+                column = 0;
+                token.attrSet('role', 'row');
+                break;
+            case 'th_open':
+            case 'td_open': {
+                const text = inlineText(tokens[i + 1]);
+                if (token.type === 'th_open') {
+                    token.attrSet('role', 'columnheader');
+                    if (inHead) headers[column] = text;
+                } else {
+                    token.attrSet('role', 'cell');
+                    if (headers[column]) token.attrSet('data-label', headers[column]);
+                }
+                cells.push({ token, column, text });
+                column++;
+                break;
+            }
+        }
+    }
+
+    const stacked = headers.length >= STACK_MIN_COLUMNS;
+    const table = tokens[start];
+    table.attrJoin('class', stacked ? 'insight-table insight-table--stack' : 'insight-table');
+    table.attrSet('role', 'table');
+
+    // 짧은 열을 좁은 것부터 예산 안에서 한 줄로 고정한다
+    const widths: number[] = [];
+    for (const cell of cells) widths[cell.column] = Math.max(widths[cell.column] ?? 0, displayWidthEm(cell.text));
+    const budget = stacked ? NOWRAP_BUDGET_STACKED_EM : NOWRAP_BUDGET_NARROW_EM;
+    const nowrap = new Set<number>();
+    let used = 0;
+    widths
+        .map((width, index) => ({ width, index }))
+        .filter(({ width }) => width <= NOWRAP_MAX_EM)
+        .sort((a, b) => a.width - b.width)
+        .forEach(({ width, index }) => {
+            if (used + width + NOWRAP_CELL_PADDING_EM > budget) return;
+            used += width + NOWRAP_CELL_PADDING_EM;
+            nowrap.add(index);
+        });
+    for (const cell of cells) {
+        if (nowrap.has(cell.column)) cell.token.attrJoin('class', 'insight-nowrap');
+    }
+}
+
+// ─────────────────────────────────────────────
 // RSS 2.0
 // ─────────────────────────────────────────────
 

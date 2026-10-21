@@ -124,3 +124,47 @@ test('toJsonLd: </script> 로 태그가 닫히지 않고 JSON.parse 결과는 �
     assert.ok(!s.includes('<') && !s.includes('>') && !s.includes('&'));
     assert.deepEqual(JSON.parse(s), data);
 });
+
+test('annotateTables: 열 이름·role·쌓기 class·짧은 열 고정을 붙이고 속성 값은 이스케이프된다', async () => {
+    const { default: MarkdownIt } = await import('markdown-it');
+    const { annotateTables } = await import('../lib/insights.ts');
+    const md = new MarkdownIt({ html: false });
+    const render = (src) => {
+        const env = {};
+        const tokens = md.parse(src, env);
+        annotateTables(tokens);
+        return md.renderer.render(tokens, md.options, env);
+    };
+
+    const wide = render([
+        '| 방식 | **동시 대응** | "특징" <b> | 공수 |',
+        '|---|---|---|---|',
+        '| 네이티브 | 각각 개발하는 방식으로 화면을 두 번 만든다 | 성능과 OS 기능 접근이 가장 좋음 | 1.8~2.0배 |',
+        '| 웹뷰 | 웹 화면을 앱 껍데기에 담는 방식 | 콘텐츠 중심 서비스에 적합 | 0.6~0.8배 |',
+        '',
+    ].join('\n'));
+    assert.match(wide, /<table class="insight-table insight-table--stack" role="table">/);
+    assert.match(wide, /<td role="cell" data-label="동시 대응">각각 개발/);
+    assert.match(wide, /<td role="cell" data-label="&quot;특징&quot; &lt;b&gt;">성능과/);
+    // 짧은 열(방식·공수)만 한 줄로 고정한다
+    assert.match(wide, /<td role="cell" data-label="방식" class="insight-nowrap">네이티브<\/td>/);
+    assert.match(wide, /<td role="cell" data-label="공수" class="insight-nowrap">1\.8~2\.0배<\/td>/);
+    assert.match(wide, /<th role="columnheader" class="insight-nowrap">공수<\/th>/);
+    assert.doesNotMatch(wide, /data-label="동시 대응" class="insight-nowrap"/);
+
+    const narrow = render('| 작업 | 기간 |\n|---|---|\n| 옛 저장 구조 파악 (소스 확인 포함) | 1~2일 |\n');
+    assert.match(narrow, /<table class="insight-table" role="table">/);
+    assert.match(narrow, /<td role="cell" data-label="기간" class="insight-nowrap">1~2일<\/td>/);
+    assert.match(narrow, /<td role="cell" data-label="작업">옛 저장/);
+});
+
+test('annotateTables: 짧은 열이 많아도 고정 너비 합은 예산을 넘지 않는다', async () => {
+    const { default: MarkdownIt } = await import('markdown-it');
+    const { annotateTables } = await import('../lib/insights.ts');
+    const md = new MarkdownIt();
+    const tokens = md.parse('| 가나다라마바사아자차 | 가나다라마바사아자차 | 가나다라마바사아자차 | 가나다라마바사아자차 |\n|---|---|---|---|\n| 가 | 나 | 다 | 라 |\n', {});
+    annotateTables(tokens);
+    const html = md.renderer.render(tokens, md.options, {});
+    // 열마다 10em + 여백 2.2em → 예산 38em 안에는 3열까지만 들어간다
+    assert.equal((html.match(/<th role="columnheader" class="insight-nowrap">/g) ?? []).length, 3);
+});

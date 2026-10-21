@@ -1,5 +1,5 @@
 import { parseFrontmatter } from '../lib/frontmatter';
-import { byDateDesc, slugFromPath, toInsightDetail, toInsightMeta } from '../lib/insights';
+import { annotateTables, byDateDesc, slugFromPath, toInsightDetail, toInsightMeta } from '../lib/insights';
 import type { Insight, InsightDetail, InsightMeta } from '../lib/insights';
 
 export type { Insight, InsightDetail, InsightFaq, InsightMeta, InsightSource } from '../lib/insights';
@@ -32,7 +32,11 @@ async function renderMarkdown(body: string): Promise<string> {
     // ⚠️ html: false 를 유지할 것. true 로 바꾸면 pages/insights/[slug].vue 의
     // v-html 이 그대로 XSS sink 가 된다 (마크다운 원문의 <script> 가 실행된다)
     const md = new MarkdownIt({ html: false, linkify: true, typographer: false, breaks: false });
-    return md.render(body);
+    // 표에 반응형 표시용 속성(class·data-label·role)을 붙인 뒤 렌더한다
+    const env = {};
+    const tokens = md.parse(body, env);
+    annotateTables(tokens);
+    return md.renderer.render(tokens, md.options, env);
 }
 
 /** 목록용 메타 (본문 HTML·직답·FAQ·출처 없음) */

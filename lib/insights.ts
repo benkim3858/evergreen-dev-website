@@ -6,6 +6,31 @@ import type { YamlMap, YamlValue } from './frontmatter';
  * 앱(composables/useInsights.ts), 서버(server/routes/insights/feed.xml.ts),
  * node 테스트(tests/insights.test.mjs)가 함께 쓴다. 그래서 런타임 import 를 두지 않는다
  * (위의 import type 은 컴파일 때 지워진다).
+ *
+ * 글 frontmatter 예시. title·description·date 만 필수이고, 나머지가 없으면 해당 섹션을 만들지 않는다.
+ *
+ *   title: 같은 앱인데 견적이 3배 차이 나는 이유
+ *   description: 목록·<meta description>·RSS 에 쓰는 한두 문장 요약
+ *   date: 2026-09-04
+ *   updated: 2026-09-04
+ *   category: 견적
+ *   tags:
+ *     - 앱 개발 외주
+ *   readingTime: 8
+ *   question: 독자가 검색창에 치는 질문 한 문장
+ *   answer: >-
+ *     수치·날짜가 들어간 직답 한 문장
+ *   sources:
+ *     - name: 문서 제목 (발행처)
+ *       url: https://example.com/doc
+ *   faq:
+ *     - q: 질문
+ *       a: >-
+ *         답
+ *
+ * - updated 는 화면 직답 상자의 「기준일」이자 dateModified 다. 본문 사실이 바뀔 때 고친다
+ * - 값에 ": " 나 " #" 가 들어가면 따옴표로 감싸거나 위처럼 >- 블록으로 쓴다 (아니면 빌드가 멈춘다)
+ * - 줄 끝 주석(값 뒤의 # ...)은 쓰지 않는다. 주석은 별도 줄에 쓴다
  */
 
 export const SITE_URL = 'https://evegdev.com';

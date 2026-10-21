@@ -5,7 +5,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg-color);
+  // 바탕은 html(검정)과 화면 전체를 덮는 SpaceBackground 가 맡는다. body 에 색을 두면 SpaceBackground 를 가린다
+  background-color: transparent;
   color: var(--text-color);
   line-height: 1.6;
 }

@@ -164,3 +164,15 @@ export function toInsightMeta(detail: InsightDetail): InsightMeta {
 export function byDateDesc(a: InsightMeta, b: InsightMeta): number {
     return b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug);
 }
+
+/**
+ * <script type="application/ld+json"> 에 넣을 JSON 문자열.
+ * 값에 "</script>" 가 들어가도 태그가 닫히지 않도록 < > & 를 유니코드 이스케이프로 바꾼다.
+ * JSON.parse 결과는 원래 값과 같다.
+ */
+export function toJsonLd(data: unknown): string {
+    return JSON.stringify(data)
+        .replace(/</g, '\\u003c')
+        .replace(/>/g, '\\u003e')
+        .replace(/&/g, '\\u0026');
+}

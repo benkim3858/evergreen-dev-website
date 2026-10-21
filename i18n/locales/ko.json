@@ -730,7 +730,11 @@
     "minutes": "분",
     "lastUpdated": "최종 수정",
     "backToList": "목록으로",
-    "ctaContact": "프로젝트 문의하기"
+    "ctaContact": "프로젝트 문의하기",
+    "answerLabel": "핵심 답변",
+    "asOf": "기준일",
+    "faqTitle": "자주 묻는 질문",
+    "sourcesTitle": "출처"
   },
   "alt": {
     "projectCase": "{title} — 에버그린 데브 {tech} 개발 사례",

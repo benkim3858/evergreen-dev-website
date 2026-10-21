@@ -730,7 +730,11 @@
     "minutes": " min",
     "lastUpdated": "Last updated",
     "backToList": "Back to list",
-    "ctaContact": "Start a project"
+    "ctaContact": "Start a project",
+    "answerLabel": "Short answer",
+    "asOf": "As of",
+    "faqTitle": "FAQ",
+    "sourcesTitle": "Sources"
   },
   "alt": {
     "projectCase": "{title} — Evergreen Dev {tech} project case",

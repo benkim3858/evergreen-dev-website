@@ -5,7 +5,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseFrontmatter } from '../lib/frontmatter.ts';
-import { toInsightDetail, toInsightMeta } from '../lib/insights.ts';
+import { toInsightDetail, toInsightMeta, toJsonLd } from '../lib/insights.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -85,4 +85,11 @@ test('실제 글 3편이 모두 검증을 통과한다', () => {
         const d = toInsightDetail(slug, meta, body);
         assert.equal(d.slug, slug);
     }
+});
+
+test('toJsonLd: </script> 로 태그가 닫히지 않고 JSON.parse 결과는 원래 값과 같다', () => {
+    const data = { text: '</script><script>alert(1)</script> & 답' };
+    const s = toJsonLd(data);
+    assert.ok(!s.includes('<') && !s.includes('>') && !s.includes('&'));
+    assert.deepEqual(JSON.parse(s), data);
 });

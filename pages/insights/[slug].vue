@@ -12,7 +12,33 @@
           <p class="insight-lead">{{ post.description }}</p>
         </header>
 
+        <!-- 직답: 본문 맨 앞에 둔다. 검색·AI 답변이 첫 문단을 인용하는 경우가 많아 질문·답·기준일을 함께 보인다 -->
+        <section v-if="post.answer" class="insight-answer" aria-labelledby="insight-answer-label">
+          <p id="insight-answer-label" class="insight-answer-label">{{ $t('insights.answerLabel') }}</p>
+          <p v-if="post.question" class="insight-answer-q">{{ post.question }}</p>
+          <p class="insight-answer-a">{{ post.answer }}</p>
+          <p class="insight-answer-basis">{{ $t('insights.asOf') }} <time :datetime="post.updated">{{ post.updated }}</time></p>
+        </section>
+
         <div class="insight-body" v-html="post.html"></div>
+
+        <!-- 화면의 FAQ 와 FAQPage JSON-LD 는 같은 post.faq 에서 만든다 (글자까지 같아야 한다) -->
+        <section v-if="post.faq.length" class="insight-faq" aria-labelledby="insight-faq-title">
+          <h2 id="insight-faq-title">{{ $t('insights.faqTitle') }}</h2>
+          <div v-for="(item, index) in post.faq" :key="index" class="insight-faq-item">
+            <h3 class="insight-faq-q">{{ item.q }}</h3>
+            <p class="insight-faq-a">{{ item.a }}</p>
+          </div>
+        </section>
+
+        <section v-if="post.sources.length" class="insight-sources" aria-labelledby="insight-sources-title">
+          <h2 id="insight-sources-title">{{ $t('insights.sourcesTitle') }}</h2>
+          <ol>
+            <li v-for="source in post.sources" :key="source.url">
+              <a :href="source.url" target="_blank" rel="noopener noreferrer">{{ source.name }}</a>
+            </li>
+          </ol>
+        </section>
 
         <footer class="insight-footer">
           <div class="insight-tags">
@@ -30,6 +56,8 @@
 </template>
 
 <script setup>
+import { toJsonLd } from '~/lib/insights';
+
 // 글이 한국어라 영문 로케일에는 라우트를 만들지 않는다 (빈 번역본·중복 색인 방지)
 defineI18nRoute({ locales: ['ko'] });
 
@@ -57,13 +85,15 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
-// Article 스키마 — 발행일·수정일이 들어가야 최신성 신호가 전달된다
+// Article 스키마 — 발행일·수정일이 들어가야 최신성 신호가 전달된다.
+// FAQPage 는 화면의 FAQ 섹션과 같은 post.faq 에서 만든다. 인용 효과를 기대한 것이 아니라
+// 화면에 보이는 질문·답을 기계가 읽을 수 있게 같은 글자로 옮겨 두는 것이다
 useHead(() => ({
   script: [
     {
       type: 'application/ld+json',
       key: 'insight-article',
-      innerHTML: JSON.stringify({
+      innerHTML: toJsonLd({
         '@context': 'https://schema.org',
         '@graph': [
           {
@@ -80,7 +110,23 @@ useHead(() => ({
             author: { '@id': 'https://evegdev.com/#ben-kim' },
             publisher: { '@id': 'https://evegdev.com/#organization' },
             mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+            ...(post.value.sources.length && {
+              citation: post.value.sources.map((source) => ({ '@type': 'CreativeWork', name: source.name, url: source.url })),
+            }),
           },
+          ...(post.value.faq.length
+            ? [
+                {
+                  '@type': 'FAQPage',
+                  '@id': `${canonical}#faq`,
+                  mainEntity: post.value.faq.map((item) => ({
+                    '@type': 'Question',
+                    name: item.q,
+                    acceptedAnswer: { '@type': 'Answer', text: item.a },
+                  })),
+                },
+              ]
+            : []),
           {
             '@type': 'BreadcrumbList',
             '@id': `${canonical}#breadcrumb`,
@@ -137,6 +183,84 @@ useHead(() => ({
   line-height: 1.8;
   opacity: 0.85;
   margin: 0;
+}
+
+/* 직답 상자 — 본문 첫머리에서 질문·답·기준일을 한눈에 보이게 한다 */
+.insight-answer {
+  margin: 0 0 2.5rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 8px;
+  background: rgba(128, 128, 128, 0.06);
+}
+
+.insight-answer-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent-color);
+}
+
+.insight-answer-q {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.insight-answer-a {
+  margin: 0 0 0.75rem;
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+.insight-answer-basis {
+  margin: 0;
+  font-size: 0.82rem;
+  opacity: 0.6;
+}
+
+/* FAQ·출처 — 본문 h2 와 같은 위계를 쓴다 */
+.insight-faq,
+.insight-sources {
+  margin-top: 3rem;
+}
+
+.insight-faq h2,
+.insight-sources h2 {
+  font-size: 1.5rem;
+  line-height: 1.45;
+  margin: 0 0 1.25rem;
+}
+
+.insight-faq-item + .insight-faq-item {
+  margin-top: 1.5rem;
+}
+
+.insight-faq-q {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+}
+
+.insight-faq-a {
+  margin: 0;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.insight-sources ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  line-height: 1.9;
+  font-size: 0.95rem;
+}
+
+.insight-sources a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-word;
 }
 
 /* 본문은 v-html 이라 :deep 으로 스타일을 내려보낸다 */
@@ -257,6 +381,9 @@ useHead(() => ({
 
 @media (max-width: 640px) {
   .insight-h1 { font-size: 1.5rem; }
+  .insight-faq h2,
+  .insight-sources h2 { font-size: 1.25rem; }
+  .insight-answer { padding: 1rem 1.1rem; }
   .insight-body :deep(h2) { font-size: 1.25rem; margin-top: 2.25rem; }
   .insight-body :deep(table) { font-size: 0.85rem; }
 }

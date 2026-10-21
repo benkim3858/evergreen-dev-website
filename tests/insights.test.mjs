@@ -1,11 +1,12 @@
 // 인사이트 메타 정규화·RSS·JSON-LD 헬퍼 테스트 — `npm test`
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseFrontmatter } from '../lib/frontmatter.ts';
-import { toInsightDetail, toInsightMeta, toJsonLd } from '../lib/insights.ts';
+import { buildInsightsFeed, toInsightDetail, toInsightMeta, toJsonLd, toRfc822 } from '../lib/insights.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -84,6 +85,36 @@ test('실제 글 3편이 모두 검증을 통과한다', () => {
         const { meta, body } = parseFrontmatter(readFileSync(join(dir, f), 'utf8'), `content/insights/${f}`);
         const d = toInsightDetail(slug, meta, body);
         assert.equal(d.slug, slug);
+    }
+});
+
+test('toRfc822: 요일과 한국 시각을 붙인다', () => {
+    assert.equal(toRfc822('2026-09-04'), 'Fri, 04 Sep 2026 00:00:00 +0900');
+    assert.equal(toRfc822('2026-10-21'), 'Wed, 21 Oct 2026 00:00:00 +0900');
+});
+
+const POSTS = [
+    { slug: 'old', title: 'A & B <c>', description: '"따옴표" \'작은\'', date: '2026-01-02', updated: '2026-10-21', category: '견적', tags: ['t1'], readingTime: 3 },
+    { slug: 'new', title: '새 글', description: '설명', date: '2026-09-04', updated: '2026-09-04', category: '', tags: [], readingTime: 1 },
+];
+
+test('RSS: 최신순·이스케이프·lastBuildDate 는 가장 최근 수정일', () => {
+    const xml = buildInsightsFeed(POSTS, { title: '개발 인사이트 | 에버그린', description: '설명 & 요약' });
+    assert.ok(xml.indexOf('<link>https://evegdev.com/insights/new</link>') < xml.indexOf('<link>https://evegdev.com/insights/old</link>'));
+    assert.match(xml, /<title>A &amp; B &lt;c&gt;<\/title>/);
+    assert.match(xml, /<description>&quot;따옴표&quot; &apos;작은&apos;<\/description>/);
+    assert.match(xml, /<lastBuildDate>Wed, 21 Oct 2026 00:00:00 \+0900<\/lastBuildDate>/);
+    assert.match(xml, /<category>견적<\/category>\n {6}<category>t1<\/category>/);
+    assert.match(xml, /<atom:link href="https:\/\/evegdev.com\/insights\/feed.xml" rel="self" type="application\/rss\+xml"\/>/);
+});
+
+test('RSS: xmllint 로 well-formed 확인 (xmllint 가 없으면 건너뛴다)', (t) => {
+    const xml = buildInsightsFeed(POSTS, { title: 't', description: 'd' });
+    try {
+        execFileSync('xmllint', ['--noout', '-'], { input: xml, stdio: ['pipe', 'pipe', 'pipe'] });
+    } catch (e) {
+        if (e.code === 'ENOENT') return t.skip('xmllint 없음');
+        assert.fail(String(e.stderr));
     }
 });
 

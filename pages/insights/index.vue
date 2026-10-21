@@ -25,6 +25,8 @@
 </template>
 
 <script setup>
+import { INSIGHTS_FEED_CHANNEL, INSIGHTS_FEED_URL } from '~/lib/insights';
+
 // 글이 한국어라 영문 로케일에는 라우트를 만들지 않는다 (빈 번역본·중복 색인 방지)
 defineI18nRoute({ locales: ['ko'] });
 
@@ -45,8 +47,12 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
-// 목록 페이지의 구조화 데이터 — 어떤 글이 있는지 봇에게 알린다
+// 목록 페이지의 구조화 데이터 — 어떤 글이 있는지 봇에게 알린다.
+// RSS 피드는 <link rel="alternate"> 로 알린다 (피드 리더·검색엔진이 자동으로 찾는다)
 useHead(() => ({
+  link: [
+    { rel: 'alternate', type: 'application/rss+xml', title: INSIGHTS_FEED_CHANNEL.title, href: INSIGHTS_FEED_URL, key: 'insights-rss' },
+  ],
   script: [
     {
       type: 'application/ld+json',

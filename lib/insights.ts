@@ -1,15 +1,23 @@
 import type { YamlMap, YamlValue } from './frontmatter';
 
 /**
- * 인사이트 글의 메타데이터 정규화·검증
+ * 인사이트 글의 메타데이터 정규화·검증과 RSS 생성
  *
- * 앱(composables/useInsights.ts)과 node 테스트(tests/insights.test.mjs)가 함께 쓴다.
- * 그래서 런타임 import 를 두지 않는다
+ * 앱(composables/useInsights.ts), 서버(server/routes/insights/feed.xml.ts),
+ * node 테스트(tests/insights.test.mjs)가 함께 쓴다. 그래서 런타임 import 를 두지 않는다
  * (위의 import type 은 컴파일 때 지워진다).
  */
 
 export const SITE_URL = 'https://evegdev.com';
 export const INSIGHTS_URL = `${SITE_URL}/insights`;
+export const INSIGHTS_FEED_PATH = '/insights/feed.xml';
+export const INSIGHTS_FEED_URL = `${SITE_URL}${INSIGHTS_FEED_PATH}`;
+/** RSS 채널 정보. 페이지 <link rel="alternate"> 의 title 도 이 값을 쓴다.
+ *  description 은 목록 페이지 부제(i18n insights.subtitle)와 같은 문장이다 */
+export const INSIGHTS_FEED_CHANNEL = {
+    title: '개발 인사이트 | 에버그린 데브 (Evergreen Dev)',
+    description: '프로젝트를 진행하며 실제로 부딪힌 문제와 판단 기준을 정리합니다.',
+} as const;
 
 export interface InsightSource {
     name: string;
@@ -175,4 +183,76 @@ export function toJsonLd(data: unknown): string {
         .replace(/</g, '\\u003c')
         .replace(/>/g, '\\u003e')
         .replace(/&/g, '\\u0026');
+}
+
+// ─────────────────────────────────────────────
+// RSS 2.0
+// ─────────────────────────────────────────────
+
+function escapeXml(s: string): string {
+    return s
+        // XML 1.0 에서 쓸 수 없는 제어 문자는 지운다
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F￾￿]/g, '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+}
+
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/** YYYY-MM-DD → RFC 822 날짜 (한국 시각 자정). RSS 2.0 pubDate 형식이다 */
+export function toRfc822(date: string): string {
+    const [y, m, d] = date.split('-').map(Number);
+    const day = DAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+    return `${day}, ${String(d).padStart(2, '0')} ${MONTHS[m - 1]} ${y} 00:00:00 +0900`;
+}
+
+export interface FeedChannel {
+    title: string;
+    description: string;
+}
+
+/**
+ * 인사이트 목록으로 RSS 2.0 문서를 만든다.
+ * lastBuildDate 는 빌드 시각이 아니라 가장 최근 수정일이다. 글이 바뀌지 않으면 피드도 바뀌지 않는다.
+ */
+export function buildInsightsFeed(posts: InsightMeta[], channel: FeedChannel): string {
+    const sorted = [...posts].sort(byDateDesc);
+    const lastUpdated = sorted.reduce((max, p) => (p.updated > max ? p.updated : max), '');
+
+    const items = sorted.map((p) => {
+        const url = insightUrl(p.slug);
+        const categories = [p.category, ...p.tags]
+            .filter(Boolean)
+            .map((c) => `      <category>${escapeXml(c)}</category>`);
+        return [
+            '    <item>',
+            `      <title>${escapeXml(p.title)}</title>`,
+            `      <link>${escapeXml(url)}</link>`,
+            `      <guid isPermaLink="true">${escapeXml(url)}</guid>`,
+            `      <pubDate>${toRfc822(p.date)}</pubDate>`,
+            `      <description>${escapeXml(p.description)}</description>`,
+            ...categories,
+            '    </item>',
+        ].join('\n');
+    });
+
+    return [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
+        '  <channel>',
+        `    <title>${escapeXml(channel.title)}</title>`,
+        `    <link>${INSIGHTS_URL}</link>`,
+        `    <description>${escapeXml(channel.description)}</description>`,
+        '    <language>ko</language>',
+        ...(lastUpdated ? [`    <lastBuildDate>${toRfc822(lastUpdated)}</lastBuildDate>`] : []),
+        `    <atom:link href="${INSIGHTS_FEED_URL}" rel="self" type="application/rss+xml"/>`,
+        ...items,
+        '  </channel>',
+        '</rss>',
+        '',
+    ].join('\n');
 }

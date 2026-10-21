@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import { toJsonLd } from '~/lib/insights';
+import { INSIGHTS_FEED_CHANNEL, INSIGHTS_FEED_URL, toJsonLd } from '~/lib/insights';
 
 // 글이 한국어라 영문 로케일에는 라우트를 만들지 않는다 (빈 번역본·중복 색인 방지)
 defineI18nRoute({ locales: ['ko'] });
@@ -89,6 +89,9 @@ useSeoMeta({
 // FAQPage 는 화면의 FAQ 섹션과 같은 post.faq 에서 만든다. 인용 효과를 기대한 것이 아니라
 // 화면에 보이는 질문·답을 기계가 읽을 수 있게 같은 글자로 옮겨 두는 것이다
 useHead(() => ({
+  link: [
+    { rel: 'alternate', type: 'application/rss+xml', title: INSIGHTS_FEED_CHANNEL.title, href: INSIGHTS_FEED_URL, key: 'insights-rss' },
+  ],
   script: [
     {
       type: 'application/ld+json',

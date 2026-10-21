@@ -55,13 +55,16 @@ export default defineNuxtConfig({
   // Nitro 설정 - GitHub Pages용 정적 생성
   nitro: {
     preset: 'github-pages',
+    // server/routes/insights/feed.xml.ts 가 글 원문을 읽는 저장소 (useStorage('assets:insights'))
+    serverAssets: [{ baseName: 'insights', dir: resolve(__dirname, 'content/insights') }],
     prerender: {
       // ko 라우트는 nav 링크에서 자동 크롤되지만, 영어(/en) 라우트는
       // 기본 로케일(ko) DOM에 링크가 없어 크롤되지 않는다.
       // 영어 진입점을 시드로 주면 crawlLinks가 /en 내부 링크를 따라
       // /en/about·/en/contact·/en/projects/* 까지 정적 생성한다.
+      // /insights/feed.xml 은 <a> 링크가 없어 크롤되지 않으므로 직접 넣는다
       crawlLinks: true,
-      routes: ['/en', '/en/about', '/en/contact', '/en/projects', '/insights', ...insightRoutes],
+      routes: ['/en', '/en/about', '/en/contact', '/en/projects', '/insights', '/insights/feed.xml', ...insightRoutes],
     },
   },
 

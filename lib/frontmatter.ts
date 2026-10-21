@@ -97,6 +97,8 @@ class FrontmatterParser {
                 throw this.error(j, `해석할 수 없는 줄 "${text}"`);
             }
             const key = kv[1];
+            // 일반 객체에 __proto__ 를 대입하면 키가 생기지 않고 프로토타입이 바뀐다 (YAML 과 다른 값이 된다)
+            if (key === '__proto__') throw this.error(j, '키 "__proto__" 는 쓸 수 없다');
             if (Object.prototype.hasOwnProperty.call(out, key)) {
                 throw this.error(j, `키 "${key}" 가 두 번 나온다`);
             }

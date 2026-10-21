@@ -41,3 +41,13 @@ jobs:
           publish_dir: .output/public
           force_orphan: true
           cname: evegdev.com
+
+      # 바뀐 인사이트 글 URL 을 IndexNow(Bing·네이버 등)로 알린다. 색인 알림은 배포의 부가 단계라
+      # 실패해도 배포 결과는 성공으로 남긴다 (실패는 이 단계에 경고로만 표시된다)
+      - name: Notify search engines (IndexNow)
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          INDEXNOW_BEFORE: ${{ github.event.before }}
+          INDEXNOW_AFTER: ${{ github.sha }}
+        run: node scripts/indexnow.mjs

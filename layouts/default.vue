@@ -66,10 +66,16 @@ const isScrolled = ref(false);
 // i18n SEO: <html lang>/dir, hreflang alternate, canonical, og:url, og:locale을
 // 현재 라우트·로케일에 맞춰 모든 페이지에 동적 생성한다. (default 레이아웃 = 전역 적용)
 const i18nHead = useLocaleHead({ seo: true });
+
+// 긴 글을 읽는 프로젝트·인사이트 페이지(목록·상세, ko·en)만 스크롤바를 보인다. 나머지는 홈처럼 숨긴다.
+// 스타일은 assets/styles/base/_reset.scss 의 html.scrollbar-visible
+const showScrollbar = computed(() => /^\/(?:(?:en|ko)\/)?(?:projects|insights)(?:\/|$)/.test(route.path));
+
 useHead(() => ({
   htmlAttrs: {
     lang: i18nHead.value.htmlAttrs?.lang,
     dir: i18nHead.value.htmlAttrs?.dir,
+    class: showScrollbar.value ? 'scrollbar-visible' : undefined,
   },
   link: [...(i18nHead.value.link || [])],
   meta: [...(i18nHead.value.meta || [])],

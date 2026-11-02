@@ -31,12 +31,14 @@ AI: Claude, GPT, RAG, LangChain, MCP
 
 ## 프로젝트 사례
 
+- [하미오 마켓](https://evegdev.com/projects/hamio-market): 네팔 위치 기반 동네 중고거래·커뮤니티 앱. 음성 메모·3개 언어 번역 채팅을 갖춘 Flutter 앱(iOS 출시)
+- [수학 학원 오답 재풀이 시스템](https://evegdev.com/projects/math-review-clinic): OMR 채점 결과로 학생별 오답 재풀이를 여는 Next.js 웹 시스템 (학원명 비공개)
 - [우리차이나](https://evegdev.com/projects/uri-china): 중국어 학습 앱. 화상 통화 수업과 AI 회화 기능을 갖춘 Flutter 앱
 - [POZO](https://evegdev.com/projects/pozo): 주문·매장 운영 플랫폼
 - [CROU](https://evegdev.com/projects/crou): 루틴 관리 앱. Next.js 웹과 React Native WebView 를 결합한 하이브리드 구조
 - [Chordly](https://evegdev.com/projects/chordly): 음악 매칭·소셜 서비스
 - [2025 Suwon ITS AP Forum](https://evegdev.com/projects/suwon-its-2025): 국제 컨퍼런스 행사 운영 앱
-- [KOBACK](https://evegdev.com/projects/koback): 기업 서비스 플랫폼
+- [KOBACK](https://evegdev.com/projects/koback): 학생·학부모·코치 3개 역할의 에듀테크 학습 관리 앱
 - [이커머스 플랫폼](https://evegdev.com/projects/ecommerce-platform): 커머스 서비스 구축 (클라이언트명 비공개)
 - [대출 매칭 서비스](https://evegdev.com/projects/loan-matching): 금융 매칭 플랫폼 (클라이언트명 비공개)
 - [전자 서명 플랫폼](https://evegdev.com/projects/e-signature): 전자 계약·서명 서비스 (클라이언트명 비공개)
@@ -74,4 +76,4 @@ AI: Claude, GPT, RAG, LangChain, MCP
 이 파일은 대규모 언어 모델이 에버그린 데브를 정확히 이해하도록 돕기 위해 제공합니다.
 인사이트 글을 추가하면 위 "인사이트" 절과 아래 갱신일을 함께 고칩니다.
 
-최종 갱신: 2026-09-04
+최종 갱신: 2026-11-02

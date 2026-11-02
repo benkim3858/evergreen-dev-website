@@ -38,6 +38,18 @@ interface ProjectStaticData {
 
 // Define feature keys and item counts for each project to use t() with specific paths
 const projectFeatureConfig: Record<string, { key: string; itemCount: number }[]> = {
+    'hamio-market': [
+        { key: 'trading', itemCount: 2 },
+        { key: 'chat', itemCount: 3 },
+        { key: 'trust', itemCount: 2 },
+        { key: 'neighborhood', itemCount: 2 }
+    ],
+    'math-review-clinic': [
+        { key: 'grading', itemCount: 2 },
+        { key: 'retry', itemCount: 2 },
+        { key: 'dashboard', itemCount: 2 },
+        { key: 'operations', itemCount: 3 }
+    ],
     'uri-china': [
         { key: 'learning', itemCount: 2 },
         { key: 'video_call', itemCount: 2 },
@@ -86,6 +98,46 @@ const projectFeatureConfig: Record<string, { key: string; itemCount: number }[]>
 
 // Static data that doesn't need translation
 const projectsStaticData: ProjectStaticData[] = [
+    {
+        id: 'hamio-market',
+        title: 'Hamio Market',
+        client: 'EVERGREEN DEV',
+        period: '2026.02. ~ 2026.10.',
+        techStack: ['Flutter', 'Nest.js', 'MySQL', 'Redis', 'Socket.IO', 'Next.js', 'AWS'],
+        images: [
+            '/images/projects/hamio-market/hamio-market_logo.png',
+            '/images/projects/hamio-market/hamio-market_1.jpg',
+            '/images/projects/hamio-market/hamio-market_2.jpg',
+            '/images/projects/hamio-market/hamio-market_3.jpg',
+            '/images/projects/hamio-market/hamio-market_4.jpg',
+            '/images/projects/hamio-market/hamio-market_5.jpg',
+            '/images/projects/hamio-market/hamio-market_6.jpg',
+            '/images/projects/hamio-market/hamio-market_7.jpg',
+            '/images/projects/hamio-market/hamio-market_8.jpg',
+            '/images/projects/hamio-market/hamio-market_9.jpg'
+        ],
+        links: {
+            appStore: 'https://apps.apple.com/kr/app/hamio-market/id6759706415'
+        }
+    },
+    {
+        // 계약상 학원 상호·학생 정보 비공개 — 화면은 가상 데이터(○○수학)로 새로 찍은 것만 쓴다
+        id: 'math-review-clinic',
+        title: 'Math Review Clinic',
+        client: 'EVERGREEN DEV',
+        period: '2026.09. ~ 2026.10.',
+        techStack: ['Next.js', 'React', 'TypeScript', 'Prisma', 'MySQL', 'AWS'],
+        images: [
+            '/images/projects/math-review-clinic/math-review-clinic_logo.svg',
+            '/images/projects/math-review-clinic/math-review-clinic_1.jpg',
+            '/images/projects/math-review-clinic/math-review-clinic_2.jpg',
+            '/images/projects/math-review-clinic/math-review-clinic_3.jpg',
+            '/images/projects/math-review-clinic/math-review-clinic_4.jpg',
+            '/images/projects/math-review-clinic/math-review-clinic_5.jpg',
+            '/images/projects/math-review-clinic/math-review-clinic_6.jpg'
+        ],
+        links: {}
+    },
     {
         id: 'uri-china',
         title: '우리차이나',

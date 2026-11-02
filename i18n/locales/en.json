@@ -161,6 +161,78 @@
     }
   },
   "projectData": {
+    "hamio-market": {
+      "description": "Location-Based Neighborhood Marketplace & Community App for Nepal (Live on iOS)",
+      "details": "Hamio Market is a location-based secondhand marketplace and community app built for a local-life platform operator in Nepal. Verified neighbors buy and sell used goods, chat with text, photos, and voice memos, and browse local news and nearby places in one app. We built the iOS and Android apps from a single Flutter codebase together with a NestJS server and a Next.js admin console, and released iOS 1.0.7 on the App Store after review.",
+      "role": "Full-stack: Planning, UI Design, Mobile App (Flutter), Backend (NestJS), Admin Web (Next.js)",
+      "features": {
+        "trading": {
+          "title": "Neighborhood Listings",
+          "items": [
+            "Listings from nearby neighbors based on verified location, sorted by recommended, latest, or distance with category and availability filters",
+            "Listing creation with up to 10 photos, category, condition, price, and open-to-offers option"
+          ]
+        },
+        "chat": {
+          "title": "Voice Memo & Translated Chat",
+          "items": [
+            "Real-time text, photo, and voice memo messages with dictation and read receipts via Socket.IO and Redis",
+            "One-tap translation of Nepali, English, and Korean messages and posts",
+            "Meeting spot pinned on a map with live location sharing for a set time only"
+          ]
+        },
+        "trust": {
+          "title": "Safe Trading & Trust Signals",
+          "items": [
+            "GPS neighborhood verification, manner temperature, trade reviews, blocking and reporting",
+            "Warnings before sending messages with account numbers or links, and server-side blocking of prohibited items"
+          ]
+        },
+        "neighborhood": {
+          "title": "Local Life & Operations",
+          "items": [
+            "Topic-based neighborhood posts and groups, photo and video stories, and a map of nearby restaurants, hospitals, and schools",
+            "Admin console for the operator to manage members, listings, reports, verification, and announcements"
+          ]
+        }
+      }
+    },
+    "math-review-clinic": {
+      "description": "Wrong-Answer Retry System for a Math Academy, Driven by OMR Grading Results",
+      "details": "A web system built for a math academy that turns OMR grading results into per-student retry sessions. When the academy uploads the grading file and the class roster, each student's wrong answers are organized automatically, and students retry only their own mistakes in a mobile browser without installing an app. Teachers see progress by class and test round and a list of students who need a clinic session on one screen. After the core system was delivered, we added HWPX review notes, attendance text messages, a Q&A and counseling board, class announcements, and a merit point system. Under the contract, the academy's name and student data are not disclosed; all screens were captured with sample data.",
+      "role": "Full-stack: Planning, UI Design, Frontend & Backend",
+      "features": {
+        "grading": {
+          "title": "Automatic Grading Import",
+          "items": [
+            "Reads class, round, and test name from the grading file name and matches students to the roster by student ID",
+            "Infers each answer key from correct students' marks and opens the round to students only after the teacher confirms it"
+          ]
+        },
+        "retry": {
+          "title": "Mobile Retry for Students",
+          "items": [
+            "Students enter answers on a number keypad and get instant grading; items lock when attempts or deadlines run out",
+            "Wrong-reason tagging, home screen install, and web push notifications (PWA)"
+          ]
+        },
+        "dashboard": {
+          "title": "Teacher Progress Dashboard",
+          "items": [
+            "Per-class, per-round student table showing remaining wrong answers and item status, with bulk pass for students checked in person",
+            "Clinic list of students with locked items and Excel export"
+          ]
+        },
+        "operations": {
+          "title": "Academy Operations Add-ons",
+          "items": [
+            "Classroom tablet attendance pad that logs check-in and check-out and texts parents",
+            "Per-student review notes generated from the round's HWPX answer sheet, downloadable for a whole class at once",
+            "Q&A and clinic request board, class announcements, merit points, and separate teacher and assistant roles"
+          ]
+        }
+      }
+    },
     "uri-china": {
       "description": "Chinese Learning + 1-on-1 Video Lessons + AI Pronunciation & Conversation Platform",
       "details": "Uri China is a mobile learning platform that matches Chinese language learners with native instructors for 1-on-1 video lessons, combining iFlyTek AI pronunciation assessment with OpenAI ChatGPT-powered conversation practice. Built with Flutter for the app, NestJS for the backend, and Vue for the admin dashboard, with Toss Payments integration.",

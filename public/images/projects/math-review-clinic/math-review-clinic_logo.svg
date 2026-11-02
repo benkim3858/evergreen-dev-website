@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="28 28 488 144" width="488" height="144">
+  <defs>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64ffda"/>
+      <stop offset="50%" stop-color="#4af3ff"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark: retry ring (open arc + arrowhead) around a check -->
+  <g transform="translate(100, 100)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 52 -30 A 60 60 0 1 0 60 8" stroke="url(#ringGrad)" stroke-width="10"/>
+    <polyline points="38,-42 54,-28 66,-46" stroke="url(#ringGrad)" stroke-width="10"/>
+    <polyline points="-24,2 -6,20 28,-16" stroke="#64ffda" stroke-width="12"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="196" y="104" fill="#e6f1ff" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="52" font-weight="700" letter-spacing="-1">Math Review</text>
+  <text x="199" y="148" fill="#8892b0" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="22" font-weight="500" letter-spacing="9">CLINIC SYSTEM</text>
+</svg>

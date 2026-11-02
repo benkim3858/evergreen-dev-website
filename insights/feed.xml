@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>개발 인사이트 | 에버그린 데브 (Evergreen Dev)</title>
+    <link>https://evegdev.com/insights</link>
+    <description>프로젝트를 진행하며 실제로 부딪힌 문제와 판단 기준을 정리합니다.</description>
+    <language>ko</language>
+    <lastBuildDate>Wed, 21 Oct 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://evegdev.com/insights/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Flutter와 React Native, 2026년에는 무엇으로 시작할까</title>
+      <link>https://evegdev.com/insights/flutter-vs-react-native-2026</link>
+      <guid isPermaLink="true">https://evegdev.com/insights/flutter-vs-react-native-2026</guid>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0900</pubDate>
+      <description>2026년 10월 기준 Flutter 3.47과 React Native 0.88을 놓고 웹 화면 운영, 카카오·결제 SDK, 버전 업데이트 부담, 출시 뒤 긴급 수정 방식을 비교했습니다. 저희가 두 프레임워크로 진행한 프로젝트를 기준으로 고르는 기준을 정리했습니다.</description>
+      <category>앱 개발 방식</category>
+      <category>Flutter</category>
+      <category>React Native</category>
+      <category>Expo</category>
+      <category>크로스플랫폼</category>
+      <category>앱 개발 외주</category>
+    </item>
+    <item>
+      <title>오픈마켓 API 연동, 마켓마다 인증·주문·상품 구조가 다른 지점</title>
+      <link>https://evegdev.com/insights/openmarket-api-integration</link>
+      <guid isPermaLink="true">https://evegdev.com/insights/openmarket-api-integration</guid>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0900</pubDate>
+      <description>쿠팡, 네이버 스마트스토어, G마켓·옥션의 판매자 API를 2026년 10월 기준 공식 문서로 비교했습니다. 인증 방식과 키 유효기간, 주문 조회 범위, 호출 제한, 옵션 구조와 택배사 코드가 마켓마다 달라서 연동 일정과 운영 방식이 갈립니다.</description>
+      <category>커머스 연동</category>
+      <category>오픈마켓 API</category>
+      <category>쿠팡 Open API</category>
+      <category>네이버 커머스API</category>
+      <category>ESM Trading API</category>
+      <category>주문 수집</category>
+    </item>
+    <item>
+      <title>웹뷰 하이브리드 앱, 어디까지 되고 어디서 막히는가</title>
+      <link>https://evegdev.com/insights/webview-hybrid-app-limits</link>
+      <guid isPermaLink="true">https://evegdev.com/insights/webview-hybrid-app-limits</guid>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0900</pubDate>
+      <description>모바일 웹을 앱에 담는 웹뷰 하이브리드는 개발비가 낮은 대신 구글 로그인, 앱 푸시, 카드사 앱 결제, 홈 화면 위젯, Android 뒤로 가기에서 네이티브 코드가 따로 필요합니다. 2026년 10월 기준 공식 문서로 막히는 지점과 대응 방법을 정리했습니다.</description>
+      <category>앱 개발 방식</category>
+      <category>웹뷰 하이브리드</category>
+      <category>WebView</category>
+      <category>앱 심사</category>
+      <category>PG 결제</category>
+      <category>React Native</category>
+    </item>
+    <item>
+      <title>2026년 앱 스토어 제출 요건 정리 — 지금 업데이트가 막히는 이유</title>
+      <link>https://evegdev.com/insights/2026-app-store-play-submission-requirements</link>
+      <guid isPermaLink="true">https://evegdev.com/insights/2026-app-store-play-submission-requirements</guid>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0900</pubDate>
+      <description>2026년에 App Store와 Google Play의 제출 요건이 모두 바뀌었습니다. Apple은 4월 28일부터 Xcode 26·iOS 26 SDK를, Google Play는 8월 31일부터 Android 16(API 36) 타깃을 요구합니다. 무엇을 확인하고 어떻게 대응하는지 정리했습니다.</description>
+      <category>앱 배포</category>
+      <category>App Store</category>
+      <category>Google Play</category>
+      <category>앱 심사</category>
+      <category>타깃 API</category>
+      <category>Xcode 26</category>
+    </item>
+    <item>
+      <title>같은 앱인데 견적이 3배 차이 나는 이유</title>
+      <link>https://evegdev.com/insights/app-outsourcing-quote-difference</link>
+      <guid isPermaLink="true">https://evegdev.com/insights/app-outsourcing-quote-difference</guid>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0900</pubDate>
+      <description>앱 개발 외주 견적서를 여러 곳에서 받으면 금액이 두세 배씩 벌어집니다. 무엇이 그 차이를 만드는지, 견적서에서 어디를 봐야 하는지 항목별로 정리했습니다.</description>
+      <category>견적</category>
+      <category>앱 개발 외주</category>
+      <category>개발 견적</category>
+      <category>프로젝트 비용</category>
+    </item>
+    <item>
+      <title>네이티브 앱을 React Native로 바꾸면 기존 사용자가 전부 로그아웃되는 이유</title>
+      <link>https://evegdev.com/insights/native-to-react-native-logout</link>
+      <guid isPermaLink="true">https://evegdev.com/insights/native-to-react-native-logout</guid>
+      <pubDate>Fri, 04 Sep 2026 00:00:00 +0900</pubDate>
+      <description>네이티브 앱을 React Native로 전환할 때 업데이트를 받은 기존 사용자가 로그인 상태를 잃습니다. Keychain·Keystore 저장 구조가 달라서 생기는 문제이고, 1회성 토큰 이관으로 막을 수 있습니다.</description>
+      <category>앱 전환</category>
+      <category>React Native</category>
+      <category>앱 마이그레이션</category>
+      <category>Keychain</category>
+      <category>네이티브 앱 전환</category>
+    </item>
+  </channel>
+</rss>

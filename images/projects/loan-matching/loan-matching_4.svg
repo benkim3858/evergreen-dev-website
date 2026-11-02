@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <!-- Background -->
+  <rect width="960" height="540" fill="#0a192f"/>
+
+  <!-- Confidential Watermark -->
+  <text x="30" y="30" fill="rgba(100,255,218,0.15)" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Confidential</text>
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="180" height="540" fill="#112240"/>
+  <line x1="180" y1="0" x2="180" y2="540" stroke="#233554" stroke-width="1"/>
+
+  <!-- Sidebar Logo -->
+  <circle cx="40" cy="36" r="14" fill="none" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="40" y="41" text-anchor="middle" fill="#64ffda" font-family="system-ui, sans-serif" font-size="14" font-weight="700">$</text>
+  <text x="62" y="41" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Loan Admin</text>
+
+  <!-- Sidebar Menu -->
+  <rect x="12" y="74" width="156" height="36" rx="8" fill="#233554"/>
+  <text x="42" y="96" fill="#64ffda" font-family="system-ui, sans-serif" font-size="13" font-weight="600">대시보드</text>
+  <rect x="20" y="82" width="12" height="2" rx="1" fill="#64ffda"/>
+  <rect x="20" y="87" width="12" height="2" rx="1" fill="#64ffda"/>
+  <rect x="20" y="92" width="8" height="2" rx="1" fill="#64ffda"/>
+
+  <text x="42" y="132" fill="#8892b0" font-family="system-ui, sans-serif" font-size="13">신청 관리</text>
+  <text x="42" y="164" fill="#8892b0" font-family="system-ui, sans-serif" font-size="13">업체 관리</text>
+  <text x="42" y="196" fill="#8892b0" font-family="system-ui, sans-serif" font-size="13">통계</text>
+
+  <!-- Sidebar Bottom -->
+  <line x1="12" y1="500" x2="168" y2="500" stroke="#233554" stroke-width="1"/>
+  <text x="42" y="524" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11">관리자</text>
+
+  <!-- Top Bar -->
+  <rect x="180" y="0" width="780" height="50" fill="#112240"/>
+  <line x1="180" y1="50" x2="960" y2="50" stroke="#233554" stroke-width="1"/>
+  <text x="210" y="32" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="16" font-weight="600">대시보드</text>
+  <text x="920" y="32" text-anchor="end" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">2026.04.13</text>
+
+  <!-- KPI Cards -->
+  <!-- Card 1: 신규 신청 -->
+  <rect x="200" y="68" width="230" height="80" rx="10" fill="#233554" stroke="#2d4a6f" stroke-width="1"/>
+  <text x="220" y="92" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">신규 신청</text>
+  <text x="220" y="126" fill="#64ffda" font-family="system-ui, sans-serif" font-size="28" font-weight="700">127</text>
+  <text x="270" y="126" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11">건</text>
+  <text x="410" y="126" text-anchor="end" fill="#4ade80" font-family="system-ui, sans-serif" font-size="11">+12.5%</text>
+
+  <!-- Card 2: 진행중 -->
+  <rect x="450" y="68" width="230" height="80" rx="10" fill="#233554" stroke="#2d4a6f" stroke-width="1"/>
+  <text x="470" y="92" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">진행중</text>
+  <text x="470" y="126" fill="#ffd700" font-family="system-ui, sans-serif" font-size="28" font-weight="700">43</text>
+  <text x="508" y="126" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11">건</text>
+  <text x="660" y="126" text-anchor="end" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11">심사 대기 18건</text>
+
+  <!-- Card 3: 이번달 매칭 -->
+  <rect x="700" y="68" width="240" height="80" rx="10" fill="#233554" stroke="#2d4a6f" stroke-width="1"/>
+  <text x="720" y="92" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">이번달 매칭 건수</text>
+  <text x="720" y="126" fill="#a78bfa" font-family="system-ui, sans-serif" font-size="28" font-weight="700">89</text>
+  <text x="758" y="126" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11">건</text>
+  <text x="920" y="126" text-anchor="end" fill="#4ade80" font-family="system-ui, sans-serif" font-size="11">+8.2%</text>
+
+  <!-- Table Header -->
+  <rect x="200" y="168" width="740" height="36" rx="8" fill="#1a2f4a"/>
+  <text x="220" y="191" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">신청 ID</text>
+  <text x="320" y="191" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">고객</text>
+  <text x="440" y="191" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">금액</text>
+  <text x="560" y="191" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">상태</text>
+  <text x="690" y="191" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">매칭 업체</text>
+  <text x="820" y="191" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11" font-weight="600">신청일</text>
+
+  <!-- Table Row 1 -->
+  <rect x="200" y="208" width="740" height="40" rx="0" fill="#112240"/>
+  <line x1="200" y1="248" x2="940" y2="248" stroke="#233554" stroke-width="0.5"/>
+  <text x="220" y="233" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">#LM-2461</text>
+  <text x="320" y="233" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">김**</text>
+  <text x="440" y="233" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">5,000만</text>
+  <!-- Status: 심사 (blue) -->
+  <rect x="556" y="220" width="48" height="20" rx="4" fill="rgba(96,165,250,0.2)"/>
+  <text x="580" y="234" text-anchor="middle" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="10" font-weight="600">심사중</text>
+  <text x="690" y="233" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">3개사</text>
+  <text x="820" y="233" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">04.13</text>
+
+  <!-- Table Row 2 -->
+  <rect x="200" y="248" width="740" height="40" rx="0" fill="#0d1b30"/>
+  <line x1="200" y1="288" x2="940" y2="288" stroke="#233554" stroke-width="0.5"/>
+  <text x="220" y="273" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">#LM-2460</text>
+  <text x="320" y="273" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">이**</text>
+  <text x="440" y="273" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">8,000만</text>
+  <!-- Status: 승인 (green) -->
+  <rect x="556" y="260" width="36" height="20" rx="4" fill="rgba(74,222,128,0.2)"/>
+  <text x="574" y="274" text-anchor="middle" fill="#4ade80" font-family="system-ui, sans-serif" font-size="10" font-weight="600">승인</text>
+  <text x="690" y="273" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">5개사</text>
+  <text x="820" y="273" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">04.12</text>
+
+  <!-- Table Row 3 -->
+  <rect x="200" y="288" width="740" height="40" rx="0" fill="#112240"/>
+  <line x1="200" y1="328" x2="940" y2="328" stroke="#233554" stroke-width="0.5"/>
+  <text x="220" y="313" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">#LM-2459</text>
+  <text x="320" y="313" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">박**</text>
+  <text x="440" y="313" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">3,000만</text>
+  <!-- Status: 접수 (yellow) -->
+  <rect x="556" y="300" width="36" height="20" rx="4" fill="rgba(250,204,21,0.2)"/>
+  <text x="574" y="314" text-anchor="middle" fill="#facc15" font-family="system-ui, sans-serif" font-size="10" font-weight="600">접수</text>
+  <text x="690" y="313" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">2개사</text>
+  <text x="820" y="313" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">04.11</text>
+
+  <!-- Table Row 4 -->
+  <rect x="200" y="328" width="740" height="40" rx="0" fill="#0d1b30"/>
+  <line x1="200" y1="368" x2="940" y2="368" stroke="#233554" stroke-width="0.5"/>
+  <text x="220" y="353" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">#LM-2458</text>
+  <text x="320" y="353" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">최**</text>
+  <text x="440" y="353" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">1.2억</text>
+  <!-- Status: 반려 (red) -->
+  <rect x="556" y="340" width="36" height="20" rx="4" fill="rgba(248,113,113,0.2)"/>
+  <text x="574" y="354" text-anchor="middle" fill="#f87171" font-family="system-ui, sans-serif" font-size="10" font-weight="600">반려</text>
+  <text x="690" y="353" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">4개사</text>
+  <text x="820" y="353" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">04.10</text>
+
+  <!-- Table Row 5 -->
+  <rect x="200" y="368" width="740" height="40" rx="0" fill="#112240"/>
+  <line x1="200" y1="408" x2="940" y2="408" stroke="#233554" stroke-width="0.5"/>
+  <text x="220" y="393" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">#LM-2457</text>
+  <text x="320" y="393" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">정**</text>
+  <text x="440" y="393" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">6,500만</text>
+  <!-- Status: 심사 (blue) -->
+  <rect x="556" y="380" width="48" height="20" rx="4" fill="rgba(96,165,250,0.2)"/>
+  <text x="580" y="394" text-anchor="middle" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="10" font-weight="600">심사중</text>
+  <text x="690" y="393" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">3개사</text>
+  <text x="820" y="393" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">04.09</text>
+
+  <!-- Table Row 6 -->
+  <rect x="200" y="408" width="740" height="40" rx="0" fill="#0d1b30"/>
+  <line x1="200" y1="448" x2="940" y2="448" stroke="#233554" stroke-width="0.5"/>
+  <text x="220" y="433" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">#LM-2456</text>
+  <text x="320" y="433" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">한**</text>
+  <text x="440" y="433" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">2,000만</text>
+  <!-- Status: 승인 (green) -->
+  <rect x="556" y="420" width="36" height="20" rx="4" fill="rgba(74,222,128,0.2)"/>
+  <text x="574" y="434" text-anchor="middle" fill="#4ade80" font-family="system-ui, sans-serif" font-size="10" font-weight="600">승인</text>
+  <text x="690" y="433" fill="#ccd6f6" font-family="system-ui, sans-serif" font-size="12">2개사</text>
+  <text x="820" y="433" fill="#8892b0" font-family="system-ui, sans-serif" font-size="12">04.08</text>
+
+  <!-- Pagination -->
+  <text x="570" y="480" text-anchor="middle" fill="#8892b0" font-family="system-ui, sans-serif" font-size="11">&lt;  1  2  3  ...  12  &gt;</text>
+
+  <!-- Footer -->
+  <rect x="200" y="500" width="740" height="40" rx="0" fill="#0a192f"/>
+  <text x="570" y="526" text-anchor="middle" fill="#233554" font-family="system-ui, sans-serif" font-size="10">Loan Matching Platform Admin v2.1</text>
+</svg>

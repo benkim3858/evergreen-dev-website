@@ -121,7 +121,7 @@ const projectsStaticData: ProjectStaticData[] = [
         }
     },
     {
-        // 계약상 학원 상호·학생 정보 비공개 — 화면은 가상 데이터(○○수학)로 새로 찍은 것만 쓴다
+        // 학생 정보 비공개 — 화면은 가상 데이터(○○수학)로 새로 찍은 것만 쓴다. 로고는 학원 원래 로고(2026-11-02 Ben 허용)
         id: 'math-review-clinic',
         title: 'Math Review Clinic',
         client: 'EVERGREEN DEV',

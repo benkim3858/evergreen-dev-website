@@ -199,7 +199,7 @@
     },
     "math-review-clinic": {
       "description": "Wrong-Answer Retry System for a Math Academy, Driven by OMR Grading Results",
-      "details": "A web system built for a math academy that turns OMR grading results into per-student retry sessions. When the academy uploads the grading file and the class roster, each student's wrong answers are organized automatically, and students retry only their own mistakes in a mobile browser without installing an app. Teachers see progress by class and test round and a list of students who need a clinic session on one screen. After the core system was delivered, we added HWPX review notes, attendance text messages, a Q&A and counseling board, class announcements, and a merit point system. Under the contract, the academy's name and student data are not disclosed; all screens were captured with sample data.",
+      "details": "A web system built for a math academy that turns OMR grading results into per-student retry sessions. When the academy uploads the grading file and the class roster, each student's wrong answers are organized automatically, and students retry only their own mistakes in a mobile browser without installing an app. Teachers see progress by class and test round and a list of students who need a clinic session on one screen. After the core system was delivered, we added HWPX review notes, attendance text messages, a Q&A and counseling board, class announcements, and a merit point system. Student data is not disclosed; all screens were captured with sample data.",
       "role": "Full-stack: Planning, UI Design, Frontend & Backend",
       "features": {
         "grading": {

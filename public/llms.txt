@@ -32,7 +32,7 @@ AI: Claude, GPT, RAG, LangChain, MCP
 ## 프로젝트 사례
 
 - [하미오 마켓](https://evegdev.com/projects/hamio-market): 네팔 위치 기반 동네 중고거래·커뮤니티 앱. 음성 메모·3개 언어 번역 채팅을 갖춘 Flutter 앱(iOS 출시)
-- [수학 학원 오답 재풀이 시스템](https://evegdev.com/projects/math-review-clinic): OMR 채점 결과로 학생별 오답 재풀이를 여는 Next.js 웹 시스템 (학원명 비공개)
+- [수학 학원 오답 재풀이 시스템](https://evegdev.com/projects/math-review-clinic): OMR 채점 결과로 학생별 오답 재풀이를 여는 Next.js 웹 시스템 (임윤섭 수학)
 - [우리차이나](https://evegdev.com/projects/uri-china): 중국어 학습 앱. 화상 통화 수업과 AI 회화 기능을 갖춘 Flutter 앱
 - [POZO](https://evegdev.com/projects/pozo): 주문·매장 운영 플랫폼
 - [CROU](https://evegdev.com/projects/crou): 루틴 관리 앱. Next.js 웹과 React Native WebView 를 결합한 하이브리드 구조

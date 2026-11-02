@@ -117,7 +117,8 @@ const projectsStaticData: ProjectStaticData[] = [
             '/images/projects/hamio-market/hamio-market_9.jpg'
         ],
         links: {
-            appStore: 'https://apps.apple.com/kr/app/hamio-market/id6759706415'
+            appStore: 'https://apps.apple.com/kr/app/hamio-market/id6759706415',
+            web: 'https://hamiomarket.com/'
         }
     },
     {

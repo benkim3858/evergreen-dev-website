@@ -106,6 +106,14 @@
       <fieldset class="consent-box">
         <legend>{{ $t('contact.form.marketing.title') }}</legend>
         <p class="consent-note">{{ $t('contact.form.marketing.description') }}</p>
+        <dl class="privacy-table">
+          <dt>{{ $t('contact.form.privacy.itemsLabel') }}</dt>
+          <dd>{{ $t('contact.form.marketing.items') }}</dd>
+          <dt>{{ $t('contact.form.privacy.purposeLabel') }}</dt>
+          <dd>{{ $t('contact.form.marketing.purpose') }}</dd>
+          <dt>{{ $t('contact.form.privacy.retentionLabel') }}</dt>
+          <dd>{{ $t('contact.form.marketing.retention') }}</dd>
+        </dl>
         <div class="check-group">
           <label v-for="ch in CHANNELS" :key="ch" class="check-row">
             <input v-model="form.marketing[ch]" type="checkbox" :disabled="isSubmitting">
@@ -169,7 +177,7 @@ const SCHEDULE_KO: Record<string, string> = {
   after3m: '3개월 이후',
   undecided: '아직 정하지 않음'
 }
-const PRIVACY_VERSION = 'evegdev-quote-2026-11-25'
+const PRIVACY_VERSION = 'evegdev-quote-2026-11-25b'
 
 const { t } = useI18n()
 const { isSubmitting, submitResult, submitForm, resetForm } = useContactForm()

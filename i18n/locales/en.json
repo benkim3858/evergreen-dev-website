@@ -669,7 +669,10 @@
           "sms": "Text message",
           "email": "Email",
           "kakao": "KakaoTalk"
-        }
+        },
+        "items": "Contact details for the channels you choose (phone, email), name and company",
+        "purpose": "Sending news about Evergreen Dev services, case studies and offers",
+        "retention": "Until you withdraw this consent"
       },
       "errors": {
         "name": "Please enter your name.",

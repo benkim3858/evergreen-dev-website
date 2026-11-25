@@ -608,9 +608,9 @@
       "button": "Book Consultation"
     },
     "form": {
-      "title": "Inquire About Your Project",
-      "name": "Full Name",
-      "namePlaceholder": "John Doe",
+      "title": "Request a Quote",
+      "name": "Name",
+      "namePlaceholder": "Jane Doe",
       "nameCompany": "Name / Company",
       "email": "Email",
       "emailPlaceholder": "example{'@'}company.com",
@@ -625,23 +625,66 @@
         "maintenance": "Maintenance",
         "other": "Other"
       },
-      "budget": "Estimated Budget",
-      "budgetPlaceholder": "Please select",
+      "budget": "Budget range",
+      "budgetPlaceholder": "Select",
+      "message": "Project details",
+      "messagePlaceholder": "Tell us what you want to build, the features you need, and any sites or apps you like.",
+      "submit": "Send quote request",
+      "submitting": "Sending...",
+      "company": "Company",
+      "companyPlaceholder": "Company or team (optional)",
+      "phone": "Phone",
+      "phonePlaceholder": "+82 10-1234-5678",
+      "contactHint": "Please leave an email or a phone number. We reply to the one you leave.",
       "budgets": {
-        "small": "Under $5,000",
-        "medium": "$5,000 - $20,000",
-        "large": "$20,000 - $50,000",
-        "enterprise": "Over $50,000",
-        "discuss": "Need Discussion"
+        "under5m": "Under KRW 5M",
+        "from5to15m": "KRW 5M - 15M",
+        "from15to40m": "KRW 15M - 40M",
+        "over40m": "Over KRW 40M",
+        "undecided": "Not decided yet"
       },
-      "message": "Message",
-      "messagePlaceholder": "Tell us about your project in detail. Including goals, features, and timeline will help us provide more accurate consultation.",
-      "submit": "Request Consultation",
-      "submitting": "Sending..."
+      "schedule": "Preferred timeline",
+      "schedulePlaceholder": "Select",
+      "schedules": {
+        "within1m": "Start within 1 month",
+        "from1to3m": "Start in 1-3 months",
+        "after3m": "After 3 months",
+        "undecided": "Not decided yet"
+      },
+      "privacy": {
+        "title": "Consent to collection and use of personal data (required)",
+        "itemsLabel": "Data collected",
+        "items": "Name, company, email, phone, message, budget range, timeline",
+        "purposeLabel": "Purpose",
+        "purpose": "Reviewing your inquiry and replying with a quote",
+        "retentionLabel": "Retention",
+        "retention": "1 year after the inquiry is handled (longer if required by law after a contract)",
+        "refuse": "You may refuse, but we cannot accept the inquiry without this consent.",
+        "agree": "I have read the above and agree to the collection and use of my personal data"
+      },
+      "marketing": {
+        "title": "Consent to receive promotional messages (optional)",
+        "description": "Choose how you would like to hear about new services, case studies and offers. Your inquiry is accepted either way, and you can opt out at any time.",
+        "channels": {
+          "sms": "Text message",
+          "email": "Email",
+          "kakao": "KakaoTalk"
+        }
+      },
+      "errors": {
+        "name": "Please enter your name.",
+        "contact": "Please leave an email or a phone number.",
+        "email": "Please check the email address.",
+        "phone": "Please check the phone number.",
+        "marketingEmail": "Please enter an email to receive promotional emails.",
+        "marketingPhone": "Please enter a phone number to receive texts or KakaoTalk messages.",
+        "message": "Please tell us a little more about the project.",
+        "privacy": "Please agree to the collection and use of personal data to send the inquiry."
+      }
     },
     "messages": {
-      "success": "Your inquiry has been sent successfully. We'll respond within 24 hours.",
-      "error": "Failed to send. Please contact us directly via email."
+      "success": "Your inquiry has been received. We will reply within one business day.",
+      "error": "Sending failed. Please email us at hello{'@'}evegdev.com."
     }
   },
   "seo": {

@@ -66,91 +66,8 @@
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <div class="contact-form-wrapper">
-          <h3 class="form-title">{{ $t('contact.form.title') }}</h3>
-          <form class="contact-form" @submit.prevent="handleSubmit">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">{{ $t('contact.form.name') }} *</label>
-                <input
-                  type="text"
-                  id="name"
-                  v-model="formData.name"
-                  :placeholder="$t('contact.form.namePlaceholder')"
-                  required
-                >
-              </div>
-              <div class="form-group">
-                <label for="email">{{ $t('contact.form.email') }} *</label>
-                <input
-                  type="email"
-                  id="email"
-                  v-model="formData.email"
-                  :placeholder="$t('contact.form.emailPlaceholder')"
-                  required
-                >
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="projectType">{{ $t('contact.form.projectType') }}</label>
-              <select id="projectType" v-model="formData.projectType">
-                <option value="">{{ $t('contact.form.projectTypePlaceholder') }}</option>
-                <option value="web">{{ $t('contact.form.projectTypes.web') }}</option>
-                <option value="mobile">{{ $t('contact.form.projectTypes.mobile') }}</option>
-                <option value="ecommerce">{{ $t('contact.form.projectTypes.ecommerce') }}</option>
-                <option value="consulting">{{ $t('contact.form.projectTypes.consulting') }}</option>
-                <option value="maintenance">{{ $t('contact.form.projectTypes.maintenance') }}</option>
-                <option value="other">{{ $t('contact.form.projectTypes.other') }}</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="budget">{{ $t('contact.form.budget') }}</label>
-              <select id="budget" v-model="formData.budget">
-                <option value="">{{ $t('contact.form.budgetPlaceholder') }}</option>
-                <option value="small">{{ $t('contact.form.budgets.small') }}</option>
-                <option value="medium">{{ $t('contact.form.budgets.medium') }}</option>
-                <option value="large">{{ $t('contact.form.budgets.large') }}</option>
-                <option value="enterprise">{{ $t('contact.form.budgets.enterprise') }}</option>
-                <option value="discuss">{{ $t('contact.form.budgets.discuss') }}</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">{{ $t('contact.form.message') }} *</label>
-              <textarea
-                id="message"
-                v-model="formData.message"
-                :placeholder="$t('contact.form.messagePlaceholder')"
-                rows="6"
-                required
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              class="submit-btn"
-              :disabled="isSubmitting"
-            >
-              <Icon v-if="isSubmitting" name="mdi:loading" class="spin" />
-              <Icon v-else name="mdi:send" />
-              {{ isSubmitting ? $t('contact.form.submitting') : $t('contact.form.submit') }}
-            </button>
-
-            <Transition name="fade">
-              <div
-                v-if="submitResult"
-                class="submit-result"
-                :class="{ success: submitResult.success, error: !submitResult.success }"
-              >
-                <Icon :name="submitResult.success ? 'mdi:check-circle' : 'mdi:alert-circle'" />
-                {{ submitResult.message }}
-              </div>
-            </Transition>
-          </form>
-        </div>
+        <!-- 견적 문의 폼 (components/QuoteForm.vue) -->
+        <QuoteForm />
       </div>
     </div>
   </section>
@@ -159,7 +76,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { contacts, socialLinks } = useContactInfo()
-const { isSubmitting, submitResult, submitForm, resetForm } = useContactForm()
 const { $channelTalk } = useNuxtApp()
 
 useSeoMeta({
@@ -170,56 +86,6 @@ useSeoMeta({
   ogImage: 'https://evegdev.com/logo.png',
   twitterCard: 'summary_large_image',
 })
-
-const formData = ref({
-  name: '',
-  email: '',
-  message: '',
-  projectType: '',
-  budget: ''
-})
-
-// 유입 경로 한 줄 — plugins/referral.client.ts 가 첫 진입 때 남긴 값을 읽는다.
-// 기록이 없으면 빈 문자열이라 메일 본문 형태가 그대로 유지된다.
-const referralLine = (): string => {
-  try {
-    const raw = sessionStorage.getItem('eveg_referral')
-    if (!raw) return ''
-
-    const saved = JSON.parse(raw) as { ref?: string; from?: string; landing?: string }
-    const parts = [
-      saved.ref ? `경로 ${saved.ref}` : '',
-      saved.from ? `유입 ${saved.from}` : '',
-      saved.landing ? `첫 페이지 ${saved.landing}` : ''
-    ].filter(Boolean)
-
-    return parts.length ? `\n[유입 경로: ${parts.join(' / ')}]` : ''
-  } catch {
-    return ''
-  }
-}
-
-const handleSubmit = async () => {
-  const result = await submitForm({
-    name: formData.value.name,
-    email: formData.value.email,
-    message: `[프로젝트 유형: ${formData.value.projectType || '미선택'}]
-[예상 예산: ${formData.value.budget || '미선택'}]${referralLine()}
-
-${formData.value.message}`,
-    projectType: formData.value.projectType
-  })
-
-  if (result.success) {
-    formData.value = {
-      name: '',
-      email: '',
-      message: '',
-      projectType: '',
-      budget: ''
-    }
-  }
-}
 
 const emailCopied = ref(false)
 

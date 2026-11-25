@@ -336,46 +336,7 @@
               <MeetingScheduler />
             </ClientOnly>
           </div>
-          <form class="contact-form" @submit.prevent="handleSubmit">
-            <div class="form-group">
-              <label for="name">{{ $t('contact.form.nameCompany') }}</label>
-              <input type="text" id="name" v-model="formData.name" required :disabled="isSubmitting">
-            </div>
-            <div class="form-group">
-              <label for="email">{{ $t('contact.form.email') }}</label>
-              <input type="email" id="email" v-model="formData.email" required :disabled="isSubmitting">
-            </div>
-            <div class="form-group">
-              <label for="projectType">{{ $t('contact.form.projectType') }}</label>
-              <select id="projectType" v-model="formData.projectType" :disabled="isSubmitting">
-                <option value="">{{ $t('contact.form.projectTypePlaceholder') }}</option>
-                <option value="web">{{ $t('contact.form.projectTypes.web') }}</option>
-                <option value="mobile">{{ $t('contact.form.projectTypes.mobile') }}</option>
-                <option value="fullstack">{{ $t('contact.form.projectTypes.fullstack') }}</option>
-                <option value="consulting">{{ $t('contact.form.projectTypes.consulting') }}</option>
-                <option value="other">{{ $t('contact.form.projectTypes.other') }}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">{{ $t('contact.form.message') }}</label>
-              <textarea id="message" v-model="formData.message" required :disabled="isSubmitting"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
-              <span v-if="isSubmitting">{{ $t('contact.form.submitting') }}</span>
-              <span v-else>{{ $t('contact.form.submit') }}</span>
-            </button>
-
-            <!-- Submit Result Message -->
-            <Transition name="fade">
-              <div
-                v-if="submitResult"
-                :class="['submit-result', submitResult.success ? 'success' : 'error']"
-              >
-                <Icon :name="submitResult.success ? 'mdi:check-circle' : 'mdi:alert-circle'" />
-                {{ submitResult.message }}
-              </div>
-            </Transition>
-          </form>
+          <QuoteForm />
         </div>
       </div>
     </section>
@@ -508,16 +469,7 @@ const expertiseItems = computed(() => ({
   ]
 }));
 
-// Contact Form with Web3Forms
-const { isSubmitting, submitResult, submitForm, resetForm } = useContactForm();
 const { contacts, socialLinks } = useContactInfo();
-
-const formData = ref({
-  name: '',
-  email: '',
-  message: '',
-  projectType: ''
-});
 
 // Projects Data from Composable
 const { projects } = useProjects();
@@ -525,20 +477,6 @@ const { projects } = useProjects();
 // 홈 Featured Works 표시용 — 일부 프로젝트는 홈에서 숨김(/projects 페이지엔 전체 노출)
 const HOME_HIDDEN_PROJECTS = ['ecommerce-platform', 'loan-matching', 'e-signature', 'edtech-lms'];
 const homeProjects = computed(() => projects.value.filter(p => !HOME_HIDDEN_PROJECTS.includes(p.id)));
-
-// Form submission handler
-const handleSubmit = async () => {
-  await submitForm(formData.value);
-  if (submitResult.value?.success) {
-    // Reset form on success
-    formData.value = { name: '', email: '', message: '', projectType: '' };
-    // Auto-hide success message after 5 seconds
-    setTimeout(() => {
-      resetForm();
-    }, 5000);
-  }
-};
-
 
 // 이메일 복사
 const emailCopied = ref(false);

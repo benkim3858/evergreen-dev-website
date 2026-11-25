@@ -3,7 +3,7 @@ export const useContactInfo = () => {
   const { t } = useI18n()
 
   const contacts = reactive({
-    email: 'ben@evegdev.com',
+    email: 'hello@evegdev.com',
     linkedin: 'https://www.linkedin.com/in/ben-kim-87a5a0219',
     github: 'https://github.com/evegdev',
     location: computed(() => t('contact.location')),

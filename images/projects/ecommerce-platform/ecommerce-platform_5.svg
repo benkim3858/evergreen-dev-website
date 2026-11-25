@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <rect width="960" height="540" fill="#0a192f"/>
+  <text x="20" y="30" font-family="sans-serif" font-size="11" fill="rgba(100,255,218,0.15)" font-weight="bold">Confidential</text>
+  <!-- Sidebar -->
+  <rect x="20" y="20" width="180" height="500" rx="8" fill="#112240"/>
+  <rect x="36" y="36" width="28" height="28" rx="6" fill="#64ffda"/>
+  <text x="43" y="55" font-family="sans-serif" font-size="14" fill="#0a192f" font-weight="bold">A</text>
+  <text x="72" y="55" font-family="sans-serif" font-size="13" fill="#ccd6f6" font-weight="bold">Admin Panel</text>
+  <line x1="36" y1="76" x2="184" y2="76" stroke="#233554" stroke-width="1"/>
+  <!-- Sidebar menu -->
+  <rect x="28" y="86" width="164" height="32" rx="6" fill="#233554"/>
+  <circle cx="48" cy="102" r="7" fill="none" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="64" y="106" font-family="sans-serif" font-size="12" fill="#64ffda">Members</text>
+  <circle cx="48" cy="134" r="7" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+  <rect x="41" y="131" width="14" height="6" rx="1" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <text x="64" y="138" font-family="sans-serif" font-size="12" fill="#8892b0">Products</text>
+  <rect x="41" y="157" width="14" height="10" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+  <text x="64" y="168" font-family="sans-serif" font-size="12" fill="#8892b0">Orders</text>
+  <rect x="41" y="189" width="14" height="10" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+  <line x1="44" y1="194" x2="52" y2="194" stroke="#8892b0" stroke-width="1"/>
+  <text x="64" y="198" font-family="sans-serif" font-size="12" fill="#8892b0">Coupons</text>
+  <rect x="41" y="219" width="14" height="10" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+  <text x="64" y="228" font-family="sans-serif" font-size="12" fill="#8892b0">Settlements</text>
+  <rect x="41" y="249" width="14" height="10" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+  <text x="64" y="258" font-family="sans-serif" font-size="12" fill="#8892b0">Analytics</text>
+  <!-- Main content -->
+  <text x="224" y="48" font-family="sans-serif" font-size="18" fill="#ccd6f6" font-weight="bold">Member Management</text>
+  <text x="224" y="66" font-family="sans-serif" font-size="11" fill="#8892b0">Total 2,847 members</text>
+  <!-- Search / Filter bar -->
+  <rect x="224" y="78" width="708" height="40" rx="8" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <rect x="236" y="86" width="240" height="24" rx="6" fill="#233554"/>
+  <circle cx="252" cy="98" r="6" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+  <line x1="256" y1="102" x2="260" y2="106" stroke="#8892b0" stroke-width="1.2"/>
+  <text x="268" y="102" font-family="sans-serif" font-size="10" fill="#8892b0">Search by name, email...</text>
+  <!-- Filter dropdowns -->
+  <rect x="490" y="86" width="80" height="24" rx="6" fill="#233554"/>
+  <text x="502" y="102" font-family="sans-serif" font-size="10" fill="#8892b0">Status</text>
+  <text x="558" y="102" font-family="sans-serif" font-size="10" fill="#8892b0">v</text>
+  <rect x="578" y="86" width="100" height="24" rx="6" fill="#233554"/>
+  <text x="590" y="102" font-family="sans-serif" font-size="10" fill="#8892b0">Join Date</text>
+  <text x="666" y="102" font-family="sans-serif" font-size="10" fill="#8892b0">v</text>
+  <rect x="686" y="86" width="80" height="24" rx="6" fill="#233554"/>
+  <text x="698" y="102" font-family="sans-serif" font-size="10" fill="#8892b0">Export</text>
+  <rect x="780" y="86" width="80" height="24" rx="6" fill="#64ffda"/>
+  <text x="820" y="102" font-family="sans-serif" font-size="10" fill="#0a192f" text-anchor="middle" font-weight="bold">Search</text>
+  <!-- Member table -->
+  <rect x="224" y="126" width="708" height="370" rx="8" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <!-- Table header -->
+  <rect x="224" y="126" width="708" height="30" rx="8" fill="#1a3050"/>
+  <!-- Fix rounded corners at bottom only by overlaying -->
+  <rect x="224" y="136" width="708" height="20" fill="#1a3050"/>
+  <rect x="236" y="134" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1.2"/>
+  <text x="268" y="146" font-family="sans-serif" font-size="10" fill="#8892b0" font-weight="bold">Name</text>
+  <text x="378" y="146" font-family="sans-serif" font-size="10" fill="#8892b0" font-weight="bold">Email</text>
+  <text x="558" y="146" font-family="sans-serif" font-size="10" fill="#8892b0" font-weight="bold">Joined</text>
+  <text x="668" y="146" font-family="sans-serif" font-size="10" fill="#8892b0" font-weight="bold">Orders</text>
+  <text x="758" y="146" font-family="sans-serif" font-size="10" fill="#8892b0" font-weight="bold">Status</text>
+  <text x="868" y="146" font-family="sans-serif" font-size="10" fill="#8892b0" font-weight="bold">Actions</text>
+  <!-- Row 1 -->
+  <line x1="234" y1="162" x2="922" y2="162" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="170" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="177" r="10" fill="#233554"/>
+  <text x="268" y="181" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">KJ</text>
+  <text x="286" y="181" font-family="sans-serif" font-size="11" fill="#ccd6f6">Kim Jihye</text>
+  <text x="378" y="181" font-family="sans-serif" font-size="11" fill="#8892b0">jihye.k@email.com</text>
+  <text x="558" y="181" font-family="sans-serif" font-size="11" fill="#8892b0">2025-08-12</text>
+  <text x="688" y="181" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">47</text>
+  <rect x="740" y="168" width="48" height="20" rx="10" fill="rgba(100,255,218,0.15)"/>
+  <text x="764" y="182" font-family="sans-serif" font-size="9" fill="#64ffda" text-anchor="middle">Active</text>
+  <text x="880" y="181" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Row 2 -->
+  <line x1="234" y1="196" x2="922" y2="196" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="204" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="211" r="10" fill="#233554"/>
+  <text x="268" y="215" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">PS</text>
+  <text x="286" y="215" font-family="sans-serif" font-size="11" fill="#ccd6f6">Park Sungmin</text>
+  <text x="378" y="215" font-family="sans-serif" font-size="11" fill="#8892b0">sm.park@email.com</text>
+  <text x="558" y="215" font-family="sans-serif" font-size="11" fill="#8892b0">2025-09-03</text>
+  <text x="688" y="215" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">32</text>
+  <rect x="740" y="202" width="48" height="20" rx="10" fill="rgba(100,255,218,0.15)"/>
+  <text x="764" y="216" font-family="sans-serif" font-size="9" fill="#64ffda" text-anchor="middle">Active</text>
+  <text x="880" y="215" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Row 3 -->
+  <line x1="234" y1="230" x2="922" y2="230" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="238" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="245" r="10" fill="#233554"/>
+  <text x="268" y="249" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">LY</text>
+  <text x="286" y="249" font-family="sans-serif" font-size="11" fill="#ccd6f6">Lee Yuna</text>
+  <text x="378" y="249" font-family="sans-serif" font-size="11" fill="#8892b0">yuna.lee@email.com</text>
+  <text x="558" y="249" font-family="sans-serif" font-size="11" fill="#8892b0">2025-11-20</text>
+  <text x="688" y="249" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">18</text>
+  <rect x="740" y="236" width="48" height="20" rx="10" fill="rgba(100,255,218,0.15)"/>
+  <text x="764" y="250" font-family="sans-serif" font-size="9" fill="#64ffda" text-anchor="middle">Active</text>
+  <text x="880" y="249" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Row 4 -->
+  <line x1="234" y1="264" x2="922" y2="264" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="272" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="279" r="10" fill="#233554"/>
+  <text x="268" y="283" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">CJ</text>
+  <text x="286" y="283" font-family="sans-serif" font-size="11" fill="#ccd6f6">Choi Junwoo</text>
+  <text x="378" y="283" font-family="sans-serif" font-size="11" fill="#8892b0">jw.choi@email.com</text>
+  <text x="558" y="283" font-family="sans-serif" font-size="11" fill="#8892b0">2025-12-05</text>
+  <text x="688" y="283" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">8</text>
+  <rect x="740" y="270" width="56" height="20" rx="10" fill="rgba(255,200,50,0.15)"/>
+  <text x="768" y="284" font-family="sans-serif" font-size="9" fill="#ffc832" text-anchor="middle">Dormant</text>
+  <text x="880" y="283" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Row 5 -->
+  <line x1="234" y1="298" x2="922" y2="298" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="306" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="313" r="10" fill="#233554"/>
+  <text x="268" y="317" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">HM</text>
+  <text x="286" y="317" font-family="sans-serif" font-size="11" fill="#ccd6f6">Han Minji</text>
+  <text x="378" y="317" font-family="sans-serif" font-size="11" fill="#8892b0">minji.h@email.com</text>
+  <text x="558" y="317" font-family="sans-serif" font-size="11" fill="#8892b0">2026-01-14</text>
+  <text x="688" y="317" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">23</text>
+  <rect x="740" y="304" width="48" height="20" rx="10" fill="rgba(100,255,218,0.15)"/>
+  <text x="764" y="318" font-family="sans-serif" font-size="9" fill="#64ffda" text-anchor="middle">Active</text>
+  <text x="880" y="317" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Row 6 -->
+  <line x1="234" y1="332" x2="922" y2="332" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="340" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="347" r="10" fill="#233554"/>
+  <text x="268" y="351" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">JE</text>
+  <text x="286" y="351" font-family="sans-serif" font-size="11" fill="#ccd6f6">Jang Eunji</text>
+  <text x="378" y="351" font-family="sans-serif" font-size="11" fill="#8892b0">eunji.j@email.com</text>
+  <text x="558" y="351" font-family="sans-serif" font-size="11" fill="#8892b0">2026-02-08</text>
+  <text x="688" y="351" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">5</text>
+  <rect x="740" y="338" width="48" height="20" rx="10" fill="rgba(100,255,218,0.15)"/>
+  <text x="764" y="352" font-family="sans-serif" font-size="9" fill="#64ffda" text-anchor="middle">Active</text>
+  <text x="880" y="351" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Row 7 -->
+  <line x1="234" y1="366" x2="922" y2="366" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="374" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="381" r="10" fill="#233554"/>
+  <text x="268" y="385" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">SY</text>
+  <text x="286" y="385" font-family="sans-serif" font-size="11" fill="#ccd6f6">Shin Yeonwoo</text>
+  <text x="378" y="385" font-family="sans-serif" font-size="11" fill="#8892b0">yw.shin@email.com</text>
+  <text x="558" y="385" font-family="sans-serif" font-size="11" fill="#8892b0">2026-03-01</text>
+  <text x="688" y="385" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">12</text>
+  <rect x="740" y="372" width="48" height="20" rx="10" fill="rgba(100,255,218,0.15)"/>
+  <text x="764" y="386" font-family="sans-serif" font-size="9" fill="#64ffda" text-anchor="middle">Active</text>
+  <text x="880" y="385" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Row 8 -->
+  <line x1="234" y1="400" x2="922" y2="400" stroke="#233554" stroke-width="0.5"/>
+  <rect x="236" y="408" width="14" height="14" rx="2" fill="none" stroke="#8892b0" stroke-width="1"/>
+  <circle cx="268" cy="415" r="10" fill="#233554"/>
+  <text x="268" y="419" font-family="sans-serif" font-size="9" fill="#8892b0" text-anchor="middle">ON</text>
+  <text x="286" y="419" font-family="sans-serif" font-size="11" fill="#ccd6f6">Oh Nari</text>
+  <text x="378" y="419" font-family="sans-serif" font-size="11" fill="#8892b0">nari.oh@email.com</text>
+  <text x="558" y="419" font-family="sans-serif" font-size="11" fill="#8892b0">2026-03-22</text>
+  <text x="688" y="419" font-family="sans-serif" font-size="11" fill="#ccd6f6" text-anchor="middle">3</text>
+  <rect x="740" y="406" width="56" height="20" rx="10" fill="rgba(255,100,120,0.15)"/>
+  <text x="768" y="420" font-family="sans-serif" font-size="9" fill="#ff6b8a" text-anchor="middle">Blocked</text>
+  <text x="880" y="419" font-family="sans-serif" font-size="10" fill="#5eaaff" text-anchor="middle">View</text>
+  <!-- Pagination -->
+  <line x1="234" y1="440" x2="922" y2="440" stroke="#233554" stroke-width="0.5"/>
+  <text x="244" y="462" font-family="sans-serif" font-size="10" fill="#8892b0">Showing 1-8 of 2,847</text>
+  <!-- Page numbers -->
+  <rect x="810" y="448" width="24" height="24" rx="4" fill="#64ffda"/>
+  <text x="822" y="464" font-family="sans-serif" font-size="11" fill="#0a192f" text-anchor="middle" font-weight="bold">1</text>
+  <rect x="838" y="448" width="24" height="24" rx="4" fill="#233554"/>
+  <text x="850" y="464" font-family="sans-serif" font-size="11" fill="#8892b0" text-anchor="middle">2</text>
+  <rect x="866" y="448" width="24" height="24" rx="4" fill="#233554"/>
+  <text x="878" y="464" font-family="sans-serif" font-size="11" fill="#8892b0" text-anchor="middle">3</text>
+  <text x="900" y="464" font-family="sans-serif" font-size="11" fill="#8892b0">...</text>
+  <rect x="910" y="448" width="20" height="24" rx="4" fill="#233554"/>
+  <text x="920" y="464" font-family="sans-serif" font-size="11" fill="#8892b0" text-anchor="middle">></text>
+</svg>
